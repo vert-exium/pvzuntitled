@@ -1,3 +1,8 @@
 [gd_scene format=3 uid="uid://bnkq1m2v8wnbi"]
 
 [node name="mainMenu" type="Node2D" unique_id=371023868]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1303955894]
+offset_right = 1156.0
+offset_bottom = 650.0
+color = Color(1, 0, 1, 1)
