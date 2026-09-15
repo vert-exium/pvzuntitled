@@ -1,3 +1,25 @@
 [gd_scene format=3 uid="uid://c41r5tbunaq1i"]
 
+[ext_resource type="Script" uid="uid://c2448ay24f18a" path="res://scripts/level.gd" id="1_uhqny"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8fr4"]
+size = Vector2(240, 900)
+
 [node name="level" type="Node2D" unique_id=622269324]
+script = ExtResource("1_uhqny")
+
+[node name="background" type="ColorRect" parent="." unique_id=75874313]
+offset_top = 180.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0.5882353, 0.12156863, 1)
+
+[node name="deathZone" type="Area2D" parent="." unique_id=29127886]
+
+[node name="deathCollision" type="CollisionShape2D" parent="deathZone" unique_id=167668479]
+position = Vector2(120, 630)
+shape = SubResource("RectangleShape2D_d8fr4")
+
+[node name="Plants" type="Node2D" parent="." unique_id=1679694424]
+
+[node name="Enemies" type="Node2D" parent="." unique_id=138412027]
