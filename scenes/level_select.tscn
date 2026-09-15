@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://xsquj3ske6qv"]
+
+[ext_resource type="FontFile" uid="uid://5odi65orw3e2" path="res://fonts/Hey Comic.ttf" id="1_p0wlc"]
+[ext_resource type="Texture2D" uid="uid://bv5plsb6jrxq0" path="res://images/arrow-left-alt-5ufw09e1z3jbk920li7a28.png" id="2_2epne"]
+[ext_resource type="Script" uid="uid://dy5ceipj7oo6b" path="res://scripts/backButtonLevelSelect.gd" id="3_2epne"]
+
+[node name="level_select" type="Node2D" unique_id=1904087363]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1488979302]
+offset_right = 1152.0
+offset_bottom = 649.0
+color = Color(7.70092e-07, 0.45780808, 0.69570243, 1)
+
+[node name="Button" type="Button" parent="." unique_id=339343996]
+offset_top = 553.0
+offset_right = 317.0
+offset_bottom = 650.0
+theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("1_p0wlc")
+theme_override_font_sizes/font_size = 70
+text = "BACK"
+icon = ExtResource("2_2epne")
+script = ExtResource("3_2epne")
+
+[node name="Label" type="Label" parent="." unique_id=1009394684]
+offset_top = -12.0
+offset_right = 1152.0
+offset_bottom = 219.0
+theme_override_fonts/font = ExtResource("1_p0wlc")
+theme_override_font_sizes/font_size = 100
+text = "LEVEL SELECT"
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
