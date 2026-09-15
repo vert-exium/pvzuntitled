@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://5odi65orw3e2"
-path="res://.godot/imported/Hey Comic.ttf-6192b451bbcc97a95a32f2112bd1434c.fontdata"
+uid="uid://dnni3pyjqoqj5"
+path="res://.godot/imported/ElmsSans-ExtraLightItalic.ttf-034ba536e8d3d0d9172c6fbeea06ec25.fontdata"
 
 [deps]
 
-source_file="res://fonts/Hey Comic.ttf"
-dest_files=["res://.godot/imported/Hey Comic.ttf-6192b451bbcc97a95a32f2112bd1434c.fontdata"]
+source_file="res://fonts/Elms_Sans/static/ElmsSans-ExtraLightItalic.ttf"
+dest_files=["res://.godot/imported/ElmsSans-ExtraLightItalic.ttf-034ba536e8d3d0d9172c6fbeea06ec25.fontdata"]
 
 [params]
 

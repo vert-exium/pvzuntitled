@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://4sy7gvhlqrh3"
-path="res://.godot/imported/Kids Magazine.ttf-c855b0cafa52ff175b05f75ba7b3f6a1.fontdata"
+uid="uid://bqbgf854j11p2"
+path="res://.godot/imported/SpaceGrotesk-Medium.ttf-acacd9e6948a689a61aeb11e1662b8bd.fontdata"
 
 [deps]
 
-source_file="res://fonts/kids_magazine/Kids Magazine.ttf"
-dest_files=["res://.godot/imported/Kids Magazine.ttf-c855b0cafa52ff175b05f75ba7b3f6a1.fontdata"]
+source_file="res://fonts/Space_Grotesk/static/SpaceGrotesk-Medium.ttf"
+dest_files=["res://.godot/imported/SpaceGrotesk-Medium.ttf-acacd9e6948a689a61aeb11e1662b8bd.fontdata"]
 
 [params]
 
