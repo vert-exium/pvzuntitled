@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://divpbukqqgdd6"]
 
-[ext_resource type="FontFile" uid="uid://5odi65orw3e2" path="res://fonts/Hey Comic.ttf" id="1_wswnh"]
 [ext_resource type="Texture2D" uid="uid://bv5plsb6jrxq0" path="res://images/arrow-left-alt-5ufw09e1z3jbk920li7a28.png" id="2_labj1"]
 [ext_resource type="Script" uid="uid://cuxmb71yrb1nr" path="res://scripts/backButtonSettings.gd" id="3_lwwgp"]
+[ext_resource type="FontFile" uid="uid://mt6luuxvugxh" path="res://fonts/Elms_Sans/static/ElmsSans-ExtraBold.ttf" id="3_wswnh"]
 
 [node name="settings_menu" type="Node2D" unique_id=392846876]
 
@@ -18,7 +18,6 @@ offset_bottom = 650.0
 theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("1_wswnh")
 theme_override_font_sizes/font_size = 70
 text = "BACK"
 icon = ExtResource("2_labj1")
@@ -27,7 +26,7 @@ script = ExtResource("3_lwwgp")
 [node name="placeholderTitle" type="Label" parent="." unique_id=77057010]
 offset_right = 1151.0
 offset_bottom = 122.0
-theme_override_fonts/font = ExtResource("1_wswnh")
+theme_override_fonts/font = ExtResource("3_wswnh")
 theme_override_font_sizes/font_size = 80
 text = "SETTINGS
 "

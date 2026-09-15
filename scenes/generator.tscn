@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dgcdcimwhc368"]
+
+[ext_resource type="Script" uid="uid://bdfi33b42hqs" path="res://scripts/generator.gd" id="1_5yxne"]
+
+[node name="generator" type="Area2D" unique_id=796414673]
+script = ExtResource("1_5yxne")
+
+[node name="Timer" type="Timer" parent="." unique_id=553384898]
