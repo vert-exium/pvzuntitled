@@ -9,9 +9,11 @@ size = Vector2(240, 900)
 script = ExtResource("1_uhqny")
 
 [node name="background" type="ColorRect" parent="." unique_id=75874313]
+visible = false
 offset_top = 180.0
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 color = Color(0, 0.5882353, 0.12156863, 1)
 
 [node name="deathZone" type="Area2D" parent="." unique_id=29127886]

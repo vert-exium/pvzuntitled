@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ewxvdstklbsl"]
 
-[ext_resource type="Script" uid="uid://c6hcj00585rek" path="res://scenes/energy_label.gd" id="1_yubou"]
+[ext_resource type="Script" uid="uid://c6hcj00585rek" path="res://scripts/energy_label.gd" id="1_yubou"]
 
 [node name="GameUI" type="CanvasLayer" unique_id=273287525]
 

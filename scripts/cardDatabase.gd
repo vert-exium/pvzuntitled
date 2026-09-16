@@ -22,3 +22,9 @@ const CARDS = {
 		"fire_rate": 1.5
 	}
 }
+
+func get_card(card_id: String) -> Dictionary:
+	if CARDS.has(card_id):
+		return CARDS[card_id]
+	print("card not found: ", card_id)
+	return {}
