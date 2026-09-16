@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://ewxvdstklbsl"]
 
+[ext_resource type="Script" uid="uid://c6hcj00585rek" path="res://scenes/energy_label.gd" id="1_yubou"]
+
 [node name="GameUI" type="CanvasLayer" unique_id=273287525]
 
 [node name="topPanel" type="Panel" parent="." unique_id=79035697]
@@ -10,7 +12,10 @@ offset_bottom = 180.0
 layout_mode = 0
 offset_right = 420.0
 offset_bottom = 180.0
-text = "ENERGY LABEL"
+text = "ENGERY: 
+ENERGY/SECOND:
+HP: "
+script = ExtResource("1_yubou")
 
 [node name="CardBar" type="HBoxContainer" parent="." unique_id=828520296]
 offset_left = 440.0

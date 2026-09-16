@@ -35,14 +35,14 @@ theme_override_font_sizes/font_size = 52
 text = "By: tjr5555 and vertexium"
 
 [node name="placeholderTitle" type="Label" parent="." unique_id=940206827]
-offset_left = 240.0
+offset_left = 96.0
 offset_top = 160.0
-offset_right = 1680.0
-offset_bottom = 331.0
+offset_right = 1830.0
+offset_bottom = 347.0
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("2_oa1go")
-theme_override_font_sizes/font_size = 80
-text = "EXAMPLE VS EXAMPLE"
+theme_override_font_sizes/font_size = 131
+text = "MAN VS. MACHINE"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=643310727]
@@ -70,21 +70,21 @@ offset_right = 562.0
 offset_bottom = 200.0
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("8_5dd4i")
-theme_override_font_sizes/font_size = 65
+theme_override_font_sizes/font_size = 108
 text = "Play"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="settings" type="Button" parent="." unique_id=618587166]
-offset_left = 640.0
-offset_top = 780.0
-offset_right = 1283.0
-offset_bottom = 888.0
+offset_left = 568.0
+offset_top = 768.0
+offset_right = 1336.0
+offset_bottom = 896.0
 theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 17
 theme_override_fonts/font = ExtResource("2_oa1go")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 50
 text = "SETTINGS"
 icon = ExtResource("4_wu84c")
 script = ExtResource("6_rtw2f")
