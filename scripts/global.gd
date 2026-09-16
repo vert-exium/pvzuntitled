@@ -1,5 +1,5 @@
 extends Node
 var musicVolume = 100
-var ingameEnergy = 1000
-var energyPerSecond = 100000
+var ingameEnergy = 0
+var energyPerSecond = 100
 # Global script:

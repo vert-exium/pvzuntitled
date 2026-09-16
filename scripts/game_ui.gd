@@ -9,7 +9,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	$topPanel/energyLabel.text = "ENERGY: " + str(RunState.current_energy)
 
 func _on_generator_pressed() -> void:
 	SignalBus.card_selected.emit("generator")

@@ -33,18 +33,35 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var grid_pos = world_to_grid(get_global_mouse_position())
 		
-		if not is_valid_cell(grid_pos):
-			return
+		print("--- CLICK DETECTED ---")
+		print("Energy is currently: ", RunState.current_energy)
+		print("Holding card: ", currently_selected_card)
+		print("Target Grid Pos: ", grid_pos)
 		
+		if not is_valid_cell(grid_pos):
+			print("Result: Click ignored (Outside of grid)")
+			return
+			
+		# SHOVEL LOGIC
 		if currently_selected_card == "shovel":
 			if not is_cell_empty(grid_pos):
+				print("Result: Found a plant here! Attempting to spend 5 energy...")
 				if RunState.try_use_shovel():
+					print("Result: Energy spent! Plant destroyed.")
 					grid_occupied[grid_pos].queue_free()
 					grid_occupied.erase(grid_pos)
+				else:
+					print("Result: FAILED to spend energy for shovel.")
+			else:
+				print("Result: Nothing to shovel here.")
 			return
-		
+			
+		# PLANTING LOGIC
 		if is_cell_empty(grid_pos):
+			print("Result: Cell empty, trying to plant...")
 			place_plant(currently_selected_card, grid_pos)
+		else:
+			print("Result: Cannot plant, cell is full.")
 
 
 func world_to_grid(world_pos: Vector2) -> Vector2i:
