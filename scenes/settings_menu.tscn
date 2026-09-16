@@ -3,18 +3,21 @@
 [ext_resource type="Texture2D" uid="uid://bv5plsb6jrxq0" path="res://images/arrow-left-alt-5ufw09e1z3jbk920li7a28.png" id="2_labj1"]
 [ext_resource type="Script" uid="uid://cuxmb71yrb1nr" path="res://scripts/backButtonSettings.gd" id="3_lwwgp"]
 [ext_resource type="FontFile" uid="uid://mt6luuxvugxh" path="res://fonts/Elms_Sans/static/ElmsSans-ExtraBold.ttf" id="3_wswnh"]
+[ext_resource type="Script" uid="uid://b351regwl47rp" path="res://scripts/musVolumeSlider.gd" id="4_labj1"]
+[ext_resource type="Texture2D" uid="uid://cbtedtn7saxvi" path="res://images/images__2_-removebg-preview.png" id="5_lwwgp"]
 
 [node name="settings_menu" type="Node2D" unique_id=392846876]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=556492146]
-offset_right = 1152.0
-offset_bottom = 649.0
+offset_right = 1928.0
+offset_bottom = 1096.0
 color = Color(7.70092e-07, 0.45780808, 0.69570243, 1)
+metadata/_edit_lock_ = true
 
 [node name="Button" type="Button" parent="." unique_id=45939631]
-offset_top = 553.0
+offset_top = 992.0
 offset_right = 317.0
-offset_bottom = 650.0
+offset_bottom = 1096.0
 theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
@@ -23,12 +26,36 @@ text = "BACK"
 icon = ExtResource("2_labj1")
 script = ExtResource("3_lwwgp")
 
-[node name="placeholderTitle" type="Label" parent="." unique_id=77057010]
-offset_right = 1151.0
-offset_bottom = 122.0
+[node name="musicVol" type="Label" parent="." unique_id=1607656417]
+offset_left = 624.0
+offset_top = 16.0
+offset_right = 1775.0
+offset_bottom = 227.0
 theme_override_fonts/font = ExtResource("3_wswnh")
 theme_override_font_sizes/font_size = 80
+text = "Volume: 100%"
+
+[node name="placeholderTitle" type="Label" parent="." unique_id=77057010]
+offset_right = 608.0
+offset_bottom = 211.0
+theme_override_fonts/font = ExtResource("3_wswnh")
+theme_override_font_sizes/font_size = 119
 text = "SETTINGS
 "
 
+[node name="musVolumeSlider" type="HSlider" parent="." unique_id=214626487]
+offset_left = 639.99994
+offset_top = 96.0
+offset_right = 1023.99994
+offset_bottom = 136.0
+scale = Vector2(3.345, 3.345)
+value = 100.0
+script = ExtResource("4_labj1")
+
+[node name="volIcon" type="Sprite2D" parent="." unique_id=1023952827]
+position = Vector2(1288.0001, 72)
+scale = Vector2(0.55333334, 0.5)
+texture = ExtResource("5_lwwgp")
+
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="value_changed" from="musVolumeSlider" to="musVolumeSlider" method="_on_value_changed"]

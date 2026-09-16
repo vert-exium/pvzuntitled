@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4lur71fxvufx"
-path="res://.godot/imported/Hey Comic.jpg-06cb672762e2b81325d284a1592f2cef.ctex"
+uid="uid://cbtedtn7saxvi"
+path="res://.godot/imported/images__2_-removebg-preview.png-92b49ed30f91e91e1d5077db9975ef37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://fonts/hey_comic/Hey Comic.jpg"
-dest_files=["res://.godot/imported/Hey Comic.jpg-06cb672762e2b81325d284a1592f2cef.ctex"]
+source_file="res://images/images__2_-removebg-preview.png"
+dest_files=["res://.godot/imported/images__2_-removebg-preview.png-92b49ed30f91e91e1d5077db9975ef37.ctex"]
 
 [params]
 

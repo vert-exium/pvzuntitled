@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://xsquj3ske6qv"]
 
+[ext_resource type="Script" uid="uid://djrwm56pn46g1" path="res://scripts/level_select.gd" id="1_7plkq"]
 [ext_resource type="FontFile" uid="uid://bdnkrwic58f6h" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="1_rif6e"]
 [ext_resource type="Texture2D" uid="uid://bv5plsb6jrxq0" path="res://images/arrow-left-alt-5ufw09e1z3jbk920li7a28.png" id="2_2epne"]
 [ext_resource type="Script" uid="uid://dy5ceipj7oo6b" path="res://scripts/backButtonLevelSelect.gd" id="3_2epne"]
 [ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="4_chg43"]
+[ext_resource type="Texture2D" uid="uid://c7weaqosvu30c" path="res://icon.svg" id="5_4nqmc"]
+[ext_resource type="FontFile" uid="uid://dvhw1n6ktemgr" path="res://fonts/Elms_Sans/ElmsSans-VariableFont_wght.ttf" id="6_7plkq"]
+[ext_resource type="FontFile" uid="uid://y2neaplfhgqr" path="res://fonts/Play/Play-Regular.ttf" id="7_ckc44"]
 
 [node name="level_select" type="Node2D" unique_id=1904087363]
+script = ExtResource("1_7plkq")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1488979302]
 offset_right = 1920.0
@@ -46,4 +51,105 @@ position = Vector2(-20, 0)
 points = PackedVector2Array(980, -120, 980, -20)
 width = 4.0
 
+[node name="Control" type="Control" parent="." unique_id=519673733]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 60.0
+offset_top = 180.0
+offset_right = 1860.0
+offset_bottom = 860.0
+
+[node name="levelOnePlaceholder" type="TextureRect" parent="Control" unique_id=904924964]
+layout_mode = 0
+offset_right = 560.0
+offset_bottom = 520.0
+texture = ExtResource("5_4nqmc")
+
+[node name="levelOneButton" type="Button" parent="Control/levelOnePlaceholder" unique_id=960099645]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 580.0
+offset_right = 351.0
+offset_bottom = 666.0
+theme_override_fonts/font = ExtResource("6_7plkq")
+theme_override_font_sizes/font_size = 60
+text = "Select"
+
+[node name="levelOneLabel" type="Label" parent="Control/levelOnePlaceholder" unique_id=375382525]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 510.0
+offset_right = 580.0
+offset_bottom = 582.0
+theme_override_fonts/font = ExtResource("7_ckc44")
+theme_override_font_sizes/font_size = 61
+text = "LEVEL 1"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control" unique_id=369521934]
+layout_mode = 0
+offset_right = 1810.0
+offset_bottom = 680.0
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer" unique_id=877726098]
+layout_mode = 2
+
+[node name="levelTwoPlacholder" type="TextureRect" parent="Control" unique_id=320409771]
+layout_mode = 0
+offset_left = 620.0
+offset_right = 1180.0
+offset_bottom = 520.0
+texture = ExtResource("5_4nqmc")
+
+[node name="levelTwoButton" type="Button" parent="Control/levelTwoPlacholder" unique_id=1858047613]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 580.0
+offset_right = 361.0
+offset_bottom = 666.0
+theme_override_colors/font_hover_color = Color(0, 0.9490196, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_7plkq")
+theme_override_font_sizes/font_size = 60
+text = "Select"
+
+[node name="lvlTwoLabel" type="Label" parent="Control/levelTwoPlacholder" unique_id=1569948347]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 510.0
+offset_right = 590.0
+offset_bottom = 582.0
+theme_override_fonts/font = ExtResource("7_ckc44")
+theme_override_font_sizes/font_size = 61
+text = "LEVEL 2"
+
+[node name="levelThreePlaceholder" type="TextureRect" parent="Control" unique_id=314726784]
+layout_mode = 0
+offset_left = 1240.0
+offset_right = 1800.0
+offset_bottom = 520.0
+texture = ExtResource("5_4nqmc")
+
+[node name="levelThreeLabel" type="Label" parent="Control/levelThreePlaceholder" unique_id=1014316134]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 510.0
+offset_right = 590.0
+offset_bottom = 582.0
+theme_override_fonts/font = ExtResource("7_ckc44")
+theme_override_font_sizes/font_size = 61
+text = "LEVEL 3"
+
+[node name="levelThreeButton" type="Button" parent="Control/levelThreePlaceholder" unique_id=1121689480]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 580.0
+offset_right = 361.0
+offset_bottom = 666.0
+theme_override_fonts/font = ExtResource("6_7plkq")
+theme_override_font_sizes/font_size = 60
+text = "Select"
+
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="Control/levelOnePlaceholder/levelOneButton" to="." method="_on_level_one_button_pressed"]
+[connection signal="pressed" from="Control/levelTwoPlacholder/levelTwoButton" to="." method="_on_level_two_button_pressed"]
