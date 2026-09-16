@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://ewxvdstklbsl"]
 
+[ext_resource type="Script" uid="uid://bfjkxw0gtbmpx" path="res://scripts/game_ui.gd" id="1_rns2u"]
 [ext_resource type="Script" uid="uid://c6hcj00585rek" path="res://scripts/energy_label.gd" id="1_yubou"]
 
 [node name="GameUI" type="CanvasLayer" unique_id=273287525]
+script = ExtResource("1_rns2u")
 
 [node name="topPanel" type="Panel" parent="." unique_id=79035697]
 offset_right = 420.0
@@ -13,19 +15,23 @@ layout_mode = 0
 offset_right = 420.0
 offset_bottom = 180.0
 text = "ENGERY: 
-ENERGY/SECOND:
-HP: "
+"
 script = ExtResource("1_yubou")
 
-[node name="CardBar" type="HBoxContainer" parent="." unique_id=828520296]
+[node name="CardContainer" type="HBoxContainer" parent="." unique_id=828520296]
 offset_left = 440.0
 offset_right = 800.0
 offset_bottom = 180.0
 
-[node name="generatorButton" type="Button" parent="CardBar" unique_id=830144367]
+[node name="generatorButton" type="Button" parent="CardContainer" unique_id=830144367]
 layout_mode = 2
 text = "Generator Card"
 
-[node name="shooterButton" type="Button" parent="CardBar" unique_id=1177007338]
+[node name="throwerButton" type="Button" parent="CardContainer" unique_id=1177007338]
 layout_mode = 2
-text = "Shooter Card"
+text = "Thrower Card
+"
+
+[node name="shovelButton" type="Button" parent="CardContainer" unique_id=1927351108]
+layout_mode = 2
+text = "Shovel"

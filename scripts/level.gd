@@ -15,25 +15,37 @@ var grid_occupied: Dictionary = {}
 var generator_scene = preload("res://scenes/generator.tscn")
 var enemy_scene = preload("res://scenes/enemy.tscn")
 
+var currently_selected_card: String = "generator"
+
+var plant_scenes: Dictionary = {
+	"generator": preload("res://scenes/generator.tscn"),
+	"thrower": preload("res://scenes/thrower.tscn")
+}
+
+func _ready() -> void:
+	SignalBus.card_selected.connect(_on_card_selected)
+
+func _on_card_selected(card_id: String) -> void:
+	currently_selected_card = card_id
+	print("Equipped ", currently_selected_card)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		var click_pos = get_global_mouse_position()
-		var grid_pos = world_to_grid(click_pos)
-		
-		print("Click Detected")
-		print("Mouse Position: ", click_pos)
-		print("Calculated grid pos: ", grid_pos)
+		var grid_pos = world_to_grid(get_global_mouse_position())
 		
 		if not is_valid_cell(grid_pos):
-			print("Result: clicked outside the grid")
 			return
 		
-		if not is_cell_empty(grid_pos):
-			print("Result: cell full")
+		if currently_selected_card == "shovel":
+			if not is_cell_empty(grid_pos):
+				if RunState.try_use_shovel():
+					grid_occupied[grid_pos].queue_free()
+					grid_occupied.erase(grid_pos)
 			return
 		
-		place_plant("generator", grid_pos)
+		if is_cell_empty(grid_pos):
+			place_plant(currently_selected_card, grid_pos)
+
 
 func world_to_grid(world_pos: Vector2) -> Vector2i:
 	var local_pos = world_pos - grid_origin
@@ -56,11 +68,16 @@ func is_cell_empty(grid_pos: Vector2i) -> bool:
 func place_plant(card_id: String, grid_pos: Vector2i) -> bool:
 	var card_data = CardDatabase.get_card(card_id)
 	
+	if card_data.is_empty():
+		return false
+	
 	if not RunState.try_spend_energy(card_data["cost"]):
 		print("Not enough energy!")
 		return false
 	
-	var plant = generator_scene.instantiate()
+	var scene_to_spawn = plant_scenes[card_id]
+	var plant = scene_to_spawn.instantiate()
+	
 	plant.position = grid_to_world(grid_pos)
 	plants_container.add_child(plant)
 	

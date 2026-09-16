@@ -11,3 +11,5 @@ signal enemy_spawned(enemy_id, lane_index)
 
 signal game_over
 signal level_won
+
+signal card_selected(card_id)

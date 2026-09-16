@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cxg3iun0xnrhl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8fr4"]
+size = Vector2(140, 140)
+
+[node name="thrower" type="Area2D" unique_id=200291053]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=588327601]
+offset_left = -70.0
+offset_top = -70.0
+offset_right = 70.0
+offset_bottom = 70.0
+color = Color(0.63529414, 1, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1764623074]
+shape = SubResource("RectangleShape2D_d8fr4")
+
+[node name="attackTimer" type="Timer" parent="." unique_id=1859858258]

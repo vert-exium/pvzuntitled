@@ -12,8 +12,8 @@ const CARDS = {
 		"energy_yield": 25,
 		"tick_rate": 5.0
 	},
-	"shooter": {
-		"name": "Shooter",
+	"thrower": {
+		"name": "Thrower",
 		"type": "shooter",
 		"cost": 100,
 		"cooldown": 15.0,
