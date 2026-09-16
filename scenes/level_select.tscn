@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://xsquj3ske6qv"]
+
+[ext_resource type="FontFile" uid="uid://bdnkrwic58f6h" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="1_rif6e"]
+[ext_resource type="Texture2D" uid="uid://bv5plsb6jrxq0" path="res://images/arrow-left-alt-5ufw09e1z3jbk920li7a28.png" id="2_2epne"]
+[ext_resource type="Script" uid="uid://dy5ceipj7oo6b" path="res://scripts/backButtonLevelSelect.gd" id="3_2epne"]
+[ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="4_chg43"]
+
+[node name="level_select" type="Node2D" unique_id=1904087363]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1488979302]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(7.70092e-07, 0.45780808, 0.69570243, 1)
+
+[node name="Button" type="Button" parent="." unique_id=339343996]
+offset_left = 30.0
+offset_top = 950.0
+offset_right = 347.0
+offset_bottom = 1049.0
+theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("1_rif6e")
+theme_override_font_sizes/font_size = 70
+text = "BACK"
+icon = ExtResource("2_2epne")
+script = ExtResource("3_2epne")
+
+[node name="Label" type="Label" parent="." unique_id=1009394684]
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 1536.0
+offset_bottom = 291.0
+theme_override_fonts/font = ExtResource("4_chg43")
+theme_override_font_sizes/font_size = 100
+text = "LEVEL SELECT"
+horizontal_alignment = 1
+
+[node name="horizontalPlaceHold" type="Line2D" parent="." unique_id=1096373750]
+position = Vector2(-20, 0)
+points = PackedVector2Array(-160, 540, 10, 540)
+width = 4.0
+
+[node name="verticalPlaceHold" type="Line2D" parent="." unique_id=1728876403]
+position = Vector2(-20, 0)
+points = PackedVector2Array(980, -120, 980, -20)
+width = 4.0
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

@@ -11,16 +11,22 @@ config_version=5
 [application]
 
 config/name="pvzuntitled"
-<<<<<<< Updated upstream
-config/features=PackedStringArray("4.7", "GL Compatibility")
-=======
 run/main_scene="uid://bnkq1m2v8wnbi"
-config/features=PackedStringArray("4.3", "GL Compatibility")
->>>>>>> Stashed changes
+config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*uid://0qf3un0h65kx"
+CardDatabase="*uid://cmblpqk6gt1ch"
+LevelManager="*uid://c7ds5or0gf0a7"
+RunState="*uid://dwqgoonpd784m"
+SignalBus="*uid://dyuwv3jg2wlpn"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -34,6 +40,7 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

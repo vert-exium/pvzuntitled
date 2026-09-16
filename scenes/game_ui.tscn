@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ewxvdstklbsl"]
+
+[node name="GameUI" type="CanvasLayer" unique_id=273287525]
+
+[node name="topPanel" type="Panel" parent="." unique_id=79035697]
+offset_right = 420.0
+offset_bottom = 180.0
+
+[node name="energyLabel" type="Label" parent="topPanel" unique_id=1832669200]
+layout_mode = 0
+offset_right = 420.0
+offset_bottom = 180.0
+text = "ENERGY LABEL"
+
+[node name="CardBar" type="HBoxContainer" parent="." unique_id=828520296]
+offset_left = 440.0
+offset_right = 800.0
+offset_bottom = 180.0
+
+[node name="generatorButton" type="Button" parent="CardBar" unique_id=830144367]
+layout_mode = 2
+text = "Generator Card"
+
+[node name="shooterButton" type="Button" parent="CardBar" unique_id=1177007338]
+layout_mode = 2
+text = "Shooter Card"
