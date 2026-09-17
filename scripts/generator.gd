@@ -7,6 +7,7 @@ func _ready() -> void:
 	timer.wait_time = stats["tick_rate"]
 	timer.timeout.connect(_on_timer_timeout)
 	timer.start()
+	$generatorSprite.play("generator")
 
 func _on_timer_timeout() -> void:
 	var stats = CardDatabase.get_card("generator")

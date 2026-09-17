@@ -1,6 +1,57 @@
 [gd_scene format=3 uid="uid://dgcdcimwhc368"]
 
 [ext_resource type="Script" uid="uid://bdfi33b42hqs" path="res://scripts/generator.gd" id="1_5yxne"]
+[ext_resource type="Texture2D" uid="uid://bkmixrhxdycfb" path="res://images/generator.png" id="2_w5vnv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef8yp"]
+atlas = ExtResource("2_w5vnv")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqoq6"]
+atlas = ExtResource("2_w5vnv")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pjfl"]
+atlas = ExtResource("2_w5vnv")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgmdj"]
+atlas = ExtResource("2_w5vnv")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ionxw"]
+atlas = ExtResource("2_w5vnv")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ychy0"]
+atlas = ExtResource("2_w5vnv")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rggdb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ef8yp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqoq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pjfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgmdj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ionxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ychy0")
+}],
+"loop": 1,
+"name": &"generator",
+"speed": 18.0
+}]
 
 [node name="generator" type="Area2D" unique_id=796414673 groups=["unit"]]
 collision_mask = 0
@@ -8,10 +59,8 @@ script = ExtResource("1_5yxne")
 
 [node name="Timer" type="Timer" parent="." unique_id=553384898]
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=114603366]
-offset_left = -70.0
-offset_top = -70.0
-offset_right = 70.0
-offset_bottom = 70.0
-mouse_filter = 2
-color = Color(0.39607844, 1, 0, 1)
+[node name="generatorSprite" type="AnimatedSprite2D" parent="." unique_id=1512396617]
+sprite_frames = SubResource("SpriteFrames_rggdb")
+animation = &"generator"
+frame = 2
+frame_progress = 0.43656436
