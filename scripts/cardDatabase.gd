@@ -9,8 +9,8 @@ const CARDS = {
 		"cost": 50,
 		"cooldown": 10.0,
 		"health": 100,
-		"energy_yield": 25,
-		"tick_rate": 5.0
+		"energy_yield": 10,
+		"tick_rate": 10.0
 	},
 	"thrower": {
 		"name": "Thrower",

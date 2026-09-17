@@ -80,7 +80,12 @@ func is_valid_cell(grid_pos: Vector2i) -> bool:
 	return grid_pos.x >= 0 and grid_pos.x < COLS and grid_pos.y >= 0 and grid_pos.y < ROWS
 
 func is_cell_empty(grid_pos: Vector2i) -> bool:
-	return not grid_occupied.has(grid_pos)
+	if grid_occupied.has(grid_pos):
+		if not is_instance_valid(grid_occupied[grid_pos]):
+			grid_occupied.erase(grid_pos)
+			return true
+		return false
+	return true
 
 func place_plant(card_id: String, grid_pos: Vector2i) -> bool:
 	var card_data = CardDatabase.get_card(card_id)
@@ -114,3 +119,8 @@ func spawn_enemy(lane_index: int) -> void:
 	
 	enemy.position = Vector2(spawn_x, spawn_y)
 	enemies_container.add_child(enemy)
+
+
+func _on_wave_timer_timeout() -> void:
+	var random_lane = randi() % ROWS
+	spawn_enemy(random_lane)
