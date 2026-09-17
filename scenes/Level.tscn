@@ -4,22 +4,23 @@
 [ext_resource type="PackedScene" uid="uid://ewxvdstklbsl" path="res://scenes/game_ui.tscn" id="2_k5jlv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8fr4"]
-size = Vector2(240, 900)
+size = Vector2(220, 830)
 
 [node name="level" type="Node2D" unique_id=622269324]
 script = ExtResource("1_uhqny")
 
 [node name="background" type="ColorRect" parent="." unique_id=75874313]
-offset_top = 180.0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_left = 20.0
+offset_top = 230.0
+offset_right = 1900.0
+offset_bottom = 1060.0
 mouse_filter = 2
 color = Color(0, 0.5882353, 0.12156863, 0.5803922)
 
 [node name="deathZone" type="Area2D" parent="." unique_id=29127886]
 
 [node name="deathCollision" type="CollisionShape2D" parent="deathZone" unique_id=167668479]
-position = Vector2(120, 630)
+position = Vector2(130, 645)
 shape = SubResource("RectangleShape2D_d8fr4")
 
 [node name="Plants" type="Node2D" parent="." unique_id=1679694424]

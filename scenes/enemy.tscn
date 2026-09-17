@@ -6,6 +6,7 @@
 size = Vector2(120, 120)
 
 [node name="enemy" type="Area2D" unique_id=1423425833 groups=["enemy"]]
+collision_layer = 2
 script = ExtResource("1_7p1mj")
 
 [node name="colorrect" type="ColorRect" parent="." unique_id=219064852]

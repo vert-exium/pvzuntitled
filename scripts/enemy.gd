@@ -3,7 +3,7 @@ extends Area2D
 var base_speed: float = 30.0
 var current_speed: float = 30.0
 var health: int = 100
-var attack_damage: int = 20
+var attack_damage: int = 10
 var current_target: Area2D = null
 
 @onready var attack_timer = $AttackTimer
@@ -21,13 +21,19 @@ func _process(delta: float) -> void:
 func take_damage(amount: int) -> void:
 	health -= amount
 	modulate = Color.RED
-	var flash_tween = create_tween()
-	flash_tween.tween_property(self, "modulate", Color.WHITE, 0.15)
+	scale = Vector2(0.8, 0.9) 
+	
+	var hit_tween = create_tween().set_parallel(true)
+	hit_tween.tween_property(self, "modulate", Color.WHITE, 0.15)
+	hit_tween.tween_property(self, "scale", Vector2.ONE, 0.2).set_trans(Tween.TRANS_BOUNCE)
 	
 	if health <= 0:
 		current_speed = 0
 		
-		var death_tween = create_tween().set_parallel()
+		
+		hit_tween.kill() 
+		
+		var death_tween = create_tween().set_parallel(true)
 		death_tween.tween_property(self, "scale", Vector2.ZERO, 0.3)
 		death_tween.tween_property(self, "modulate", Color.DARK_RED, 0.3)
 		

@@ -6,6 +6,9 @@ func _ready() -> void:
 	$CardContainer/generatorButton.pressed.connect(_on_generator_pressed)
 	$CardContainer/throwerButton.pressed.connect(_on_thrower_pressed)
 	$CardContainer/shovelButton.pressed.connect(_on_shovel_pressed)
+	$CardContainer/shovelButton/costLabel.text = str(RunState.shovel_cost)
+	$CardContainer/throwerButton/costLabel.text = str(CardDatabase.CARDS["thrower"]["cost"])
+	$CardContainer/generatorButton/costLabel.text = str(CardDatabase.CARDS["generator"]["cost"])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -2,36 +2,182 @@
 
 [ext_resource type="Script" uid="uid://bfjkxw0gtbmpx" path="res://scripts/game_ui.gd" id="1_rns2u"]
 [ext_resource type="Script" uid="uid://c6hcj00585rek" path="res://scripts/energy_label.gd" id="1_yubou"]
+[ext_resource type="Texture2D" uid="uid://c7weaqosvu30c" path="res://icon.svg" id="3_bt76a"]
+[ext_resource type="FontFile" uid="uid://1m6gkfkxpfcg" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="4_djwj0"]
+[ext_resource type="Texture2D" uid="uid://bk14fytv2c156" path="res://assets/energyIcon.png" id="5_e0pfi"]
 
 [node name="GameUI" type="CanvasLayer" unique_id=273287525]
 script = ExtResource("1_rns2u")
 
 [node name="topPanel" type="Panel" parent="." unique_id=79035697]
-offset_right = 420.0
-offset_bottom = 180.0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 450.0
+offset_bottom = 210.0
 
 [node name="energyLabel" type="Label" parent="topPanel" unique_id=1832669200]
 layout_mode = 0
 offset_right = 420.0
 offset_bottom = 180.0
-text = "ENGERY: 
-"
+text = "ENERGY: Display"
 script = ExtResource("1_yubou")
 
 [node name="CardContainer" type="HBoxContainer" parent="." unique_id=828520296]
-offset_left = 440.0
-offset_right = 800.0
+offset_left = 470.0
+offset_top = 30.0
+offset_right = 1900.0
+offset_bottom = 210.0
+theme_override_constants/separation = 10
+
+[node name="generatorButton" type="TextureButton" parent="CardContainer" unique_id=1500105840]
+custom_minimum_size = Vector2(160, 90)
+custom_maximum_size = Vector2(-1, 149)
+layout_mode = 2
+texture_normal = ExtResource("3_bt76a")
+
+[node name="backPanel" type="Panel" parent="CardContainer/generatorButton" unique_id=1730295927]
+layout_mode = 0
+offset_top = 150.0
+offset_right = 119.0
 offset_bottom = 180.0
 
-[node name="generatorButton" type="Button" parent="CardContainer" unique_id=830144367]
-layout_mode = 2
-text = "Generator Card"
+[node name="costPanel" type="Panel" parent="CardContainer/generatorButton" unique_id=2004613190]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 150.0
+offset_right = 160.0
+offset_bottom = 180.0
 
-[node name="throwerButton" type="Button" parent="CardContainer" unique_id=1177007338]
-layout_mode = 2
-text = "Thrower Card
-"
+[node name="cardLabel" type="Label" parent="CardContainer/generatorButton" unique_id=1574850846]
+layout_mode = 0
+offset_top = 150.0
+offset_right = 120.0
+offset_bottom = 180.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_djwj0")
+text = "Generator"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="shovelButton" type="Button" parent="CardContainer" unique_id=1927351108]
+[node name="costLabel" type="Label" parent="CardContainer/generatorButton" unique_id=1835222377]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 150.0
+offset_right = 160.0
+offset_bottom = 180.0
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 11
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="energyTexture" type="TextureRect" parent="CardContainer/generatorButton" unique_id=1543782587]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 158.0
+offset_right = 248.0
+offset_bottom = 296.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_e0pfi")
+
+[node name="throwerButton" type="TextureButton" parent="CardContainer" unique_id=717270294]
+custom_minimum_size = Vector2(160, 90)
+custom_maximum_size = Vector2(-1, 149)
 layout_mode = 2
+texture_normal = ExtResource("3_bt76a")
+
+[node name="backPanel" type="Panel" parent="CardContainer/throwerButton" unique_id=1012363592]
+layout_mode = 0
+offset_top = 150.0
+offset_right = 119.0
+offset_bottom = 180.0
+
+[node name="cardLabel" type="Label" parent="CardContainer/throwerButton" unique_id=1658920880]
+layout_mode = 0
+offset_top = 150.0
+offset_right = 119.0
+offset_bottom = 180.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_djwj0")
+text = "Thrower"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="costPanel" type="Panel" parent="CardContainer/throwerButton" unique_id=1874430699]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 150.0
+offset_right = 160.0
+offset_bottom = 180.0
+
+[node name="energyTexture" type="TextureRect" parent="CardContainer/throwerButton" unique_id=170009126]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 158.0
+offset_right = 248.0
+offset_bottom = 296.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_e0pfi")
+
+[node name="costLabel" type="Label" parent="CardContainer/throwerButton" unique_id=2047993562]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 150.0
+offset_right = 160.0
+offset_bottom = 180.0
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 11
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="shovelButton" type="TextureButton" parent="CardContainer" unique_id=1951515160]
+custom_minimum_size = Vector2(160, 90)
+custom_maximum_size = Vector2(-1, 149)
+layout_mode = 2
+texture_normal = ExtResource("3_bt76a")
+
+[node name="backPanel" type="Panel" parent="CardContainer/shovelButton" unique_id=517374941]
+layout_mode = 0
+offset_top = 150.0
+offset_right = 119.0
+offset_bottom = 180.0
+
+[node name="costPanel" type="Panel" parent="CardContainer/shovelButton" unique_id=1247818567]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 150.0
+offset_right = 160.0
+offset_bottom = 180.0
+
+[node name="cardLabel" type="Label" parent="CardContainer/shovelButton" unique_id=429140141]
+layout_mode = 0
+offset_top = 150.0
+offset_right = 119.0
+offset_bottom = 180.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_djwj0")
 text = "Shovel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="energyTexture" type="TextureRect" parent="CardContainer/shovelButton" unique_id=1806507538]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 158.0
+offset_right = 248.0
+offset_bottom = 296.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_e0pfi")
+
+[node name="costLabel" type="Label" parent="CardContainer/shovelButton" unique_id=846866548]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 150.0
+offset_right = 160.0
+offset_bottom = 180.0
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 11
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1

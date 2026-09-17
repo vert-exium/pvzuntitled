@@ -5,7 +5,7 @@ const ROWS: int = 5
 const COLS: int = 8
 
 @export var cell_size: Vector2 = Vector2(160, 160)
-@export var grid_origin: Vector2 = Vector2(160, 200)
+@export var grid_origin: Vector2 = Vector2(160, 245)
 
 var grid_occupied: Dictionary = {}
 

@@ -7,6 +7,8 @@
 radius = 12.5
 
 [node name="projectile" type="Area2D" unique_id=930461448]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_q3m7n")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1064864328]

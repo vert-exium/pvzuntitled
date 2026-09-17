@@ -6,6 +6,7 @@
 size = Vector2(140, 140)
 
 [node name="thrower" type="Area2D" unique_id=200291053 groups=["unit"]]
+collision_mask = 0
 script = ExtResource("1_muk2e")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=588327601]
@@ -23,5 +24,6 @@ shape = SubResource("RectangleShape2D_d8fr4")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1155516020]
 target_position = Vector2(1000, 0)
+collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
