@@ -20,6 +20,17 @@ const CARDS = {
 		"health": 150,
 		"damage": 20,
 		"fire_rate": 1.5
+	},
+	"bomber": {
+		"name": "Bomber",
+		"type": "shooter",
+		"cost": 250,
+		"cooldown": 20.0,
+		"health": 200,
+		"damage": 50,
+		"explosion_radius": 1,
+		"splash_damage": 25,
+		"fire_rate": 2.5,
 	}
 }
 

@@ -19,7 +19,8 @@ var currently_selected_card: String = "generator"
 
 var plant_scenes: Dictionary = {
 	"generator": preload("res://scenes/generator.tscn"),
-	"thrower": preload("res://scenes/thrower.tscn")
+	"thrower": preload("res://scenes/thrower.tscn"),
+	"bomber": preload("res://scenes/bomber.tscn")
 }
 
 func _ready() -> void:

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://lktmrfdme8fy"]
+
+[ext_resource type="Script" uid="uid://q87adyuvldu" path="res://scripts/bomber_projectile.gd" id="1_1ocif"]
+[ext_resource type="Texture2D" uid="uid://bsen3r436dh1p" path="res://images/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvam9iNjc4LTE0Ni1wLWwxNjRweGtuLnBuZw.jpg" id="1_6imvx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0jsi4"]
+radius = 40.0
+
+[node name="bomberProjectile" type="Area2D" unique_id=553678270]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_1ocif")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1381860641]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_6imvx")
+expand_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1810819108]
+shape = SubResource("CircleShape2D_0jsi4")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

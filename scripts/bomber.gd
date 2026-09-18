@@ -2,25 +2,24 @@ extends Area2D
 
 @onready var fire_timer = $attackTimer
 @onready var raycast = $RayCast2D
-var projectile_scene = preload("res://scenes/projectile.tscn")
+var projectile_scene = preload("res://scenes/bomber_projectile.tscn")
 
 
 var health: int = 0
 
 func _ready() -> void:
-	var stats = CardDatabase.get_card("thrower")
+	var stats = CardDatabase.get_card("bomber")
 	health = stats["health"]
-	
 	fire_timer.wait_time = stats["fire_rate"]
 	fire_timer.timeout.connect(_on_fire_timer_timeout)
 	fire_timer.start()
 
 func _on_fire_timer_timeout() -> void:
+	raycast.force_raycast_update()
 	if raycast.is_colliding():
-		print("thrower spotted enemy")
 		var target = raycast.get_collider()
 		if target and target.is_in_group("enemy"):
-			fire_projectile()
+			fire_bomb()
 
 
 func take_damage(amount: int) -> void:
@@ -32,8 +31,7 @@ func take_damage(amount: int) -> void:
 	if health <= 0:
 		queue_free()
 
-func fire_projectile() -> void:
+func fire_bomb() -> void:
 	var proj = projectile_scene.instantiate()
 	proj.global_position = global_position + Vector2(40, 0)
-	print("fired projectile")
 	get_tree().current_scene.add_child(proj)

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://311r47oe6xx3"]
+
+[ext_resource type="Script" uid="uid://bx57f3f2cov44" path="res://explosion_splash.gd" id="1_5n2sq"]
+
+[node name="explosion_splash" type="Node2D" unique_id=859430052]
+script = ExtResource("1_5n2sq")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=776648776]
+offset_left = -80.0
+offset_top = -80.0
+offset_right = 80.0
+offset_bottom = 80.0
+color = Color(1, 0.42352942, 0, 1)

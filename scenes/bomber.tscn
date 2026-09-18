@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://tks3a7k8d6c8"]
+
+[ext_resource type="Script" uid="uid://c2oi8vc8d2wub" path="res://scripts/bomber.gd" id="1_m36wj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jsi4"]
+
+[node name="bomber" type="Area2D" unique_id=1524997936 groups=["unit"]]
+script = ExtResource("1_m36wj")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1639364054]
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1960932270]
+shape = SubResource("RectangleShape2D_0jsi4")
+
+[node name="attackTimer" type="Timer" parent="." unique_id=205003957]
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1439961491]
+target_position = Vector2(1000, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
