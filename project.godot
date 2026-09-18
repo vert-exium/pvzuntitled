@@ -13,7 +13,11 @@ config_version=5
 config/name="pvzuntitled"
 run/main_scene="uid://bnkq1m2v8wnbi"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://images/icon.svg"
+
+[audio]
+
+buses/default_bus_layout="res://other/default_bus_layout.tres"
 
 [autoload]
 

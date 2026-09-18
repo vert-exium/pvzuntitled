@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ewxvdstklbsl" path="res://scenes/game_ui.tscn" id="2_k5jlv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8fr4"]
-size = Vector2(220, 830)
+size = Vector2(180, 830)
 
 [node name="level" type="Node2D" unique_id=622269324]
 script = ExtResource("1_uhqny")
@@ -20,7 +20,7 @@ color = Color(0, 0.5882353, 0.12156863, 0.5803922)
 [node name="deathZone" type="Area2D" parent="." unique_id=29127886]
 
 [node name="deathCollision" type="CollisionShape2D" parent="deathZone" unique_id=167668479]
-position = Vector2(130, 645)
+position = Vector2(110, 645)
 shape = SubResource("RectangleShape2D_d8fr4")
 
 [node name="Plants" type="Node2D" parent="." unique_id=1679694424]

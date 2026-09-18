@@ -2,9 +2,19 @@
 
 [ext_resource type="Script" uid="uid://bfjkxw0gtbmpx" path="res://scripts/game_ui.gd" id="1_rns2u"]
 [ext_resource type="Script" uid="uid://c6hcj00585rek" path="res://scripts/energy_label.gd" id="1_yubou"]
-[ext_resource type="Texture2D" uid="uid://c7weaqosvu30c" path="res://icon.svg" id="3_bt76a"]
+[ext_resource type="FontFile" uid="uid://c32sd0jmdtuqa" path="res://fonts/Elms_Sans/static/ElmsSans-Light.ttf" id="2_djwj0"]
+[ext_resource type="Texture2D" uid="uid://c7weaqosvu30c" path="res://images/icon.svg" id="3_bt76a"]
 [ext_resource type="FontFile" uid="uid://1m6gkfkxpfcg" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="4_djwj0"]
 [ext_resource type="Texture2D" uid="uid://bk14fytv2c156" path="res://assets/energyIcon.png" id="5_e0pfi"]
+
+[sub_resource type="Gradient" id="Gradient_bt76a"]
+offsets = PackedFloat32Array(0.1952381, 1)
+colors = PackedColorArray(0.056291588, 0.056291603, 0.056291595, 0.8, 0.18431373, 0.18431373, 0.18431373, 0.22352941)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d8fr4"]
+gradient = SubResource("Gradient_bt76a")
+height = 180
+fill_to = Vector2(0, 1)
 
 [node name="GameUI" type="CanvasLayer" unique_id=273287525]
 script = ExtResource("1_rns2u")
@@ -19,7 +29,11 @@ offset_bottom = 210.0
 layout_mode = 0
 offset_right = 420.0
 offset_bottom = 180.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_djwj0")
+theme_override_font_sizes/font_size = 40
 text = "ENERGY: Display"
+vertical_alignment = 1
 script = ExtResource("1_yubou")
 
 [node name="CardContainer" type="HBoxContainer" parent="." unique_id=828520296]
@@ -34,6 +48,13 @@ custom_minimum_size = Vector2(160, 90)
 custom_maximum_size = Vector2(-1, 149)
 layout_mode = 2
 texture_normal = ExtResource("3_bt76a")
+
+[node name="backRect" type="TextureRect" parent="CardContainer/generatorButton" unique_id=1984899121]
+z_index = -1
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 180.0
+texture = SubResource("GradientTexture2D_d8fr4")
 
 [node name="backPanel" type="Panel" parent="CardContainer/generatorButton" unique_id=1730295927]
 layout_mode = 0
@@ -131,6 +152,13 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="backRect" type="TextureRect" parent="CardContainer/throwerButton" unique_id=683313389]
+z_index = -1
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 180.0
+texture = SubResource("GradientTexture2D_d8fr4")
+
 [node name="bomberButton" type="TextureButton" parent="CardContainer" unique_id=1848636919]
 custom_minimum_size = Vector2(160, 90)
 custom_maximum_size = Vector2(-1, 149)
@@ -182,6 +210,13 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="backRect" type="TextureRect" parent="CardContainer/bomberButton" unique_id=40057284]
+z_index = -1
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 180.0
+texture = SubResource("GradientTexture2D_d8fr4")
+
 [node name="shovelButton" type="TextureButton" parent="CardContainer" unique_id=1951515160]
 custom_minimum_size = Vector2(160, 90)
 custom_maximum_size = Vector2(-1, 149)
@@ -232,5 +267,12 @@ theme_override_font_sizes/font_size = 11
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="backRect" type="TextureRect" parent="CardContainer/shovelButton" unique_id=298692422]
+z_index = -1
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 180.0
+texture = SubResource("GradientTexture2D_d8fr4")
 
 [connection signal="pressed" from="CardContainer/bomberButton" to="." method="_on_bomber_button_pressed"]

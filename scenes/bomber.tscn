@@ -3,15 +3,16 @@
 [ext_resource type="Script" uid="uid://c2oi8vc8d2wub" path="res://scripts/bomber.gd" id="1_m36wj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jsi4"]
+size = Vector2(140, 140)
 
 [node name="bomber" type="Area2D" unique_id=1524997936 groups=["unit"]]
 script = ExtResource("1_m36wj")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1639364054]
-offset_left = -60.0
-offset_top = -60.0
-offset_right = 60.0
-offset_bottom = 60.0
+offset_left = -70.0
+offset_top = -70.0
+offset_right = 70.0
+offset_bottom = 70.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 

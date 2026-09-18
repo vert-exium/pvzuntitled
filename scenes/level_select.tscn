@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bv5plsb6jrxq0" path="res://images/arrow-left-alt-5ufw09e1z3jbk920li7a28.png" id="2_2epne"]
 [ext_resource type="Script" uid="uid://dy5ceipj7oo6b" path="res://scripts/backButtonLevelSelect.gd" id="3_2epne"]
 [ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="4_chg43"]
-[ext_resource type="Texture2D" uid="uid://c7weaqosvu30c" path="res://icon.svg" id="5_4nqmc"]
+[ext_resource type="Texture2D" uid="uid://c7weaqosvu30c" path="res://images/icon.svg" id="5_4nqmc"]
 [ext_resource type="FontFile" uid="uid://dvhw1n6ktemgr" path="res://fonts/Elms_Sans/ElmsSans-VariableFont_wght.ttf" id="6_7plkq"]
 [ext_resource type="FontFile" uid="uid://y2neaplfhgqr" path="res://fonts/Play/Play-Regular.ttf" id="7_ckc44"]
 
