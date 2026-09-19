@@ -19,6 +19,7 @@ func _process(delta: float) -> void:
 
 
 func take_damage(amount: int) -> void:
+	print("enemy took damage" + str(amount))
 	health -= amount
 	modulate = Color.RED
 	scale = Vector2(0.8, 0.9) 

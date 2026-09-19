@@ -3,6 +3,42 @@
 [ext_resource type="Script" uid="uid://q87adyuvldu" path="res://scripts/bomber_projectile.gd" id="1_1ocif"]
 [ext_resource type="Texture2D" uid="uid://c4v2samrofy6m" path="res://images/bomb.png" id="2_1ocif"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ocif"]
+atlas = ExtResource("2_1ocif")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmgah"]
+atlas = ExtResource("2_1ocif")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upslg"]
+atlas = ExtResource("2_1ocif")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fxpb"]
+atlas = ExtResource("2_1ocif")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0jsi4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ocif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmgah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upslg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fxpb")
+}],
+"loop": 1,
+"name": &"bomb",
+"speed": 6.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_0jsi4"]
 radius = 30.0
 
@@ -11,13 +47,12 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_1ocif")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1381860641]
-offset_left = -32.0
-offset_top = -49.0
-offset_right = 68.0
-offset_bottom = 31.0
-texture = ExtResource("2_1ocif")
-expand_mode = 1
+[node name="bomb" type="AnimatedSprite2D" parent="." unique_id=1294427955]
+position = Vector2(10.000001, -10.000001)
+scale = Vector2(0.625, 0.625)
+sprite_frames = SubResource("SpriteFrames_0jsi4")
+animation = &"bomb"
+frame_progress = 0.42849457
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1810819108]
 shape = SubResource("CircleShape2D_0jsi4")

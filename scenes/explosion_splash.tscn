@@ -2,12 +2,26 @@
 
 [ext_resource type="Script" uid="uid://bx57f3f2cov44" path="res://scripts/explosion_splash.gd" id="1_5n2sq"]
 
-[node name="explosion_splash" type="Node2D" unique_id=859430052]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jsi4"]
+size = Vector2(360, 360)
+
+[node name="Area2D" type="Area2D" unique_id=483503650]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_5n2sq")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=776648776]
-offset_left = -80.0
-offset_top = -80.0
-offset_right = 80.0
-offset_bottom = 80.0
-color = Color(1, 0.42352942, 0, 1)
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2123630715]
+offset_left = -120.0
+offset_top = -180.0
+offset_right = 240.0
+offset_bottom = 180.0
+color = Color(1, 0.40392157, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1194727845]
+position = Vector2(60, 0)
+shape = SubResource("RectangleShape2D_0jsi4")
+
+[node name="Timer" type="Timer" parent="." unique_id=759247960]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -24,13 +24,11 @@ const CARDS = {
 	"bomber": {
 		"name": "Bomber",
 		"type": "shooter",
-		"cost": 250,
+		"cost": 350,
 		"cooldown": 20.0,
 		"health": 200,
-		"damage": 50,
-		"explosion_radius": 1,
-		"splash_damage": 25,
-		"fire_rate": 2.5,
+		"damage": 25,
+		"fire_rate": 4,
 	}
 }
 
