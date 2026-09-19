@@ -48,7 +48,7 @@ collision_mask = 2
 script = ExtResource("1_1ocif")
 
 [node name="bomb" type="AnimatedSprite2D" parent="." unique_id=1294427955]
-position = Vector2(10.000001, -10.000001)
+position = Vector2(9.999999, -9.999999)
 scale = Vector2(0.625, 0.625)
 sprite_frames = SubResource("SpriteFrames_0jsi4")
 animation = &"bomb"

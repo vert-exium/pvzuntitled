@@ -32,3 +32,7 @@ func _on_music_volume_slider_value_changed(new_value: float) -> void:
 	var music_vol_db = linear_to_db(new_value)
 	AudioServer.set_bus_volume_db(music_bus_index, music_vol_db)
 	$musicVol.text = "Music Volume: " + str(int(new_value * 100)) + "%"
+
+
+func _on_back_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

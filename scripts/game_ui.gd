@@ -23,6 +23,5 @@ func _on_thrower_pressed() -> void:
 func _on_shovel_pressed() -> void:
 	SignalBus.card_selected.emit("shovel")
 
-
 func _on_bomber_button_pressed() -> void:
 	SignalBus.card_selected.emit("bomber")

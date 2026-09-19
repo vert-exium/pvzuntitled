@@ -1,27 +1,69 @@
 [gd_scene format=3 uid="uid://311r47oe6xx3"]
 
 [ext_resource type="Script" uid="uid://bx57f3f2cov44" path="res://scripts/explosion_splash.gd" id="1_5n2sq"]
+[ext_resource type="Texture2D" uid="uid://bw6wcwmlri61o" path="res://images/explosion.png" id="2_80nh7"]
+[ext_resource type="AudioStream" uid="uid://bew5deuvpxpxd" path="res://audio/bbc_demolition_07022509 (1).mp3" id="3_ddk8i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddk8i"]
+atlas = ExtResource("2_80nh7")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buo55"]
+atlas = ExtResource("2_80nh7")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38obm"]
+atlas = ExtResource("2_80nh7")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kh0nq"]
+atlas = ExtResource("2_80nh7")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0jsi4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddk8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buo55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38obm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kh0nq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 12.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jsi4"]
-size = Vector2(360, 360)
+size = Vector2(240, 240)
 
 [node name="Area2D" type="Area2D" unique_id=483503650]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_5n2sq")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=2123630715]
-offset_left = -120.0
-offset_top = -180.0
-offset_right = 240.0
-offset_bottom = 180.0
-color = Color(1, 0.40392157, 0, 1)
+[node name="explosionAnim" type="AnimatedSprite2D" parent="." unique_id=242172237]
+position = Vector2(60.00001, 2.861023e-06)
+scale = Vector2(2.8125002, 2.8125)
+sprite_frames = SubResource("SpriteFrames_0jsi4")
+frame_progress = 0.87575686
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1194727845]
 position = Vector2(60, 0)
 shape = SubResource("RectangleShape2D_0jsi4")
+metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="." unique_id=759247960]
+
+[node name="bombSound" type="AudioStreamPlayer2D" parent="." unique_id=1286050336]
+stream = ExtResource("3_ddk8i")
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

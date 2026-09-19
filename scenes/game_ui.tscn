@@ -4,8 +4,11 @@
 [ext_resource type="Script" uid="uid://c6hcj00585rek" path="res://scripts/energy_label.gd" id="1_yubou"]
 [ext_resource type="FontFile" uid="uid://c32sd0jmdtuqa" path="res://fonts/Elms_Sans/static/ElmsSans-Light.ttf" id="2_djwj0"]
 [ext_resource type="Texture2D" uid="uid://c7weaqosvu30c" path="res://images/icon.svg" id="3_bt76a"]
+[ext_resource type="Texture2D" uid="uid://bxdknrcmuibbl" path="res://images/image_2026-09-18_234043813-removebg-preview.png" id="4_3huio"]
 [ext_resource type="FontFile" uid="uid://1m6gkfkxpfcg" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="4_djwj0"]
 [ext_resource type="Texture2D" uid="uid://bk14fytv2c156" path="res://assets/energyIcon.png" id="5_e0pfi"]
+[ext_resource type="Texture2D" uid="uid://c8kmm1a2vjy3y" path="res://images/image_2026-09-18_233811005-removebg-preview.png" id="8_sjwyb"]
+[ext_resource type="Texture2D" uid="uid://3ljgg7b7xaiy" path="res://images/slege.png" id="9_5kh4o"]
 
 [sub_resource type="Gradient" id="Gradient_bt76a"]
 offsets = PackedFloat32Array(0.1952381, 1)
@@ -47,7 +50,9 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(160, 90)
 custom_maximum_size = Vector2(-1, 149)
 layout_mode = 2
-texture_normal = ExtResource("3_bt76a")
+texture_normal = ExtResource("4_3huio")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="backRect" type="TextureRect" parent="CardContainer/generatorButton" unique_id=1984899121]
 z_index = -1
@@ -163,7 +168,9 @@ texture = SubResource("GradientTexture2D_d8fr4")
 custom_minimum_size = Vector2(160, 90)
 custom_maximum_size = Vector2(-1, 149)
 layout_mode = 2
-texture_normal = ExtResource("3_bt76a")
+texture_normal = ExtResource("8_sjwyb")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="backPanel" type="Panel" parent="CardContainer/bomberButton" unique_id=1525285413]
 layout_mode = 0
@@ -221,7 +228,8 @@ texture = SubResource("GradientTexture2D_d8fr4")
 custom_minimum_size = Vector2(160, 90)
 custom_maximum_size = Vector2(-1, 149)
 layout_mode = 2
-texture_normal = ExtResource("3_bt76a")
+texture_normal = ExtResource("9_5kh4o")
+stretch_mode = 0
 
 [node name="backPanel" type="Panel" parent="CardContainer/shovelButton" unique_id=517374941]
 layout_mode = 0
@@ -243,7 +251,7 @@ offset_right = 119.0
 offset_bottom = 180.0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_djwj0")
-text = "Shovel"
+text = "Hammer"
 horizontal_alignment = 1
 vertical_alignment = 1
 
