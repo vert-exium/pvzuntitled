@@ -32,6 +32,11 @@ func take_damage(amount: int) -> void:
 		queue_free()
 
 func fire_projectile() -> void:
-	var proj = projectile_scene.instantiate()
-	proj.global_position = global_position + Vector2(40, 0)
-	get_tree().current_scene.add_child(proj)
+	$pitcherAnimation.play("attack")
+
+func _process(delta: float) -> void:
+	if $pitcherAnimation.frame == 14:
+		var proj = projectile_scene.instantiate()
+		proj.global_position = global_position + Vector2(-20, -56)
+		get_tree().current_scene.add_child(proj)
+		$pitcherAnimation.frame = 15

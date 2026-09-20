@@ -2,7 +2,7 @@ extends Node2D
 
 const ROWS: int = 5
 const COLS: int = 8
-const SHOVEL_CURSOR = preload("res://images/slege.png") 
+const SHOVEL_CURSOR = preload("res://assets/cursor.png") 
 
 @export var cell_size: Vector2 = Vector2(160, 160)
 @export var grid_origin: Vector2 = Vector2(160, 245)

@@ -29,9 +29,8 @@ offset_bottom = 210.0
 
 [node name="energyLabel" type="Label" parent="topPanel" unique_id=1459207610]
 layout_mode = 0
-offset_top = -30.0
 offset_right = 420.0
-offset_bottom = 77.0
+offset_bottom = 107.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_djwj0")
 theme_override_font_sizes/font_size = 40

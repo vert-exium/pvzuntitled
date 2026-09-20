@@ -1,23 +1,50 @@
 [gd_scene format=3 uid="uid://cw77sp7r24cm"]
 
 [ext_resource type="Script" uid="uid://bvhgjr0y2d86k" path="res://scripts/enemy.gd" id="1_7p1mj"]
+[ext_resource type="Texture2D" uid="uid://be1ysn8dma4ni" path="res://animations/robot.png" id="2_md0e3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8fr4"]
 size = Vector2(120, 120)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ra3w"]
+atlas = ExtResource("2_md0e3")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
+atlas = ExtResource("2_md0e3")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
+atlas = ExtResource("2_md0e3")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d8fr4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ra3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uy6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4w8v")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="enemy" type="Area2D" unique_id=1423425833 groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_7p1mj")
-
-[node name="colorrect" type="ColorRect" parent="." unique_id=219064852]
-offset_left = -60.0
-offset_top = -60.0
-offset_right = 60.0
-offset_bottom = 60.0
-color = Color(0.8705679, 0, 0.014029248, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1246642749]
 shape = SubResource("RectangleShape2D_d8fr4")
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=292950577]
 wait_time = 2.0
+
+[node name="enemyAnimation" type="AnimatedSprite2D" parent="." unique_id=1246637342]
+sprite_frames = SubResource("SpriteFrames_d8fr4")
+frame_progress = 0.6812857

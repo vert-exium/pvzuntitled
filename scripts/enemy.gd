@@ -17,6 +17,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	position.x -= current_speed * delta
+	if current_speed < 1.0:
+		$enemyAnimation.stop()
+	else:
+		$enemyAnimation.play("default")
 
 func take_damage(amount: int) -> void:
 	health -= amount
