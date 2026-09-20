@@ -1,6 +1,5 @@
 extends Node2D
 
-
 const ROWS: int = 5
 const COLS: int = 8
 const SHOVEL_CURSOR = preload("res://images/slege.png") 
@@ -9,6 +8,9 @@ const SHOVEL_CURSOR = preload("res://images/slege.png")
 @export var grid_origin: Vector2 = Vector2(160, 245)
 
 var grid_occupied: Dictionary = {}
+
+# Tracks the last timestamp (in milliseconds) when each card was placed
+var card_cooldowns: Dictionary = {}
 
 @onready var plants_container: Node2D = $Plants
 @onready var enemies_container: Node2D = $Enemies
@@ -27,6 +29,8 @@ var plant_scenes: Dictionary = {
 
 func _ready() -> void:
 	SignalBus.card_selected.connect(_on_card_selected)
+	SignalBus.request_enemy_spawn.connect(_on_request_enemy_spawn)
+	LevelManager.start_level()
 
 func _on_card_selected(card_id: String) -> void:
 	currently_selected_card = card_id
@@ -34,45 +38,28 @@ func _on_card_selected(card_id: String) -> void:
 	
 	# CURSOR LOGIC
 	if currently_selected_card == "shovel":
-		# Set the shovel cursor immediately when equipped
 		Input.set_custom_mouse_cursor(SHOVEL_CURSOR, Input.CURSOR_ARROW)
 	else:
 		Input.set_custom_mouse_cursor(null)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var grid_pos = world_to_grid(get_global_mouse_position())
 		
-		print("--- CLICK DETECTED ---")
-		print("Energy is currently: ", RunState.current_energy)
-		print("Holding card: ", currently_selected_card)
-		print("Target Grid Pos: ", grid_pos)
-		
 		if not is_valid_cell(grid_pos):
-			print("Result: Click ignored (Outside of grid)")
 			return
 			
 		# SHOVEL LOGIC
 		if currently_selected_card == "shovel":
 			if not is_cell_empty(grid_pos):
-				print("Result: Found a plant here! Attempting to spend 5 energy...")
 				if RunState.try_use_shovel():
-					print("Result: Energy spent! Plant destroyed.")
 					grid_occupied[grid_pos].queue_free()
 					grid_occupied.erase(grid_pos)
-				else:
-					print("Result: FAILED to spend energy for shovel.")
-			else:
-				print("Result: Nothing to shovel here.")
-			
 			return
 
-			
 		# PLANTING LOGIC
-		if is_cell_empty(grid_pos):
-			print("Result: Cell empty, trying to plant...")
+		if is_cell_empty(grid_pos) and currently_selected_card != "":
 			place_plant(currently_selected_card, grid_pos)
-		else:
-			print("Result: Cannot plant, cell is full.")
 
 
 func world_to_grid(world_pos: Vector2) -> Vector2i:
@@ -98,16 +85,52 @@ func is_cell_empty(grid_pos: Vector2i) -> bool:
 		return false
 	return true
 
+# Helper function to check if a card is currently on cooldown
+func is_card_on_cooldown(card_id: String) -> bool:
+	if not card_cooldowns.has(card_id):
+		return false
+		
+	var card_data = CardDatabase.get_card(card_id)
+	if card_data.is_empty():
+		return false
+
+	var cooldown_duration_ms = card_data["cooldown"] * 1000.0
+	var time_since_last_use = Time.get_ticks_msec() - card_cooldowns[card_id]
+	
+	return time_since_last_use < cooldown_duration_ms
+
+# Helper function to get remaining cooldown time in seconds (useful for UI)
+func get_remaining_cooldown(card_id: String) -> float:
+	if not card_cooldowns.has(card_id):
+		return 0.0
+		
+	var card_data = CardDatabase.get_card(card_id)
+	if card_data.is_empty():
+		return 0.0
+
+	var cooldown_duration_ms = card_data["cooldown"] * 1000.0
+	var time_since_last_use = Time.get_ticks_msec() - card_cooldowns[card_id]
+	var remaining_ms = cooldown_duration_ms - time_since_last_use
+	
+	return max(0.0, remaining_ms / 1000.0)
+
 func place_plant(card_id: String, grid_pos: Vector2i) -> bool:
 	var card_data = CardDatabase.get_card(card_id)
 	
 	if card_data.is_empty():
 		return false
+		
+	# COOLDOWN CHECK
+	if is_card_on_cooldown(card_id):
+		print(card_id, " is on cooldown! Remaining: ", get_remaining_cooldown(card_id), "s")
+		return false
 	
+	# ENERGY CHECK
 	if not RunState.try_spend_energy(card_data["cost"]):
 		print("Not enough energy!")
 		return false
 	
+	# SPAWN PLANT
 	var scene_to_spawn = plant_scenes[card_id]
 	var plant = scene_to_spawn.instantiate()
 	
@@ -115,6 +138,10 @@ func place_plant(card_id: String, grid_pos: Vector2i) -> bool:
 	plants_container.add_child(plant)
 	
 	grid_occupied[grid_pos] = plant
+	
+	# RECORD COOLDOWN TIMESTAMP
+	card_cooldowns[card_id] = Time.get_ticks_msec()
+	print(card_id, " planted successfully. Cooldown started.")
 	return true
 
 
@@ -132,6 +159,8 @@ func spawn_enemy(lane_index: int) -> void:
 	enemies_container.add_child(enemy)
 
 
-func _on_wave_timer_timeout() -> void:
+
+
+func _on_request_enemy_spawn() -> void:
 	var random_lane = randi() % ROWS
 	spawn_enemy(random_lane)

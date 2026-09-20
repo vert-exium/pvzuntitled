@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://ewxvdstklbsl"]
 
 [ext_resource type="Script" uid="uid://bfjkxw0gtbmpx" path="res://scripts/game_ui.gd" id="1_rns2u"]
-[ext_resource type="Script" uid="uid://c6hcj00585rek" path="res://scripts/energy_label.gd" id="1_yubou"]
 [ext_resource type="FontFile" uid="uid://c32sd0jmdtuqa" path="res://fonts/Elms_Sans/static/ElmsSans-Light.ttf" id="2_djwj0"]
 [ext_resource type="Texture2D" uid="uid://c7weaqosvu30c" path="res://images/icon.svg" id="3_bt76a"]
 [ext_resource type="Texture2D" uid="uid://bxdknrcmuibbl" path="res://images/image_2026-09-18_234043813-removebg-preview.png" id="4_3huio"]
@@ -28,16 +27,37 @@ offset_top = 30.0
 offset_right = 450.0
 offset_bottom = 210.0
 
-[node name="energyLabel" type="Label" parent="topPanel" unique_id=1832669200]
+[node name="energyLabel" type="Label" parent="topPanel" unique_id=1459207610]
 layout_mode = 0
+offset_top = -30.0
 offset_right = 420.0
-offset_bottom = 180.0
+offset_bottom = 77.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_djwj0")
 theme_override_font_sizes/font_size = 40
-text = "ENERGY: Display"
+text = "ENERGY: Display
+"
 vertical_alignment = 1
-script = ExtResource("1_yubou")
+
+[node name="currentCard" type="Label" parent="topPanel" unique_id=1832669200]
+layout_mode = 0
+offset_top = 50.0
+offset_right = 420.0
+offset_bottom = 110.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_djwj0")
+theme_override_font_sizes/font_size = 40
+vertical_alignment = 1
+
+[node name="ccCooldown" type="Label" parent="topPanel" unique_id=1567695872]
+layout_mode = 0
+offset_top = 110.0
+offset_right = 420.0
+offset_bottom = 182.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_djwj0")
+theme_override_font_sizes/font_size = 40
+vertical_alignment = 1
 
 [node name="CardContainer" type="HBoxContainer" parent="." unique_id=828520296]
 offset_left = 470.0

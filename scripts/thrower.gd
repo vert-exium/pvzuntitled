@@ -17,7 +17,6 @@ func _ready() -> void:
 
 func _on_fire_timer_timeout() -> void:
 	if raycast.is_colliding():
-		print("thrower spotted enemy")
 		var target = raycast.get_collider()
 		if target and target.is_in_group("enemy"):
 			fire_projectile()
@@ -35,5 +34,4 @@ func take_damage(amount: int) -> void:
 func fire_projectile() -> void:
 	var proj = projectile_scene.instantiate()
 	proj.global_position = global_position + Vector2(40, 0)
-	print("fired projectile")
 	get_tree().current_scene.add_child(proj)

@@ -13,3 +13,4 @@ signal game_over
 signal level_won
 
 signal card_selected(card_id)
+signal request_enemy_spawn
