@@ -16,7 +16,7 @@ const CARDS = {
 		"name": "Thrower",
 		"type": "shooter",
 		"cost": 100,
-		"cooldown": 15.0,
+		"cooldown": 10.0,
 		"health": 150,
 		"damage": 20,
 		"fire_rate": 1.5
@@ -24,8 +24,8 @@ const CARDS = {
 	"bomber": {
 		"name": "Bomber",
 		"type": "shooter",
-		"cost": 350,
-		"cooldown": 20.0,
+		"cost": 500,
+		"cooldown": 10.0,
 		"health": 200,
 		"damage": 25,
 		"fire_rate": 4,
@@ -33,11 +33,11 @@ const CARDS = {
 	"shielder": {
 		"name": "Shielder",
 		"type": "close_range",
-		"cost": 200,
-		"cooldown": 20,
+		"cost": 350,
+		"cooldown": 15,
 		"health": 400,
 		"damage": 5,
-		"fire_rate": 2,
+		"fire_rate": 1.5,
 	}
 }
 

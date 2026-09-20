@@ -13,8 +13,12 @@ func _ready() -> void:
 	add_to_group("enemy") # Fixes splash/projectile group checks
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 	area_entered.connect(_on_area_entered)
-	area_exited.connect(_on_area_exited)
-
+	# APPLY WAVE SCALING HERE WHEN THE ENEMY SPAWNS:
+	base_speed = 30.0 * LevelManager.speed_scale
+	current_speed = base_speed
+	attack_damage = int(10 * LevelManager.dmg_scale)
+	
+	print("[DEBUG] Spawned Enemy -> Speed: %.1f | Damage: %d" % [current_speed, attack_damage])
 func _process(delta: float) -> void:
 	position.x -= current_speed * delta
 	if current_speed < 1.0:
@@ -69,13 +73,13 @@ func _on_attack_timer_timeout() -> void:
 		check_next_target()
 
 func check_next_target() -> void:
-	# Check if another plant is immediately behind/overlapping this enemy
 	var overlapping_units = get_overlapping_areas()
 	for area in overlapping_units:
 		if area.is_in_group("unit") and is_instance_valid(area):
 			start_attacking(area)
 			return
 			
+	# Resume walking at the scaled base_speed
 	current_target = null
-	current_speed = base_speed
+	current_speed = base_speed  # Uses the scaled speed calculated in _ready()
 	attack_timer.stop()

@@ -48,8 +48,8 @@ func _start_next_wave() -> void:
 	active_enemies_count = 0
 	
 	# Stat scaling
-	speed_scale = 1.0 + (current_wave - 1) * 0.05
-	dmg_scale = 1.0 + (current_wave - 1) * 0.1
+	speed_scale = 1.0 + (current_wave - 1) * 0.2
+	dmg_scale = 1.0 + (current_wave - 1) * 0.4
 	
 	print("----------------------------------------")
 	print("[DEBUG] WAVE %d / %d STARTED" % [current_wave, max_waves])
@@ -70,8 +70,6 @@ func _on_spawn_timer_timeout() -> void:
 	enemies_left_to_spawn -= 1
 	active_enemies_count += 1
 	
-	print("[DEBUG] Enemy Spawned! | To Spawn Left: %d | Active Enemies: %d" % [enemies_left_to_spawn, active_enemies_count])
-	
 	if enemies_left_to_spawn <= 0:
 		print("[DEBUG] All enemies for Wave %d spawned! Waiting for remaining enemies to be defeated..." % current_wave)
 		spawn_timer.stop()
@@ -81,7 +79,6 @@ func enemy_defeated() -> void:
 		return
 		
 	active_enemies_count = max(0, active_enemies_count - 1)
-	print("[DEBUG] Enemy Defeated! | Active Enemies Left on Field: %d" % active_enemies_count)
 	
 
 	if enemies_left_to_spawn <= 0 and active_enemies_count == 0 and not is_wave_transitioning:

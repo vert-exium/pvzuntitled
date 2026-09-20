@@ -1,20 +1,70 @@
 [gd_scene format=3 uid="uid://c4gg5rt1udku7"]
 
 [ext_resource type="Script" uid="uid://cb61mqa8rgf8j" path="res://scripts/shielder.gd" id="1_evb13"]
+[ext_resource type="Texture2D" uid="uid://bjqe0hidov0ad" path="res://animations/shielder.png" id="2_g3k3b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jsi4"]
 size = Vector2(120, 120)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1c4i"]
+atlas = ExtResource("2_g3k3b")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0dd5"]
+atlas = ExtResource("2_g3k3b")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5naql"]
+atlas = ExtResource("2_g3k3b")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlwsq"]
+atlas = ExtResource("2_g3k3b")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bgai"]
+atlas = ExtResource("2_g3k3b")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t5sn"]
+atlas = ExtResource("2_g3k3b")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deog7"]
+atlas = ExtResource("2_g3k3b")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0jsi4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1c4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0dd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5naql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlwsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bgai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3t5sn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_deog7")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="shielder" type="Area2D" unique_id=2119020513 groups=["unit"]]
 script = ExtResource("1_evb13")
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1510206591]
-offset_left = -60.0
-offset_top = -60.0
-offset_right = 60.0
-offset_bottom = 60.0
-mouse_filter = 2
-color = Color(0.18359044, 0.18359044, 0.18359044, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1200188105]
 shape = SubResource("RectangleShape2D_0jsi4")
@@ -26,5 +76,12 @@ target_position = Vector2(180, 0)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2034163371]
+position = Vector2(1.9073486e-06, 1.9073486e-06)
+scale = Vector2(1.8750001, 1.8750001)
+sprite_frames = SubResource("SpriteFrames_0jsi4")
+frame = 6
+frame_progress = 1.0
 
 [connection signal="timeout" from="attackTimer" to="." method="_on_attack_timer_timeout"]

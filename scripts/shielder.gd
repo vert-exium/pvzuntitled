@@ -32,6 +32,7 @@ func take_damage(amount: int) -> void:
 		queue_free()
 
 func fire_projectile() -> void:
+	$AnimatedSprite2D.play("default")
 	var proj = projectile_scene.instantiate()
 	proj.global_position = global_position + Vector2(100, 0)
 	get_tree().current_scene.add_child(proj)
