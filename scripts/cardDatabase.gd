@@ -7,7 +7,7 @@ const CARDS = {
 		"name": "Generator",
 		"type": "generator",
 		"cost": 50,
-		"cooldown": 10.0,
+		"cooldown": 8.0,
 		"health": 100,
 		"energy_yield": 15,
 		"tick_rate": 5
@@ -34,9 +34,9 @@ const CARDS = {
 		"name": "Shielder",
 		"type": "close_range",
 		"cost": 200,
-		"cooldown": 30,
-		"health": 500,
-		"damage": 10,
+		"cooldown": 20,
+		"health": 400,
+		"damage": 5,
 		"fire_rate": 2,
 	}
 }
