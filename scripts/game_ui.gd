@@ -10,6 +10,7 @@ func _ready() -> void:
 	$CardContainer/throwerButton/costLabel.text = str(CardDatabase.CARDS["thrower"]["cost"])
 	$CardContainer/generatorButton/costLabel.text = str(CardDatabase.CARDS["generator"]["cost"])
 	$CardContainer/bomberButton/costLabel.text = str(CardDatabase.CARDS["bomber"]["cost"])
+	$CardContainer/shielderButton/costLabel.text = str(CardDatabase.CARDS["shielder"]["cost"])
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$topPanel/energyLabel.text = "ENERGY: " + str(RunState.current_energy)
@@ -25,3 +26,7 @@ func _on_shovel_pressed() -> void:
 
 func _on_bomber_button_pressed() -> void:
 	SignalBus.card_selected.emit("bomber")
+
+
+func _on_shielder_button_pressed() -> void:
+	SignalBus.card_selected.emit("shielder")

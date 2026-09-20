@@ -21,7 +21,8 @@ var currently_selected_card: String = "generator"
 var plant_scenes: Dictionary = {
 	"generator": preload("res://scenes/generator.tscn"),
 	"thrower": preload("res://scenes/thrower.tscn"),
-	"bomber": preload("res://scenes/bomber.tscn")
+	"bomber": preload("res://scenes/bomber.tscn"),
+	"shielder": preload("res://scenes/shielder.tscn"),
 }
 
 func _ready() -> void:
@@ -31,14 +32,12 @@ func _on_card_selected(card_id: String) -> void:
 	currently_selected_card = card_id
 	print("Equipped ", currently_selected_card)
 	
-	# --- CURSOR LOGIC LIVES HERE NOW ---
+	# CURSOR LOGIC
 	if currently_selected_card == "shovel":
 		# Set the shovel cursor immediately when equipped
 		Input.set_custom_mouse_cursor(SHOVEL_CURSOR, Input.CURSOR_ARROW)
 	else:
-		# Automatically clear it back to default for any other card
 		Input.set_custom_mouse_cursor(null)
-
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var grid_pos = world_to_grid(get_global_mouse_position())
@@ -60,11 +59,6 @@ func _unhandled_input(event: InputEvent) -> void:
 					print("Result: Energy spent! Plant destroyed.")
 					grid_occupied[grid_pos].queue_free()
 					grid_occupied.erase(grid_pos)
-					
-					# OPTIONAL: Uncomment the two lines below if you want the player
-					# to stop holding the shovel after one single use:
-					# currently_selected_card = ""
-					# Input.set_custom_mouse_cursor(null)
 				else:
 					print("Result: FAILED to spend energy for shovel.")
 			else:

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c4gg5rt1udku7"]
+
+[ext_resource type="Script" uid="uid://cb61mqa8rgf8j" path="res://scripts/shielder.gd" id="1_evb13"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jsi4"]
+size = Vector2(120, 120)
+
+[node name="shielder" type="Area2D" unique_id=2119020513 groups=["unit"]]
+script = ExtResource("1_evb13")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1510206591]
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+mouse_filter = 2
+color = Color(0.18359044, 0.18359044, 0.18359044, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1200188105]
+shape = SubResource("RectangleShape2D_0jsi4")
+
+[node name="attackTimer" type="Timer" parent="." unique_id=1591901015]
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1271711397]
+target_position = Vector2(180, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[connection signal="timeout" from="attackTimer" to="." method="_on_attack_timer_timeout"]

@@ -29,6 +29,15 @@ const CARDS = {
 		"health": 200,
 		"damage": 25,
 		"fire_rate": 4,
+	},
+	"shielder": {
+		"name": "Shielder",
+		"type": "close_range",
+		"cost": 200,
+		"cooldown": 30,
+		"health": 500,
+		"damage": 10,
+		"fire_rate": 2,
 	}
 }
 

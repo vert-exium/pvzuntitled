@@ -224,6 +224,66 @@ offset_right = 160.0
 offset_bottom = 180.0
 texture = SubResource("GradientTexture2D_d8fr4")
 
+[node name="shielderButton" type="TextureButton" parent="CardContainer" unique_id=1720481335]
+custom_minimum_size = Vector2(160, 90)
+custom_maximum_size = Vector2(-1, 149)
+layout_mode = 2
+texture_normal = ExtResource("3_bt76a")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="backPanel" type="Panel" parent="CardContainer/shielderButton" unique_id=1833722225]
+layout_mode = 0
+offset_top = 150.0
+offset_right = 119.0
+offset_bottom = 180.0
+
+[node name="cardLabel" type="Label" parent="CardContainer/shielderButton" unique_id=1738900654]
+layout_mode = 0
+offset_top = 150.0
+offset_right = 119.0
+offset_bottom = 180.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_djwj0")
+text = "Shielder"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="costPanel" type="Panel" parent="CardContainer/shielderButton" unique_id=988660143]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 150.0
+offset_right = 160.0
+offset_bottom = 180.0
+
+[node name="energyTexture" type="TextureRect" parent="CardContainer/shielderButton" unique_id=1821142568]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 158.0
+offset_right = 248.0
+offset_bottom = 296.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_e0pfi")
+
+[node name="costLabel" type="Label" parent="CardContainer/shielderButton" unique_id=936576420]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 150.0
+offset_right = 160.0
+offset_bottom = 180.0
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 11
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="backRect" type="TextureRect" parent="CardContainer/shielderButton" unique_id=1491153797]
+z_index = -1
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 180.0
+texture = SubResource("GradientTexture2D_d8fr4")
+
 [node name="shovelButton" type="TextureButton" parent="CardContainer" unique_id=1951515160]
 custom_minimum_size = Vector2(160, 90)
 custom_maximum_size = Vector2(-1, 149)
@@ -284,3 +344,4 @@ offset_bottom = 180.0
 texture = SubResource("GradientTexture2D_d8fr4")
 
 [connection signal="pressed" from="CardContainer/bomberButton" to="." method="_on_bomber_button_pressed"]
+[connection signal="pressed" from="CardContainer/shielderButton" to="." method="_on_shielder_button_pressed"]

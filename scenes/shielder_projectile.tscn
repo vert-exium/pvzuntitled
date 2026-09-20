@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c1hfipbh67qw3"]
+
+[ext_resource type="Script" uid="uid://6uotur2tld41" path="res://scripts/shielderProjectile.gd" id="1_7xyph"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jsi4"]
+size = Vector2(120, 120)
+
+[node name="shielderProjectile" type="Area2D" unique_id=596147162]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_7xyph")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=470909361]
+shape = SubResource("RectangleShape2D_0jsi4")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
