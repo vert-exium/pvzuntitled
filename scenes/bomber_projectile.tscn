@@ -1,30 +1,43 @@
 [gd_scene format=3 uid="uid://lktmrfdme8fy"]
 
 [ext_resource type="Script" uid="uid://q87adyuvldu" path="res://scripts/bomber_projectile.gd" id="1_1ocif"]
-[ext_resource type="Texture2D" uid="uid://c4v2samrofy6m" path="res://images/bomb.png" id="2_1ocif"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ocif"]
-atlas = ExtResource("2_1ocif")
-region = Rect2(0, 0, 128, 128)
+[ext_resource type="Texture2D" uid="uid://bb7fgjlfnsj4c" path="res://animations/dynamite.png" id="2_1ocif"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fmgah"]
 atlas = ExtResource("2_1ocif")
-region = Rect2(128, 0, 128, 128)
+region = Rect2(0, 0, 40, 6)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_upslg"]
 atlas = ExtResource("2_1ocif")
-region = Rect2(256, 0, 128, 128)
+region = Rect2(40, 0, 40, 6)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1fxpb"]
 atlas = ExtResource("2_1ocif")
-region = Rect2(384, 0, 128, 128)
+region = Rect2(80, 0, 40, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tpbf"]
+atlas = ExtResource("2_1ocif")
+region = Rect2(120, 0, 40, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw64s"]
+atlas = ExtResource("2_1ocif")
+region = Rect2(160, 0, 40, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4coc"]
+atlas = ExtResource("2_1ocif")
+region = Rect2(200, 0, 40, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubiwy"]
+atlas = ExtResource("2_1ocif")
+region = Rect2(240, 0, 40, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wp0u"]
+atlas = ExtResource("2_1ocif")
+region = Rect2(280, 0, 40, 6)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0jsi4"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1ocif")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fmgah")
 }, {
@@ -33,14 +46,29 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1fxpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tpbf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw64s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4coc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubiwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wp0u")
 }],
 "loop": 1,
-"name": &"bomb",
-"speed": 6.0
+"name": &"throw",
+"speed": 12.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0jsi4"]
-radius = 30.0
+radius = 14.0
 
 [node name="bomberProjectile" type="Area2D" unique_id=553678270]
 collision_layer = 0
@@ -48,11 +76,11 @@ collision_mask = 2
 script = ExtResource("1_1ocif")
 
 [node name="bomb" type="AnimatedSprite2D" parent="." unique_id=1294427955]
-position = Vector2(9.999999, -9.999999)
+position = Vector2(9.536743e-07, -9.536743e-07)
 scale = Vector2(0.625, 0.625)
 sprite_frames = SubResource("SpriteFrames_0jsi4")
-animation = &"bomb"
-frame_progress = 0.42849457
+animation = &"throw"
+frame_progress = 0.44274658
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1810819108]
 shape = SubResource("CircleShape2D_0jsi4")

@@ -35,3 +35,4 @@ func fire_bomb() -> void:
 	var proj = projectile_scene.instantiate()
 	proj.global_position = global_position + Vector2(40, 0)
 	get_tree().current_scene.add_child(proj)
+	$animation.play("attack")

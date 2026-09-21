@@ -1,7 +1,7 @@
 extends Area2D
 
 var speed: float = 350.0
-var rotSpeed: float = 10.0
+var rotSpeed: float = 3.5
 var damage: int = 50
 var soundPitch: float = 1.0
 var explosionScene = preload("res://scenes/explosion_splash.tscn")
@@ -9,7 +9,7 @@ var explosionScene = preload("res://scenes/explosion_splash.tscn")
 
 
 func _ready():
-	$bomb.play("bomb")
+	$bomb.play("throw")
 
 
 func _process(delta: float) -> void:
