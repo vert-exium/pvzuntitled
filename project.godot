@@ -42,6 +42,8 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 unit=""
 enemy=""
+cards=""
+card_loadout=""
 
 [layer_names]
 

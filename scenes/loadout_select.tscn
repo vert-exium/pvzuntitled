@@ -1,27 +1,45 @@
 [gd_scene format=3 uid="uid://b7owjf65pfhp8"]
 
-[ext_resource type="FontFile" uid="uid://x8wuqh7oto2o" path="res://fonts/Elms_Sans/static/ElmsSans-Medium.ttf" id="1_wxt2y"]
-[ext_resource type="Texture2D" uid="uid://bv5plsb6jrxq0" path="res://images/arrow-left-alt-5ufw09e1z3jbk920li7a28.png" id="2_djptu"]
-[ext_resource type="Script" uid="uid://cmx524cwuvri2" path="res://scripts/backButtonLoadoutSelect.gd" id="3_73d8u"]
+[ext_resource type="Script" uid="uid://dnhvbs1qie68g" path="res://scenes/cardManager.gd" id="1_cutlr"]
+[ext_resource type="PackedScene" uid="uid://bla76yiwqpatk" path="res://scenes/bomber_card.tscn" id="2_cutlr"]
+[ext_resource type="Script" uid="uid://bf7axay4w2yhj" path="res://scenes/card_detector.gd" id="3_wxt2y"]
 
-[node name="loadout_select" type="Node2D" unique_id=1232175865]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rggdb"]
+size = Vector2(1920, 330)
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1122502459]
-offset_right = 1152.0
-offset_bottom = 649.0
-color = Color(7.70092e-07, 0.45780808, 0.69570243, 1)
+[node name="loadout_select" type="Node2D" unique_id=1922533118]
 
-[node name="Button" type="Button" parent="." unique_id=184340196]
-offset_top = 553.0
-offset_right = 317.0
-offset_bottom = 650.0
-theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("1_wxt2y")
-theme_override_font_sizes/font_size = 70
-text = "BACK"
-icon = ExtResource("2_djptu")
-script = ExtResource("3_73d8u")
+[node name="cardManager" type="Node2D" parent="." unique_id=1270488568]
+script = ExtResource("1_cutlr")
 
-[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[node name="bomberCard" parent="cardManager" unique_id=1221890158 groups=["cards"] instance=ExtResource("2_cutlr")]
+offset_left = 140.0
+offset_top = 890.0
+offset_right = 140.0
+offset_bottom = 890.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+offset_transform_position = Vector2(120, 120)
+
+[node name="cardLoadoutPreview" type="HBoxContainer" parent="." unique_id=917248621]
+offset_left = 120.0
+offset_right = 1800.0
+offset_bottom = 300.0
+theme_override_constants/separation = 300
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=13472545]
+z_index = -3
+offset_right = 1920.0
+offset_bottom = 330.0
+offset_transform_enabled = true
+color = Color(0.40832946, 0.40832946, 0.40832946, 1)
+
+[node name="cardDetector" type="Area2D" parent="." unique_id=1424587734 groups=["card_loadout"]]
+script = ExtResource("3_wxt2y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cardDetector" unique_id=275453045]
+position = Vector2(960, 165)
+shape = SubResource("RectangleShape2D_rggdb")
+
+[connection signal="area_entered" from="cardDetector" to="cardDetector" method="_on_area_entered"]
+[connection signal="area_exited" from="cardDetector" to="cardDetector" method="_on_area_exited"]
