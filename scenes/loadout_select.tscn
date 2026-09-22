@@ -1,25 +1,33 @@
 [gd_scene format=3 uid="uid://b7owjf65pfhp8"]
 
-[ext_resource type="Script" uid="uid://dnhvbs1qie68g" path="res://scenes/cardManager.gd" id="1_cutlr"]
+[ext_resource type="Script" uid="uid://dnhvbs1qie68g" path="res://scripts/cardManager.gd" id="1_cutlr"]
 [ext_resource type="PackedScene" uid="uid://bla76yiwqpatk" path="res://scenes/bomber_card.tscn" id="2_cutlr"]
-[ext_resource type="Script" uid="uid://bf7axay4w2yhj" path="res://scenes/card_detector.gd" id="3_wxt2y"]
+[ext_resource type="PackedScene" uid="uid://dsf5da5nonwtj" path="res://scenes/thrower_card.tscn" id="3_djptu"]
+[ext_resource type="Script" uid="uid://bf7axay4w2yhj" path="res://scripts/card_detector.gd" id="3_wxt2y"]
+[ext_resource type="AudioStream" uid="uid://pt5kglvtk15p" path="res://audio/ruina-click (1)-vocals.mp3" id="5_73d8u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rggdb"]
 size = Vector2(1920, 330)
 
 [node name="loadout_select" type="Node2D" unique_id=1922533118]
 
-[node name="cardManager" type="Node2D" parent="." unique_id=1270488568]
+[node name="cardManager" type="Node2D" parent="." unique_id=1270488568 groups=["card_manager"]]
 script = ExtResource("1_cutlr")
 
-[node name="bomberCard" parent="cardManager" unique_id=1221890158 groups=["cards"] instance=ExtResource("2_cutlr")]
-offset_left = 140.0
-offset_top = 890.0
-offset_right = 140.0
-offset_bottom = 890.0
+[node name="bomberCard" parent="cardManager" unique_id=1221890158 instance=ExtResource("2_cutlr")]
+offset_left = 240.0
+offset_top = 790.0
+offset_right = 240.0
+offset_bottom = 790.0
 size_flags_horizontal = 0
 size_flags_vertical = 4
 offset_transform_position = Vector2(120, 120)
+
+[node name="throwerCard" parent="cardManager" unique_id=793532619 instance=ExtResource("3_djptu")]
+offset_left = 670.0
+offset_top = 670.0
+offset_right = 670.0
+offset_bottom = 670.0
 
 [node name="cardLoadoutPreview" type="HBoxContainer" parent="." unique_id=917248621]
 offset_left = 120.0
@@ -35,11 +43,18 @@ offset_transform_enabled = true
 color = Color(0.40832946, 0.40832946, 0.40832946, 1)
 
 [node name="cardDetector" type="Area2D" parent="." unique_id=1424587734 groups=["card_loadout"]]
+collision_layer = 2
 script = ExtResource("3_wxt2y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cardDetector" unique_id=275453045]
 position = Vector2(960, 165)
 shape = SubResource("RectangleShape2D_rggdb")
+
+[node name="clickSFX" type="AudioStreamPlayer2D" parent="." unique_id=360466425]
+stream = ExtResource("5_73d8u")
+volume_db = -12.215
+pitch_scale = 0.95
+attenuation = 0.6372823
 
 [connection signal="area_entered" from="cardDetector" to="cardDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="cardDetector" to="cardDetector" method="_on_area_exited"]

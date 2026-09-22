@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://beo3lgnhr12y8"
+path="res://.godot/imported/ruina-click (1).mp3-50ff83133535bb7f9fe4973cb0602165.mp3str"
+
+[deps]
+
+source_file="res://audio/ruina-click (1).mp3"
+dest_files=["res://.godot/imported/ruina-click (1).mp3-50ff83133535bb7f9fe4973cb0602165.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

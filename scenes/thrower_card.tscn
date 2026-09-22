@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://bla76yiwqpatk"]
+[gd_scene format=3 uid="uid://dsf5da5nonwtj"]
 
-[ext_resource type="Script" uid="uid://dbnapl1anias8" path="res://scripts/card.gd" id="1_0op4e"]
-[ext_resource type="Texture2D" uid="uid://c8kmm1a2vjy3y" path="res://images/image_2026-09-18_233811005-removebg-preview.png" id="2_3cd56"]
-[ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="3_3cd56"]
+[ext_resource type="Script" uid="uid://dbnapl1anias8" path="res://scripts/card.gd" id="1_22w8b"]
+[ext_resource type="Texture2D" uid="uid://bv84iu376ukuh" path="res://images/IMG_5633-removebg-preview.png" id="2_lixlo"]
+[ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="3_ycdcd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rggdb"]
 size = Vector2(240, 290)
@@ -15,15 +15,17 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 20
 
-[node name="bomberCard" type="Control" unique_id=793532619 groups=["cards"]]
+[node name="throwerCard" type="Control" unique_id=793532619 groups=["cards"]]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_0op4e")
+size_flags_horizontal = 0
+size_flags_vertical = 4
+script = ExtResource("1_22w8b")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1838322728]
-position = Vector2(-4.7683716e-06, -4.2915344e-06)
-scale = Vector2(0.604534, 0.58536583)
-texture = ExtResource("2_3cd56")
+position = Vector2(-4.7683716e-06, 2.0000038)
+scale = Vector2(0.604534, 0.32492998)
+texture = ExtResource("2_lixlo")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1268672156]
 collision_layer = 3
@@ -39,20 +41,21 @@ offset_top = 120.0
 offset_right = 40.0
 offset_bottom = 170.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_3cd56")
+theme_override_fonts/font = ExtResource("3_ycdcd")
 theme_override_font_sizes/font_size = 38
-text = "Bomber"
+text = "Thrower"
 
 [node name="bomberEnergyLabel" type="Label" parent="." unique_id=1505087857]
 layout_mode = 0
-offset_left = 50.0
+offset_left = 61.0
 offset_top = 126.0
-offset_right = 140.0
-offset_bottom = 176.0
+offset_right = 151.0
+offset_bottom = 213.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_3cd56")
+theme_override_fonts/font = ExtResource("3_ycdcd")
 theme_override_font_sizes/font_size = 32
-text = "500"
+text = "100
+"
 
 [node name="Panel" type="Panel" parent="." unique_id=685205190]
 z_index = -1
@@ -62,6 +65,3 @@ offset_top = -120.0
 offset_right = 120.0
 offset_bottom = 170.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jsi4")
-
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
