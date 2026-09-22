@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dsf5da5nonwtj" path="res://scenes/thrower_card.tscn" id="3_djptu"]
 [ext_resource type="Script" uid="uid://bf7axay4w2yhj" path="res://scripts/card_detector.gd" id="3_wxt2y"]
 [ext_resource type="AudioStream" uid="uid://pt5kglvtk15p" path="res://audio/ruina-click (1)-vocals.mp3" id="5_73d8u"]
+[ext_resource type="PackedScene" uid="uid://cgyav7ru8nviu" path="res://scenes/shielder_card.tscn" id="6_fqrsb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rggdb"]
 size = Vector2(1920, 330)
@@ -28,6 +29,12 @@ offset_left = 670.0
 offset_top = 670.0
 offset_right = 670.0
 offset_bottom = 670.0
+
+[node name="shielderCard" parent="cardManager" unique_id=1668012932 instance=ExtResource("6_fqrsb")]
+offset_left = 1080.0
+offset_top = 730.0
+offset_right = 1080.0
+offset_bottom = 730.0
 
 [node name="cardLoadoutPreview" type="HBoxContainer" parent="." unique_id=917248621]
 offset_left = 120.0

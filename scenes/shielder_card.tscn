@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cgyav7ru8nviu"]
+
+[ext_resource type="Script" uid="uid://dbnapl1anias8" path="res://scripts/card.gd" id="1_wcvt6"]
+[ext_resource type="Texture2D" uid="uid://1wpgcwmeat5n" path="res://images/5723525.png" id="2_xjk5g"]
+[ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="3_he8by"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rggdb"]
+size = Vector2(240, 290)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0jsi4"]
+bg_color = Color(0.83889705, 0.83889705, 0.8388969, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
+[node name="bomberCard" type="Control" unique_id=793532619 groups=["cards"]]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -20.0
+offset_right = 165.0
+offset_bottom = -20.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+offset_transform_position = Vector2(120, 120)
+script = ExtResource("1_wcvt6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1838322728]
+position = Vector2(2.3841858e-06, 4.999999)
+scale = Vector2(0.546875, 0.48828122)
+texture = ExtResource("2_xjk5g")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1268672156]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=518466849]
+position = Vector2(0, 25)
+shape = SubResource("RectangleShape2D_rggdb")
+
+[node name="bomberLabel" type="Label" parent="." unique_id=269281261]
+layout_mode = 0
+offset_left = -116.0
+offset_top = 120.0
+offset_right = 41.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_he8by")
+theme_override_font_sizes/font_size = 38
+text = "Shielder"
+
+[node name="bomberEnergyLabel" type="Label" parent="." unique_id=1505087857]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 126.0
+offset_right = 140.0
+offset_bottom = 176.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_he8by")
+theme_override_font_sizes/font_size = 32
+text = "350"
+
+[node name="Panel" type="Panel" parent="." unique_id=685205190]
+z_index = -1
+layout_mode = 0
+offset_left = -120.0
+offset_top = -120.0
+offset_right = 120.0
+offset_bottom = 170.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0jsi4")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

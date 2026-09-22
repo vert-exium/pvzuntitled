@@ -1,6 +1,7 @@
 extends Node2D
 
 const COLLISION_MASK_CARD = 1
+const DRAG_Z_INDEX = 1000
 
 var screen_size
 var card_being_dragged
@@ -39,6 +40,7 @@ func _input(event):
 			if card:
 				card_being_dragged = card
 				card.scale = Vector2(1, 1)
+				card.z_index = DRAG_Z_INDEX
 
 				remove_card_preview()
 
@@ -57,6 +59,7 @@ func _input(event):
 				else:
 					remove_card_preview()
 					card.scale = Vector2(1.05, 1.05)
+					card.z_index = 1
 
 				card_being_dragged = null
 
@@ -73,21 +76,22 @@ func update_card_preview():
 		return
 
 	if loadout.card_inside == card_being_dragged:
-
 		if not card_preview:
 			create_card_preview(loadout)
-
 	else:
 		remove_card_preview()
 
 
 func create_card_preview(loadout):
 	var preview_container = loadout.card_loadout_preview
+
 	card_placeholder = Control.new()
 	card_placeholder.custom_minimum_size = card_being_dragged.size
 	card_placeholder.size = card_being_dragged.size
 	card_placeholder.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
 	preview_container.add_child(card_placeholder)
+
 	card_preview = card_being_dragged.duplicate()
 	get_tree().current_scene.add_child(card_preview)
 
@@ -130,10 +134,15 @@ func finish_card_placement(card, loadout):
 
 	await tween.finished
 
-	# Put the real card into the exact slot
 	card.reparent(preview_container, false)
 	preview_container.move_child(card, slot_index)
+
+	# Reset after placement
+	card.scale = Vector2(1, 1)
+	card.z_index = 1
+
 	$"../clickSFX".play()
+
 	remove_card_preview()
 
 
@@ -203,10 +212,14 @@ func on_hovered_off_card(card):
 func highlight_card(card, hovered):
 	if hovered:
 		card.scale = Vector2(1.05, 1.05)
-		card.z_index = 2
+
+		if card != card_being_dragged:
+			card.z_index = 100
 	else:
 		card.scale = Vector2(1, 1)
-		card.z_index = 1
+
+		if card != card_being_dragged:
+			card.z_index = 1
 
 
 func get_card_with_highest_z_index(cards):
