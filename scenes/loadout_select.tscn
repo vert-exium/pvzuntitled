@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bla76yiwqpatk" path="res://scenes/bomber_card.tscn" id="2_cutlr"]
 [ext_resource type="PackedScene" uid="uid://dsf5da5nonwtj" path="res://scenes/thrower_card.tscn" id="3_djptu"]
 [ext_resource type="Script" uid="uid://bf7axay4w2yhj" path="res://scripts/card_detector.gd" id="3_wxt2y"]
-[ext_resource type="AudioStream" uid="uid://pt5kglvtk15p" path="res://audio/ruina-click (1)-vocals.mp3" id="5_73d8u"]
+[ext_resource type="AudioStream" uid="uid://cfjljd2soys2b" path="res://audio/ui-smooth-gentle-click-brukowskij-soft-click-smooth-tap-sound-2-0m00s.mp3" id="6_7l38q"]
 [ext_resource type="PackedScene" uid="uid://cgyav7ru8nviu" path="res://scenes/shielder_card.tscn" id="6_fqrsb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rggdb"]
@@ -16,29 +16,32 @@ size = Vector2(1920, 330)
 script = ExtResource("1_cutlr")
 
 [node name="bomberCard" parent="cardManager" unique_id=1221890158 instance=ExtResource("2_cutlr")]
-offset_left = 240.0
-offset_top = 790.0
-offset_right = 240.0
-offset_bottom = 790.0
+z_index = 1
+offset_left = 180.0
+offset_top = 850.0
+offset_right = 180.0
+offset_bottom = 850.0
 size_flags_horizontal = 0
 size_flags_vertical = 4
 offset_transform_position = Vector2(120, 120)
 
 [node name="throwerCard" parent="cardManager" unique_id=793532619 instance=ExtResource("3_djptu")]
-offset_left = 670.0
-offset_top = 670.0
-offset_right = 670.0
-offset_bottom = 670.0
+z_index = 1
+offset_left = 480.0
+offset_top = 850.0
+offset_right = 480.0
+offset_bottom = 850.0
 
 [node name="shielderCard" parent="cardManager" unique_id=1668012932 instance=ExtResource("6_fqrsb")]
-offset_left = 1080.0
-offset_top = 730.0
-offset_right = 1080.0
-offset_bottom = 730.0
+z_index = 1
+offset_left = 780.0
+offset_top = 850.0
+offset_right = 780.0
+offset_bottom = 850.0
 
 [node name="cardLoadoutPreview" type="HBoxContainer" parent="." unique_id=917248621]
 offset_left = 120.0
-offset_right = 1800.0
+offset_right = 1920.0
 offset_bottom = 300.0
 theme_override_constants/separation = 300
 
@@ -58,9 +61,9 @@ position = Vector2(960, 165)
 shape = SubResource("RectangleShape2D_rggdb")
 
 [node name="clickSFX" type="AudioStreamPlayer2D" parent="." unique_id=360466425]
-stream = ExtResource("5_73d8u")
-volume_db = -12.215
-pitch_scale = 0.95
+stream = ExtResource("6_7l38q")
+volume_db = 6.58
+pitch_scale = 0.81
 attenuation = 0.6372823
 
 [connection signal="area_entered" from="cardDetector" to="cardDetector" method="_on_area_entered"]

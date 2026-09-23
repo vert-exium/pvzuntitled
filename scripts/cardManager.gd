@@ -10,6 +10,9 @@ var is_hovering_on_card
 var card_preview
 var card_placeholder
 
+# Keeps track of global highest z_index for stack ordering
+var max_placed_z_index: int = 1
+
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
@@ -59,7 +62,14 @@ func _input(event):
 				else:
 					remove_card_preview()
 					card.scale = Vector2(1.05, 1.05)
-					card.z_index = 1
+					
+					# Increment global z_index to guarantee top stacking
+					max_placed_z_index += 1
+					card.z_index = max_placed_z_index
+					
+					# Move node to end of parent children list so tree order renders it on top
+					if card.get_parent():
+						card.get_parent().move_child(card, -1)
 
 				card_being_dragged = null
 
@@ -99,7 +109,9 @@ func create_card_preview(loadout):
 	card_preview.modulate.a = 0.5
 	card_preview.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	card_preview.process_mode = Node.PROCESS_MODE_DISABLED
-	card_preview.z_index = 100
+	
+	# Lower z_index so preview renders BELOW standard cards
+	card_preview.z_index = -1
 
 	await get_tree().process_frame
 
@@ -115,21 +127,21 @@ func finish_card_placement(card, loadout):
 	var slot_index = card_placeholder.get_index()
 
 	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_QUAD)
+	tween.set_trans(Tween.TRANS_ELASTIC)
 	tween.set_ease(Tween.EASE_IN_OUT)
 
 	tween.tween_property(
 		card,
 		"global_position",
 		target_position,
-		0.5
+		0.8
 	)
 
 	tween.parallel().tween_property(
 		card,
 		"scale",
 		Vector2(1.05, 1.05),
-		0.5
+		0.8
 	)
 
 	await tween.finished
@@ -137,9 +149,10 @@ func finish_card_placement(card, loadout):
 	card.reparent(preview_container, false)
 	preview_container.move_child(card, slot_index)
 
-	# Reset after placement
+	# Reset scale and set z_index above standard preview elements
 	card.scale = Vector2(1, 1)
-	card.z_index = 1
+	max_placed_z_index += 1
+	card.z_index = max_placed_z_index
 
 	$"../clickSFX".play()
 
@@ -209,17 +222,23 @@ func on_hovered_off_card(card):
 		is_hovering_on_card = false
 
 
-func highlight_card(card, hovered):
+func highlight_card(card: Control, hovered: bool) -> void:
 	if hovered:
-		card.scale = Vector2(1.05, 1.05)
-
+		var tween = create_tween()
 		if card != card_being_dragged:
-			card.z_index = 100
+			# Shift temporary hover z_index well above normal stack
+			card.z_index = card.z_index + 100
+		tween.tween_property(card, "scale", Vector2(1.1, 1.1), 0.35)\
+			.set_trans(Tween.TRANS_ELASTIC)\
+			.set_ease(Tween.EASE_IN_OUT)
 	else:
-		card.scale = Vector2(1, 1)
-
+		var tween = create_tween()
 		if card != card_being_dragged:
-			card.z_index = 1
+			card.z_index = max(1, card.z_index - 100)
+			
+		tween.tween_property(card, "scale", Vector2(1.0, 1.0), 0.35)\
+			.set_trans(Tween.TRANS_ELASTIC)\
+			.set_ease(Tween.EASE_IN_OUT)
 
 
 func get_card_with_highest_z_index(cards):

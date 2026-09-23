@@ -3,20 +3,20 @@ extends Control
 signal hovered
 signal stophovered
 
+@onready var area_2d: Area2D = $Area2D 
 
-#Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	get_tree().get_first_node_in_group("card_manager").connect_card_signals(self)
-
-
-#Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	area_2d.mouse_entered.connect(_on_area_2d_mouse_entered)
+	area_2d.mouse_exited.connect(_on_area_2d_mouse_exited)
+	
+	var card_manager = get_tree().get_first_node_in_group("card_manager")
+	if card_manager:
+		card_manager.connect_card_signals(self)
 
 
 func _on_area_2d_mouse_entered() -> void:
-	emit_signal("hovered", self)
+	hovered.emit(self)
 
 
 func _on_area_2d_mouse_exited() -> void:
-	emit_signal("stophovered", self)
+	stophovered.emit(self)
