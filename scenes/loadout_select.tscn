@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bf7axay4w2yhj" path="res://scripts/card_detector.gd" id="3_wxt2y"]
 [ext_resource type="AudioStream" uid="uid://cfjljd2soys2b" path="res://audio/ui-smooth-gentle-click-brukowskij-soft-click-smooth-tap-sound-2-0m00s.mp3" id="6_7l38q"]
 [ext_resource type="PackedScene" uid="uid://cgyav7ru8nviu" path="res://scenes/shielder_card.tscn" id="6_fqrsb"]
+[ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="7_7l38q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rggdb"]
 size = Vector2(1920, 330)
@@ -65,6 +66,16 @@ stream = ExtResource("6_7l38q")
 volume_db = 4.0
 pitch_scale = 0.81
 attenuation = 0.6372823
+
+[node name="strengthLabel" type="Label" parent="." unique_id=840580554]
+offset_left = 470.0
+offset_top = 330.0
+offset_right = 1465.0
+offset_bottom = 450.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_7l38q")
+theme_override_font_sizes/font_size = 82
+text = "Loadout strength: 0/50"
 
 [connection signal="area_entered" from="cardDetector" to="cardDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="cardDetector" to="cardDetector" method="_on_area_exited"]

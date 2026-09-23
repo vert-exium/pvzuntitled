@@ -21,10 +21,11 @@ anchors_preset = 0
 size_flags_horizontal = 0
 size_flags_vertical = 4
 script = ExtResource("1_22w8b")
+card_id = "thrower"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1838322728]
-position = Vector2(6.1035156e-05, -30)
-scale = Vector2(0.40358743, 0.39217868)
+position = Vector2(-7.6293945e-06, -30)
+scale = Vector2(0.3779527, 0.39217868)
 texture = ExtResource("2_22w8b")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1268672156]
@@ -37,13 +38,13 @@ shape = SubResource("RectangleShape2D_rggdb")
 
 [node name="bomberLabel" type="Label" parent="." unique_id=269281261]
 layout_mode = 0
-offset_left = -110.0
+offset_left = -120.0
 offset_top = 60.0
-offset_right = 131.0
+offset_right = 123.0
 offset_bottom = 110.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_ycdcd")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 36
 text = "Thrower 100"
 
 [node name="Panel" type="Panel" parent="." unique_id=685205190]
@@ -60,10 +61,10 @@ metadata/_edit_lock_ = true
 [node name="bomberLabel2" type="Label" parent="." unique_id=1360018376]
 layout_mode = 0
 offset_left = -100.0
-offset_top = 100.0
+offset_top = 110.0
 offset_right = 141.0
-offset_bottom = 150.0
+offset_bottom = 160.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_ycdcd")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 33
 text = "Strength 5"

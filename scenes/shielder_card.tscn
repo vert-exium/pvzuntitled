@@ -26,6 +26,7 @@ size_flags_vertical = 4
 offset_transform_position = Vector2(120, 120)
 mouse_filter = 2
 script = ExtResource("1_wcvt6")
+card_id = "shielder"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1838322728]
 position = Vector2(-1.1368684e-13, -30)
@@ -71,7 +72,7 @@ offset_bottom = 150.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_he8by")
 theme_override_font_sizes/font_size = 35
-text = "Strength 12"
+text = "Strength 10"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

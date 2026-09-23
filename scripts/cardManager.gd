@@ -11,9 +11,21 @@ var is_hovering_on_card
 var card_preview
 var card_placeholder
 
-# Keeps track of global highest z_index for stack ordering
 var max_placed_z_index: int = 1
-
+const cardStrengths = {
+	"bomber": {
+		"name": "bomber",
+		"strength": 15
+	},
+	"shielder": {
+		"name": "shielder",
+		"strength": 10
+	},
+	"thrower": {
+		"name": "thrower",
+		"strength": 5
+	}
+}
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
@@ -46,12 +58,12 @@ func _input(event):
 			if card:
 				card_being_dragged = card
 				card.z_index = DRAG_Z_INDEX
+				print(str(card) + " Strength: " + str(card.strength))
 				last_mouse_pos = get_global_mouse_position()
 				var grab_tween = create_tween()
 				grab_tween.tween_property(card, "scale", Vector2(1.15, 1.15), 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 				
 				remove_card_preview()
-				
 				var loadout = $"../cardDetector"
 				if loadout and card.get_parent() == loadout.card_loadout_preview:
 					card.reparent(get_tree().current_scene, true)
@@ -123,24 +135,18 @@ func create_card_preview(loadout):
 	fade_tween.tween_property(card_preview, "modulate:a", 0.5, 0.15).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	
 	await get_tree().process_frame
+	card_preview.global_position = card_placeholder.global_position + Vector2(0, 150)
 	
-	card_preview.global_position = card_placeholder.global_position
-	
-	disable_preview_collisions(card_preview)
-
+	disable_preview_collisions(card_preview)	
 func finish_card_placement(card, loadout):
 	var preview_container = loadout.card_loadout_preview
 	var target_position = card_preview.global_position
 	var slot_index = card_placeholder.get_index()
 	
 	var tween = create_tween().set_parallel()
-	
 	tween.tween_property(card, "global_position", target_position, 0.25).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	
 	tween.tween_property(card, "scale", Vector2(1.0, 1.0), 0.25).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	
 	tween.tween_property(card, "rotation", 0.0, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	
 	
 	await tween.finished
 
@@ -154,6 +160,8 @@ func finish_card_placement(card, loadout):
 	$"../clickSFX".play()
 
 	remove_card_preview()
+	
+	calculate_total_strength()
 
 
 func disable_preview_collisions(node):
@@ -223,7 +231,6 @@ func highlight_card(card: Control, hovered: bool) -> void:
 	if hovered:
 		var tween = create_tween()
 		if card != card_being_dragged:
-			# Shift temporary hover z_index well above normal stack
 			card.z_index = card.z_index + 100
 		tween.tween_property(card, "scale", Vector2(1.1, 1.1), 0.35)\
 			.set_trans(Tween.TRANS_ELASTIC)\
@@ -250,3 +257,17 @@ func get_card_with_highest_z_index(cards):
 			highest_z_card = current_card
 
 	return highest_z_card
+
+
+func calculate_total_strength():
+	var total_strength = 0
+	var loadout = get_tree().get_first_node_in_group("card_loadout")
+	if not loadout:
+		return 0
+	var preview_container = loadout.card_loadout_preview
+	for child in preview_container.get_children():
+		if "strength" in child and child.is_in_group("cards"):
+			total_strength += child.strength
+			print("Current loadout card Strength: " + str(total_strength))
+			$"../strengthLabel".text = "Loadout strength: " + str(total_strength) + "/50"
+	return total_strength
