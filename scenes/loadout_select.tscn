@@ -62,7 +62,7 @@ shape = SubResource("RectangleShape2D_rggdb")
 
 [node name="clickSFX" type="AudioStreamPlayer2D" parent="." unique_id=360466425]
 stream = ExtResource("6_7l38q")
-volume_db = 6.58
+volume_db = 4.0
 pitch_scale = 0.81
 attenuation = 0.6372823
 

@@ -3,6 +3,7 @@ extends Node2D
 const COLLISION_MASK_CARD = 1
 const DRAG_Z_INDEX = 1000
 
+var last_mouse_pos: Vector2
 var screen_size
 var card_being_dragged
 var is_hovering_on_card
@@ -21,56 +22,60 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if card_being_dragged:
 		var mouse_pos = get_global_mouse_position()
-
-		card_being_dragged.global_position = lerp(
-			card_being_dragged.global_position,
+		
+		var velocity_x = (mouse_pos.x - last_mouse_pos.x)
+		last_mouse_pos = mouse_pos
+		
+		card_being_dragged.global_position = card_being_dragged.global_position.lerp(
 			Vector2(
 				clamp(mouse_pos.x, 0, screen_size.x),
 				clamp(mouse_pos.y, 0, screen_size.y)
 			),
-			0.1
+			25.0 * delta
 		)
-
+		var target_rotation = clamp(velocity_x * 0.015, -0.25, 0.25)
+		card_being_dragged.rotation = lerp(card_being_dragged.rotation, target_rotation, 15.0 * delta)
+		
 		update_card_preview()
-
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-
 		if event.pressed:
 			var card = raycast_check_for_card()
-
+			
 			if card:
 				card_being_dragged = card
-				card.scale = Vector2(1, 1)
 				card.z_index = DRAG_Z_INDEX
-
+				last_mouse_pos = get_global_mouse_position()
+				var grab_tween = create_tween()
+				grab_tween.tween_property(card, "scale", Vector2(1.15, 1.15), 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+				
 				remove_card_preview()
-
-				var loadout = get_tree().get_first_node_in_group("card_loadout")
-
+				
+				var loadout = $"../cardDetector"
 				if loadout and card.get_parent() == loadout.card_loadout_preview:
 					card.reparent(get_tree().current_scene, true)
-
 		else:
 			if card_being_dragged:
 				var card = card_being_dragged
-				var loadout = get_tree().get_first_node_in_group("card_loadout")
-
+				var loadout = $"../cardDetector"
+				
 				if loadout and loadout.card_inside == card and card_preview:
 					finish_card_placement(card, loadout)
+				
 				else:
 					remove_card_preview()
-					card.scale = Vector2(1.05, 1.05)
 					
-					# Increment global z_index to guarantee top stacking
+					var drop_tween = create_tween().set_parallel()
+					drop_tween.tween_property(card, "scale", Vector2(1.0, 1.0), 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+					drop_tween.tween_property(card, "rotation", 0.0, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+					
 					max_placed_z_index += 1
 					card.z_index = max_placed_z_index
 					
-					# Move node to end of parent children list so tree order renders it on top
 					if card.get_parent():
 						card.get_parent().move_child(card, -1)
-
+				
 				card_being_dragged = null
 
 
@@ -94,62 +99,54 @@ func update_card_preview():
 
 func create_card_preview(loadout):
 	var preview_container = loadout.card_loadout_preview
-
+	
 	card_placeholder = Control.new()
 	card_placeholder.custom_minimum_size = card_being_dragged.size
 	card_placeholder.size = card_being_dragged.size
 	card_placeholder.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
+	
 	preview_container.add_child(card_placeholder)
-
+	
 	card_preview = card_being_dragged.duplicate()
 	get_tree().current_scene.add_child(card_preview)
-
+	
+	card_preview.rotation = 0.0
+	card_preview.scale = Vector2.ONE
+	
 	card_preview.remove_from_group("cards")
-	card_preview.modulate.a = 0.5
 	card_preview.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	card_preview.process_mode = Node.PROCESS_MODE_DISABLED
-	
-	# Lower z_index so preview renders BELOW standard cards
 	card_preview.z_index = -1
-
+	
+	card_preview.modulate.a = 0.0
+	var fade_tween = create_tween()
+	fade_tween.tween_property(card_preview, "modulate:a", 0.5, 0.15).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
 	await get_tree().process_frame
-
-	card_preview.global_position = card_placeholder.global_position + Vector2(0, 150)
-
+	
+	card_preview.global_position = card_placeholder.global_position
+	
 	disable_preview_collisions(card_preview)
-
 
 func finish_card_placement(card, loadout):
 	var preview_container = loadout.card_loadout_preview
-
 	var target_position = card_preview.global_position
 	var slot_index = card_placeholder.get_index()
-
-	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_ELASTIC)
-	tween.set_ease(Tween.EASE_IN_OUT)
-
-	tween.tween_property(
-		card,
-		"global_position",
-		target_position,
-		0.8
-	)
-
-	tween.parallel().tween_property(
-		card,
-		"scale",
-		Vector2(1.05, 1.05),
-		0.8
-	)
-
+	
+	var tween = create_tween().set_parallel()
+	
+	tween.tween_property(card, "global_position", target_position, 0.25).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	
+	tween.tween_property(card, "scale", Vector2(1.0, 1.0), 0.25).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	
+	tween.tween_property(card, "rotation", 0.0, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	
 	await tween.finished
 
 	card.reparent(preview_container, false)
 	preview_container.move_child(card, slot_index)
 
-	# Reset scale and set z_index above standard preview elements
 	card.scale = Vector2(1, 1)
 	max_placed_z_index += 1
 	card.z_index = max_placed_z_index
