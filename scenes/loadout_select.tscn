@@ -7,6 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://cfjljd2soys2b" path="res://audio/ui-smooth-gentle-click-brukowskij-soft-click-smooth-tap-sound-2-0m00s.mp3" id="6_7l38q"]
 [ext_resource type="PackedScene" uid="uid://cgyav7ru8nviu" path="res://scenes/shielder_card.tscn" id="6_fqrsb"]
 [ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="7_7l38q"]
+[ext_resource type="PackedScene" uid="uid://dduvwfvts5quh" path="res://scenes/generator_card.tscn" id="8_hp2va"]
+[ext_resource type="FontFile" uid="uid://dn1m0x7ww2h1o" path="res://fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf" id="9_4b6o6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rggdb"]
 size = Vector2(1920, 330)
@@ -73,9 +75,29 @@ offset_top = 330.0
 offset_right = 1465.0
 offset_bottom = 450.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("7_7l38q")
 theme_override_font_sizes/font_size = 82
 text = "Loadout strength: 0/50"
+
+[node name="generatorCard" parent="." unique_id=949595982 instance=ExtResource("8_hp2va")]
+offset_left = 1080.0
+offset_top = 850.0
+offset_right = 1080.0
+offset_bottom = 850.0
+
+[node name="Button" type="Button" parent="." unique_id=1453060070]
+offset_left = 1600.0
+offset_top = 350.0
+offset_right = 1900.0
+offset_bottom = 480.0
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(3.0563026e-06, 0.6674989, 2.695322e-06, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("9_4b6o6")
+theme_override_font_sizes/font_size = 32
+text = "CONFIRM LOADOUT"
 
 [connection signal="area_entered" from="cardDetector" to="cardDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="cardDetector" to="cardDetector" method="_on_area_exited"]

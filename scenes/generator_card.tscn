@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://dsf5da5nonwtj"]
+[gd_scene format=3 uid="uid://dduvwfvts5quh"]
 
-[ext_resource type="Script" uid="uid://dbnapl1anias8" path="res://scripts/card.gd" id="1_22w8b"]
-[ext_resource type="Texture2D" uid="uid://b6y1s1mnhnrt8" path="res://images/images__5_-removebg-preview.png" id="2_22w8b"]
-[ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="3_ycdcd"]
+[ext_resource type="Script" uid="uid://dbnapl1anias8" path="res://scripts/card.gd" id="1_2usqy"]
+[ext_resource type="Texture2D" uid="uid://bxdknrcmuibbl" path="res://images/image_2026-09-18_234043813-removebg-preview.png" id="2_tmwnh"]
+[ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="3_1n43h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rggdb"]
 size = Vector2(240, 290)
@@ -15,18 +15,18 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 20
 
-[node name="throwerCard" type="Control" unique_id=793532619 groups=["cards"]]
+[node name="generatorCard" type="Control" unique_id=793532619 groups=["cards"]]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 0
 size_flags_vertical = 4
-script = ExtResource("1_22w8b")
-card_id = "thrower"
+script = ExtResource("1_2usqy")
+card_id = "generator"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1838322728]
 position = Vector2(-7.6293945e-06, -30)
 scale = Vector2(0.3779527, 0.39217868)
-texture = ExtResource("2_22w8b")
+texture = ExtResource("2_tmwnh")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1268672156]
 collision_layer = 3
@@ -36,16 +36,16 @@ visible = false
 position = Vector2(0, 25)
 shape = SubResource("RectangleShape2D_rggdb")
 
-[node name="bomberLabel" type="Label" parent="." unique_id=269281261]
+[node name="generatorLabel2" type="Label" parent="." unique_id=269281261]
 layout_mode = 0
 offset_left = -120.0
-offset_top = 60.0
+offset_top = 50.0
 offset_right = 123.0
-offset_bottom = 110.0
+offset_bottom = 100.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_ycdcd")
-theme_override_font_sizes/font_size = 36
-text = "Thrower 100"
+theme_override_fonts/font = ExtResource("3_1n43h")
+theme_override_font_sizes/font_size = 32
+text = "Generator 100"
 
 [node name="Panel" type="Panel" parent="." unique_id=685205190]
 z_index = -1
@@ -58,13 +58,13 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jsi4")
 metadata/_edit_lock_ = true
 
-[node name="bomberLabel2" type="Label" parent="." unique_id=1360018376]
+[node name="generatorLabel" type="Label" parent="." unique_id=1360018376]
 layout_mode = 0
 offset_left = -100.0
 offset_top = 110.0
 offset_right = 141.0
 offset_bottom = 160.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_ycdcd")
+theme_override_fonts/font = ExtResource("3_1n43h")
 theme_override_font_sizes/font_size = 33
-text = "Strength 4"
+text = "Strength 3"
