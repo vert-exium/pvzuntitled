@@ -28,7 +28,7 @@ const cardStrengths = {
 	"generator":
 	{
 		"name": "generator",
-		"strength": 3
+		"strength": 30
 	}
 }
 
@@ -361,7 +361,11 @@ func calculate_total_strength():
 func update_strength_number(value: int):
 	var label = $"../strengthLabel"
 	displayed_strength = value
-	label.text = "Loadout strength: " + str(round(value)) + "/50"
+	if value > 50:
+		label.text = "Strength is above cap! " + "(" + str(value) + ")"
+	else:
+		label.text = "Loadout strength: " + str(round(value)) + "/50"
+
 
 
 func label_effects(total_strength):
@@ -385,12 +389,6 @@ func label_effects(total_strength):
 		0.2
 	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
-	tween.tween_property(
-		label,
-		"modulate",
-		Color.RED if strength > 50 else Color.WHITE,
-		0.1
-	).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
 
 	tween.chain()
 
@@ -407,3 +405,17 @@ func label_effects(total_strength):
 		0,
 		0.2
 	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+
+
+
+func _on_button_pressed() -> void:
+	var label = $"../strengthLabel"
+	var total_strength = calculate_total_strength()
+	if total_strength > 50:
+		$"../Button".add_theme_color_override("font_pressed_color", Color(1.0, 0.0, 0.0))
+		$"../Button".add_theme_color_override("font_hover_color", Color(1.0, 0.0, 0.0))
+		print("Strength is greater than 50!")
+	else:
+		$"../Button".add_theme_color_override("font_pressed_color", Color(0.0, 1.0, 0.0))
+		$"../Button".add_theme_color_override("font_hover_color", Color(0.0, 1.0, 0.0))
+		get_tree().change_scene_to_file("res://scenes/Level.tscn")
