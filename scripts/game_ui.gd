@@ -7,7 +7,10 @@ var currently_selected_card: String = "generator"
 var level_script: Node = null
 
 var card_scenes = {
-	"bomber": preload("res://scenes/bomber_card_ui.tscn")
+	"bomber": preload("res://scenes/bomber_card_ui.tscn"),
+	"shielder": preload("res://scenes/shielder_card_ui.tscn"),
+	"generator": preload("res://scenes/generator_card_ui.tscn"),
+	"thrower": preload("res://scenes/thrower_card_ui.tscn")
 }
 
 

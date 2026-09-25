@@ -18,6 +18,7 @@ size = Vector2(1920, 330)
 
 [node name="cardManager" type="Node2D" parent="." unique_id=1270488568 groups=["card_manager"]]
 script = ExtResource("1_cutlr")
+metadata/_edit_lock_ = true
 
 [node name="bomberCard" parent="cardManager" unique_id=1221890158 instance=ExtResource("2_cutlr")]
 z_index = 1
@@ -43,8 +44,14 @@ offset_top = 850.0
 offset_right = 780.0
 offset_bottom = 850.0
 
+[node name="generatorCard" parent="cardManager" unique_id=949595982 instance=ExtResource("8_hp2va")]
+offset_left = 1080.0
+offset_top = 850.0
+offset_right = 1080.0
+offset_bottom = 850.0
+
 [node name="cardLoadoutPreview" type="HBoxContainer" parent="." unique_id=917248621]
-offset_left = 120.0
+offset_left = 180.0
 offset_right = 1920.0
 offset_bottom = 300.0
 theme_override_constants/separation = 300
@@ -55,20 +62,24 @@ offset_right = 1920.0
 offset_bottom = 330.0
 offset_transform_enabled = true
 color = Color(0.40832946, 0.40832946, 0.40832946, 1)
+metadata/_edit_lock_ = true
 
 [node name="cardDetector" type="Area2D" parent="." unique_id=1424587734 groups=["card_loadout"]]
 collision_layer = 2
 script = ExtResource("3_wxt2y")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cardDetector" unique_id=275453045]
 position = Vector2(960, 165)
 shape = SubResource("RectangleShape2D_rggdb")
+metadata/_edit_lock_ = true
 
 [node name="clickSFX" type="AudioStreamPlayer2D" parent="." unique_id=360466425]
 stream = ExtResource("6_7l38q")
 volume_db = 4.0
 pitch_scale = 0.81
 attenuation = 0.6372823
+metadata/_edit_lock_ = true
 
 [node name="strengthLabel" type="Label" parent="." unique_id=840580554]
 offset_left = 420.0
@@ -82,12 +93,7 @@ theme_override_fonts/font = ExtResource("7_7l38q")
 theme_override_font_sizes/font_size = 77
 text = "Loadout strength: 0/50"
 autowrap_mode = 3
-
-[node name="generatorCard" parent="." unique_id=949595982 instance=ExtResource("8_hp2va")]
-offset_left = 1080.0
-offset_top = 850.0
-offset_right = 1080.0
-offset_bottom = 850.0
+metadata/_edit_lock_ = true
 
 [node name="Button" type="Button" parent="." unique_id=1453060070]
 offset_left = 1600.0
@@ -101,6 +107,8 @@ theme_override_fonts/font = ExtResource("9_4b6o6")
 theme_override_font_sizes/font_size = 32
 text = "CONFIRM LOADOUT"
 script = ExtResource("10_vxoj1")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [connection signal="area_entered" from="cardDetector" to="cardDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="cardDetector" to="cardDetector" method="_on_area_exited"]

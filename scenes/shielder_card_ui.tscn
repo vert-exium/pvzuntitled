@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://d20l2rke84t5c"]
+[gd_scene format=3 uid="uid://dp24nk3oekd04"]
 
-[ext_resource type="Texture2D" uid="uid://c8kmm1a2vjy3y" path="res://images/image_2026-09-18_233811005-removebg-preview.png" id="1_newnr"]
-[ext_resource type="Script" uid="uid://c4ws44fn0y1xv" path="res://scenes/ui_card.gd" id="1_qxtst"]
-[ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="2_1ts7l"]
-[ext_resource type="Texture2D" uid="uid://b12jv5dcuxo6h" path="res://images/bolt-u66h28xd2g94f7gj1ckz6s.webp" id="3_1ts7l"]
+[ext_resource type="Script" uid="uid://c4ws44fn0y1xv" path="res://scenes/ui_card.gd" id="1_c6oyi"]
+[ext_resource type="Texture2D" uid="uid://1wpgcwmeat5n" path="res://images/5723525.png" id="2_0qqpy"]
+[ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="3_ey8hf"]
+[ext_resource type="Texture2D" uid="uid://b12jv5dcuxo6h" path="res://images/bolt-u66h28xd2g94f7gj1ckz6s.webp" id="4_lvhwp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rggdb"]
 size = Vector2(240, 290)
@@ -16,7 +16,7 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 20
 
-[node name="bomberCardUI" type="Control" unique_id=793532619 groups=["cards"]]
+[node name="shielderCardUI" type="Control" unique_id=793532619 groups=["cards"]]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 150.0
@@ -24,16 +24,17 @@ offset_bottom = 180.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_qxtst")
+script = ExtResource("1_c6oyi")
+card_id = "shielder"
 
 [node name="scalingnstuff" type="Node2D" parent="." unique_id=632514743]
 position = Vector2(73, 73)
 scale = Vector2(0.605, 0.605)
 
 [node name="Sprite2D" type="Sprite2D" parent="scalingnstuff" unique_id=1838322728]
-position = Vector2(10, -20)
-scale = Vector2(0.4534005, 0.4390244)
-texture = ExtResource("1_newnr")
+position = Vector2(-4.9586773, -21.487606)
+scale = Vector2(0.37161458, 0.34864444)
+texture = ExtResource("2_0qqpy")
 
 [node name="Area2D" type="Area2D" parent="scalingnstuff" unique_id=1268672156]
 collision_layer = 3
@@ -49,33 +50,33 @@ offset_top = 60.0
 offset_right = 148.0
 offset_bottom = 119.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_1ts7l")
+theme_override_fonts/font = ExtResource("3_ey8hf")
 theme_override_font_sizes/font_size = 45
-text = "Bomber"
+text = "Shielder"
 
 [node name="Panel" type="Panel" parent="scalingnstuff" unique_id=685205190]
 z_index = -1
-offset_left = -120.0
-offset_top = -120.0
-offset_right = 120.0
-offset_bottom = 170.0
+offset_left = -120.66115
+offset_top = -120.66115
+offset_right = 119.33885
+offset_bottom = 169.33885
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jsi4")
 
 [node name="bomberLabel2" type="Label" parent="scalingnstuff" unique_id=1732538950]
-offset_left = -37.0
+offset_left = -33.694214
 offset_top = 107.0
-offset_right = 191.0
+offset_right = 194.30579
 offset_bottom = 159.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_1ts7l")
+theme_override_fonts/font = ExtResource("3_ey8hf")
 theme_override_font_sizes/font_size = 40
-text = "500"
+text = "350"
 
 [node name="boltSprite" type="Sprite2D" parent="scalingnstuff" unique_id=232221732]
 position = Vector2(-60, 134)
 scale = Vector2(0.12083337, 0.12291671)
-texture = ExtResource("3_1ts7l")
+texture = ExtResource("4_lvhwp")
 
 [node name="TextureButton" type="TextureButton" parent="scalingnstuff" unique_id=1373509562]
 offset_left = -115.70248
