@@ -28,7 +28,7 @@ const cardStrengths = {
 	"generator":
 	{
 		"name": "generator",
-		"strength": 30
+		"strength": 3
 	}
 }
 
@@ -381,15 +381,6 @@ func label_effects(total_strength):
 		Vector2(1.05, 1.05),
 		0.2
 	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
-
-	tween.tween_property(
-		label,
-		"rotation",
-		deg_to_rad(0.4),
-		0.2
-	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-
-
 	tween.chain()
 
 	tween.tween_property(
@@ -412,10 +403,21 @@ func _on_button_pressed() -> void:
 	var label = $"../strengthLabel"
 	var total_strength = calculate_total_strength()
 	if total_strength > 50:
-		$"../Button".add_theme_color_override("font_pressed_color", Color(1.0, 0.0, 0.0))
-		$"../Button".add_theme_color_override("font_hover_color", Color(1.0, 0.0, 0.0))
 		print("Strength is greater than 50!")
 	else:
-		$"../Button".add_theme_color_override("font_pressed_color", Color(0.0, 1.0, 0.0))
-		$"../Button".add_theme_color_override("font_hover_color", Color(0.0, 1.0, 0.0))
+		Global.saved_loadout = get_loadout_card_ids()
+		print("Saved Loadout: ", Global.saved_loadout)
 		get_tree().change_scene_to_file("res://scenes/Level.tscn")
+
+
+func get_loadout_card_ids() -> Array[String]:
+	var card_ids: Array[String]
+	var preview_container = $"../cardLoadoutPreview"
+
+	if not preview_container:
+		return card_ids
+
+	for child in preview_container.get_children():
+		if child.is_in_group("cards") and "card_id" in child:
+			card_ids.append(child.card_id)
+	return card_ids

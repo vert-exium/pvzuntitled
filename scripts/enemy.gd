@@ -17,8 +17,6 @@ func _ready() -> void:
 	base_speed = 30.0 * LevelManager.speed_scale
 	current_speed = base_speed
 	attack_damage = int(10 * LevelManager.dmg_scale)
-	
-	print("[DEBUG] Spawned Enemy -> Speed: %.1f | Damage: %d" % [current_speed, attack_damage])
 func _process(delta: float) -> void:
 	position.x -= current_speed * delta
 	if current_speed < 1.0:

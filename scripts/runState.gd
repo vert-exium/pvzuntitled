@@ -25,4 +25,4 @@ func try_use_shovel() -> bool:
 	return try_spend_energy(shovel_cost)
 
 func _on_passive_energy_tick() -> void:
-	add_energy(10)
+	add_energy(500)

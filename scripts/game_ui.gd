@@ -6,23 +6,25 @@ extends CanvasLayer
 var currently_selected_card: String = "generator"
 var level_script: Node = null
 
+var card_scenes = {
+	"bomber": preload("res://scenes/bomber_card_ui.tscn")
+}
+
+
+
+
 func _ready() -> void:
-	# Button signals
-	$CardContainer/generatorButton.pressed.connect(_on_generator_pressed)
-	$CardContainer/throwerButton.pressed.connect(_on_thrower_pressed)
-	$CardContainer/shovelButton.pressed.connect(_on_shovel_pressed)
-	$CardContainer/bomberButton.pressed.connect(_on_bomber_button_pressed)
-	$CardContainer/shielderButton.pressed.connect(_on_shielder_button_pressed)
-	
-	# Set energy costs
-	$CardContainer/shovelButton/costLabel.text = str(RunState.shovel_cost)
-	$CardContainer/throwerButton/costLabel.text = str(CardDatabase.CARDS["thrower"]["cost"])
-	$CardContainer/generatorButton/costLabel.text = str(CardDatabase.CARDS["generator"]["cost"])
-	$CardContainer/bomberButton/costLabel.text = str(CardDatabase.CARDS["bomber"]["cost"])
-	$CardContainer/shielderButton/costLabel.text = str(CardDatabase.CARDS["shielder"]["cost"])
-	
-	# Initial label setup
-	_update_card_label("generator")
+	var loadout = Global.saved_loadout
+	var card_scale: float = 0.58
+	for id in loadout:
+		if card_scenes.has(id):
+			var card_instance = card_scenes[id].instantiate()
+			if "card_id" in card_instance:
+				card_instance.card_id = id
+			if card_instance.has_signal("card_clicked"):
+				card_instance.card_clicked.connect(_select_card)
+
+			$CardContainer.add_child(card_instance)
 	#Update label constantly
 func _process(_delta: float) -> void:
 	$topPanel/energyLabel.text = "ENERGY: " + str(RunState.current_energy)
@@ -69,6 +71,7 @@ func _on_shovel_pressed() -> void:
 
 func _on_bomber_button_pressed() -> void:
 	_select_card("bomber")
+	print("Bomber selected")
 
 func _on_shielder_button_pressed() -> void:
 	_select_card("shielder")
