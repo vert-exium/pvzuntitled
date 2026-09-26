@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dduvwfvts5quh" path="res://scenes/generator_card.tscn" id="8_hp2va"]
 [ext_resource type="FontFile" uid="uid://dn1m0x7ww2h1o" path="res://fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf" id="9_4b6o6"]
 [ext_resource type="Script" uid="uid://73w5s1yrrtx0" path="res://scripts/loadout_confirm_button.gd" id="10_vxoj1"]
+[ext_resource type="PackedScene" uid="uid://cviqc1w7nfiad" path="res://scenes/swordsman_card.tscn" id="11_w40n5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rggdb"]
 size = Vector2(1920, 330)
@@ -19,6 +20,12 @@ size = Vector2(1920, 330)
 [node name="cardManager" type="Node2D" parent="." unique_id=1270488568 groups=["card_manager"]]
 script = ExtResource("1_cutlr")
 metadata/_edit_lock_ = true
+
+[node name="swordsmanCard" parent="cardManager" unique_id=1452167053 instance=ExtResource("11_w40n5")]
+offset_left = 1380.0
+offset_top = 850.0
+offset_right = 1380.0
+offset_bottom = 850.0
 
 [node name="bomberCard" parent="cardManager" unique_id=1221890158 instance=ExtResource("2_cutlr")]
 z_index = 1

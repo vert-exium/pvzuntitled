@@ -38,6 +38,16 @@ const CARDS = {
 		"health": 400,
 		"damage": 5,
 		"fire_rate": 1.5,
+	"swordsman":{
+		"name": "Swordsman",
+		"type": "close_range",
+		"cost": 600,
+		"cooldown": 20,
+		"health": 250,
+		"damage": 50,
+		"fire_rate": 2.0,
+		"knockback": 20
+	}
 	}
 }
 

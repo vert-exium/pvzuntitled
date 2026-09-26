@@ -25,10 +25,13 @@ const cardStrengths = {
 		"name": "thrower",
 		"strength": 4
 	},
-	"generator":
-	{
+	"generator": {
 		"name": "generator",
 		"strength": 3
+	},
+	"swordsman": {
+		"name": "swordsman",
+		"strength": 17
 	}
 }
 

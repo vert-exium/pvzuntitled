@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d20l2rke84t5c"]
 
 [ext_resource type="Texture2D" uid="uid://c8kmm1a2vjy3y" path="res://images/image_2026-09-18_233811005-removebg-preview.png" id="1_newnr"]
-[ext_resource type="Script" uid="uid://c4ws44fn0y1xv" path="res://scenes/ui_card.gd" id="1_qxtst"]
+[ext_resource type="Script" uid="uid://c4ws44fn0y1xv" path="res://scripts/ui_card.gd" id="1_qxtst"]
 [ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="2_1ts7l"]
 [ext_resource type="Texture2D" uid="uid://b12jv5dcuxo6h" path="res://images/bolt-u66h28xd2g94f7gj1ckz6s.webp" id="3_1ts7l"]
 
