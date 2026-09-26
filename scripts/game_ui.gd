@@ -17,6 +17,9 @@ var card_scenes = {
 
 
 func _ready() -> void:
+	await get_tree().process_frame 
+	for child in $CardContainer.get_children():
+		print("Card: ", child.name, " | Size: ", child.size, " | Pos: ", child.position)
 	var loadout = Global.saved_loadout
 	var card_scale: float = 0.58
 	for id in loadout:

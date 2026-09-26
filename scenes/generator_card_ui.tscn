@@ -17,27 +17,27 @@ corner_radius_bottom_left = 20
 corner_detail = 20
 
 [node name="generatorCardUI" type="Control" unique_id=793532619 groups=["cards"]]
+custom_minimum_size = Vector2(145, 175)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 150.0
-offset_bottom = 180.0
-size_flags_horizontal = 2
+offset_right = 145.0
+offset_bottom = 175.0
 size_flags_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_kgenu")
 card_id = "generator"
 
 [node name="scalingnstuff" type="Node2D" parent="." unique_id=632514743]
-position = Vector2(73, 73)
-scale = Vector2(0.605, 0.605)
+scale = Vector2(0.6, 0.6)
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="scalingnstuff" unique_id=1838322728]
-position = Vector2(-1.6528931, -21.944046)
+position = Vector2(119.008255, 98.7171)
 scale = Vector2(0.37161458, 0.4266722)
 texture = ExtResource("2_s0aqs")
 
 [node name="Area2D" type="Area2D" parent="scalingnstuff" unique_id=1268672156]
+position = Vector2(120.66117, 120.66118)
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scalingnstuff/Area2D" unique_id=518466849]
@@ -46,10 +46,9 @@ position = Vector2(0, 25)
 shape = SubResource("RectangleShape2D_rggdb")
 
 [node name="bomberLabel" type="Label" parent="scalingnstuff" unique_id=269281261]
-offset_left = -120.661156
-offset_top = 61.15702
-offset_right = 117.338844
-offset_bottom = 120.15702
+offset_top = 181.81816
+offset_right = 237.99998
+offset_bottom = 240.81818
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_rdu1s")
 theme_override_font_sizes/font_size = 45
@@ -58,34 +57,31 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="scalingnstuff" unique_id=685205190]
 z_index = -1
-offset_left = -120.66115
-offset_top = -120.66115
-offset_right = 119.33885
-offset_bottom = 169.33885
+offset_left = -2.2649765e-05
+offset_right = 239.99998
+offset_bottom = 290.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jsi4")
 metadata/_edit_use_anchors_ = true
 
 [node name="bomberLabel2" type="Label" parent="scalingnstuff" unique_id=1732538950]
-offset_left = -21.487598
-offset_top = 110.7438
-offset_right = 206.5124
-offset_bottom = 162.7438
+offset_left = 99.17355
+offset_top = 231.40497
+offset_right = 327.17355
+offset_bottom = 283.40497
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_rdu1s")
 theme_override_font_sizes/font_size = 40
 text = "50"
 
 [node name="boltSprite" type="Sprite2D" parent="scalingnstuff" unique_id=232221732]
-position = Vector2(-41.818115, 137.30579)
+position = Vector2(78.84305, 257.96692)
 scale = Vector2(0.12083337, 0.12291671)
 texture = ExtResource("4_vmihj")
 
 [node name="TextureButton" type="TextureButton" parent="scalingnstuff" unique_id=1373509562]
-offset_left = -120.661156
-offset_top = -120.66115
-offset_right = 119.338844
-offset_bottom = 169.33885
+offset_right = 239.99998
+offset_bottom = 290.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

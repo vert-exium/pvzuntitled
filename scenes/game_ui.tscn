@@ -44,6 +44,8 @@ theme_override_font_sizes/font_size = 40
 vertical_alignment = 1
 
 [node name="CardContainer" type="HBoxContainer" parent="." unique_id=828520296]
+custom_minimum_size = Vector2(400, 0)
+custom_maximum_size = Vector2(2000, -1)
 offset_left = 470.0
 offset_top = 30.0
 offset_right = 1620.0
