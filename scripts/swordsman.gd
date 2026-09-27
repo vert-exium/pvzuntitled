@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var fire_timer = $attackTimer
 @onready var raycast = $RayCast2D
-var projectile_scene = preload("res://scenes/shielder_projectile.tscn")
+var projectile_scene = preload("res://scenes/swordsman_projectile.tscn")
 
 
 var health: int = 0
