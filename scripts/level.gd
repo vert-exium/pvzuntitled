@@ -27,6 +27,7 @@ var plant_scenes: Dictionary = {
 	"thrower": preload("res://scenes/thrower.tscn"),
 	"bomber": preload("res://scenes/bomber.tscn"),
 	"shielder": preload("res://scenes/shielder.tscn"),
+	"swordsman": preload("res://scenes/swordsman.tscn")
 }
 
 func _ready() -> void:

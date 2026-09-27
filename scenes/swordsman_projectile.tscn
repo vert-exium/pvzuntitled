@@ -11,6 +11,7 @@ collision_mask = 2
 script = ExtResource("1_c6s00")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=470909361]
+position = Vector2(60, 0)
 shape = SubResource("RectangleShape2D_0jsi4")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

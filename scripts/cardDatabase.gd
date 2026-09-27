@@ -12,6 +12,7 @@ const CARDS = {
 		"energy_yield": 15,
 		"tick_rate": 5
 	},
+
 	"thrower": {
 		"name": "Thrower",
 		"type": "shooter",
@@ -21,6 +22,7 @@ const CARDS = {
 		"damage": 20,
 		"fire_rate": 1.5
 	},
+
 	"bomber": {
 		"name": "Bomber",
 		"type": "shooter",
@@ -28,8 +30,9 @@ const CARDS = {
 		"cooldown": 10.0,
 		"health": 200,
 		"damage": 25,
-		"fire_rate": 4,
+		"fire_rate": 4
 	},
+
 	"shielder": {
 		"name": "Shielder",
 		"type": "close_range",
@@ -37,9 +40,11 @@ const CARDS = {
 		"cooldown": 15,
 		"health": 400,
 		"damage": 5,
-		"fire_rate": 1.5,
-	"swordsman":{
-		"name": "Swordsman",
+		"fire_rate": 1.5
+	},
+
+	"swordsman": {
+		"name": "swordsman",
 		"type": "close_range",
 		"cost": 600,
 		"cooldown": 20,
@@ -47,7 +52,6 @@ const CARDS = {
 		"damage": 50,
 		"fire_rate": 2.0,
 		"knockback": 20
-	}
 	}
 }
 

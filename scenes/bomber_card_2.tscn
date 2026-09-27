@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://cviqc1w7nfiad"]
+[gd_scene format=3 uid="uid://c8pk5s8f1xurf"]
 
-[ext_resource type="Script" uid="uid://dbnapl1anias8" path="res://scripts/card.gd" id="1_wsghk"]
-[ext_resource type="Texture2D" uid="uid://bbd3n6tgq7r6l" path="res://images/323-3232939_pixel-art-sword-sword-pixel-art-transparent-hd-removebg-preview.png" id="2_d30lx"]
-[ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="3_onamy"]
+[ext_resource type="Script" uid="uid://dbnapl1anias8" path="res://scripts/card.gd" id="1_004jp"]
+[ext_resource type="Texture2D" uid="uid://c8kmm1a2vjy3y" path="res://images/image_2026-09-18_233811005-removebg-preview.png" id="2_lcx4g"]
+[ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="3_xf3x7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rggdb"]
 size = Vector2(240, 290)
@@ -15,19 +15,17 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 20
 
-[node name="swordsmanCard" type="Control" unique_id=793532619 groups=["cards"]]
+[node name="bomberCard2" type="Control" unique_id=793532619 groups=["cards"]]
 layout_mode = 3
 anchors_preset = 0
-size_flags_horizontal = 0
-size_flags_vertical = 4
 mouse_filter = 2
-script = ExtResource("1_wsghk")
-card_id = "swordsman"
+script = ExtResource("1_004jp")
+card_id = "bomber"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1838322728]
 position = Vector2(0, -20)
 scale = Vector2(0.4534005, 0.4390244)
-texture = ExtResource("2_d30lx")
+texture = ExtResource("2_lcx4g")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1268672156]
 collision_layer = 3
@@ -37,26 +35,26 @@ visible = false
 position = Vector2(0, 25)
 shape = SubResource("RectangleShape2D_rggdb")
 
-[node name="swordsmanLabel" type="Label" parent="." unique_id=269281261]
+[node name="bomberLabel" type="Label" parent="." unique_id=269281261]
 layout_mode = 0
 offset_left = -120.0
-offset_top = 80.0
-offset_right = 120.0
-offset_bottom = 130.0
+offset_top = 70.0
+offset_right = 118.0
+offset_bottom = 120.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_onamy")
-theme_override_font_sizes/font_size = 29
-text = "Swordsman 600"
-
-[node name="swordsmanLabel" type="Label" parent="swordsmanLabel" unique_id=1732538950]
-layout_mode = 0
-offset_top = 40.0
-offset_right = 238.0
-offset_bottom = 90.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_onamy")
+theme_override_fonts/font = ExtResource("3_xf3x7")
 theme_override_font_sizes/font_size = 38
-text = "Strength 17"
+text = "Bomber 500"
+
+[node name="bomberLabel" type="Label" parent="bomberLabel" unique_id=1732538950]
+layout_mode = 0
+offset_top = 50.0
+offset_right = 238.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_xf3x7")
+theme_override_font_sizes/font_size = 38
+text = "Strength 15"
 
 [node name="Panel" type="Panel" parent="." unique_id=685205190]
 z_index = -1

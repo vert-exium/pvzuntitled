@@ -10,7 +10,8 @@ var card_scenes = {
 	"bomber": preload("res://scenes/bomber_card_ui.tscn"),
 	"shielder": preload("res://scenes/shielder_card_ui.tscn"),
 	"generator": preload("res://scenes/generator_card_ui.tscn"),
-	"thrower": preload("res://scenes/thrower_card_ui.tscn")
+	"thrower": preload("res://scenes/thrower_card_ui.tscn"),
+	"swordsman": preload("res://scenes/swordsman_card_ui.tscn")
 }
 
 
@@ -89,3 +90,6 @@ func _on_bomber_button_pressed() -> void:
 
 func _on_shielder_button_pressed() -> void:
 	_select_card("shielder")
+
+func _on_swordsman_button_pressed() -> void:
+	_select_card("swordsman")
