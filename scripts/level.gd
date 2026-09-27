@@ -6,6 +6,8 @@ const SHOVEL_CURSOR = preload("res://assets/cursor.png")
 
 @export var cell_size: Vector2 = Vector2(160, 160)
 @export var grid_origin: Vector2 = Vector2(160, 245)
+@onready var grid_drawer: Node2D = $GridDrawer
+
 
 var grid_occupied: Dictionary = {}
 
@@ -18,7 +20,7 @@ var card_cooldowns: Dictionary = {}
 var generator_scene = preload("res://scenes/generator.tscn")
 var enemy_scene = preload("res://scenes/enemy.tscn")
 
-var currently_selected_card: String = "generator"
+var currently_selected_card: String = ""
 
 var plant_scenes: Dictionary = {
 	"generator": preload("res://scenes/generator.tscn"),
@@ -31,6 +33,7 @@ func _ready() -> void:
 	SignalBus.card_selected.connect(_on_card_selected)
 	SignalBus.request_enemy_spawn.connect(_on_request_enemy_spawn)
 	LevelManager.start_level()
+	grid_drawer.draw.connect(_draw_grid_overlay)
 
 func _on_card_selected(card_id: String) -> void:
 	currently_selected_card = card_id
@@ -41,6 +44,26 @@ func _on_card_selected(card_id: String) -> void:
 		Input.set_custom_mouse_cursor(SHOVEL_CURSOR, Input.CURSOR_ARROW)
 	else:
 		Input.set_custom_mouse_cursor(null)
+
+func _process(delta: float) -> void:
+	if is_instance_valid(grid_drawer):
+		grid_drawer.queue_redraw()
+
+
+func _draw_grid_overlay() -> void:
+	if currently_selected_card != "" and currently_selected_card != "shovel":
+		
+		for row in range(ROWS):
+			for col in range(COLS):
+				var grid_pos = Vector2i(col, row)
+				var cell_pos = grid_origin + Vector2(col * cell_size.x, row * cell_size.y)
+				var rect = Rect2(cell_pos, cell_size)
+				
+				if is_cell_empty(grid_pos):
+					grid_drawer.draw_rect(rect, Color(0.2, 0.9, 0.2, 0.3)) 
+				else:
+					grid_drawer.draw_rect(rect, Color(0.9, 0.0, 0.0, 0.5)) 
+					grid_drawer.draw_rect(rect, Color(1.0, 0.0, 0.0, 0.6), false, 3.0)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

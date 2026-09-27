@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var cc_label: Label = $topPanel/currentCard
 @onready var cooldown_label: Label = $topPanel/ccCooldown
 
-var currently_selected_card: String = "generator"
+var currently_selected_card: String = ""
 var level_script: Node = null
 
 var card_scenes = {
@@ -31,14 +31,22 @@ func _ready() -> void:
 				card_instance.card_clicked.connect(_select_card)
 
 			$CardContainer.add_child(card_instance)
-	#Update label constantly
+	_update_card_label("")
+
 func _process(_delta: float) -> void:
 	$topPanel/energyLabel.text = "ENERGY: " + str(RunState.current_energy)
 	_update_cooldown_label()
+
+
 func _select_card(card_id: String) -> void:
-	currently_selected_card = card_id
-	SignalBus.card_selected.emit(card_id)
-	_update_card_label(card_id)
+	if currently_selected_card == card_id:
+		currently_selected_card = ""
+		SignalBus.card_selected.emit("")
+		_update_card_label("")
+	else:
+		currently_selected_card = card_id
+		SignalBus.card_selected.emit(card_id)
+		_update_card_label(card_id)
 
 func _update_card_label(card_id: String) -> void:
 	if card_id == "shovel":
@@ -65,7 +73,7 @@ func _update_cooldown_label() -> void:
 		else:
 			cooldown_label.text = "Cooldown: Ready"
 
-# Button Pressed Callbacks
+
 func _on_generator_pressed() -> void:
 	_select_card("generator")
 

@@ -17,6 +17,7 @@ corner_radius_bottom_left = 20
 corner_detail = 20
 
 [node name="throwerCardUI" type="Control" unique_id=793532619 groups=["cards"]]
+custom_minimum_size = Vector2(145, 175)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 150.0
@@ -40,9 +41,9 @@ collision_layer = 3
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scalingnstuff/Area2D" unique_id=518466849]
-visible = false
 position = Vector2(0, 25)
 shape = SubResource("RectangleShape2D_rggdb")
+debug_color = Color(1, 0, 0, 0.39215687)
 
 [node name="throwerLabel" type="Label" parent="scalingnstuff" unique_id=269281261]
 offset_left = -104.132225

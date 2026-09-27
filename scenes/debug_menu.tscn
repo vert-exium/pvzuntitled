@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://ypu5ksnetr5d"]
+
+[ext_resource type="Script" uid="uid://ckfoj8crqips" path="res://scripts/debug_menu.gd" id="1_rta6x"]
+[ext_resource type="FontFile" uid="uid://bdnkrwic58f6h" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="2_03so6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8fr4"]
+bg_color = Color(0.16924527, 0.16924533, 0.16924518, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 9
+
+[node name="debugMenu" type="Node2D" unique_id=1512050982]
+script = ExtResource("1_rta6x")
+
+[node name="Control" type="Control" parent="." unique_id=545844980]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 980.0
+offset_bottom = 480.0
+
+[node name="mainPanel" type="Panel" parent="Control" unique_id=1486884744]
+layout_mode = 0
+offset_left = 140.0
+offset_right = 980.0
+offset_bottom = 480.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d8fr4")
+
+[node name="auxPanel" type="Panel" parent="Control" unique_id=944981601]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 70.0
+offset_right = 130.0
+offset_bottom = 110.0
+
+[node name="toggleButton" type="Button" parent="Control" unique_id=1843932852]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 120.0
+offset_right = 130.0
+offset_bottom = 360.0
+theme_override_font_sizes/font_size = 150
+text = "<"
+
+[node name="header" type="Label" parent="Control" unique_id=1685336182]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 10.0
+offset_right = 420.0
+offset_bottom = 59.0
+theme_override_colors/font_color = Color(1, 0.011764706, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_03so6")
+theme_override_font_sizes/font_size = 35
+text = "DEBUG MENU"
+
+[node name="energyButton" type="Button" parent="Control" unique_id=1830548383]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 70.0
+offset_right = 260.0
+offset_bottom = 120.0
+text = "SET ENERGY"
+
+[node name="energySpinBox" type="SpinBox" parent="Control" unique_id=2013530687]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 70.0
+offset_right = 360.0
+offset_bottom = 120.0
+max_value = 10000000.0
+step = 50.0
+
+[node name="devMenuLabel" type="Label" parent="Control" unique_id=1815498625]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 70.0
+offset_right = 130.0
+offset_bottom = 110.0
+text = "DEBUG MENU"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pathCheck" type="CheckButton" parent="Control" unique_id=940251867]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 120.0
+offset_right = 970.0
+offset_bottom = 160.0
+theme_override_font_sizes/font_size = 18
+text = "Show Paths"
+
+[node name="collisionCheck" type="CheckButton" parent="Control" unique_id=462849674]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 80.0
+offset_right = 970.0
+offset_bottom = 120.0
+theme_override_font_sizes/font_size = 18
+text = "Show Collisions"
+
+[connection signal="pressed" from="Control/toggleButton" to="." method="_on_toggle_button_pressed"]
+[connection signal="pressed" from="Control/energyButton" to="." method="_on_energy_button_pressed"]
+[connection signal="toggled" from="Control/pathCheck" to="." method="_on_path_check_toggled"]
+[connection signal="toggled" from="Control/collisionCheck" to="." method="_on_collision_check_toggled"]

@@ -32,7 +32,12 @@ func take_damage(amount: int) -> void:
 		queue_free()
 
 func fire_bomb() -> void:
-	var proj = projectile_scene.instantiate()
-	proj.global_position = global_position + Vector2(40, 0)
-	get_tree().current_scene.add_child(proj)
 	$animation.play("attack")
+
+
+func _process(delta: float) -> void:
+	if $animation.frame == 18:
+		$animation.frame = 19
+		var proj = projectile_scene.instantiate()
+		proj.global_position = global_position + Vector2(-43, -60)
+		get_tree().current_scene.add_child(proj)
