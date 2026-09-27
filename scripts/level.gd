@@ -109,7 +109,7 @@ func is_cell_empty(grid_pos: Vector2i) -> bool:
 		return false
 	return true
 
-# Helper function to check if a card is currently on cooldown
+# check if a card is currently on cooldown
 func is_card_on_cooldown(card_id: String) -> bool:
 	if not card_cooldowns.has(card_id):
 		return false
@@ -123,7 +123,7 @@ func is_card_on_cooldown(card_id: String) -> bool:
 	
 	return time_since_last_use < cooldown_duration_ms
 
-# Helper function to get remaining cooldown time in seconds (useful for UI)
+#get remaining cooldown time in seconds
 func get_remaining_cooldown(card_id: String) -> float:
 	if not card_cooldowns.has(card_id):
 		return 0.0

@@ -8,6 +8,7 @@ var is_wave_transitioning: bool = false
 # Scaling factors
 var speed_scale: float = 1.0
 var dmg_scale: float = 1.0
+var hp_scale: float = 1.0
 
 # Wave Spawning State
 var enemies_left_to_spawn: int = 0
@@ -23,9 +24,6 @@ func start_level() -> void:
 	current_wave = 0
 	is_game_active = true
 	is_wave_transitioning = false
-	print("========================================")
-	print("[DEBUG] Level Started!")
-	print("========================================")
 	_start_next_wave()
 
 func _start_next_wave() -> void:
@@ -48,13 +46,15 @@ func _start_next_wave() -> void:
 	active_enemies_count = 0
 	
 	# Stat scaling
-	speed_scale = 1.0 + (current_wave - 1) * 0.2
-	dmg_scale = 1.0 + (current_wave - 1) * 0.4
+	speed_scale = 1.0 + (current_wave - 1) * 0.4
+	dmg_scale = 1.0 + (current_wave - 1) * 0.2
+	hp_scale = 1.0 + (current_wave -1) * 0.2
 	
 	print("----------------------------------------")
 	print("[DEBUG] WAVE %d / %d STARTED" % [current_wave, max_waves])
 	print("[DEBUG] Total Enemies to Spawn: %d" % enemies_left_to_spawn)
 	print("[DEBUG] Speed Multiplier: %.2fx | Damage Multiplier: %.2fx" % [speed_scale, dmg_scale])
+	print("Health mult:" + str(hp_scale))
 	print("----------------------------------------")
 	
 	var spawn_delay = max(0.8, 3.0 - (current_wave * 0.2))
@@ -83,11 +83,6 @@ func enemy_defeated() -> void:
 
 	if enemies_left_to_spawn <= 0 and active_enemies_count == 0 and not is_wave_transitioning:
 		is_wave_transitioning = true  
-		
-		print("========================================")
-		print("[DEBUG] Wave %d CLEARED!" % current_wave)
-		print("[DEBUG] Starting 5-second cooldown before Wave %d..." % (current_wave + 1))
-		print("========================================")
 		
 		get_tree().create_timer(5.0).timeout.connect(_start_next_wave)
 

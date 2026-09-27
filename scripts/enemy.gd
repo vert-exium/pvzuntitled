@@ -17,6 +17,7 @@ func _ready() -> void:
 	base_speed = 30.0 * LevelManager.speed_scale
 	current_speed = base_speed
 	attack_damage = int(10 * LevelManager.dmg_scale)
+	health = int(100* LevelManager.hp_scale)
 func _process(delta: float) -> void:
 	position.x -= current_speed * delta
 	if current_speed < 1.0:
@@ -77,7 +78,6 @@ func check_next_target() -> void:
 			start_attacking(area)
 			return
 			
-	# Resume walking at the scaled base_speed
 	current_target = null
-	current_speed = base_speed  # Uses the scaled speed calculated in _ready()
+	current_speed = base_speed 
 	attack_timer.stop()

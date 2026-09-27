@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bfjkxw0gtbmpx" path="res://scripts/game_ui.gd" id="1_rns2u"]
 [ext_resource type="FontFile" uid="uid://c32sd0jmdtuqa" path="res://fonts/Elms_Sans/static/ElmsSans-Light.ttf" id="2_djwj0"]
+[ext_resource type="PackedScene" uid="uid://ccab64tsfme7y" path="res://scenes/shovel_card_ui.tscn" id="3_u001w"]
 
 [node name="GameUI" type="CanvasLayer" unique_id=273287525]
 script = ExtResource("1_rns2u")
@@ -14,8 +15,9 @@ offset_bottom = 210.0
 
 [node name="energyLabel" type="Label" parent="topPanel" unique_id=1459207610]
 layout_mode = 0
+offset_top = -30.0
 offset_right = 420.0
-offset_bottom = 107.0
+offset_bottom = 77.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_djwj0")
 theme_override_font_sizes/font_size = 40
@@ -48,6 +50,9 @@ custom_minimum_size = Vector2(400, 0)
 custom_maximum_size = Vector2(2000, -1)
 offset_left = 470.0
 offset_top = 30.0
-offset_right = 1620.0
+offset_right = 1560.0
 offset_bottom = 210.0
 theme_override_constants/separation = 10
+
+[node name="shovel_card_UI" parent="CardContainer" unique_id=793532619 instance=ExtResource("3_u001w")]
+layout_mode = 2

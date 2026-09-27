@@ -1,7 +1,7 @@
 extends Node
 
 var current_energy: int = 50
-var shovel_cost: int = 5.0
+var shovel_cost: int = 20
 
 func _ready() -> void:
 	var passive_timer = Timer.new()
@@ -25,4 +25,4 @@ func try_use_shovel() -> bool:
 	return try_spend_energy(shovel_cost)
 
 func _on_passive_energy_tick() -> void:
-	add_energy(500)
+	add_energy(10)
