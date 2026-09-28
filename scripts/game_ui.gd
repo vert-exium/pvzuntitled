@@ -52,6 +52,8 @@ func _select_card(card_id: String) -> void:
 func _update_card_label(card_id: String) -> void:
 	if card_id == "shovel":
 		cc_label.text = "Card: Shovel"
+	elif card_id == "":
+		cc_label.text = "Card: None"
 	else:
 		var card_data = CardDatabase.get_card(card_id)
 		if not card_data.is_empty():
@@ -76,20 +78,24 @@ func _update_cooldown_label() -> void:
 
 
 func _on_generator_pressed() -> void:
-	_select_card("generator")
+	pass
+	#_select_card("generator")
 
 func _on_thrower_pressed() -> void:
-	_select_card("thrower")
+	pass
+	#_select_card("thrower")
 
-func _on_shovel_pressed() -> void:
+func _on_shovel_pressed(_card_id: String = "shovel") -> void:
 	_select_card("shovel")
 
 func _on_bomber_button_pressed() -> void:
-	_select_card("bomber")
-	print("Bomber selected")
+	pass
+	#_select_card("bomber")
 
 func _on_shielder_button_pressed() -> void:
-	_select_card("shielder")
+	pass
+	#_select_card("shielder")
 
 func _on_swordsman_button_pressed() -> void:
-	_select_card("swordsman")
+	pass
+	#_select_card("swordsman")

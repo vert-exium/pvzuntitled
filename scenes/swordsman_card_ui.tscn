@@ -22,6 +22,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 150.0
 offset_bottom = 180.0
+pivot_offset = Vector2(73, 87.5)
 size_flags_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_3ws80")

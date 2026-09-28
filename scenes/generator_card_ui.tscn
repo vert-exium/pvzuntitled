@@ -22,6 +22,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 145.0
 offset_bottom = 175.0
+pivot_offset = Vector2(73.5, 87.5)
 size_flags_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_kgenu")

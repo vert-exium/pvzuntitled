@@ -25,4 +25,5 @@ func _on_area_entered(area: Area2D) -> void:
 func explode():
 	var explosion_instance = explosionScene.instantiate()
 	explosion_instance.global_position = global_position
-	get_parent().add_child(explosion_instance)
+	get_parent().add_child.call_deferred(explosion_instance)
+	queue_free()
