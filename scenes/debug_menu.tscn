@@ -105,7 +105,18 @@ offset_bottom = 120.0
 theme_override_font_sizes/font_size = 18
 text = "Show Collisions"
 
+[node name="cooldownCheck" type="CheckButton" parent="Control" unique_id=717222584]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 160.0
+offset_right = 968.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 18
+text = "No placement cooldowns"
+
 [connection signal="pressed" from="Control/toggleButton" to="." method="_on_toggle_button_pressed"]
 [connection signal="pressed" from="Control/energyButton" to="." method="_on_energy_button_pressed"]
 [connection signal="toggled" from="Control/pathCheck" to="." method="_on_path_check_toggled"]
 [connection signal="toggled" from="Control/collisionCheck" to="." method="_on_collision_check_toggled"]
+[connection signal="pressed" from="Control/cooldownCheck" to="." method="_on_cooldown_check_pressed"]
+[connection signal="toggled" from="Control/cooldownCheck" to="." method="_on_cooldown_check_toggled"]

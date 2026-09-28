@@ -7,7 +7,7 @@ const SHOVEL_CURSOR = preload("res://assets/cursor.png")
 @export var cell_size: Vector2 = Vector2(160, 160)
 @export var grid_origin: Vector2 = Vector2(160, 245)
 @onready var grid_drawer: Node2D = $GridDrawer
-
+@onready var debug_menu = get_tree().get_first_node_in_group("debug_menu")
 
 var grid_occupied: Dictionary = {}
 
@@ -109,20 +109,23 @@ func is_cell_empty(grid_pos: Vector2i) -> bool:
 		return false
 	return true
 
-# check if a card is currently on cooldown
 func is_card_on_cooldown(card_id: String) -> bool:
+	print("Grid sees noCooldowns: ", debug_menu.noCooldowns)
+
+	if debug_menu.noCooldowns:
+		return false
+
 	if not card_cooldowns.has(card_id):
 		return false
-		
+
 	var card_data = CardDatabase.get_card(card_id)
 	if card_data.is_empty():
 		return false
 
 	var cooldown_duration_ms = card_data["cooldown"] * 1000.0
 	var time_since_last_use = Time.get_ticks_msec() - card_cooldowns[card_id]
-	
-	return time_since_last_use < cooldown_duration_ms
 
+	return time_since_last_use < cooldown_duration_ms
 #get remaining cooldown time in seconds
 func get_remaining_cooldown(card_id: String) -> float:
 	if not card_cooldowns.has(card_id):

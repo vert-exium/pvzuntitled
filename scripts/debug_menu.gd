@@ -2,13 +2,14 @@ extends Node2D
 
 var open: bool = false
 var initialPosX: float = 0.0
-
+var noCooldowns: bool = false
 func _ready() -> void:
 	initialPosX = position.x
-	
+	add_to_group("debug_menu")
 
 func _on_toggle_button_pressed() -> void:
 	var pos_tween = create_tween()
+	
 	
 	if open:
 		open = false
@@ -46,3 +47,14 @@ func _force_redraw_of_type(node: Node, target_class: String) -> void:
 	
 	for child in node.get_children():
 		_force_redraw_of_type(child, target_class)
+
+
+func _on_cooldown_check_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		print("NO COOLDOWNS")
+		noCooldowns = true
+		print(noCooldowns)
+	else:
+		print("YESCOOLDOWNS")
+		noCooldowns = false
+		print(noCooldowns)
