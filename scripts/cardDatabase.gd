@@ -1,6 +1,16 @@
 extends Node
 
-# Dictionary containing all cards:
+# Dictionary containing stats & card info. 
+# Can contain custom info if needed, but typically contains:
+# Internal name (header):
+#      - Display name
+#      - Type (generator, shooter (long range attacks), or close_range)
+#      - Cost (energy)
+#      - Cooldown (in seconds)
+#      - Health
+#      - Fire/tick rate
+#      - It can also include custom values, such as energy yield, knockback, etc.
+#        these are just the standard/most common values stored.
 
 const CARDS = {
 	"generator": {
@@ -54,6 +64,7 @@ const CARDS = {
 		"knockback": 20
 	}
 }
+
 
 func get_card(card_id: String) -> Dictionary:
 	if CARDS.has(card_id):

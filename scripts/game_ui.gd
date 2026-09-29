@@ -75,27 +75,3 @@ func _update_cooldown_label() -> void:
 			cooldown_label.text = "Cooldown: %.1fs" % remaining
 		else:
 			cooldown_label.text = "Cooldown: Ready"
-
-
-func _on_generator_pressed() -> void:
-	pass
-	#_select_card("generator")
-
-func _on_thrower_pressed() -> void:
-	pass
-	#_select_card("thrower")
-
-func _on_shovel_pressed(_card_id: String = "shovel") -> void:
-	_select_card("shovel")
-
-func _on_bomber_button_pressed() -> void:
-	pass
-	#_select_card("bomber")
-
-func _on_shielder_button_pressed() -> void:
-	pass
-	#_select_card("shielder")
-
-func _on_swordsman_button_pressed() -> void:
-	pass
-	#_select_card("swordsman")
