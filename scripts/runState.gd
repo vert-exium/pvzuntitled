@@ -5,7 +5,6 @@ var shovel_cost: int = 20
 
 func _ready() -> void:
 	var passive_timer = Timer.new()
-	passive_timer.wait_time
 	passive_timer.autostart = true
 	passive_timer.timeout.connect(_on_passive_energy_tick)
 	add_child(passive_timer)
