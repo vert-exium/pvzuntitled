@@ -1,22 +1,73 @@
 [gd_scene format=3 uid="uid://b5cvcwmomt8f1"]
 
 [ext_resource type="Script" uid="uid://birvsx4tqah27" path="res://scripts/swordsman.gd" id="1_bac06"]
+[ext_resource type="Texture2D" uid="uid://be06sxw0r0f4o" path="res://animations/swordsman.png" id="2_j1nbv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jsi4"]
-size = Vector2(100, 100)
+size = Vector2(140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mje0"]
+atlas = ExtResource("2_j1nbv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7u1p"]
+atlas = ExtResource("2_j1nbv")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1psh"]
+atlas = ExtResource("2_j1nbv")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtonm"]
+atlas = ExtResource("2_j1nbv")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xauwr"]
+atlas = ExtResource("2_j1nbv")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vopk"]
+atlas = ExtResource("2_j1nbv")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plnse"]
+atlas = ExtResource("2_j1nbv")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0jsi4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mje0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7u1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1psh")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_jtonm")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_xauwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vopk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plnse")
+}],
+"loop": 0,
+"name": &"sword swing",
+"speed": 12.0
+}]
 
 [node name="swordsman" type="Area2D" unique_id=2119020513 groups=["unit"]]
 script = ExtResource("1_bac06")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1200188105]
 shape = SubResource("RectangleShape2D_0jsi4")
-
-[node name="ColorRect" type="ColorRect" parent="CollisionShape2D" unique_id=509789206]
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 50.0
-offset_bottom = 50.0
-color = Color(0, 0.5411765, 1, 1)
 
 [node name="attackTimer" type="Timer" parent="." unique_id=1591901015]
 
@@ -25,5 +76,11 @@ target_position = Vector2(180, 0)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1284796148]
+position = Vector2(1.001358e-05, 1.001358e-05)
+scale = Vector2(2.1875, 2.1875)
+sprite_frames = SubResource("SpriteFrames_0jsi4")
+animation = &"sword swing"
 
 [connection signal="timeout" from="attackTimer" to="." method="_on_attack_timer_timeout"]

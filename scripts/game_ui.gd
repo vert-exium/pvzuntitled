@@ -62,7 +62,8 @@ func _update_card_label(card_id: String) -> void:
 			cc_label.text = "Card: None"
 
 func _update_cooldown_label() -> void:
-	if currently_selected_card == "shovel" or currently_selected_card == "":
+	# Immediately show Ready if noCooldowns debug flag is enabled
+	if DebugMenu.noCooldowns or currently_selected_card == "shovel" or currently_selected_card == "":
 		cooldown_label.text = "Cooldown: Ready"
 		return
 

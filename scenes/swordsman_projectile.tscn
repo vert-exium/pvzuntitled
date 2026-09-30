@@ -1,9 +1,109 @@
 [gd_scene format=3 uid="uid://dhdpnupi5mrhx"]
 
 [ext_resource type="Script" uid="uid://cstqkumc8b17u" path="res://scripts/swordsman_projectile.gd" id="1_c6s00"]
+[ext_resource type="Texture2D" uid="uid://bpi1oplqhpj4c" path="res://animations/swordslashtop-bottom.png" id="2_0ro01"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jsi4"]
-size = Vector2(120, 40)
+size = Vector2(150, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cngpo"]
+atlas = ExtResource("2_0ro01")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttc55"]
+atlas = ExtResource("2_0ro01")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45eca"]
+atlas = ExtResource("2_0ro01")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tiip"]
+atlas = ExtResource("2_0ro01")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8ohu"]
+atlas = ExtResource("2_0ro01")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubv3g"]
+atlas = ExtResource("2_0ro01")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5443s"]
+atlas = ExtResource("2_0ro01")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7eurq"]
+atlas = ExtResource("2_0ro01")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxxod"]
+atlas = ExtResource("2_0ro01")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ec6s"]
+atlas = ExtResource("2_0ro01")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvqkx"]
+atlas = ExtResource("2_0ro01")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wtjm"]
+atlas = ExtResource("2_0ro01")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88oua"]
+atlas = ExtResource("2_0ro01")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0jsi4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cngpo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttc55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45eca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tiip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8ohu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubv3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5443s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7eurq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxxod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ec6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvqkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wtjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88oua")
+}],
+"loop": 0,
+"name": &"swordslash",
+"speed": 30.0
+}]
 
 [node name="swordsmanProjectile" type="Area2D" unique_id=596147162]
 collision_layer = 0
@@ -11,7 +111,16 @@ collision_mask = 2
 script = ExtResource("1_c6s00")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=470909361]
-position = Vector2(60, 0)
+position = Vector2(25, 0)
 shape = SubResource("RectangleShape2D_0jsi4")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=549227034]
+position = Vector2(30, -10)
+scale = Vector2(2.3925781, 2.3730469)
+sprite_frames = SubResource("SpriteFrames_0jsi4")
+animation = &"swordslash"
+frame = 12
+frame_progress = 1.0
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

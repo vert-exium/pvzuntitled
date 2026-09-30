@@ -25,6 +25,7 @@ var card_cooldowns: Dictionary = {}
 # Define the nodes that contain plant and enemy scenes.
 @onready var plants_container: Node2D = $Plants
 @onready var enemies_container: Node2D = $Enemies
+var noCooldowns = DebugMenu.noCooldowns
 
 # Preloads the generator and enemy scenes (not sure if these line are necessary)
 var generator_scene = preload("res://scenes/generator.tscn")
@@ -73,13 +74,10 @@ func _on_card_selected(card_id: String) -> void:
 			grid_tween.tween_property(grid_drawer, "modulate:a", 1.0, 0.25).set_trans(Tween.TRANS_SINE)
 		else:
 			grid_tween.tween_property(grid_drawer, "modulate:a", 0.0, 0.2).set_trans(Tween.TRANS_SINE)
-		
-		
 
 func _process(delta: float) -> void:
 	if is_instance_valid(grid_drawer):
 		grid_drawer.queue_redraw()
-
 
 func _draw_grid_overlay() -> void:
 	for row in range(ROWS):
@@ -144,6 +142,9 @@ func is_cell_empty(grid_pos: Vector2i) -> bool:
 
 # Checks if a card is currently on cooldown
 func is_card_on_cooldown(card_id: String) -> bool:
+	if DebugMenu.noCooldowns or noCooldowns:
+		return false
+
 	if not card_cooldowns.has(card_id):
 		return false
 		
@@ -158,6 +159,9 @@ func is_card_on_cooldown(card_id: String) -> bool:
 
 # Gets the remaining cooldown time in seconds
 func get_remaining_cooldown(card_id: String) -> float:
+	if DebugMenu.noCooldowns or noCooldowns:
+		return 0.0
+
 	if not card_cooldowns.has(card_id):
 		return 0.0
 		
@@ -204,7 +208,6 @@ func place_plant(card_id: String, grid_pos: Vector2i) -> bool:
 	print(card_id, " planted successfully. Cooldown started.")
 	return true
 
-
 # Function to spawn enemies. 
 func spawn_enemy(lane_index: int) -> void:
 	if lane_index < 0 or lane_index >= ROWS:
@@ -218,8 +221,6 @@ func spawn_enemy(lane_index: int) -> void:
 	
 	enemy.position = Vector2(spawn_x, spawn_y)
 	enemies_container.add_child(enemy)
-
-
 
 # Generates a random lane number and 
 # requests for an enemy to be spawned

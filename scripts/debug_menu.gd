@@ -51,10 +51,6 @@ func _force_redraw_of_type(node: Node, target_class: String) -> void:
 
 func _on_cooldown_check_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		print("NO COOLDOWNS")
 		noCooldowns = true
-		print(noCooldowns)
 	else:
-		print("YESCOOLDOWNS")
 		noCooldowns = false
-		print(noCooldowns)
