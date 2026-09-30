@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://pltrcl2l5tp7" path="res://animations/pitcher.png" id="2_ca04e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8fr4"]
-size = Vector2(140, 140)
+size = Vector2(100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e5k02"]
 atlas = ExtResource("2_ca04e")

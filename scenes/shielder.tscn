@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bjqe0hidov0ad" path="res://animations/shielder.png" id="2_g3k3b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jsi4"]
-size = Vector2(120, 120)
+size = Vector2(100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u1c4i"]
 atlas = ExtResource("2_g3k3b")

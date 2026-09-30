@@ -56,5 +56,6 @@ theme_override_constants/separation = 30
 
 [node name="shovel_card_UI" parent="CardContainer" unique_id=793532619 instance=ExtResource("3_u001w")]
 layout_mode = 2
+card_id = "shovel"
 
-[connection signal="card_clicked" from="CardContainer/shovel_card_UI" to="." method="_on_shovel_pressed"]
+[connection signal="card_clicked" from="CardContainer/shovel_card_UI" to="." method="_select_card"]

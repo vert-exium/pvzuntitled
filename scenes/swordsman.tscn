@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://birvsx4tqah27" path="res://scripts/swordsman.gd" id="1_bac06"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jsi4"]
-size = Vector2(120, 120)
+size = Vector2(100, 100)
 
 [node name="swordsman" type="Area2D" unique_id=2119020513 groups=["unit"]]
 script = ExtResource("1_bac06")

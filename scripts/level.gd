@@ -13,6 +13,7 @@ const SHOVEL_CURSOR = preload("res://assets/cursor.png")
 @export var grid_origin: Vector2 = Vector2(160, 245)
 @onready var grid_drawer: Node2D = $GridDrawer
 
+var grid_tween: Tween
 
 # Creates a dictionary to track which grids
 # are free and which are occupied.
@@ -47,18 +48,33 @@ func _ready() -> void:
 	SignalBus.request_enemy_spawn.connect(_on_request_enemy_spawn)
 	LevelManager.start_level()
 	grid_drawer.draw.connect(_draw_grid_overlay)
+	if grid_drawer:
+		grid_drawer.modulate.a = 0.0
 
 # Stores the currently selected card, and prints a debug message.
 func _on_card_selected(card_id: String) -> void:
 	currently_selected_card = card_id
-	print("Equipped ", currently_selected_card)
+	print("Equipped " + currently_selected_card)
 	
-	# If the shovel is equipped, sets a custom mouse cursor to the shovel. 
-	# If not, resets it to the default cursor.
 	if currently_selected_card == "shovel":
 		Input.set_custom_mouse_cursor(SHOVEL_CURSOR, Input.CURSOR_ARROW)
 	else:
 		Input.set_custom_mouse_cursor(null)
+	
+	if grid_drawer != null:
+		grid_drawer.queue_redraw()
+		
+		if grid_tween and grid_tween.is_running():
+			grid_tween.kill()
+		
+		grid_tween = create_tween()
+		
+		if currently_selected_card != "" and currently_selected_card != "shovel":
+			grid_tween.tween_property(grid_drawer, "modulate:a", 1.0, 0.25).set_trans(Tween.TRANS_SINE)
+		else:
+			grid_tween.tween_property(grid_drawer, "modulate:a", 0.0, 0.2).set_trans(Tween.TRANS_SINE)
+		
+		
 
 func _process(delta: float) -> void:
 	if is_instance_valid(grid_drawer):
@@ -66,19 +82,17 @@ func _process(delta: float) -> void:
 
 
 func _draw_grid_overlay() -> void:
-	if currently_selected_card != "" and currently_selected_card != "shovel":
-		
-		for row in range(ROWS):
-			for col in range(COLS):
-				var grid_pos = Vector2i(col, row)
-				var cell_pos = grid_origin + Vector2(col * cell_size.x, row * cell_size.y)
-				var rect = Rect2(cell_pos, cell_size)
-				
-				if is_cell_empty(grid_pos):
-					grid_drawer.draw_rect(rect, Color(0.2, 0.9, 0.2, 0.3)) 
-				else:
-					grid_drawer.draw_rect(rect, Color(0.9, 0.0, 0.0, 0.5)) 
-					grid_drawer.draw_rect(rect, Color(1.0, 0.0, 0.0, 0.6), false, 3.0)
+	for row in range(ROWS):
+		for col in range(COLS):
+			var grid_pos = Vector2i(col, row)
+			var cell_pos = grid_origin + Vector2(col * cell_size.x, row * cell_size.y)
+			var rect = Rect2(cell_pos, cell_size)
+			
+			if is_cell_empty(grid_pos):
+				grid_drawer.draw_rect(rect, Color(0.2, 0.9, 0.2, 0.3))
+			else:
+				grid_drawer.draw_rect(rect, Color(0.9, 0.0, 0.0, 0.5))
+				grid_drawer.draw_rect(rect, Color(1.0, 0.0, 0.0, 0.6), false, 3.0)
 
 # If there is an input, if it is a mouse click, gets the
 #  position and translates it to the grid spaces. 
@@ -157,23 +171,26 @@ func get_remaining_cooldown(card_id: String) -> float:
 	
 	return max(0.0, remaining_ms / 1000.0)
 
+# Function to place cards. Asks for the ID of the card that 
+# needs to be placed and the grid position
 func place_plant(card_id: String, grid_pos: Vector2i) -> bool:
-	var card_data = CardDatabase.get_card(card_id)
 	
+	# Loads the requested card data and checks if it's valid
+	var card_data = CardDatabase.get_card(card_id)
 	if card_data.is_empty():
 		return false
 		
-	# COOLDOWN CHECK
+	# Checks if the card is on cooldown
 	if is_card_on_cooldown(card_id):
 		print(card_id, " is on cooldown! Remaining: ", get_remaining_cooldown(card_id), "s")
 		return false
 	
-	# ENERGY CHECK
+	# Checks if the user has enough energy
 	if not RunState.try_spend_energy(card_data["cost"]):
 		print("Not enough energy!")
 		return false
 	
-	# SPAWN PLANT
+	# Spawns the card, and sets the necessary info
 	var scene_to_spawn = plant_scenes[card_id]
 	var plant = scene_to_spawn.instantiate()
 	
@@ -182,12 +199,13 @@ func place_plant(card_id: String, grid_pos: Vector2i) -> bool:
 	
 	grid_occupied[grid_pos] = plant
 	
-	# RECORD COOLDOWN TIMESTAMP
+	# Records the timestamp so we can calculate the cooldown.
 	card_cooldowns[card_id] = Time.get_ticks_msec()
 	print(card_id, " planted successfully. Cooldown started.")
 	return true
 
 
+# Function to spawn enemies. 
 func spawn_enemy(lane_index: int) -> void:
 	if lane_index < 0 or lane_index >= ROWS:
 		return
@@ -203,7 +221,8 @@ func spawn_enemy(lane_index: int) -> void:
 
 
 
-
+# Generates a random lane number and 
+# requests for an enemy to be spawned
 func _on_request_enemy_spawn() -> void:
 	var random_lane = randi() % ROWS
 	spawn_enemy(random_lane)

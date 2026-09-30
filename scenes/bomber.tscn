@@ -236,7 +236,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jsi4"]
-size = Vector2(140, 140)
+size = Vector2(100, 100)
 
 [node name="bomber" type="Area2D" unique_id=1524997936 groups=["unit"]]
 script = ExtResource("1_m36wj")

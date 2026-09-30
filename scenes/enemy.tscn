@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://be1ysn8dma4ni" path="res://animations/robot.png" id="2_md0e3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8fr4"]
-size = Vector2(120, 120)
+size = Vector2(30, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ra3w"]
 atlas = ExtResource("2_md0e3")
@@ -40,6 +40,7 @@ collision_layer = 2
 script = ExtResource("1_7p1mj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1246642749]
+position = Vector2(-45, 0)
 shape = SubResource("RectangleShape2D_d8fr4")
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=292950577]

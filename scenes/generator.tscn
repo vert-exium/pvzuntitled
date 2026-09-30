@@ -53,6 +53,9 @@ animations = [{
 "speed": 18.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8fr4"]
+size = Vector2(100, 100)
+
 [node name="generator" type="Area2D" unique_id=796414673 groups=["unit"]]
 collision_mask = 0
 script = ExtResource("1_5yxne")
@@ -64,3 +67,6 @@ sprite_frames = SubResource("SpriteFrames_rggdb")
 animation = &"generator"
 frame = 2
 frame_progress = 0.43656436
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1790934906]
+shape = SubResource("RectangleShape2D_d8fr4")

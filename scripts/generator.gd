@@ -3,12 +3,14 @@ extends Area2D
 # Loads timer node
 @onready var timer = $Timer
 
+var health: int = 0
 
 # Loads the stats for the generator card, connects the timer,
 # configures it, and starts the animation.
 func _ready() -> void:
 	var stats = CardDatabase.get_card("generator")
 	timer.wait_time = stats["tick_rate"]
+	health = stats["health"]
 	timer.timeout.connect(_on_timer_timeout)
 	timer.start()
 	$generatorSprite.play("generator")
@@ -48,3 +50,19 @@ func spawn_floating_text(amount: int) -> void:
 	tween.tween_property(popup, "position", popup.position + Vector2(0, -50), 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(popup, "modulate:a", 0.0, 1.5)
 	tween.chain().tween_callback(popup.queue_free)
+
+
+
+
+
+
+
+# Takes damage, applies a red glow effect, and despawns the unit if health is less than zero.
+func take_damage(amount: int) -> void:
+	health -= amount
+	
+	modulate = Color(1, 0.3, 0.3, 0.9)
+	create_tween().tween_property(self, "modulate", Color.WHITE, 0.15)
+	
+	if health <= 0:
+		queue_free()
