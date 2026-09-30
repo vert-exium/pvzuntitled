@@ -78,10 +78,10 @@ scale = Vector2(0.12083337, 0.12291671)
 texture = ExtResource("3_1ts7l")
 
 [node name="TextureButton" type="TextureButton" parent="scalingnstuff" unique_id=1373509562]
-offset_left = -115.70248
-offset_top = -115.702484
-offset_right = 124.29752
-offset_bottom = 174.29752
+offset_left = -120.661156
+offset_top = -120.66115
+offset_right = 119.338844
+offset_bottom = 169.33885
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

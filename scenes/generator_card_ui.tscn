@@ -30,7 +30,6 @@ card_id = "generator"
 
 [node name="scalingnstuff" type="Node2D" parent="." unique_id=632514743]
 scale = Vector2(0.6, 0.6)
-metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="scalingnstuff" unique_id=1838322728]
 position = Vector2(119.008255, 98.7171)
