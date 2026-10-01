@@ -10,6 +10,8 @@ var is_hovering_on_card
 var displayed_strength: float = 0
 var card_preview
 var card_placeholder
+var remaining_strength = 0
+var energy_bonus = 0
 
 var max_placed_z_index: int = 1
 
@@ -39,7 +41,6 @@ const cardStrengths = {
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
-	calculate_total_strength()
 
 
 func _process(delta: float) -> void:
@@ -343,29 +344,43 @@ func get_card_with_highest_z_index(cards):
 	return highest_z_card
 
 
-func calculate_total_strength():
-	var total_strength = 0
-	var preview_container = $"../cardLoadoutPreview"
+func calculate_total_strength() -> int:
 
+	var total_strength: int = 0
+	var preview_container = $"../cardLoadoutPreview"
 	if not preview_container:
+		energy_bonus = 0
 		return 0
 
 	for child in preview_container.get_children():
 		var strength = child.get("strength")
-
 		if strength != null and child.is_in_group("cards"):
 			total_strength += strength
 
 	label_effects(total_strength)
 
 	var tween = create_tween()
-
 	tween.tween_method(
 		update_strength_number,
 		displayed_strength,
 		total_strength,
 		0.5
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+	if total_strength > 0:
+		print("Strength is greater than 0, DO energy bonus calculation")
+		var remaining_strength: int = 50 - total_strength
+		print("Remaining strength: " + str(remaining_strength))
+		
+		# Make sure x is a float!
+		var x: float = float(max(0, remaining_strength))
+		
+		# Assign directly to class variable (no 'var' keyword here)
+		energy_bonus = int(pow(x / 10.0, 1.75) * 100.0)
+		print("Energy bonus: " + str(energy_bonus))
+		RunState.current_energy += energy_bonus
+	else:
+		energy_bonus = 0
 
 	return total_strength
 

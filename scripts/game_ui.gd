@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var cc_label: Label = $topPanel/currentCard
 @onready var cooldown_label: Label = $topPanel/ccCooldown
-
+var current_energy = RunState.current_energy
 var currently_selected_card: String = ""
 var level_script: Node = null
 
@@ -18,6 +18,7 @@ var card_scenes = {
 
 
 func _ready() -> void:
+	print(str(current_energy))
 	await get_tree().process_frame 
 	for child in $CardContainer.get_children():
 		print("Card: ", child.name, " | Size: ", child.size, " | Pos: ", child.position)

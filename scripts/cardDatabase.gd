@@ -57,9 +57,6 @@ const CARDS = {
 
 func get_card(card_id: String) -> Dictionary:
 	if CARDS.has(card_id):
-		var data = CARDS[card_id].duplicate()
-		if DebugMenu.noCooldowns:
-			data["cooldown"] = 0.0
-		return data
+		return CARDS[card_id]
 	print("card not found: ", card_id)
 	return {}

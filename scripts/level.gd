@@ -25,7 +25,6 @@ var card_cooldowns: Dictionary = {}
 # Define the nodes that contain plant and enemy scenes.
 @onready var plants_container: Node2D = $Plants
 @onready var enemies_container: Node2D = $Enemies
-var noCooldowns = DebugMenu.noCooldowns
 
 # Preloads the generator and enemy scenes (not sure if these line are necessary)
 var generator_scene = preload("res://scenes/generator.tscn")
@@ -142,7 +141,7 @@ func is_cell_empty(grid_pos: Vector2i) -> bool:
 
 # Checks if a card is currently on cooldown
 func is_card_on_cooldown(card_id: String) -> bool:
-	if DebugMenu.noCooldowns or noCooldowns:
+	if DebugMenu.noCooldowns:
 		return false
 
 	if not card_cooldowns.has(card_id):
@@ -159,7 +158,7 @@ func is_card_on_cooldown(card_id: String) -> bool:
 
 # Gets the remaining cooldown time in seconds
 func get_remaining_cooldown(card_id: String) -> float:
-	if DebugMenu.noCooldowns or noCooldowns:
+	if DebugMenu.noCooldowns:
 		return 0.0
 
 	if not card_cooldowns.has(card_id):
@@ -178,7 +177,6 @@ func get_remaining_cooldown(card_id: String) -> float:
 # Function to place cards. Asks for the ID of the card that 
 # needs to be placed and the grid position
 func place_plant(card_id: String, grid_pos: Vector2i) -> bool:
-	
 	# Loads the requested card data and checks if it's valid
 	var card_data = CardDatabase.get_card(card_id)
 	if card_data.is_empty():
@@ -203,9 +201,14 @@ func place_plant(card_id: String, grid_pos: Vector2i) -> bool:
 	
 	grid_occupied[grid_pos] = plant
 	
-	# Records the timestamp so we can calculate the cooldown.
-	card_cooldowns[card_id] = Time.get_ticks_msec()
-	print(card_id, " planted successfully. Cooldown started.")
+	# Only records timestamp if DebugMenu.noCooldowns is false
+	if not DebugMenu.noCooldowns:
+		card_cooldowns[card_id] = Time.get_ticks_msec()
+		print(card_id, " planted successfully. Cooldown started.")
+	else:
+		card_cooldowns.erase(card_id)
+		print(card_id, " planted successfully. (No Cooldown)")
+		
 	return true
 
 # Function to spawn enemies. 

@@ -27,6 +27,7 @@ LevelManager="*uid://c7ds5or0gf0a7"
 RunState="*uid://dwqgoonpd784m"
 SignalBus="*uid://dyuwv3jg2wlpn"
 DebugMenu="*uid://ckfoj8crqips"
+CardManager="*uid://dnhvbs1qie68g"
 
 [display]
 
