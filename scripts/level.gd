@@ -69,7 +69,7 @@ func _on_card_selected(card_id: String) -> void:
 		
 		grid_tween = create_tween()
 		
-		if currently_selected_card != "" and currently_selected_card != "shovel":
+		if currently_selected_card != "":
 			grid_tween.tween_property(grid_drawer, "modulate:a", 1.0, 0.25).set_trans(Tween.TRANS_SINE)
 		else:
 			grid_tween.tween_property(grid_drawer, "modulate:a", 0.0, 0.2).set_trans(Tween.TRANS_SINE)
@@ -79,17 +79,29 @@ func _process(delta: float) -> void:
 		grid_drawer.queue_redraw()
 
 func _draw_grid_overlay() -> void:
+	var is_shovel = (currently_selected_card == "shovel")
+	
 	for row in range(ROWS):
 		for col in range(COLS):
 			var grid_pos = Vector2i(col, row)
 			var cell_pos = grid_origin + Vector2(col * cell_size.x, row * cell_size.y)
 			var rect = Rect2(cell_pos, cell_size)
+			var empty = is_cell_empty(grid_pos)
 			
-			if is_cell_empty(grid_pos):
-				grid_drawer.draw_rect(rect, Color(0.2, 0.9, 0.2, 0.3))
+			if is_shovel:
+				if empty:
+					grid_drawer.draw_rect(rect, Color(0.9, 0.0, 0.0, 0.3))
+				else:
+					grid_drawer.draw_rect(rect, Color(0.2, 0.9, 0.2, 0.5))
+					grid_drawer.draw_rect(rect, Color(0.2, 1.0, 0.2, 0.8), false, 3.0)
 			else:
-				grid_drawer.draw_rect(rect, Color(0.9, 0.0, 0.0, 0.5))
-				grid_drawer.draw_rect(rect, Color(1.0, 0.0, 0.0, 0.6), false, 3.0)
+				if empty:
+					grid_drawer.draw_rect(rect, Color(0.2, 0.9, 0.2, 0.3))
+				else:
+					grid_drawer.draw_rect(rect, Color(0.9, 0.0, 0.0, 0.5))
+					grid_drawer.draw_rect(rect, Color(1.0, 0.0, 0.0, 0.6), false, 3.0)
+
+
 
 # If there is an input, if it is a mouse click, gets the
 #  position and translates it to the grid spaces. 

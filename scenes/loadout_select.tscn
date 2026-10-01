@@ -80,13 +80,13 @@ offset_top = 850.0
 offset_right = 1080.0
 offset_bottom = 850.0
 
-[node name="cardLoadoutPreview" type="HBoxContainer" parent="." unique_id=917248621]
+[node name="cardLoadoutPreview" type="HBoxContainer" parent="." unique_id=917248621 groups=["card_loadout_preview"]]
 offset_left = 180.0
 offset_right = 1920.0
 offset_bottom = 300.0
 theme_override_constants/separation = 300
 
-[node name="cardDetector" type="Area2D" parent="." unique_id=1424587734 groups=["card_loadout"]]
+[node name="cardDetector" type="Area2D" parent="." unique_id=1424587734 groups=["card_detector", "card_loadout"]]
 collision_layer = 2
 script = ExtResource("3_wxt2y")
 metadata/_edit_lock_ = true
@@ -96,14 +96,14 @@ position = Vector2(960, 165)
 shape = SubResource("RectangleShape2D_rggdb")
 metadata/_edit_lock_ = true
 
-[node name="clickSFX" type="AudioStreamPlayer2D" parent="." unique_id=360466425]
+[node name="clickSFX" type="AudioStreamPlayer2D" parent="." unique_id=360466425 groups=["click_sfx"]]
 stream = ExtResource("6_7l38q")
 volume_db = 4.0
 pitch_scale = 0.81
 attenuation = 0.6372823
 metadata/_edit_lock_ = true
 
-[node name="strengthLabel" type="Label" parent="." unique_id=840580554]
+[node name="strengthLabel" type="Label" parent="." unique_id=840580554 groups=["strength_label"]]
 offset_left = 420.0
 offset_top = 330.0
 offset_right = 1440.0

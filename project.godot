@@ -47,6 +47,10 @@ enemy=""
 cards=""
 card_loadout=""
 card_manager=""
+card_detector=""
+card_loadout_preview=""
+click_sfx=""
+strength_label=""
 
 [layer_names]
 

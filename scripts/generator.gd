@@ -43,6 +43,7 @@ func spawn_floating_text(amount: int) -> void:
 	
 	add_child(popup)
 	
+	
 	# Creates a tween which animates the position and transparency of the 
 	# floating label. When the tweens finish, despawn the label.
 	var tween = create_tween()
@@ -50,11 +51,6 @@ func spawn_floating_text(amount: int) -> void:
 	tween.tween_property(popup, "position", popup.position + Vector2(0, -50), 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(popup, "modulate:a", 0.0, 1.5)
 	tween.chain().tween_callback(popup.queue_free)
-
-
-
-
-
 
 
 # Takes damage, applies a red glow effect, and despawns the unit if health is less than zero.

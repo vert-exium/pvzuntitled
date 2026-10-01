@@ -15,6 +15,7 @@ var energy_bonus = 0
 
 var max_placed_z_index: int = 1
 
+# A dictionary which stores the strengths of all cards
 const cardStrengths = {
 	"bomber": {
 		"name": "bomber",
@@ -38,10 +39,13 @@ const cardStrengths = {
 	}
 }
 
-
+# Stores the current screen size
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 
+
+# Every tick, checks if the current card is being dragged. If so, smoothly adjusts the rotation
+# relative to the inertia of the card and also gives the card acceleration so the movement is smooth.
 
 func _process(delta: float) -> void:
 	if card_being_dragged:
@@ -77,7 +81,7 @@ func _input(event):
 				card_being_dragged = card
 				card.z_index = DRAG_Z_INDEX
 
-				print(str(card) + " Strength: " + str(card.strength))
+				print(str(card) + " Strength: " + str(card.get("strength")))
 
 				last_mouse_pos = get_global_mouse_position()
 
@@ -91,8 +95,8 @@ func _input(event):
 
 				remove_card_preview()
 
-				var loadout = $"../cardDetector"
-
+				var loadout = get_tree().get_first_node_in_group("card_detector")
+				
 				if loadout and card.get_parent() == loadout.card_loadout_preview:
 					card.reparent(get_tree().current_scene, true)
 					calculate_total_strength()
@@ -100,7 +104,7 @@ func _input(event):
 		else:
 			if card_being_dragged:
 				var card = card_being_dragged
-				var loadout = $"../cardDetector"
+				var loadout = get_tree().get_first_node_in_group("card_detector")
 
 				if loadout and loadout.card_inside == card and card_preview:
 					finish_card_placement(card, loadout)
@@ -233,7 +237,9 @@ func finish_card_placement(card, loadout):
 	max_placed_z_index += 1
 	card.z_index = max_placed_z_index
 
-	$"../clickSFX".play()
+	var sfx = get_tree().get_first_node_in_group("click_sfx")
+	if sfx != null:
+		sfx.play()
 
 	remove_card_preview()
 	calculate_total_strength()
@@ -347,7 +353,7 @@ func get_card_with_highest_z_index(cards):
 func calculate_total_strength() -> int:
 
 	var total_strength: int = 0
-	var preview_container = $"../cardLoadoutPreview"
+	var preview_container = get_tree().get_first_node_in_group("card_loadout_preview")
 	if not preview_container:
 		energy_bonus = 0
 		return 0
@@ -386,7 +392,8 @@ func calculate_total_strength() -> int:
 
 
 func update_strength_number(value: int):
-	var label = $"../strengthLabel"
+	var label = get_tree().get_first_node_in_group("strength_label")
+	if not label: return
 
 	displayed_strength = value
 
@@ -398,7 +405,8 @@ func update_strength_number(value: int):
 
 func label_effects(total_strength):
 	var strength = total_strength
-	var label = $"../strengthLabel"
+	var label = get_tree().get_first_node_in_group("strength_label")
+	if not label: return
 
 	label.pivot_offset = label.size / 2
 
@@ -429,7 +437,6 @@ func label_effects(total_strength):
 
 
 func _on_button_pressed() -> void:
-	var label = $"../strengthLabel"
 	var total_strength = calculate_total_strength()
 
 	if total_strength > 50:
@@ -442,7 +449,7 @@ func _on_button_pressed() -> void:
 
 func get_loadout_card_ids() -> Array[String]:
 	var card_ids: Array[String]
-	var preview_container = $"../cardLoadoutPreview"
+	var preview_container = get_tree().get_first_node_in_group("card_loadout_preview")
 
 	if not preview_container:
 		return card_ids
