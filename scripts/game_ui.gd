@@ -16,25 +16,26 @@ var card_scenes = {
 
 
 
-
 func _ready() -> void:
-	print(str(current_energy))
+	#Set base_energy
+	var base_energy: int = 100
+	RunState.current_energy = base_energy + RunState.energy_bonus
+	current_energy = RunState.current_energy
+	print("Initial Level Energy: ", RunState.current_energy)
 	await get_tree().process_frame 
-	for child in $CardContainer.get_children():
-		print("Card: ", child.name, " | Size: ", child.size, " | Pos: ", child.position)
+	#Loadout setup/fetch loadout
 	var loadout = Global.saved_loadout
 	var card_scale: float = 0.58
 	for id in loadout:
+		#insert loadout and connect
 		if card_scenes.has(id):
 			var card_instance = card_scenes[id].instantiate()
 			if "card_id" in card_instance:
 				card_instance.card_id = id
 			if card_instance.has_signal("card_clicked"):
 				card_instance.card_clicked.connect(_select_card)
-
 			$CardContainer.add_child(card_instance)
 	_update_card_label("")
-
 func _process(_delta: float) -> void:
 	$topPanel/energyLabel.text = "ENERGY: " + str(RunState.current_energy)
 	_update_cooldown_label()

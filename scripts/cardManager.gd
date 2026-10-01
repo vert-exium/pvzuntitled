@@ -15,7 +15,6 @@ var energy_bonus = 0
 
 var max_placed_z_index: int = 1
 
-# A dictionary which stores the strengths of all cards
 const cardStrengths = {
 	"bomber": {
 		"name": "bomber",
@@ -39,13 +38,13 @@ const cardStrengths = {
 	}
 }
 
-# Stores the current screen size
+
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 
-
-# Every tick, checks if the current card is being dragged. If so, smoothly adjusts the rotation
-# relative to the inertia of the card and also gives the card acceleration so the movement is smooth.
+	if get_path() == NodePath("/root/CardManager"):
+		set_process(false)
+		set_process_input(false)
 
 func _process(delta: float) -> void:
 	if card_being_dragged:
@@ -96,7 +95,7 @@ func _input(event):
 				remove_card_preview()
 
 				var loadout = get_tree().get_first_node_in_group("card_detector")
-				
+
 				if loadout and card.get_parent() == loadout.card_loadout_preview:
 					card.reparent(get_tree().current_scene, true)
 					calculate_total_strength()
@@ -158,6 +157,12 @@ func update_card_preview():
 
 
 func create_card_preview(loadout):
+	if card_preview:
+		return
+
+	if card_placeholder:
+		return
+
 	var preview_container = loadout.card_loadout_preview
 
 	card_placeholder = Control.new()
@@ -190,6 +195,9 @@ func create_card_preview(loadout):
 
 	await get_tree().process_frame
 
+	if not card_preview or not card_placeholder:
+		return
+
 	card_preview.global_position = card_placeholder.global_position + Vector2(0, 150)
 
 	disable_preview_collisions(card_preview)
@@ -200,6 +208,15 @@ func finish_card_placement(card, loadout):
 	var slot_index = card_placeholder.get_index()
 
 	var target_position = card_placeholder.global_position + Vector2(0, 150)
+
+	if card_preview:
+		card_preview.visible = false
+
+	if card_placeholder:
+		card_placeholder.queue_free()
+		card_placeholder = null
+
+	card_preview = null
 
 	var tween = create_tween().set_parallel()
 
@@ -241,7 +258,6 @@ func finish_card_placement(card, loadout):
 	if sfx != null:
 		sfx.play()
 
-	remove_card_preview()
 	calculate_total_strength()
 
 
@@ -351,11 +367,11 @@ func get_card_with_highest_z_index(cards):
 
 
 func calculate_total_strength() -> int:
-
 	var total_strength: int = 0
-	var preview_container = get_tree().get_first_node_in_group("card_loadout_preview")
+	var preview_container = get_node_or_null("../cardLoadoutPreview")
+	
+	# If we are not in the loadout scene, DO NOT overwrite energy_bonus with 0!
 	if not preview_container:
-		energy_bonus = 0
 		return 0
 
 	for child in preview_container.get_children():
@@ -374,26 +390,20 @@ func calculate_total_strength() -> int:
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 	if total_strength > 0:
-		print("Strength is greater than 0, DO energy bonus calculation")
 		var remaining_strength: int = 50 - total_strength
-		print("Remaining strength: " + str(remaining_strength))
-		
-		# Make sure x is a float!
 		var x: float = float(max(0, remaining_strength))
 		
-		# Assign directly to class variable (no 'var' keyword here)
+		# Set energy_bonus on the Autoload singleton
 		energy_bonus = int(pow(x / 10.0, 1.75) * 100.0)
-		print("Energy bonus: " + str(energy_bonus))
-		RunState.current_energy += energy_bonus
-	else:
-		energy_bonus = 0
+		print("Energy bonus calculated: " + str(energy_bonus))
 
 	return total_strength
 
 
 func update_strength_number(value: int):
 	var label = get_tree().get_first_node_in_group("strength_label")
-	if not label: return
+	if not label:
+		return
 
 	displayed_strength = value
 
@@ -406,7 +416,9 @@ func update_strength_number(value: int):
 func label_effects(total_strength):
 	var strength = total_strength
 	var label = get_tree().get_first_node_in_group("strength_label")
-	if not label: return
+
+	if not label:
+		return
 
 	label.pivot_offset = label.size / 2
 
@@ -435,17 +447,17 @@ func label_effects(total_strength):
 		0.2
 	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 
-
 func _on_button_pressed() -> void:
 	var total_strength = calculate_total_strength()
-
 	if total_strength > 50:
 		print("Strength is greater than 50!")
 	else:
 		Global.saved_loadout = get_loadout_card_ids()
+		RunState.energy_bonus = energy_bonus
 		print("Saved Loadout: ", Global.saved_loadout)
+		print("Saved Energy Bonus to RunState: ", RunState.energy_bonus)
+		
 		get_tree().change_scene_to_file("res://scenes/Level.tscn")
-
 
 func get_loadout_card_ids() -> Array[String]:
 	var card_ids: Array[String]

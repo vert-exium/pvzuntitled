@@ -1,6 +1,7 @@
 extends Node
 
-var current_energy: int = 50 
+var current_energy: int = 100
+var energy_bonus: int = 0 
 var shovel_cost: int = 20
 
 func _ready() -> void:
