@@ -1,11 +1,14 @@
 extends CanvasLayer
 
+# Variables
 @onready var cc_label: Label = $topPanel/currentCard
 @onready var cooldown_label: Label = $topPanel/ccCooldown
 var current_energy = RunState.current_energy
 var currently_selected_card: String = ""
 var level_script: Node = null
 
+
+# Stores all card scenes in a dictionary
 var card_scenes = {
 	"bomber": preload("res://scenes/bomber_card_ui.tscn"),
 	"shielder": preload("res://scenes/shielder_card_ui.tscn"),
@@ -17,13 +20,14 @@ var card_scenes = {
 
 
 func _ready() -> void:
-	#Set base_energy
+	# Sets the base energy
 	var base_energy: int = 100
 	RunState.current_energy = base_energy + RunState.energy_bonus
 	current_energy = RunState.current_energy
 	print("Initial Level Energy: ", RunState.current_energy)
 	await get_tree().process_frame 
-	#Loadout setup/fetch loadout
+	
+	# Loadout setup
 	var loadout = Global.saved_loadout
 	var card_scale: float = 0.58
 	for id in loadout:
@@ -36,11 +40,16 @@ func _ready() -> void:
 				card_instance.card_clicked.connect(_select_card)
 			$CardContainer.add_child(card_instance)
 	_update_card_label("")
+
+# Constantly updates the cooldown label and the energy display label
 func _process(_delta: float) -> void:
 	$topPanel/energyLabel.text = "ENERGY: " + str(RunState.current_energy)
 	_update_cooldown_label()
 
 
+# Function to select a card. If the same card that is equipped is clicked again,
+# sets the currently selected card to nothing (effectively deselecting it). Otherwise,
+# just sets the currently selected card to whatever was clicked.
 func _select_card(card_id: String) -> void:
 	if currently_selected_card == card_id:
 		currently_selected_card = ""
@@ -51,11 +60,14 @@ func _select_card(card_id: String) -> void:
 		SignalBus.card_selected.emit(card_id)
 		_update_card_label(card_id)
 
+
+# Sets the card label. If none present, sets it to Card: None. If it's the shovel,
+# sets accordingly. Otherwise, sets it to the name of the card.
 func _update_card_label(card_id: String) -> void:
-	if card_id == "shovel":
-		cc_label.text = "Card: Shovel"
-	elif card_id == "":
+	if card_id == "":
 		cc_label.text = "Card: None"
+	elif card_id == "shovel":
+		cc_label.text = "Card: Hammer"
 	else:
 		var card_data = CardDatabase.get_card(card_id)
 		if not card_data.is_empty():

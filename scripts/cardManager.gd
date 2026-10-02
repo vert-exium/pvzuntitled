@@ -1,8 +1,11 @@
 extends Node2D
 
+# Visual related variables.
 const COLLISION_MASK_CARD = 1
 const DRAG_Z_INDEX = 1000
+var max_placed_z_index: int = 1
 
+# Variables
 var last_mouse_pos: Vector2
 var screen_size
 var card_being_dragged
@@ -13,7 +16,9 @@ var card_placeholder
 var remaining_strength = 0
 var energy_bonus = 0
 
-var max_placed_z_index: int = 1
+
+# Stores all cards that can be placed
+# and assigns a strength to them.
 
 const cardStrengths = {
 	"bomber": {
@@ -39,12 +44,14 @@ const cardStrengths = {
 }
 
 
+
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 
 	if get_path() == NodePath("/root/CardManager"):
 		set_process(false)
 		set_process_input(false)
+
 
 func _process(delta: float) -> void:
 	if card_being_dragged:
