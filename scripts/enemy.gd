@@ -5,7 +5,7 @@ var current_speed: float = 30.0
 var health: int = 100
 var attack_damage: int = 10
 var current_target: Area2D = null
-
+var pitch_random: float = 0
 @onready var attack_timer: Timer = $AttackTimer
 var lane: int = 0
 
@@ -26,6 +26,10 @@ func _process(delta: float) -> void:
 		$enemyAnimation.play("default")
 
 func take_damage(amount: int) -> void:
+	pitch_random = randf_range(0.9,1.1)
+	print("Pitch:" + str(pitch_random))
+	$AudioStreamPlayer2D.pitch_scale = pitch_random
+	$AudioStreamPlayer2D.playing = true
 	health -= amount
 	modulate = Color.RED
 	scale = Vector2(0.8, 0.9)

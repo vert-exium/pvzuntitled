@@ -42,3 +42,7 @@ func _force_redraw_of_type(node: Node, target_class: String) -> void:
 func _on_cooldown_check_toggled(toggled_on: bool) -> void:
 	DebugMenu.noCooldowns = toggled_on
 	print("DebugMenu.noCooldowns: " + str(DebugMenu.noCooldowns))
+
+func _on_add_energy_button_pressed() -> void:
+	RunState.current_energy += $Control/energyAddSpinBox.value
+	print("Amount of energy to be added:" + str($Control/energyAddSpinBox.value))

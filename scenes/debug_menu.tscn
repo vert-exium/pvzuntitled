@@ -115,9 +115,27 @@ offset_bottom = 200.0
 theme_override_font_sizes/font_size = 18
 text = "No placement cooldowns"
 
+[node name="addEnergyButton" type="Button" parent="Control" unique_id=1974337619]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 130.0
+offset_right = 260.0
+offset_bottom = 180.0
+text = "ADD ENERGY"
+
+[node name="energyAddSpinBox" type="SpinBox" parent="Control" unique_id=1136863305]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 130.0
+offset_right = 360.0
+offset_bottom = 180.0
+max_value = 10000000.0
+step = 50.0
+
 [connection signal="pressed" from="Control/toggleButton" to="." method="_on_toggle_button_pressed"]
 [connection signal="pressed" from="Control/energyButton" to="." method="_on_energy_button_pressed"]
 [connection signal="toggled" from="Control/pathCheck" to="." method="_on_path_check_toggled"]
 [connection signal="toggled" from="Control/collisionCheck" to="." method="_on_collision_check_toggled"]
 [connection signal="pressed" from="Control/cooldownCheck" to="." method="_on_cooldown_check_pressed"]
 [connection signal="toggled" from="Control/cooldownCheck" to="." method="_on_cooldown_check_toggled"]
+[connection signal="pressed" from="Control/addEnergyButton" to="." method="_on_add_energy_button_pressed"]

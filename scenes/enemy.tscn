@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvhgjr0y2d86k" path="res://scripts/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Texture2D" uid="uid://be1ysn8dma4ni" path="res://animations/robot.png" id="2_md0e3"]
+[ext_resource type="AudioStream" uid="uid://4acqhbxam20" path="res://audio/MetalHit.mp3" id="3_4ra3w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8fr4"]
 size = Vector2(30, 120)
@@ -49,3 +50,7 @@ wait_time = 2.0
 [node name="enemyAnimation" type="AnimatedSprite2D" parent="." unique_id=1246637342]
 sprite_frames = SubResource("SpriteFrames_d8fr4")
 frame_progress = 0.6812857
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1946956897]
+stream = ExtResource("3_4ra3w")
+volume_db = -4.622

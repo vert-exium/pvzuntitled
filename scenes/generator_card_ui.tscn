@@ -71,7 +71,7 @@ offset_bottom = 162.7438
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_rdu1s")
 theme_override_font_sizes/font_size = 40
-text = "100"
+text = "50"
 
 [node name="boltSprite" type="Sprite2D" parent="scalingnstuff" unique_id=232221732]
 position = Vector2(-38.016525, 137.19006)
