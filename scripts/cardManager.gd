@@ -44,22 +44,28 @@ const cardStrengths = {
 }
 
 
+# Gets the current screen si
 
 func _ready() -> void:
+	# Gets the current viewport size for other functions to use
 	screen_size = get_viewport_rect().size
 
+	# Checks if it's loaded as an autoload, if so disables the node to save resources.
 	if get_path() == NodePath("/root/CardManager"):
 		set_process(false)
 		set_process_input(false)
 
-
+# Every frame, checks if the card is being dragged. If so, smoothly animates the position
+# and rotation based on momentum. Also makes sure they do not get too fast or leave the screen
 func _process(delta: float) -> void:
 	if card_being_dragged:
+		
+		# Gets mouse position, and calculates the velocity.
 		var mouse_pos = get_global_mouse_position()
-
 		var velocity_x = mouse_pos.x - last_mouse_pos.x
 		last_mouse_pos = mouse_pos
 
+		# Uses linear interpolation to smoothly move the card.
 		card_being_dragged.global_position = card_being_dragged.global_position.lerp(
 			Vector2(
 				clamp(mouse_pos.x, 0, screen_size.x),
@@ -67,7 +73,7 @@ func _process(delta: float) -> void:
 			),
 			25.0 * delta
 		)
-
+		# Sets the rotation smoothly based on the velocity of the card
 		var target_rotation = clamp(velocity_x * 0.015, -0.25, 0.25)
 		card_being_dragged.rotation = lerp(
 			card_being_dragged.rotation,
@@ -79,6 +85,7 @@ func _process(delta: float) -> void:
 
 
 func _input(event):
+	# If the user clicks, checks if the click is a card. If so, brings it to the top and stores it.
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			var card = raycast_check_for_card()
@@ -88,7 +95,7 @@ func _input(event):
 				card.z_index = DRAG_Z_INDEX
 
 				print(str(card) + " Strength: " + str(card.get("strength")))
-
+				# Gets the last mouse position, and tweens the scale so it's larger
 				last_mouse_pos = get_global_mouse_position()
 
 				var grab_tween = create_tween()
@@ -100,7 +107,7 @@ func _input(event):
 				).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 				remove_card_preview()
-
+				# Gets the card detector node and stores it in a variable
 				var loadout = get_tree().get_first_node_in_group("card_detector")
 
 				if loadout and card.get_parent() == loadout.card_loadout_preview:
