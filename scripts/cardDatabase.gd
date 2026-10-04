@@ -59,8 +59,8 @@ const CARDS = {
 		"cost": 600,
 		"cooldown": 20,
 		"health": 250,
-		"damage": 50,
-		"fire_rate": 2.0,
+		"damage": 25,
+		"fire_rate": 1.0,
 		"knockback": 20
 	}
 }
