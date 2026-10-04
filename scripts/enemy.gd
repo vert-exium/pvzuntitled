@@ -80,11 +80,21 @@ func take_damage(amount: int) -> void:
 		death_tween.chain().tween_callback(queue_free)
 
 func _on_area_entered(area: Area2D) -> void:
-	#Targetting script
-	if area.is_in_group("unit") and current_target == null:
+	if area.is_in_group("knockback_projectile"):
+		var force = area.get("knockback_force") if "knockback_force" in area else 40.0
+		var damage = area.get("damage") if "damage" in area else 10
+		take_damage(damage)
+		apply_knockback(force)
+		# Destroy projectile
+		if area.has_method("destroy"):
+			area.destroy()
+		else:
+			area.queue_free()
+
+	elif area.is_in_group("unit") and current_target == null:
 		start_attacking(area)
-	
-	if area.name == "DeathZone":
+
+	elif area.name == "DeathZone":
 		LevelManager.enemy_reached_end()
 		queue_free()
 
@@ -110,6 +120,9 @@ func _on_attack_timer_timeout() -> void:
 		check_next_target()
 
 func check_next_target() -> void:
+	
+	
+	
 	#looks for next target
 	var overlapping_units = get_overlapping_areas()
 	for area in overlapping_units:
@@ -120,3 +133,18 @@ func check_next_target() -> void:
 	current_target = null
 	current_speed = base_speed 
 	attack_timer.stop()
+
+
+func apply_knockback(distance: float):
+	if current_target != null:
+		current_target = null
+		attack_timer.stop()
+	var target_x = position.x + distance
+	var knock_tween = create_tween()
+	knock_tween.tween_property(self, "position:x", target_x, 0.15)\
+		.set_trans(Tween.TRANS_QUAD)\
+		.set_ease(Tween.EASE_OUT)
+	knock_tween.finished.connect(func():
+		if current_target == null:
+			current_speed = base_speed
+)

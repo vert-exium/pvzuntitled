@@ -51,6 +51,7 @@ card_detector=""
 card_loadout_preview=""
 click_sfx=""
 strength_label=""
+knockback_projectile=""
 
 [layer_names]
 
