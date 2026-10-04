@@ -78,7 +78,7 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1284796148]
-position = Vector2(1.001358e-05, 1.001358e-05)
+position = Vector2(70, 0)
 scale = Vector2(2.1875, 2.1875)
 sprite_frames = SubResource("SpriteFrames_0jsi4")
 animation = &"sword swing"

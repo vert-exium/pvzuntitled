@@ -59,32 +59,6 @@ offset_top = 180.0
 offset_right = 1860.0
 offset_bottom = 860.0
 
-[node name="levelOnePlaceholder" type="TextureRect" parent="Control" unique_id=904924964]
-layout_mode = 0
-offset_right = 560.0
-offset_bottom = 520.0
-texture = ExtResource("5_4nqmc")
-
-[node name="levelOneButton" type="Button" parent="Control/levelOnePlaceholder" unique_id=960099645]
-layout_mode = 0
-offset_left = 180.0
-offset_top = 580.0
-offset_right = 351.0
-offset_bottom = 666.0
-theme_override_fonts/font = ExtResource("6_7plkq")
-theme_override_font_sizes/font_size = 60
-text = "Select"
-
-[node name="levelOneLabel" type="Label" parent="Control/levelOnePlaceholder" unique_id=375382525]
-layout_mode = 0
-offset_left = 160.0
-offset_top = 510.0
-offset_right = 580.0
-offset_bottom = 582.0
-theme_override_fonts/font = ExtResource("7_ckc44")
-theme_override_font_sizes/font_size = 61
-text = "LEVEL 1"
-
 [node name="ScrollContainer" type="ScrollContainer" parent="Control" unique_id=369521934]
 layout_mode = 0
 offset_right = 1810.0
@@ -140,16 +114,47 @@ theme_override_fonts/font = ExtResource("7_ckc44")
 theme_override_font_sizes/font_size = 61
 text = "LEVEL 3"
 
-[node name="levelThreeButton" type="Button" parent="Control/levelThreePlaceholder" unique_id=1121689480]
+[node name="levelThreeButton" type="Button" parent="Control/levelThreePlaceholder" unique_id=1632131282]
 layout_mode = 0
 offset_left = 190.0
 offset_top = 580.0
 offset_right = 361.0
 offset_bottom = 666.0
+theme_override_colors/font_hover_color = Color(0, 0.9490196, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("6_7plkq")
 theme_override_font_sizes/font_size = 60
 text = "Select"
 
-[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
-[connection signal="pressed" from="Control/levelOnePlaceholder/levelOneButton" to="." method="_on_level_one_button_pressed"]
+[node name="levelOnePlaceholder" type="TextureRect" parent="Control" unique_id=1162569295]
+layout_mode = 0
+offset_right = 560.0
+offset_bottom = 520.0
+texture = ExtResource("5_4nqmc")
+
+[node name="levelOneButton" type="Button" parent="Control/levelOnePlaceholder" unique_id=21405684]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 580.0
+offset_right = 361.0
+offset_bottom = 666.0
+theme_override_colors/font_hover_color = Color(0, 0.9490196, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_7plkq")
+theme_override_font_sizes/font_size = 60
+text = "Select"
+
+[node name="levelOneLabel" type="Label" parent="Control/levelOnePlaceholder" unique_id=846921652]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 510.0
+offset_right = 590.0
+offset_bottom = 582.0
+theme_override_fonts/font = ExtResource("7_ckc44")
+theme_override_font_sizes/font_size = 61
+text = "LEVEL 1"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Control/levelTwoPlacholder/levelTwoButton" to="." method="_on_level_two_button_pressed"]
+[connection signal="pressed" from="Control/levelThreePlaceholder/levelThreeButton" to="." method="_on_level_three_button_pressed"]
+[connection signal="pressed" from="Control/levelOnePlaceholder/levelOneButton" to="." method="_on_level_one_button_pressed"]

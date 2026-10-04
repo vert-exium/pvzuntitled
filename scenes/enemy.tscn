@@ -36,9 +36,10 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="enemy" type="Area2D" unique_id=1423425833 groups=["enemy"]]
+[node name="normal" type="Area2D" unique_id=1423425833 groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_7p1mj")
+enemy_id = "normal"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1246642749]
 position = Vector2(-45, 0)
