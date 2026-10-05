@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://c3jyxcep31oh2" path="res://scenes/thrower_index.tscn" id="6_vc6rt"]
 [ext_resource type="PackedScene" uid="uid://cqugbmh8yls8q" path="res://scenes/generator_index.tscn" id="7_tsphw"]
 [ext_resource type="FontFile" uid="uid://bhigvelo1x6ac" path="res://fonts/Elms_Sans/static/ElmsSans-Thin.ttf" id="8_eao86"]
+[ext_resource type="FontFile" uid="uid://bdnkrwic58f6h" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="9_tsphw"]
+[ext_resource type="Texture2D" uid="uid://bv5plsb6jrxq0" path="res://images/arrow-left-alt-5ufw09e1z3jbk920li7a28.png" id="9_vc6rt"]
 
 [sub_resource type="Gradient" id="Gradient_45a1r"]
 colors = PackedColorArray(0, 0, 0.7411765, 1, 0, 1, 1, 1)
@@ -84,8 +86,9 @@ color = Color(0.46618086, 0.4661808, 0.4661808, 1)
 [node name="previewArea" type="HFlowContainer" parent="previewAreaBG" unique_id=1330299091]
 z_index = 1
 layout_mode = 0
+offset_top = 10.0
 offset_right = 1227.0844
-offset_bottom = 960.0
+offset_bottom = 970.0
 theme_override_constants/h_separation = 170
 theme_override_constants/v_separation = 170
 alignment = 1
@@ -150,6 +153,30 @@ theme_override_font_sizes/font_size = 56
 text = "Select a card!"
 horizontal_alignment = 1
 
+[node name="cardStats" type="RichTextLabel" parent="unitpreviewbox" unique_id=1036383440]
+layout_mode = 0
+offset_top = 80.0
+offset_right = 488.8385
+offset_bottom = 260.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/normal_font = ExtResource("9_tsphw")
+theme_override_font_sizes/normal_font_size = 35
+text = "
+"
+
+[node name="cardDescription" type="RichTextLabel" parent="unitpreviewbox" unique_id=244145913]
+layout_mode = 0
+offset_top = 300.0
+offset_right = 488.8385
+offset_bottom = 480.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/normal_font = ExtResource("9_tsphw")
+theme_override_font_sizes/normal_font_size = 35
+text = "
+"
+
 [node name="spritePreviewBG" type="ColorRect" parent="." unique_id=1526602174]
 z_index = 1
 layout_mode = 0
@@ -166,6 +193,18 @@ offset_left = 1376.7288
 offset_top = 60.0
 offset_right = 1855.591
 offset_bottom = 540.0
+expand_mode = 1
+stretch_mode = 4
+
+[node name="backButton" type="Button" parent="." unique_id=210446421]
+layout_mode = 0
+offset_left = 957.72437
+offset_top = 10.0
+offset_right = 1316.871
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 70
+text = "BACK"
+icon = ExtResource("9_vc6rt")
 
 [connection signal="pressed" from="unitsButton" to="." method="_on_units_button_pressed"]
 [connection signal="pressed" from="previewAreaBG/previewArea/swordsman_index/swordsmanButton" to="." method="_on_swordsman_button_pressed"]
@@ -173,3 +212,4 @@ offset_bottom = 540.0
 [connection signal="pressed" from="previewAreaBG/previewArea/shielder_index/shielderButton" to="." method="_on_shielder_button_pressed"]
 [connection signal="pressed" from="previewAreaBG/previewArea/thrower_index/throwerButton" to="." method="_on_thrower_button_pressed"]
 [connection signal="pressed" from="previewAreaBG/previewArea/generator_index/generatorButton" to="." method="_on_generator_button_pressed"]
+[connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]

@@ -42,6 +42,7 @@ var plant_scenes: Dictionary = {
 
 # Connects signals, and starts the level
 func _ready() -> void:
+	$musicPlayer.play()
 	SignalBus.card_selected.connect(_on_card_selected)
 	SignalBus.request_enemy_spawn.connect(_on_request_enemy_spawn)
 	grid_drawer.draw.connect(_draw_grid_overlay)

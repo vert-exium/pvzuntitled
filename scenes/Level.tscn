@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c2448ay24f18a" path="res://scripts/level.gd" id="1_uhqny"]
 [ext_resource type="PackedScene" uid="uid://ewxvdstklbsl" path="res://scenes/game_ui.tscn" id="2_k5jlv"]
 [ext_resource type="PackedScene" uid="uid://ypu5ksnetr5d" path="res://scenes/debug_menu.tscn" id="3_6vs76"]
+[ext_resource type="AudioStream" uid="uid://b4qjoeg51f0vi" path="res://audio/Alien.mp3" id="4_kl8ac"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8fr4"]
 size = Vector2(180, 830)
@@ -38,5 +39,9 @@ autostart = true
 
 [node name="debugMenu" parent="." unique_id=1512050982 instance=ExtResource("3_6vs76")]
 position = Vector2(1780, 580)
+
+[node name="musicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1039606552]
+stream = ExtResource("4_kl8ac")
+bus = &"Music"
 
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
