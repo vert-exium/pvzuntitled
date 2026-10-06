@@ -1,64 +1,13 @@
 extends Control
-
+#Unit textures
 var swordsman_texture = load("res://images/323-3232939_pixel-art-sword-sword-pixel-art-transparent-hd-removebg-preview.png")
 var bomber_texture = load("res://images/image_2026-09-18_233811005-removebg-preview.png")
 var shielder_texture = load("res://images/5723525.png")
 var thrower_texture = load("res://images/images__5_-removebg-preview.png")
 var generator_texture = load("res://images/image_2026-09-18_234043813-removebg-preview.png")
-
-
-#const CARDS = {
-#	"generator": {
-#		"name": "Generator",
-#		"type": "generator",
-#		"cost": 50,
-#		"cooldown": 8.0,
-#		"health": 100,
-#		"energy_yield": 15,
-#		"tick_rate": 5
-#	},
-
-#	"thrower": {
-#		"name": "Thrower",
-#		"type": "shooter",
-#		"cost": 100,
-#		"cooldown": 10.0,
-#		"health": 150,
-#		"damage": 20,
-#		"fire_rate": 1.5
-#	},
-
-#	"bomber": {
-#		"name": "Bomber",
-#		"type": "shooter",
-#		"cost": 500,
-#		"cooldown": 10.0,
-#		"health": 200,
-#		"damage": 25,
-#		"fire_rate": 4
-#	},
-
-#	"shielder": {
-#		"name": "Shielder",
-#		"type": "close_range",
-#		"cost": 350,
-#		"cooldown": 15,
-#		"health": 400,
-#		"damage": 5,
-#		"fire_rate": 1.5
-#	},
-
-#	"swordsman": {
-#		"name": "swordsman",
-#		"type": "close_range",
-#		"cost": 600,
-#		"cooldown": 20,
-#		"health": 250,
-#		"damage": 25,
-#		"fire_rate": 1.0,
-#		"knockback": 20
-#	}
-#}
+#Enemy textures
+var normal_texture = load("res://images/image_2026-10-05_164029134-removebg-preview.png")
+var tank_texture = load("res://images/image_2026-10-05_170904917-removebg-preview (1).png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -79,9 +28,11 @@ func _process(delta: float) -> void:
 
 
 func _on_units_button_pressed() -> void:
-	pass
+	get_tree().change_scene_to_file("res://scenes/index.tscn")
 
-
+func _on_enemies_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/enemy_index.tscn")
+#unit descriptions + stats
 func _on_swordsman_button_pressed() -> void:
 	$unitpreviewbox/cardNamePreview.text = "Swordsman"
 	$spritePreview.texture = swordsman_texture
@@ -110,3 +61,15 @@ func _on_generator_button_pressed() -> void:
 	$unitpreviewbox/cardDescription.text = "Description: \nThe generator is a unit which generates energy passivley."
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+#Enemy descriptions:
+func _on_normal_button_pressed() -> void:
+	$unitpreviewbox/cardNamePreview.text = "Normal"
+	$spritePreview.texture = normal_texture
+	$unitpreviewbox/cardStats.text = "Health: 100 \nSpeed: 30\nDamage: 10 \nAttack Rate: 2s"
+	$unitpreviewbox/cardDescription.text = "Decription: \nYour average enemy with average stats. Easy to kill."
+
+func _on_tank_button_pressed() -> void:
+	$unitpreviewbox/cardDescription.text = "Tank"
+	$spritePreview.texture = tank_texture
+	$unitpreviewbox/cardStats.text = "Health: 300 \nspeed: 20 \nDamage: 5 \nAttack Rate: 1s"
+	$unitpreviewbox/cardDescription.text = "Description: \nA slow enemy with high health. This enemy will soak up a lot of damage, be careful! Beware of its boxing glove (deadly)."

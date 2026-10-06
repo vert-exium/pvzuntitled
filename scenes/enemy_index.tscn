@@ -1,21 +1,15 @@
-[gd_scene format=3 uid="uid://s7uwxykj520f"]
+[gd_scene format=3 uid="uid://cx1jtf6evvn4l"]
 
-[ext_resource type="FontFile" uid="uid://1m6gkfkxpfcg" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="1_45a1r"]
-[ext_resource type="Script" uid="uid://b0v5dxqpok8c3" path="res://scenes/index.gd" id="1_igtc1"]
-[ext_resource type="PackedScene" uid="uid://dnurlvfamm8o4" path="res://scenes/swordsman_index.tscn" id="3_74d6c"]
-[ext_resource type="PackedScene" uid="uid://wnud6kpd164i" path="res://scenes/bomber_index.tscn" id="4_cjd57"]
-[ext_resource type="PackedScene" uid="uid://iock6ba8mea4" path="res://scenes/shielder_index.tscn" id="5_eao86"]
-[ext_resource type="PackedScene" uid="uid://c3jyxcep31oh2" path="res://scenes/thrower_index.tscn" id="6_vc6rt"]
-[ext_resource type="PackedScene" uid="uid://cqugbmh8yls8q" path="res://scenes/generator_index.tscn" id="7_tsphw"]
-[ext_resource type="FontFile" uid="uid://bhigvelo1x6ac" path="res://fonts/Elms_Sans/static/ElmsSans-Thin.ttf" id="8_eao86"]
-[ext_resource type="FontFile" uid="uid://bdnkrwic58f6h" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="9_tsphw"]
-[ext_resource type="Texture2D" uid="uid://bv5plsb6jrxq0" path="res://images/arrow-left-alt-5ufw09e1z3jbk920li7a28.png" id="9_vc6rt"]
-[ext_resource type="Texture2D" uid="uid://c0gaiv7qhdqop" path="res://images/images (8).jpg" id="11_w3g1x"]
+[ext_resource type="Script" uid="uid://b0v5dxqpok8c3" path="res://scenes/index.gd" id="1_xj63n"]
+[ext_resource type="FontFile" uid="uid://1m6gkfkxpfcg" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="2_gc26b"]
+[ext_resource type="FontFile" uid="uid://bhigvelo1x6ac" path="res://fonts/Elms_Sans/static/ElmsSans-Thin.ttf" id="3_g5xhl"]
+[ext_resource type="PackedScene" uid="uid://c7nrx7lgtoslo" path="res://scenes/normal_index.tscn" id="3_gc26b"]
+[ext_resource type="PackedScene" uid="uid://dbyelxwo8keh7" path="res://builds/tank_index.tscn" id="4_g5xhl"]
+[ext_resource type="FontFile" uid="uid://bdnkrwic58f6h" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="4_onxje"]
+[ext_resource type="Texture2D" uid="uid://bv5plsb6jrxq0" path="res://images/arrow-left-alt-5ufw09e1z3jbk920li7a28.png" id="5_bfefo"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2a4ak"]
-bg_color = Color(0.33333334, 0.6156863, 0.9137255, 1)
-border_color = Color(0, 0, 0, 1)
-border_blend = true
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0jsi4"]
+bg_color = Color(0.33335307, 0.61659706, 0.91381294, 1)
 corner_radius_top_left = 35
 corner_radius_top_right = 35
 
@@ -29,19 +23,17 @@ bg_color = Color(0.33335307, 0.61659706, 0.91381294, 1)
 corner_radius_top_left = 35
 corner_radius_top_right = 35
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1v08"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rggdb"]
 bg_color = Color(0.90588236, 0.42352942, 0.49411765, 1)
-border_color = Color(0, 0, 0, 1)
-border_blend = true
 corner_radius_top_left = 35
 corner_radius_top_right = 35
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs4ya"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2a4ak"]
 bg_color = Color(0.7387222, 0.24842912, 0.34085736, 1)
 corner_radius_top_left = 35
 corner_radius_top_right = 35
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mmqf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1v08"]
 bg_color = Color(0.9077805, 0.42305365, 0.49496567, 1)
 corner_radius_top_left = 35
 corner_radius_top_right = 35
@@ -59,7 +51,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.0023761, 1)
-script = ExtResource("1_igtc1")
+script = ExtResource("1_xj63n")
 
 [node name="unitsButton" type="Button" parent="." unique_id=229989896]
 layout_mode = 0
@@ -67,7 +59,7 @@ offset_right = 360.0
 offset_bottom = 120.0
 theme_override_colors/font_pressed_color = Color(0, 0.78538746, 0.7853875, 1)
 theme_override_colors/font_hover_color = Color(0, 0.9490196, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_2a4ak")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0jsi4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_tsphw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_vep6c")
 
@@ -77,7 +69,7 @@ offset_right = 360.0
 offset_bottom = 120.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("1_45a1r")
+theme_override_fonts/font = ExtResource("2_gc26b")
 theme_override_font_sizes/font_size = 87
 text = "Units"
 horizontal_alignment = 1
@@ -88,9 +80,9 @@ layout_mode = 0
 offset_left = 379.09924
 offset_right = 739.09924
 offset_bottom = 120.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_w1v08")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_bs4ya")
-theme_override_styles/hover = SubResource("StyleBoxFlat_8mmqf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rggdb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2a4ak")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w1v08")
 
 [node name="enemyLabel" type="Label" parent="enemiesButton" unique_id=139421660]
 layout_mode = 0
@@ -99,7 +91,7 @@ offset_right = 358.86218
 offset_bottom = 120.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("1_45a1r")
+theme_override_fonts/font = ExtResource("2_gc26b")
 theme_override_font_sizes/font_size = 87
 text = "Enemies"
 horizontal_alignment = 1
@@ -111,57 +103,33 @@ layout_mode = 0
 offset_top = 120.0
 offset_right = 1316.871
 offset_bottom = 1080.0
-color = Color(0.33333334, 0.6156863, 0.9137255, 1)
+color = Color(0.90588236, 0.42352942, 0.49411765, 1)
 
 [node name="previewArea" type="HFlowContainer" parent="previewAreaBG" unique_id=1330299091]
 z_index = 1
 layout_mode = 0
 offset_top = 60.0
 offset_right = 1227.0844
-offset_bottom = 960.0
+offset_bottom = 1020.0
 theme_override_constants/h_separation = 170
 theme_override_constants/v_separation = 170
 alignment = 1
 last_wrap_alignment = 1
 
-[node name="swordsman_index" parent="previewAreaBG/previewArea" unique_id=793532619 instance=ExtResource("3_74d6c")]
+[node name="normal_index" parent="previewAreaBG/previewArea" unique_id=793532619 instance=ExtResource("3_gc26b")]
 layout_mode = 2
 
-[node name="swordsmanButton" type="TextureButton" parent="previewAreaBG/previewArea/swordsman_index" unique_id=433300815]
+[node name="normalButton" type="TextureButton" parent="previewAreaBG/previewArea/normal_index" unique_id=2067326026]
 layout_mode = 0
-offset_right = 241.26517
+offset_right = 235.53036
 offset_bottom = 240.0
 
-[node name="bomber_index" parent="previewAreaBG/previewArea" unique_id=1282573228 instance=ExtResource("4_cjd57")]
+[node name="tank_index" parent="previewAreaBG/previewArea" unique_id=1757227192 instance=ExtResource("4_g5xhl")]
 layout_mode = 2
 
-[node name="bomberButton" type="TextureButton" parent="previewAreaBG/previewArea/bomber_index" unique_id=110917553]
+[node name="tankButton" type="TextureButton" parent="previewAreaBG/previewArea/tank_index" unique_id=213715730]
 layout_mode = 0
-offset_right = 241.26517
-offset_bottom = 240.0
-
-[node name="shielder_index" parent="previewAreaBG/previewArea" unique_id=143328326 instance=ExtResource("5_eao86")]
-layout_mode = 2
-
-[node name="shielderButton" type="TextureButton" parent="previewAreaBG/previewArea/shielder_index" unique_id=1317711698]
-layout_mode = 0
-offset_right = 241.26517
-offset_bottom = 240.0
-
-[node name="thrower_index" parent="previewAreaBG/previewArea" unique_id=290648113 instance=ExtResource("6_vc6rt")]
-layout_mode = 2
-
-[node name="throwerButton" type="TextureButton" parent="previewAreaBG/previewArea/thrower_index" unique_id=747721796]
-layout_mode = 0
-offset_right = 241.26517
-offset_bottom = 240.0
-
-[node name="generator_index" parent="previewAreaBG/previewArea" unique_id=951992644 instance=ExtResource("7_tsphw")]
-layout_mode = 2
-
-[node name="generatorButton" type="TextureButton" parent="previewAreaBG/previewArea/generator_index" unique_id=26981458]
-layout_mode = 0
-offset_right = 241.26517
+offset_right = 239.77173
 offset_bottom = 240.0
 
 [node name="unitpreviewbox" type="ColorRect" parent="." unique_id=641147173]
@@ -178,7 +146,7 @@ offset_right = 478.86218
 offset_bottom = 73.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
-theme_override_fonts/font = ExtResource("8_eao86")
+theme_override_fonts/font = ExtResource("3_g5xhl")
 theme_override_font_sizes/font_size = 56
 text = "Select a card!"
 horizontal_alignment = 1
@@ -190,7 +158,7 @@ offset_right = 488.8385
 offset_bottom = 260.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/normal_font = ExtResource("9_tsphw")
+theme_override_fonts/normal_font = ExtResource("4_onxje")
 theme_override_font_sizes/normal_font_size = 35
 text = "
 "
@@ -202,7 +170,7 @@ offset_right = 488.8385
 offset_bottom = 480.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/normal_font = ExtResource("9_tsphw")
+theme_override_fonts/normal_font = ExtResource("4_onxje")
 theme_override_font_sizes/normal_font_size = 35
 text = "
 "
@@ -234,19 +202,10 @@ offset_bottom = 120.0
 theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_w3g1x")
 text = "BACK"
-icon = ExtResource("9_vc6rt")
-
-[node name="Images(8)" type="Sprite2D" parent="." unique_id=970188885]
-z_index = -42
-position = Vector2(957.72437, 540)
-scale = Vector2(2.820985, 2.3893805)
-texture = ExtResource("11_w3g1x")
+icon = ExtResource("5_bfefo")
 
 [connection signal="pressed" from="unitsButton" to="." method="_on_units_button_pressed"]
 [connection signal="pressed" from="enemiesButton" to="." method="_on_enemies_button_pressed"]
-[connection signal="pressed" from="previewAreaBG/previewArea/swordsman_index/swordsmanButton" to="." method="_on_swordsman_button_pressed"]
-[connection signal="pressed" from="previewAreaBG/previewArea/bomber_index/bomberButton" to="." method="_on_bomber_button_pressed"]
-[connection signal="pressed" from="previewAreaBG/previewArea/shielder_index/shielderButton" to="." method="_on_shielder_button_pressed"]
-[connection signal="pressed" from="previewAreaBG/previewArea/thrower_index/throwerButton" to="." method="_on_thrower_button_pressed"]
-[connection signal="pressed" from="previewAreaBG/previewArea/generator_index/generatorButton" to="." method="_on_generator_button_pressed"]
+[connection signal="pressed" from="previewAreaBG/previewArea/normal_index/normalButton" to="." method="_on_normal_button_pressed"]
+[connection signal="pressed" from="previewAreaBG/previewArea/tank_index/tankButton" to="." method="_on_tank_button_pressed"]
 [connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]

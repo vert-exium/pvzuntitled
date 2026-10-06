@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dbyelxwo8keh7"]
+
+[ext_resource type="Texture2D" uid="uid://cjyp88i1y3xyo" path="res://images/image_2026-10-05_170904917-removebg-preview (1).png" id="1_mwyut"]
+[ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="2_0nkej"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jsi4"]
+size = Vector2(339.63544, 316.99304)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0jsi4"]
+bg_color = Color(0.83889705, 0.83889705, 0.8388969, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
+[node name="tank_index" type="Control" unique_id=793532619]
+custom_minimum_size = Vector2(145, 175)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -120.0
+offset_top = -120.0
+offset_right = 120.0
+offset_bottom = 118.0
+pivot_offset = Vector2(73, 87.5)
+size_flags_vertical = 2
+mouse_filter = 2
+
+[node name="scalingnstuff" type="Node2D" parent="." unique_id=632514743]
+position = Vector2(73, 73)
+scale = Vector2(0.605, 0.605)
+
+[node name="Sprite2D" type="Sprite2D" parent="scalingnstuff" unique_id=1838322728]
+position = Vector2(77.685936, 28.099173)
+scale = Vector2(0.5560097, 0.5324158)
+texture = ExtResource("1_mwyut")
+
+[node name="Area2D" type="Area2D" parent="scalingnstuff" unique_id=1268672156]
+position = Vector2(0, -13.425)
+scale = Vector2(0.73, 0.73)
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scalingnstuff/Area2D" unique_id=518466849]
+visible = false
+position = Vector2(4.528473, 11.597702)
+shape = SubResource("RectangleShape2D_0jsi4")
+debug_color = Color(1, 0, 0, 0.39215687)
+
+[node name="bomberLabel" type="Label" parent="scalingnstuff" unique_id=269281261]
+offset_left = -4.958683
+offset_top = 176.8595
+offset_right = 457.8512
+offset_bottom = 271.8595
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0nkej")
+theme_override_font_sizes/font_size = 66
+text = "Tank"
+
+[node name="Panel" type="Panel" parent="scalingnstuff" unique_id=685205190]
+z_index = -1
+offset_left = -120.66115
+offset_top = -120.66115
+offset_right = 276.03302
+offset_bottom = 276.03302
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0jsi4")
+metadata/_edit_lock_ = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
