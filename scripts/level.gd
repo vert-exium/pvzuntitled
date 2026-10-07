@@ -13,7 +13,7 @@ const SHOVEL_CURSOR = preload("res://assets/cursor.png")
 @onready var grid_drawer: Node2D = $GridDrawer
 
 var grid_tween: Tween
-
+var enemy_placement_options 
 # Creates a dictionary to track which grids are free and which are occupied.
 var grid_occupied: Dictionary = {}
 
@@ -208,25 +208,52 @@ func spawn_enemy(lane_index: int, budget: float) -> void:
 	if lane_index < 0 or lane_index >= ROWS:
 		return
 
-	var normal_cost = 1.0
-	var tank_cost = 2.0
+	# Set enemy costs
+	# When adding an enemy add a var (unit)_cost: float = (unit_cost)
+	var normal_cost: float = 1.0
+	var tank_cost: float = 2.0
 
+	# Early exit if budget can't afford even the cheapest enemy
 	if budget < normal_cost:
 		return
+
+	# Filter affordable enemies based on available budget
+	# Add an if statement comparing the budget to the cost: budget >= unit_cost
+	# Essentially just copy an if statement and change it a bit
+	var affordable_options: Array = []
+	if budget >= normal_cost:
+		affordable_options.append(enemy_scene_normal)
+	if budget >= tank_cost:
+		affordable_options.append(enemy_scene_tank)
+
+	if affordable_options.is_empty():
+		return
+
+	# Pick a random enemy from the options we can actually afford
+	var chosen_enemy = affordable_options.pick_random()
 
 	var enemy_to_place: PackedScene
 	var cost_deducted: float = 0.0
 	var chosen_id: String = ""
-
-	# Spawn tank 30% of the time if budget allows, otherwise normal
-	if budget >= tank_cost and randf() < 0.3:
+#Set the enemy to be placed and other values
+# For every added enemy, make another elif statement, same as the previous except with variables for that enemy
+# if chosen_enemy == enemy_scene_placeholder:
+	#enemy_to_palce = enemy_scene_placeholder
+	#cost_deducted = placeholder_cost
+	#chosen_id = "placholder"
+	if chosen_enemy == enemy_scene_tank:
 		enemy_to_place = enemy_scene_tank
 		cost_deducted = tank_cost
 		chosen_id = "tank"
-	else:
+	elif chosen_enemy == enemy_scene_normal:
 		enemy_to_place = enemy_scene_normal
 		cost_deducted = normal_cost
 		chosen_id = "normal"
+
+	#Prevent instantiating a null scene
+	if enemy_to_place == null:
+		print("No enemy to place.")
+		return
 
 	var enemy = enemy_to_place.instantiate()
 	enemy.enemy_id = chosen_id
