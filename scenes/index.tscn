@@ -10,7 +10,7 @@
 [ext_resource type="FontFile" uid="uid://bhigvelo1x6ac" path="res://fonts/Elms_Sans/static/ElmsSans-Thin.ttf" id="8_eao86"]
 [ext_resource type="FontFile" uid="uid://bdnkrwic58f6h" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="9_tsphw"]
 [ext_resource type="Texture2D" uid="uid://bv5plsb6jrxq0" path="res://images/arrow-left-alt-5ufw09e1z3jbk920li7a28.png" id="9_vc6rt"]
-[ext_resource type="Texture2D" uid="uid://c0gaiv7qhdqop" path="res://images/images (8).jpg" id="11_w3g1x"]
+[ext_resource type="Texture2D" uid="uid://dkycpvyv6i558" path="res://images/table.png" id="11_w3g1x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2a4ak"]
 bg_color = Color(0.33333334, 0.6156863, 0.9137255, 1)
@@ -170,7 +170,7 @@ offset_left = 1376.7288
 offset_top = 600.0
 offset_right = 1865.5673
 offset_bottom = 1080.0
-color = Color(0.2520276, 0.25202766, 0.25202763, 1)
+color = Color(0.2509804, 0.2509804, 0.2509804, 0.49411765)
 
 [node name="cardNamePreview" type="Label" parent="unitpreviewbox" unique_id=42689653]
 layout_mode = 0
@@ -214,7 +214,7 @@ offset_left = 1376.7288
 offset_top = 60.0
 offset_right = 1855.591
 offset_bottom = 540.0
-color = Color(0.21950102, 0.21950102, 0.21950102, 1)
+color = Color(0.21960784, 0.21960784, 0.21960784, 0.49411765)
 
 [node name="spritePreview" type="TextureRect" parent="." unique_id=521897987]
 z_index = 1
@@ -236,10 +236,16 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_w3g1x")
 text = "BACK"
 icon = ExtResource("9_vc6rt")
 
-[node name="Images(8)" type="Sprite2D" parent="." unique_id=970188885]
-z_index = -42
-position = Vector2(957.72437, 540)
-scale = Vector2(2.820985, 2.3893805)
+[node name="Table" type="Sprite2D" parent="." unique_id=1782911264]
+z_index = -43
+position = Vector2(478.86218, 550)
+scale = Vector2(7.4984026, 8.648437)
+texture = ExtResource("11_w3g1x")
+
+[node name="Table2" type="Sprite2D" parent="." unique_id=432793739]
+z_index = -43
+position = Vector2(1436.5864, 550)
+scale = Vector2(7.4984026, 8.648437)
 texture = ExtResource("11_w3g1x")
 
 [connection signal="pressed" from="unitsButton" to="." method="_on_units_button_pressed"]

@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8qoe2f5nworj"
-<<<<<<< HEAD
-path="res://.godot/imported/images (8).jpg-c39bc05031d28894db8954dea14f5c21.ctex"
-=======
-path="res://.godot/imported/images (8).jpg-13813ad03ec79b0ea93ea3ee987573b3.ctex"
->>>>>>> tjr5555
+uid="uid://c0gaiv7qhdqop"
+path="res://.godot/imported/table.jpg-4ae3f477709d5103e399219c91c920d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/images (8).jpg"
-dest_files=["res://.godot/imported/images (8).jpg-c39bc05031d28894db8954dea14f5c21.ctex"]
+source_file="res://images/table.jpg"
+dest_files=["res://.godot/imported/table.jpg-4ae3f477709d5103e399219c91c920d0.ctex"]
 
 [params]
 

@@ -10,8 +10,13 @@ var pitch_random: float = 0
 @export var enemy_id = ""
 var lane: int = 0
 
+#When adding a new enemy make sure to give it a unique enemy id
+#Go to level.gd and make a variable for the enemy and load the scene
+#After defining those variables go to func spawn_enemy() and follow the instructions there
 #Table of enemy stats
 #enemy gets stats assigned
+#Add new enemy below + any other optional stats
+#Example: Knockback
 const enemy_stats = {
 	"normal": {
 		"name": "normal",
@@ -36,7 +41,7 @@ func _ready() -> void:
 	var stats = enemy_stats.get(enemy_id, enemy_stats["normal"])
 	print(enemy_id)
 	$AttackTimer.wait_time = stats["attack_speed"]
-	add_to_group("enemy") # Fixes splash/projectile group checks
+	add_to_group("enemy")
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 	area_entered.connect(_on_area_entered)
 	# APPLY WAVE SCALING HERE WHEN THE ENEMY SPAWNS:
@@ -80,6 +85,7 @@ func take_damage(amount: int) -> void:
 		death_tween.chain().tween_callback(queue_free)
 
 func _on_area_entered(area: Area2D) -> void:
+	#knockback stuff (CURRENTLY DOESNT WORK)!
 	if area.is_in_group("knockback_projectile"):
 		var force = area.get("knockback_force") if "knockback_force" in area else 40.0
 		var damage = area.get("damage") if "damage" in area else 10
@@ -134,7 +140,7 @@ func check_next_target() -> void:
 	current_speed = base_speed 
 	attack_timer.stop()
 
-
+#CURRENTLY DOESNT WORK
 func apply_knockback(distance: float):
 	if current_target != null:
 		current_target = null

@@ -26,10 +26,10 @@ func _process(delta: float) -> void:
 	else:
 		$enemiesButton/enemyLabel.add_theme_color_override("font_color", Color.WHITE)
 
-
+#switches to unit tab
 func _on_units_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/index.tscn")
-
+#switches to enemy tab
 func _on_enemies_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/enemy_index.tscn")
 #unit descriptions + stats

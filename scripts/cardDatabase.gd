@@ -62,6 +62,15 @@ const CARDS = {
 		"damage": 25,
 		"fire_rate": 1.0,
 		"knockback": 20
+	},
+	"archer": {
+		"name": "Archer",
+		"type": "shooter",
+		"cost": 200,
+		"cooldown": 8,
+		"health": 150,
+		"damage": 30,
+		"fire_rate": 2.5
 	}
 }
 

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bf7axay4w2yhj" path="res://scripts/card_detector.gd" id="3_wxt2y"]
 [ext_resource type="AudioStream" uid="uid://cfjljd2soys2b" path="res://audio/ui-smooth-gentle-click-brukowskij-soft-click-smooth-tap-sound-2-0m00s.mp3" id="6_7l38q"]
 [ext_resource type="PackedScene" uid="uid://cgyav7ru8nviu" path="res://scenes/shielder_card.tscn" id="6_fqrsb"]
+[ext_resource type="PackedScene" uid="uid://bryo2wg23itwe" path="res://scenes/archer_card.tscn" id="7_5qigt"]
 [ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="7_7l38q"]
 [ext_resource type="PackedScene" uid="uid://dduvwfvts5quh" path="res://scenes/generator_card.tscn" id="8_hp2va"]
 [ext_resource type="FontFile" uid="uid://dn1m0x7ww2h1o" path="res://fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf" id="9_4b6o6"]
@@ -79,6 +80,13 @@ offset_left = 1080.0
 offset_top = 850.0
 offset_right = 1080.0
 offset_bottom = 850.0
+
+[node name="archerCard" parent="cardManager" unique_id=113709433 instance=ExtResource("7_5qigt")]
+offset_left = 1680.0
+offset_top = 850.0
+offset_right = 1845.0
+offset_bottom = 850.0
+card_id = "archer"
 
 [node name="cardLoadoutPreview" type="HBoxContainer" parent="." unique_id=917248621 groups=["card_loadout_preview"]]
 offset_left = 180.0
