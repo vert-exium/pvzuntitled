@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0gaiv7qhdqop"
-path="res://.godot/imported/images (8).jpg-13813ad03ec79b0ea93ea3ee987573b3.ctex"
+uid="uid://bi05kqyrw4ua3"
+path="res://.godot/imported/swordslashbottom-top.png-0155f815db39ad8f387c5d8c35f1c196.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/images (8).jpg"
-dest_files=["res://.godot/imported/images (8).jpg-13813ad03ec79b0ea93ea3ee987573b3.ctex"]
+source_file="res://scenes/swordslashbottom-top.png"
+dest_files=["res://.godot/imported/swordslashbottom-top.png-0155f815db39ad8f387c5d8c35f1c196.ctex"]
 
 [params]
 

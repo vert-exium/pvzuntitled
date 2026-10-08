@@ -40,10 +40,6 @@ const cardStrengths = {
 	"swordsman": {
 		"name": "swordsman",
 		"strength": 17
-	},
-	"archer": {
-		"name": "archer",
-		"strength": 7
 	}
 }
 
@@ -582,7 +578,6 @@ func label_effects(total_strength):
 	# Creates a tween and sets it to parallel
 	# so multiple tweens can run at once.
 	var tween = create_tween().set_parallel()
-
 
 	# Scales the node up slightly
 	tween.tween_property(
