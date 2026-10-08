@@ -583,6 +583,7 @@ func label_effects(total_strength):
 	# so multiple tweens can run at once.
 	var tween = create_tween().set_parallel()
 
+
 	# Scales the node up slightly
 	tween.tween_property(
 		label,
