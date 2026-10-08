@@ -1,258 +1,95 @@
 [gd_scene format=3 uid="uid://s7uwxykj520f"]
 
-[ext_resource type="FontFile" uid="uid://1m6gkfkxpfcg" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="1_45a1r"]
-[ext_resource type="Script" uid="uid://b0v5dxqpok8c3" path="res://scripts/index.gd" id="1_igtc1"]
-[ext_resource type="PackedScene" uid="uid://dnurlvfamm8o4" path="res://scenes/swordsman_index.tscn" id="3_74d6c"]
-[ext_resource type="PackedScene" uid="uid://wnud6kpd164i" path="res://scenes/bomber_index.tscn" id="4_cjd57"]
-[ext_resource type="PackedScene" uid="uid://iock6ba8mea4" path="res://scenes/shielder_index.tscn" id="5_eao86"]
-[ext_resource type="PackedScene" uid="uid://c3jyxcep31oh2" path="res://scenes/thrower_index.tscn" id="6_vc6rt"]
-[ext_resource type="PackedScene" uid="uid://cqugbmh8yls8q" path="res://scenes/generator_index.tscn" id="7_tsphw"]
-[ext_resource type="FontFile" uid="uid://bhigvelo1x6ac" path="res://fonts/Elms_Sans/static/ElmsSans-Thin.ttf" id="8_eao86"]
-[ext_resource type="FontFile" uid="uid://bdnkrwic58f6h" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="9_tsphw"]
-[ext_resource type="Texture2D" uid="uid://bv5plsb6jrxq0" path="res://images/arrow-left-alt-5ufw09e1z3jbk920li7a28.png" id="9_vc6rt"]
-[ext_resource type="Texture2D" uid="uid://dkycpvyv6i558" path="res://images/table.png" id="11_w3g1x"]
+[ext_resource type="Script" uid="uid://c4ws44fn0y1xv" path="res://scripts/ui_card.gd" id="1_hhnvu"]
+[ext_resource type="Texture2D" uid="uid://dofm4iax85gem" path="res://images/5160006_label_1000x-removebg-preview.png" id="2_8s3bs"]
+[ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="3_khbhx"]
+[ext_resource type="Texture2D" uid="uid://b12jv5dcuxo6h" path="res://images/bolt-u66h28xd2g94f7gj1ckz6s.webp" id="4_cjd57"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2a4ak"]
-bg_color = Color(0.33333334, 0.6156863, 0.9137255, 1)
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-corner_radius_top_left = 35
-corner_radius_top_right = 35
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rggdb"]
+size = Vector2(240, 290)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsphw"]
-bg_color = Color(0.14397871, 0.41719672, 0.68578327, 1)
-corner_radius_top_left = 35
-corner_radius_top_right = 35
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0jsi4"]
+bg_color = Color(0.83889705, 0.83889705, 0.8388969, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vep6c"]
-bg_color = Color(0.33335307, 0.61659706, 0.91381294, 1)
-corner_radius_top_left = 35
-corner_radius_top_right = 35
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1v08"]
-bg_color = Color(0.90588236, 0.42352942, 0.49411765, 1)
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-corner_radius_top_left = 35
-corner_radius_top_right = 35
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs4ya"]
-bg_color = Color(0.7387222, 0.24842912, 0.34085736, 1)
-corner_radius_top_left = 35
-corner_radius_top_right = 35
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mmqf"]
-bg_color = Color(0.9077805, 0.42305365, 0.49496567, 1)
-corner_radius_top_left = 35
-corner_radius_top_right = 35
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3g1x"]
-bg_color = Color(0.65143466, 0.46356946, 5.7756904e-07, 1)
-corner_radius_top_left = 35
-corner_radius_top_right = 35
-
-[node name="index" type="Control" unique_id=1859177604]
+[node name="archerCardUI" type="Control" unique_id=793532619 groups=["cards"]]
+custom_minimum_size = Vector2(145, 175)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.0023761, 1)
-script = ExtResource("1_igtc1")
+anchors_preset = 0
+offset_right = 145.0
+offset_bottom = 175.0
+size_flags_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hhnvu")
+card_id = "archer"
 
-[node name="unitsButton" type="Button" parent="." unique_id=229989896]
-layout_mode = 0
-offset_right = 360.0
-offset_bottom = 120.0
-theme_override_colors/font_pressed_color = Color(0, 0.78538746, 0.7853875, 1)
-theme_override_colors/font_hover_color = Color(0, 0.9490196, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_2a4ak")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_tsphw")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vep6c")
+[node name="scalingnstuff" type="Node2D" parent="." unique_id=632514743]
+position = Vector2(73, 73)
+scale = Vector2(0.605, 0.605)
 
-[node name="unitsLabel" type="Label" parent="unitsButton" unique_id=814956186]
-layout_mode = 0
-offset_right = 360.0
-offset_bottom = 120.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("1_45a1r")
-theme_override_font_sizes/font_size = 87
-text = "Units"
-horizontal_alignment = 1
+[node name="Sprite2D" type="Sprite2D" parent="scalingnstuff" unique_id=1838322728]
+position = Vector2(3.3057737, 3.3057747)
+scale = Vector2(0.4958677, 0.76033056)
+texture = ExtResource("2_8s3bs")
+
+[node name="Area2D" type="Area2D" parent="scalingnstuff" unique_id=1268672156]
+collision_layer = 3
 metadata/_edit_lock_ = true
 
-[node name="enemiesButton" type="Button" parent="." unique_id=312928843]
-layout_mode = 0
-offset_left = 379.09924
-offset_right = 739.09924
-offset_bottom = 120.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_w1v08")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_bs4ya")
-theme_override_styles/hover = SubResource("StyleBoxFlat_8mmqf")
-
-[node name="enemyLabel" type="Label" parent="enemiesButton" unique_id=139421660]
-layout_mode = 0
-offset_left = -1.1378298
-offset_right = 358.86218
-offset_bottom = 120.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("1_45a1r")
-theme_override_font_sizes/font_size = 87
-text = "Enemies"
-horizontal_alignment = 1
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scalingnstuff/Area2D" unique_id=518466849]
+position = Vector2(0, 25)
+shape = SubResource("RectangleShape2D_rggdb")
+debug_color = Color(1, 0, 0, 0.39215687)
 metadata/_edit_lock_ = true
 
-[node name="previewAreaBG" type="ColorRect" parent="." unique_id=2035295651]
-z_index = -41
-layout_mode = 0
-offset_top = 120.0
-offset_right = 1316.871
-offset_bottom = 1080.0
-color = Color(0.33333334, 0.6156863, 0.9137255, 1)
+[node name="bomberLabel" type="Label" parent="scalingnstuff" unique_id=269281261]
+offset_left = -87.6033
+offset_top = 61.15702
+offset_right = 150.3967
+offset_bottom = 120.15702
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_khbhx")
+theme_override_font_sizes/font_size = 45
+text = "Archer"
 
-[node name="previewArea" type="HFlowContainer" parent="previewAreaBG" unique_id=1330299091]
-z_index = 1
-layout_mode = 0
-offset_top = 60.0
-offset_right = 1227.0844
-offset_bottom = 960.0
-theme_override_constants/h_separation = 170
-theme_override_constants/v_separation = 170
-alignment = 1
-last_wrap_alignment = 1
+[node name="Panel" type="Panel" parent="scalingnstuff" unique_id=685205190]
+z_index = -1
+offset_left = -120.0
+offset_top = -120.0
+offset_right = 120.0
+offset_bottom = 170.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0jsi4")
+metadata/_edit_lock_ = true
 
-[node name="swordsman_index" parent="previewAreaBG/previewArea" unique_id=793532619 instance=ExtResource("3_74d6c")]
-layout_mode = 2
-
-[node name="swordsmanButton" type="TextureButton" parent="previewAreaBG/previewArea/swordsman_index" unique_id=433300815]
-layout_mode = 0
-offset_right = 241.26517
-offset_bottom = 240.0
-
-[node name="bomber_index" parent="previewAreaBG/previewArea" unique_id=1282573228 instance=ExtResource("4_cjd57")]
-layout_mode = 2
-
-[node name="bomberButton" type="TextureButton" parent="previewAreaBG/previewArea/bomber_index" unique_id=110917553]
-layout_mode = 0
-offset_right = 241.26517
-offset_bottom = 240.0
-
-[node name="shielder_index" parent="previewAreaBG/previewArea" unique_id=143328326 instance=ExtResource("5_eao86")]
-layout_mode = 2
-
-[node name="shielderButton" type="TextureButton" parent="previewAreaBG/previewArea/shielder_index" unique_id=1317711698]
-layout_mode = 0
-offset_right = 241.26517
-offset_bottom = 240.0
-
-[node name="thrower_index" parent="previewAreaBG/previewArea" unique_id=290648113 instance=ExtResource("6_vc6rt")]
-layout_mode = 2
-
-[node name="throwerButton" type="TextureButton" parent="previewAreaBG/previewArea/thrower_index" unique_id=747721796]
-layout_mode = 0
-offset_right = 241.26517
-offset_bottom = 240.0
-
-[node name="generator_index" parent="previewAreaBG/previewArea" unique_id=951992644 instance=ExtResource("7_tsphw")]
-layout_mode = 2
-
-[node name="generatorButton" type="TextureButton" parent="previewAreaBG/previewArea/generator_index" unique_id=26981458]
-layout_mode = 0
-offset_right = 241.26517
-offset_bottom = 240.0
-
-[node name="unitpreviewbox" type="ColorRect" parent="." unique_id=641147173]
-layout_mode = 0
-offset_left = 1376.7288
-offset_top = 600.0
-offset_right = 1865.5673
-offset_bottom = 1080.0
-color = Color(0.2509804, 0.2509804, 0.2509804, 0.49411765)
-
-[node name="cardNamePreview" type="Label" parent="unitpreviewbox" unique_id=42689653]
-layout_mode = 0
-offset_right = 478.86218
-offset_bottom = 73.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 15
-theme_override_fonts/font = ExtResource("8_eao86")
-theme_override_font_sizes/font_size = 56
-text = "Select a card!"
-horizontal_alignment = 1
-
-[node name="cardStats" type="RichTextLabel" parent="unitpreviewbox" unique_id=1036383440]
-layout_mode = 0
-offset_top = 80.0
-offset_right = 488.8385
-offset_bottom = 260.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 20
-theme_override_fonts/normal_font = ExtResource("9_tsphw")
-theme_override_font_sizes/normal_font_size = 35
-text = "
+[node name="bomberLabel2" type="Label" parent="scalingnstuff" unique_id=1732538950]
+offset_left = -37.0
+offset_top = 107.0
+offset_right = 191.0
+offset_bottom = 159.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_khbhx")
+theme_override_font_sizes/font_size = 40
+text = "200
 "
 
-[node name="cardDescription" type="RichTextLabel" parent="unitpreviewbox" unique_id=244145913]
-layout_mode = 0
-offset_top = 300.0
-offset_right = 488.8385
-offset_bottom = 480.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 20
-theme_override_fonts/normal_font = ExtResource("9_tsphw")
-theme_override_font_sizes/normal_font_size = 35
-text = "
-"
+[node name="boltSprite" type="Sprite2D" parent="scalingnstuff" unique_id=232221732]
+position = Vector2(-60, 134)
+scale = Vector2(0.12083337, 0.12291671)
+texture = ExtResource("4_cjd57")
+metadata/_edit_lock_ = true
 
-[node name="spritePreviewBG" type="ColorRect" parent="." unique_id=1526602174]
-z_index = 1
-layout_mode = 0
-offset_left = 1376.7288
-offset_top = 60.0
-offset_right = 1855.591
-offset_bottom = 540.0
-color = Color(0.21960784, 0.21960784, 0.21960784, 0.49411765)
+[node name="TextureButton" type="TextureButton" parent="scalingnstuff" unique_id=1373509562]
+offset_left = -120.661156
+offset_top = -120.66115
+offset_right = 119.338844
+offset_bottom = 169.33885
+metadata/_edit_lock_ = true
 
-[node name="spritePreview" type="TextureRect" parent="." unique_id=521897987]
-z_index = 1
-layout_mode = 0
-offset_left = 1376.7288
-offset_top = 60.0
-offset_right = 1855.591
-offset_bottom = 540.0
-expand_mode = 1
-stretch_mode = 4
-
-[node name="backButton" type="Button" parent="." unique_id=210446421]
-layout_mode = 0
-offset_left = 957.72437
-offset_right = 1316.8708
-offset_bottom = 120.0
-theme_override_font_sizes/font_size = 70
-theme_override_styles/normal = SubResource("StyleBoxFlat_w3g1x")
-text = "BACK"
-icon = ExtResource("9_vc6rt")
-
-[node name="Table" type="Sprite2D" parent="." unique_id=1782911264]
-z_index = -43
-position = Vector2(478.86218, 550)
-scale = Vector2(7.4984026, 8.648437)
-texture = ExtResource("11_w3g1x")
-
-[node name="Table2" type="Sprite2D" parent="." unique_id=432793739]
-z_index = -43
-position = Vector2(1436.5864, 550)
-scale = Vector2(7.4984026, 8.648437)
-texture = ExtResource("11_w3g1x")
-
-[connection signal="pressed" from="unitsButton" to="." method="_on_units_button_pressed"]
-[connection signal="pressed" from="enemiesButton" to="." method="_on_enemies_button_pressed"]
-[connection signal="pressed" from="previewAreaBG/previewArea/swordsman_index/swordsmanButton" to="." method="_on_swordsman_button_pressed"]
-[connection signal="pressed" from="previewAreaBG/previewArea/bomber_index/bomberButton" to="." method="_on_bomber_button_pressed"]
-[connection signal="pressed" from="previewAreaBG/previewArea/shielder_index/shielderButton" to="." method="_on_shielder_button_pressed"]
-[connection signal="pressed" from="previewAreaBG/previewArea/thrower_index/throwerButton" to="." method="_on_thrower_button_pressed"]
-[connection signal="pressed" from="previewAreaBG/previewArea/generator_index/generatorButton" to="." method="_on_generator_button_pressed"]
-[connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="scalingnstuff/TextureButton" to="." method="_on_texture_button_pressed"]
