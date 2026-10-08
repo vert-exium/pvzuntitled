@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://s7uwxykj520f"]
 
 [ext_resource type="FontFile" uid="uid://1m6gkfkxpfcg" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="1_45a1r"]
-[ext_resource type="Script" uid="uid://b0v5dxqpok8c3" path="res://scenes/index.gd" id="1_igtc1"]
+[ext_resource type="Script" uid="uid://b0v5dxqpok8c3" path="res://scripts/index.gd" id="1_igtc1"]
 [ext_resource type="PackedScene" uid="uid://dnurlvfamm8o4" path="res://scenes/swordsman_index.tscn" id="3_74d6c"]
 [ext_resource type="PackedScene" uid="uid://wnud6kpd164i" path="res://scenes/bomber_index.tscn" id="4_cjd57"]
 [ext_resource type="PackedScene" uid="uid://iock6ba8mea4" path="res://scenes/shielder_index.tscn" id="5_eao86"]

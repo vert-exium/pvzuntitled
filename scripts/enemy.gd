@@ -1,5 +1,7 @@
 extends Area2D
 
+
+# Stores various variables
 var base_speed: float = 30.0
 var current_speed: float = 30.0
 var health: int = 100

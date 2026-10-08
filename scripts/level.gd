@@ -12,6 +12,9 @@ const SHOVEL_CURSOR = preload("res://assets/cursor.png")
 @export var grid_origin: Vector2 = Vector2(160, 245)
 @onready var grid_drawer: Node2D = $GridDrawer
 
+@export var line_color: Color = Color(0.0, 0.0, 0.0, 0.4)
+@export var line_thickness: float = 2.0
+
 var grid_tween: Tween
 var enemy_placement_options 
 # Creates a dictionary to track which grids are free and which are occupied.
@@ -272,3 +275,16 @@ func spawn_enemy(lane_index: int, budget: float) -> void:
 func _on_request_enemy_spawn(budget: float) -> void:
 	var random_lane = randi() % ROWS
 	spawn_enemy(random_lane, budget)
+
+# A function which draws the faint overlay over the grid
+func _draw() -> void:
+	var grid_width = COLS * cell_size.x
+	var grid_height = ROWS * cell_size.y
+	
+	for col in range(COLS + 1):
+		var x = grid_origin.x + (col * cell_size.x)
+		draw_line(Vector2(x, grid_origin.y), Vector2(x, grid_origin.y + grid_height), line_color, line_thickness)
+	
+	for row in range(ROWS + 1):
+		var y = grid_origin.y + (row * cell_size.y)
+		draw_line(Vector2(grid_origin.x, y), Vector2(grid_origin.x + grid_width, y), line_color, line_thickness)

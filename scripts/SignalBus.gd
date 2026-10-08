@@ -1,5 +1,9 @@
 extends Node
 
+# Serves as a bus for all signals.
+# Autoloaded script, essentially a bridge
+# so that other scenes can detect signals.
+
 signal energy_changed(new_amount)
 signal card_cooldown_started(card_id, duration)
 
