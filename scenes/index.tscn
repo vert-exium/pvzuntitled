@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://s7uwxykj520f"]
 
 [ext_resource type="FontFile" uid="uid://1m6gkfkxpfcg" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="1_45a1r"]
-[ext_resource type="Script" uid="uid://b0v5dxqpok8c3" path="res://scenes/index.gd" id="1_igtc1"]
+[ext_resource type="Script" uid="uid://b0v5dxqpok8c3" path="res://scripts/index.gd" id="1_igtc1"]
 [ext_resource type="PackedScene" uid="uid://dnurlvfamm8o4" path="res://scenes/swordsman_index.tscn" id="3_74d6c"]
 [ext_resource type="PackedScene" uid="uid://wnud6kpd164i" path="res://scenes/bomber_index.tscn" id="4_cjd57"]
 [ext_resource type="PackedScene" uid="uid://iock6ba8mea4" path="res://scenes/shielder_index.tscn" id="5_eao86"]
@@ -170,7 +170,7 @@ offset_left = 1376.7288
 offset_top = 600.0
 offset_right = 1865.5673
 offset_bottom = 1080.0
-color = Color(0.2520276, 0.25202766, 0.25202763, 1)
+color = Color(0.2509804, 0.2509804, 0.2509804, 0.49411765)
 
 [node name="cardNamePreview" type="Label" parent="unitpreviewbox" unique_id=42689653]
 layout_mode = 0
@@ -214,7 +214,7 @@ offset_left = 1376.7288
 offset_top = 60.0
 offset_right = 1855.591
 offset_bottom = 540.0
-color = Color(0.21950102, 0.21950102, 0.21950102, 1)
+color = Color(0.21960784, 0.21960784, 0.21960784, 0.49411765)
 
 [node name="spritePreview" type="TextureRect" parent="." unique_id=521897987]
 z_index = 1

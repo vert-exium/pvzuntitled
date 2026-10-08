@@ -40,6 +40,10 @@ const cardStrengths = {
 	"swordsman": {
 		"name": "swordsman",
 		"strength": 17
+	},
+	"archer": {
+		"name": "archer",
+		"strength": 7
 	}
 }
 
