@@ -12,13 +12,12 @@ var pitch_random: float = 0
 @export var enemy_id = ""
 var lane: int = 0
 
-#When adding a new enemy make sure to give it a unique enemy id
-#Go to level.gd and make a variable for the enemy and load the scene
-#After defining those variables go to func spawn_enemy() and follow the instructions there
-#Table of enemy stats
-#enemy gets stats assigned
-#Add new enemy below + any other optional stats
-#Example: Knockback
+# When adding a new enemy make sure to give it a unique enemy id
+# Go to level.gd and make a variable for the enemy and load the scene
+# After defining those variables go to func spawn_enemy() and follow the instructions there
+# Table of enemy stats
+# enemy gets stats assigned
+# Add new enemy below + any other optional stats (e.g. knockback)
 const enemy_stats = {
 	"normal": {
 		"name": "normal",
