@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d22hrgufg23co" path="res://scripts/credits.gd" id="1_0bpdh"]
 [ext_resource type="FontFile" uid="uid://8bwddhns1fvp" path="res://fonts/Elms_Sans/static/ElmsSans-SemiBold.ttf" id="2_0ctdu"]
 [ext_resource type="FontFile" uid="uid://1m6gkfkxpfcg" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="3_2fbfq"]
+[ext_resource type="FontFile" uid="uid://dvhw1n6ktemgr" path="res://fonts/Elms_Sans/ElmsSans-VariableFont_wght.ttf" id="4_2fbfq"]
 
 [sub_resource type="Gradient" id="Gradient_2ckv8"]
 offsets = PackedFloat32Array(0, 0.97422683)
@@ -240,3 +241,15 @@ theme_override_fonts/font = ExtResource("3_2fbfq")
 theme_override_font_sizes/font_size = 45
 text = "Thank you for playing!"
 horizontal_alignment = 1
+
+[node name="backButton" type="Button" parent="." unique_id=2055147359]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 960.0
+offset_right = 240.0
+offset_bottom = 1070.0
+theme_override_fonts/font = ExtResource("4_2fbfq")
+theme_override_font_sizes/font_size = 72
+text = "Back"
+
+[connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]

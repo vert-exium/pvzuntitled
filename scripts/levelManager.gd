@@ -1,7 +1,7 @@
 extends Node
 
 var current_wave: int = 0
-var max_waves: int = 10
+var max_waves: int = 1000
 var is_game_active: bool = false
 var is_wave_transitioning: bool = false   
 
@@ -52,10 +52,30 @@ func _start_next_wave() -> void:
 	active_enemies_count = 0
 	
 	# Stat scaling
-	speed_scale = 1.0 + (current_wave - 1) * 0.4
-	dmg_scale = 1.0 + (current_wave - 1) * 0.2
-	hp_scale = 1.0 + (current_wave - 1) * 0.2
-	
+	if current_wave < 10:
+		speed_scale = 1.0 + (current_wave - 1) * 0.1
+		dmg_scale = 1.0 + (current_wave - 1) * 0.1
+		hp_scale = 1.0 + (current_wave - 1) * 0.1
+	elif current_wave >= 10:
+		speed_scale = 1.0 + (current_wave - 1) * 0.05
+		dmg_scale = 1.0 + (current_wave - 1) * 0.05
+		hp_scale = 1.0 + (current_wave - 1) * 0.05
+	elif current_wave >= 20:
+		speed_scale = 1.0 + (current_wave - 1) * 0.04
+		dmg_scale = 1.0 + (current_wave - 1) * 0.04
+		hp_scale = 1.0 + (current_wave - 1) * 0.04
+	elif current_wave >= 30:
+		speed_scale = 1.0 + (current_wave - 1) * 0.03
+		dmg_scale = 1.0 + (current_wave - 1) * 0.03
+		hp_scale = 1.0 + (current_wave - 1) * 0.03
+	elif current_wave >= 40:
+		speed_scale = 1.0 + (current_wave - 1) * 0.02
+		dmg_scale = 1.0 + (current_wave - 1) * 0.02
+		hp_scale = 1.0 + (current_wave - 1) * 0.02
+	elif current_wave >= 50:
+		speed_scale = 1.0 + (current_wave -1) * 0.01
+		dmg_scale = 1.0 + (current_wave - 1) * 0.01
+		hp_scale = 1.0 + (current_wave - 1) * 0.01
 	print("----------------------------------------")
 	print("[DEBUG] WAVE %d / %d STARTED" % [current_wave, max_waves])
 	print("[DEBUG] Total Wave Budget: %.1f" % wave_budget)

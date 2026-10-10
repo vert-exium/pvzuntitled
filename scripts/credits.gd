@@ -39,3 +39,7 @@ func trigger_manual_interrupt() -> void:
 	is_auto_scrolling = false
 	pause_timer = resume_delay
 	scroll_accumulator = 0.0
+
+
+func _on_back_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

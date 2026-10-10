@@ -497,8 +497,8 @@ func get_card_with_highest_z_index(cards):
 func calculate_total_strength() -> int:
 	# Creates a variable to track total strength
 	var total_strength: int = 0
-	# Looks for the container for equipped cards
-	var preview_container = get_node_or_null("../cardLoadoutPreview")
+	# Looks for the container for equipped cards using its group (since CardManager is an Autoload)
+	var preview_container = get_tree().get_first_node_in_group("card_loadout_preview")
 	
 	# If the container doesn't exist, stops the 
 	# function and returns a value of zero.
@@ -649,3 +649,19 @@ func get_loadout_card_ids() -> Array[String]:
 			card_ids.append(child.card_id)
 
 	return card_ids
+
+
+
+func get_current_strength() -> int:
+	var total_strength: int = 0
+	var preview_container = get_tree().get_first_node_in_group("card_loadout_preview")
+	
+	if not preview_container:
+		return 0
+	
+	for child in preview_container.get_children():
+		var strength = child.get("strength")
+		if strength != null and child.is_in_group("cards"):
+			total_strength+=total_strength
+	
+	return total_strength

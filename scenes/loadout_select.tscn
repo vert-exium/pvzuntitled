@@ -84,6 +84,12 @@ offset_top = 850.0
 offset_right = 1080.0
 offset_bottom = 850.0
 
+[node name="archerCard" parent="cardManager" unique_id=149552995 instance=ExtResource("14_fd4qn")]
+offset_left = 1680.0
+offset_top = 850.0
+offset_right = 1845.0
+offset_bottom = 850.0
+
 [node name="cardLoadoutPreview" type="HBoxContainer" parent="." unique_id=917248621 groups=["card_loadout_preview"]]
 offset_left = 180.0
 offset_right = 1920.0
@@ -108,7 +114,7 @@ attenuation = 0.6372823
 metadata/_edit_lock_ = true
 
 [node name="strengthLabel" type="Label" parent="." unique_id=840580554 groups=["strength_label"]]
-offset_left = 420.0
+offset_left = 300.0
 offset_top = 330.0
 offset_right = 1440.0
 offset_bottom = 437.0
@@ -119,7 +125,6 @@ theme_override_fonts/font = ExtResource("7_7l38q")
 theme_override_font_sizes/font_size = 77
 text = "Loadout strength: 0/50"
 autowrap_mode = 3
-metadata/_edit_lock_ = true
 
 [node name="Button" type="Button" parent="." unique_id=1453060070]
 offset_left = 1600.0
@@ -148,12 +153,6 @@ offset_bottom = 450.0
 theme_override_fonts/font = ExtResource("13_8s84n")
 theme_override_font_sizes/font_size = 55
 text = "Back"
-
-[node name="shielderCard" parent="." unique_id=149552995 instance=ExtResource("14_fd4qn")]
-offset_left = 1680.0
-offset_top = 850.0
-offset_right = 1845.0
-offset_bottom = 850.0
 
 [connection signal="area_entered" from="cardDetector" to="cardDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="cardDetector" to="cardDetector" method="_on_area_exited"]
