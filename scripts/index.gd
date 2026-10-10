@@ -5,6 +5,7 @@ var bomber_texture = load("res://images/image_2026-09-18_233811005-removebg-prev
 var shielder_texture = load("res://images/5723525.png")
 var thrower_texture = load("res://images/images__5_-removebg-preview.png")
 var generator_texture = load("res://images/image_2026-09-18_234043813-removebg-preview.png")
+var archer_texture = load("res://images/5160006_label_1000x-removebg-preview.png")
 #Enemy textures
 var normal_texture = load("res://images/image_2026-10-05_164029134-removebg-preview.png")
 var tank_texture = load("res://images/image_2026-10-05_170904917-removebg-preview (1).png")
@@ -61,6 +62,11 @@ func _on_generator_button_pressed() -> void:
 	$unitpreviewbox/cardDescription.text = "Description: \nThe generator is a unit which generates energy passivley."
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+func _on_archer_button_pressed() -> void:
+	$unitpreviewbox/cardNamePreview.text = "Archer"
+	$spritePreview.texture = archer_texture
+	$unitpreviewbox/cardStats.text = "Cost: 200 \nPlacement Cooldown: 8 seconds \nHealth: 200 \nDamage: 30 \nAttack rate: 2.5s"
+	$unitpreviewbox/cardDescription.text = "Description: \n The archer is a low price tower with high damage and slow fireate."
 #Enemy descriptions:
 func _on_normal_button_pressed() -> void:
 	$unitpreviewbox/cardNamePreview.text = "Normal"

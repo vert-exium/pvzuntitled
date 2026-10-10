@@ -1,95 +1,63 @@
 [gd_scene format=3 uid="uid://bktdn0saksna8"]
 
-[ext_resource type="Script" uid="uid://c4ws44fn0y1xv" path="res://scripts/ui_card.gd" id="1_525ig"]
-[ext_resource type="Texture2D" uid="uid://dofm4iax85gem" path="res://images/5160006_label_1000x-removebg-preview.png" id="2_kev3m"]
-[ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="3_o8tgr"]
-[ext_resource type="Texture2D" uid="uid://b12jv5dcuxo6h" path="res://images/bolt-u66h28xd2g94f7gj1ckz6s.webp" id="4_amkfc"]
+[ext_resource type="Script" uid="uid://dk4jc3mt1j42y" path="res://scenes/archer_projectile.gd" id="1_kev3m"]
+[ext_resource type="Texture2D" uid="uid://6yfvext3371l" path="res://animations/arrow.png" id="2_m2y0x"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rggdb"]
-size = Vector2(240, 290)
+[sub_resource type="AtlasTexture" id="AtlasTexture_525ig"]
+atlas = ExtResource("2_m2y0x")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0jsi4"]
-bg_color = Color(0.83889705, 0.83889705, 0.8388969, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-corner_detail = 20
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8tgr"]
+atlas = ExtResource("2_m2y0x")
+region = Rect2(64, 0, 64, 64)
 
-[node name="archerCardUI" type="Control" unique_id=793532619 groups=["cards"]]
-custom_minimum_size = Vector2(145, 175)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 145.0
-offset_bottom = 175.0
-size_flags_vertical = 2
-mouse_filter = 2
-script = ExtResource("1_525ig")
-card_id = "archer"
+[sub_resource type="AtlasTexture" id="AtlasTexture_amkfc"]
+atlas = ExtResource("2_m2y0x")
+region = Rect2(128, 0, 64, 64)
 
-[node name="scalingnstuff" type="Node2D" parent="." unique_id=632514743]
-position = Vector2(73, 73)
-scale = Vector2(0.605, 0.605)
+[sub_resource type="AtlasTexture" id="AtlasTexture_auox8"]
+atlas = ExtResource("2_m2y0x")
+region = Rect2(192, 0, 64, 64)
 
-[node name="Sprite2D" type="Sprite2D" parent="scalingnstuff" unique_id=1838322728]
-position = Vector2(3.3057737, 3.3057747)
-scale = Vector2(0.4958677, 0.76033056)
-texture = ExtResource("2_kev3m")
+[sub_resource type="SpriteFrames" id="SpriteFrames_0jsi4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_525ig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8tgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amkfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auox8")
+}],
+"loop": 1,
+"name": &"arrow",
+"speed": 12.0
+}]
 
-[node name="Area2D" type="Area2D" parent="scalingnstuff" unique_id=1268672156]
-collision_layer = 3
-metadata/_edit_lock_ = true
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_haf5a"]
+size = Vector2(39.999992, 150)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="scalingnstuff/Area2D" unique_id=518466849]
-position = Vector2(0, 25)
-shape = SubResource("RectangleShape2D_rggdb")
-debug_color = Color(1, 0, 0, 0.39215687)
-metadata/_edit_lock_ = true
+[node name="archerProjectile" type="Area2D" unique_id=553678270]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_kev3m")
 
-[node name="bomberLabel" type="Label" parent="scalingnstuff" unique_id=269281261]
-offset_left = -87.6033
-offset_top = 61.15702
-offset_right = 150.3967
-offset_bottom = 120.15702
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_o8tgr")
-theme_override_font_sizes/font_size = 45
-text = "Archer"
+[node name="arrow" type="AnimatedSprite2D" parent="." unique_id=1294427955]
+position = Vector2(-30.000004, 1.9073486e-06)
+scale = Vector2(2.8125, 1.8750001)
+sprite_frames = SubResource("SpriteFrames_0jsi4")
+animation = &"arrow"
+frame = 1
+frame_progress = 0.02346011
 
-[node name="Panel" type="Panel" parent="scalingnstuff" unique_id=685205190]
-z_index = -1
-offset_left = -120.0
-offset_top = -120.0
-offset_right = 120.0
-offset_bottom = 170.0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0jsi4")
-metadata/_edit_lock_ = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1810819108]
+position = Vector2(-15, 0)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_haf5a")
 
-[node name="bomberLabel2" type="Label" parent="scalingnstuff" unique_id=1732538950]
-offset_left = -37.0
-offset_top = 107.0
-offset_right = 191.0
-offset_bottom = 159.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_o8tgr")
-theme_override_font_sizes/font_size = 40
-text = "200
-"
-
-[node name="boltSprite" type="Sprite2D" parent="scalingnstuff" unique_id=232221732]
-position = Vector2(-60, 134)
-scale = Vector2(0.12083337, 0.12291671)
-texture = ExtResource("4_amkfc")
-metadata/_edit_lock_ = true
-
-[node name="TextureButton" type="TextureButton" parent="scalingnstuff" unique_id=1373509562]
-offset_left = -120.661156
-offset_top = -120.66115
-offset_right = 119.338844
-offset_bottom = 169.33885
-metadata/_edit_lock_ = true
-
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="scalingnstuff/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

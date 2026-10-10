@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://73w5s1yrrtx0" path="res://scripts/loadout_confirm_button.gd" id="10_vxoj1"]
 [ext_resource type="PackedScene" uid="uid://cviqc1w7nfiad" path="res://scenes/swordsman_card.tscn" id="11_w40n5"]
 [ext_resource type="FontFile" uid="uid://c32sd0jmdtuqa" path="res://fonts/Elms_Sans/static/ElmsSans-Light.ttf" id="13_8s84n"]
+[ext_resource type="PackedScene" uid="uid://bryo2wg23itwe" path="res://scenes/archer_card.tscn" id="14_fd4qn"]
 
 [sub_resource type="Gradient" id="Gradient_w40n5"]
 offsets = PackedFloat32Array(0.22680412, 0.68041235, 0.8917526)
@@ -147,6 +148,12 @@ offset_bottom = 450.0
 theme_override_fonts/font = ExtResource("13_8s84n")
 theme_override_font_sizes/font_size = 55
 text = "Back"
+
+[node name="shielderCard" parent="." unique_id=149552995 instance=ExtResource("14_fd4qn")]
+offset_left = 1680.0
+offset_top = 850.0
+offset_right = 1845.0
+offset_bottom = 850.0
 
 [connection signal="area_entered" from="cardDetector" to="cardDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="cardDetector" to="cardDetector" method="_on_area_exited"]

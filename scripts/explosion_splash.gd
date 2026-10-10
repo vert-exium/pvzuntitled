@@ -4,7 +4,7 @@ extends Area2D
 var damage = 25
 var soundPitch: float = 1.0
 
-
+#When spawned in, pick a random pitch for the bomb sound. 
 func _ready() -> void:
 	$explosionAnim.play("default")
 	soundPitch = randf_range(0.9, 1.1)

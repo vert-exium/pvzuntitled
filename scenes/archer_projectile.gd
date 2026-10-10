@@ -3,6 +3,9 @@ extends Area2D
 var speed: float = 350
 var damage: int = 30
 
+func _ready() -> void:
+	$arrow.play("arrow")
+
 func _process(delta: float) -> void:
 	position.x += speed * delta 
 

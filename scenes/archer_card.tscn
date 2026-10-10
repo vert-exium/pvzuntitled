@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://bryo2wg23itwe"]
 
-[ext_resource type="Script" uid="uid://c4ws44fn0y1xv" path="res://scripts/ui_card.gd" id="1_5kexk"]
+[ext_resource type="Script" uid="uid://dbnapl1anias8" path="res://scripts/card.gd" id="1_rb38f"]
 [ext_resource type="Texture2D" uid="uid://dofm4iax85gem" path="res://images/5160006_label_1000x-removebg-preview.png" id="2_5kexk"]
 [ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="3_2mnp8"]
-[ext_resource type="Texture2D" uid="uid://b12jv5dcuxo6h" path="res://images/bolt-u66h28xd2g94f7gj1ckz6s.webp" id="4_2mnp8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rggdb"]
 size = Vector2(240, 290)
@@ -16,48 +15,46 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 20
 
-[node name="archerCardUI" type="Control" unique_id=793532619 groups=["cards"]]
-custom_minimum_size = Vector2(145, 175)
+[node name="archerCard" type="Control" unique_id=793532619 groups=["cards"]]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 145.0
-offset_bottom = 175.0
-size_flags_vertical = 2
+offset_top = -20.0
+offset_right = 165.0
+offset_bottom = -20.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+offset_transform_position = Vector2(120, 120)
 mouse_filter = 2
-script = ExtResource("1_5kexk")
+script = ExtResource("1_rb38f")
 card_id = "archer"
 
-[node name="scalingnstuff" type="Node2D" parent="." unique_id=632514743]
-position = Vector2(73, 73)
-scale = Vector2(0.605, 0.605)
-
-[node name="Sprite2D" type="Sprite2D" parent="scalingnstuff" unique_id=1838322728]
-position = Vector2(3.3057737, 3.3057747)
-scale = Vector2(0.4958677, 0.76033056)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1838322728]
+position = Vector2(-3.8146973e-06, -20.000004)
+scale = Vector2(0.48000002, 0.59999996)
 texture = ExtResource("2_5kexk")
 
-[node name="Area2D" type="Area2D" parent="scalingnstuff" unique_id=1268672156]
+[node name="Area2D" type="Area2D" parent="." unique_id=1268672156]
 collision_layer = 3
-metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="scalingnstuff/Area2D" unique_id=518466849]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=518466849]
+visible = false
 position = Vector2(0, 25)
 shape = SubResource("RectangleShape2D_rggdb")
-debug_color = Color(1, 0, 0, 0.39215687)
-metadata/_edit_lock_ = true
 
-[node name="bomberLabel" type="Label" parent="scalingnstuff" unique_id=269281261]
-offset_left = -87.6033
-offset_top = 61.15702
-offset_right = 150.3967
-offset_bottom = 120.15702
+[node name="bomberLabel" type="Label" parent="." unique_id=269281261]
+layout_mode = 0
+offset_left = -100.0
+offset_top = 60.0
+offset_right = 124.0
+offset_bottom = 110.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_2mnp8")
-theme_override_font_sizes/font_size = 45
-text = "Archer"
+theme_override_font_sizes/font_size = 35
+text = "Archer 200"
 
-[node name="Panel" type="Panel" parent="scalingnstuff" unique_id=685205190]
+[node name="Panel" type="Panel" parent="." unique_id=685205190]
 z_index = -1
+layout_mode = 0
 offset_left = -120.0
 offset_top = -120.0
 offset_right = 120.0
@@ -66,30 +63,16 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0jsi4")
 metadata/_edit_lock_ = true
 
-[node name="bomberLabel2" type="Label" parent="scalingnstuff" unique_id=1732538950]
-offset_left = -37.0
-offset_top = 107.0
-offset_right = 191.0
-offset_bottom = 159.0
+[node name="bomberLabel2" type="Label" parent="." unique_id=84117056]
+layout_mode = 0
+offset_left = -100.0
+offset_top = 110.0
+offset_right = 140.0
+offset_bottom = 160.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_2mnp8")
-theme_override_font_sizes/font_size = 40
-text = "200
-"
-
-[node name="boltSprite" type="Sprite2D" parent="scalingnstuff" unique_id=232221732]
-position = Vector2(-60, 134)
-scale = Vector2(0.12083337, 0.12291671)
-texture = ExtResource("4_2mnp8")
-metadata/_edit_lock_ = true
-
-[node name="TextureButton" type="TextureButton" parent="scalingnstuff" unique_id=1373509562]
-offset_left = -120.661156
-offset_top = -120.66115
-offset_right = 119.338844
-offset_bottom = 169.33885
-metadata/_edit_lock_ = true
+theme_override_font_sizes/font_size = 35
+text = "Strength 7"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="scalingnstuff/TextureButton" to="." method="_on_texture_button_pressed"]
