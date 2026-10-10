@@ -1,0 +1,242 @@
+[gd_scene format=3 uid="uid://cwao0vdv236bv"]
+
+[ext_resource type="Script" uid="uid://d22hrgufg23co" path="res://scripts/credits.gd" id="1_0bpdh"]
+[ext_resource type="FontFile" uid="uid://8bwddhns1fvp" path="res://fonts/Elms_Sans/static/ElmsSans-SemiBold.ttf" id="2_0ctdu"]
+[ext_resource type="FontFile" uid="uid://1m6gkfkxpfcg" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="3_2fbfq"]
+
+[sub_resource type="Gradient" id="Gradient_2ckv8"]
+offsets = PackedFloat32Array(0, 0.97422683)
+colors = PackedColorArray(0.038397167, 0.038397167, 0.03839716, 1, 0.10113076, 0.043306135, 0.3039821, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d8fr4"]
+gradient = SubResource("Gradient_2ckv8")
+width = 512
+height = 512
+fill_to = Vector2(0, 1)
+
+[node name="credits" type="Control" unique_id=833332339]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_0bpdh")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1398052263]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_d8fr4")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=476183861]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=1971426524]
+layout_mode = 2
+size_flags_horizontal = 6
+alignment = 1
+
+[node name="CreditLabel1" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1927272757]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_0ctdu")
+theme_override_font_sizes/font_size = 139
+text = "MAN VS MACHINE"
+horizontal_alignment = 1
+
+[node name="Spacer1" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=1739276097]
+custom_minimum_size = Vector2(0, 91.195)
+layout_mode = 2
+
+[node name="CreditLabel2" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=985214859]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_2fbfq")
+theme_override_font_sizes/font_size = 72
+text = "Created in Godot Engine 4.7"
+horizontal_alignment = 1
+
+[node name="Spacer2" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=420523114]
+custom_minimum_size = Vector2(0, 35.71)
+layout_mode = 2
+
+[node name="CreditLabel3" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1552973114]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_2fbfq")
+theme_override_font_sizes/font_size = 50
+text = "Development and Design by
+vertexium and tjr5555"
+horizontal_alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="ScrollContainer/VBoxContainer" unique_id=1118454386]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(547.68, 0)
+theme_override_fonts/font = ExtResource("3_2fbfq")
+theme_override_font_sizes/font_size = 30
+text = "vertexium.itch.io"
+uri = "https://vertexium.itch.io"
+
+[node name="LinkButton2" type="LinkButton" parent="ScrollContainer/VBoxContainer" unique_id=1693472184]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(558.305, 0)
+theme_override_fonts/font = ExtResource("3_2fbfq")
+theme_override_font_sizes/font_size = 30
+text = "tregnier.itch.io"
+uri = "https://tregnier.itch.io"
+
+[node name="Spacer3" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=432342662]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="CreditLabel6" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=487520806]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_2fbfq")
+theme_override_font_sizes/font_size = 35
+text = "Lead Programming by tjr5555"
+horizontal_alignment = 1
+
+[node name="CreditLabel12" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1511735549]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_2fbfq")
+theme_override_font_sizes/font_size = 35
+text = "Game Design Lead - vertexium"
+horizontal_alignment = 1
+
+[node name="CreditLabel13" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=631082608]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_2fbfq")
+theme_override_font_sizes/font_size = 35
+text = "UI Design Lead - tjr5555"
+horizontal_alignment = 1
+
+[node name="Spacer4" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=1593843793]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="CreditLabel4" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=343000247]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_2fbfq")
+theme_override_font_sizes/font_size = 35
+text = "Music Design by vertexium
+SFX by tjr5555"
+horizontal_alignment = 1
+
+[node name="Spacer5" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=350586032]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="CreditLabel5" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=2050828864]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_2fbfq")
+theme_override_font_sizes/font_size = 35
+text = "Art Direction by vertexium"
+horizontal_alignment = 1
+
+[node name="CreditLabel7" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=376438821]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_2fbfq")
+theme_override_font_sizes/font_size = 35
+text = "Fully Original Sountrack made in FL Studio 2025"
+horizontal_alignment = 1
+
+[node name="CreditLabel8" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1422465743]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_2fbfq")
+theme_override_font_sizes/font_size = 35
+text = "Pixel Art in Pixelorama"
+horizontal_alignment = 1
+
+[node name="CreditLabel10" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1962725038]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_2fbfq")
+theme_override_font_sizes/font_size = 35
+text = "Version Control by Github Desktop & Git"
+horizontal_alignment = 1
+
+[node name="CreditLabel9" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1455861712]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_2fbfq")
+theme_override_font_sizes/font_size = 35
+text = "Hosting by itch.io"
+horizontal_alignment = 1
+
+[node name="CreditLabel11" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=330333470]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_2fbfq")
+theme_override_font_sizes/font_size = 35
+text = "Debugging in Google Gemini"
+horizontal_alignment = 1
+
+[node name="Spacer7" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=1339802792]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="CreditLabel14" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=897999302]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_2fbfq")
+theme_override_font_sizes/font_size = 35
+text = "Special thanks to Hack Club"
+horizontal_alignment = 1
+
+[node name="LinkButton3" type="LinkButton" parent="ScrollContainer/VBoxContainer" unique_id=498839710]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(554.635, 0)
+theme_override_fonts/font = ExtResource("3_2fbfq")
+theme_override_font_sizes/font_size = 30
+text = "hackclub.com"
+uri = "https://hackclub.com"
+
+[node name="LinkButton4" type="LinkButton" parent="ScrollContainer/VBoxContainer" unique_id=399821398]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(489.42, 0)
+theme_override_fonts/font = ExtResource("3_2fbfq")
+theme_override_font_sizes/font_size = 30
+text = "thirdspace.hackclub.com"
+uri = "https://thirdspace.hackclub.com"
+
+[node name="Spacer6" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=1261019870]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="CreditLabel15" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1456092415]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_2fbfq")
+theme_override_font_sizes/font_size = 45
+text = "Thank you for playing!"
+horizontal_alignment = 1

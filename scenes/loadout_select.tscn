@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b7owjf65pfhp8"]
 
+[ext_resource type="Script" uid="uid://cxsawt6eby1q0" path="res://scripts/loadout_select.gd" id="1_5qigt"]
 [ext_resource type="Script" uid="uid://dnhvbs1qie68g" path="res://scripts/cardManager.gd" id="1_cutlr"]
 [ext_resource type="PackedScene" uid="uid://bla76yiwqpatk" path="res://scenes/bomber_card.tscn" id="2_cutlr"]
 [ext_resource type="PackedScene" uid="uid://dsf5da5nonwtj" path="res://scenes/thrower_card.tscn" id="3_djptu"]
@@ -11,6 +12,7 @@
 [ext_resource type="FontFile" uid="uid://dn1m0x7ww2h1o" path="res://fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf" id="9_4b6o6"]
 [ext_resource type="Script" uid="uid://73w5s1yrrtx0" path="res://scripts/loadout_confirm_button.gd" id="10_vxoj1"]
 [ext_resource type="PackedScene" uid="uid://cviqc1w7nfiad" path="res://scenes/swordsman_card.tscn" id="11_w40n5"]
+[ext_resource type="FontFile" uid="uid://c32sd0jmdtuqa" path="res://fonts/Elms_Sans/static/ElmsSans-Light.ttf" id="13_8s84n"]
 
 [sub_resource type="Gradient" id="Gradient_w40n5"]
 offsets = PackedFloat32Array(0.22680412, 0.68041235, 0.8917526)
@@ -25,6 +27,7 @@ fill_to = Vector2(0, 1)
 size = Vector2(1920, 330)
 
 [node name="loadout_select" type="Node2D" unique_id=1922533118]
+script = ExtResource("1_5qigt")
 
 [node name="back" type="TextureRect" parent="." unique_id=1499923121]
 z_index = -2
@@ -136,6 +139,16 @@ metadata/_edit_lock_ = true
 points = PackedVector2Array(0, 330, 1920, 330)
 width = 1.0
 
+[node name="backButton" type="Button" parent="." unique_id=1270158346]
+offset_left = 20.0
+offset_top = 360.0
+offset_right = 160.0
+offset_bottom = 450.0
+theme_override_fonts/font = ExtResource("13_8s84n")
+theme_override_font_sizes/font_size = 55
+text = "Back"
+
 [connection signal="area_entered" from="cardDetector" to="cardDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="cardDetector" to="cardDetector" method="_on_area_exited"]
 [connection signal="pressed" from="Button" to="cardManager" method="_on_button_pressed"]
+[connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]

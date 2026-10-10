@@ -5,19 +5,43 @@
 [ext_resource type="PackedScene" uid="uid://ypu5ksnetr5d" path="res://scenes/debug_menu.tscn" id="3_6vs76"]
 [ext_resource type="AudioStream" uid="uid://b4qjoeg51f0vi" path="res://audio/Alien.mp3" id="4_kl8ac"]
 
+[sub_resource type="Gradient" id="Gradient_kl8ac"]
+colors = PackedColorArray(0.17705858, 0.18514311, 0.8910668, 1, 0, 0.4204898, 0.8956886, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d8fr4"]
+gradient = SubResource("Gradient_kl8ac")
+width = 512
+height = 512
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0.17948718)
+
+[sub_resource type="Gradient" id="Gradient_qifjx"]
+colors = PackedColorArray(4.235506e-06, 0.55452555, 0, 1, 0.121336736, 0.39221075, 1.92523e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0dd52"]
+gradient = SubResource("Gradient_qifjx")
+width = 512
+height = 512
+fill_to = Vector2(0.517094, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8fr4"]
 size = Vector2(180, 830)
 
 [node name="level" type="Node2D" unique_id=622269324]
 script = ExtResource("1_uhqny")
 
-[node name="background" type="ColorRect" parent="." unique_id=75874313]
+[node name="farBack" type="TextureRect" parent="." unique_id=1005761387]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_d8fr4")
+
+[node name="background" type="TextureRect" parent="." unique_id=1427141608]
 offset_left = 20.0
 offset_top = 230.0
 offset_right = 1900.0
 offset_bottom = 1060.0
 mouse_filter = 2
-color = Color(0, 0.5882353, 0.12156863, 0.5803922)
+texture = SubResource("GradientTexture2D_0dd52")
 
 [node name="GridDrawer" type="Node2D" parent="." unique_id=1030191393]
 
