@@ -198,7 +198,7 @@ wait_time = 2.0
 position = Vector2(23, -23)
 scale = Vector2(1.359375, 1.359375)
 sprite_frames = SubResource("SpriteFrames_8hgxl")
-frame_progress = 0.1592796
+animation = &"attack"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1946956897]
 stream = ExtResource("4_5dv58")

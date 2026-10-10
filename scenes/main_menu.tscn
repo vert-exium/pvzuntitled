@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bnkq1m2v8wnbi"]
 
-[ext_resource type="Script" uid="uid://to0hxph78mgq" path="res://scenes/main_menu.gd" id="1_5dd4i"]
-[ext_resource type="FontFile" uid="uid://x8wuqh7oto2o" path="res://fonts/Elms_Sans/static/ElmsSans-Medium.ttf" id="1_oa1go"]
+[ext_resource type="Script" uid="uid://to0hxph78mgq" path="res://scripts/main_menu.gd" id="1_5dd4i"]
 [ext_resource type="FontFile" uid="uid://xqirkmqc30y3" path="res://fonts/Michroma/Michroma-Regular.ttf" id="2_oa1go"]
 [ext_resource type="Texture2D" uid="uid://bhiadu4e4rbce" path="res://assets/buttons/play/normal.png" id="3_tbmy8"]
 [ext_resource type="Texture2D" uid="uid://cp3r2ydlacmv5" path="res://assets/buttons/play/clicked.png" id="4_jk1qb"]
@@ -9,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bv5dlmujlcc8a" path="res://assets/buttons/play/hovered.png" id="5_5dd4i"]
 [ext_resource type="BitMap" uid="uid://dy65dntptgx3o" path="res://assets/buttons/play/clickMask.png" id="6_jk1qb"]
 [ext_resource type="FontFile" uid="uid://1m6gkfkxpfcg" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="8_5dd4i"]
+[ext_resource type="FontFile" uid="uid://c32sd0jmdtuqa" path="res://fonts/Elms_Sans/static/ElmsSans-Light.ttf" id="10_5dd4i"]
 [ext_resource type="Texture2D" uid="uid://drqnrqioqjuy0" path="res://images/spiral-notebook-icon-paper-blank-page-symbol-note-vector-46405411-removebg-preview.png" id="10_lgwnu"]
 
 [sub_resource type="Gradient" id="Gradient_jk1qb"]
@@ -25,15 +25,6 @@ script = ExtResource("1_5dd4i")
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = SubResource("GradientTexture2D_d8fr4")
-
-[node name="creditLabel" type="Label" parent="." unique_id=2095468577]
-offset_left = 623.0
-offset_top = 970.0
-offset_right = 1297.0
-offset_bottom = 1047.0
-theme_override_fonts/font = ExtResource("1_oa1go")
-theme_override_font_sizes/font_size = 52
-text = "By: tjr5555 and vertexium"
 
 [node name="placeholderTitle" type="Label" parent="." unique_id=940206827]
 offset_left = 96.0
@@ -102,7 +93,7 @@ width = 4.0
 offset_left = 790.0
 offset_top = 830.0
 offset_right = 1130.0
-offset_bottom = 958.0
+offset_bottom = 960.0
 theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 17
@@ -111,6 +102,17 @@ theme_override_font_sizes/font_size = 50
 text = "INDEX"
 icon = ExtResource("10_lgwnu")
 
+[node name="creditButton" type="Button" parent="." unique_id=1760044420]
+offset_left = 790.0
+offset_top = 980.0
+offset_right = 1130.0
+offset_bottom = 1060.0
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("10_5dd4i")
+theme_override_font_sizes/font_size = 60
+text = "Credits"
+
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="indexButton" to="." method="_on_index_button_pressed"]
+[connection signal="pressed" from="creditButton" to="." method="_on_credit_button_pressed"]

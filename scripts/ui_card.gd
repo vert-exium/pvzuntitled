@@ -1,5 +1,6 @@
 extends Control
 
+# A signal to get which card was clicked
 signal card_clicked(card_id: String)
 
 @export var card_id: String = "":
@@ -62,13 +63,11 @@ func _on_global_card_selected(selected_id: String) -> void:
 func _on_hover_entered() -> void:
 	if not is_selected and visuals != null:
 		var tween = create_tween().set_parallel()
-		#tween.tween_property(visuals, "position:y", 8.0, 0.15).set_trans(Tween.TRANS_SINE)
 		tween.tween_property(visuals, "scale", Vector2(0.7, 0.7), 0.15).set_trans(Tween.TRANS_SINE)
 
 func _on_hover_exited() -> void:
 	if not is_selected and visuals != null:
 		var tween = create_tween().set_parallel()
-		#tween.tween_property(visuals, "position:y", 0.0, 0.15).set_trans(Tween.TRANS_SINE)
 		tween.tween_property(visuals, "scale", Vector2(0.6, 0.6), 0.15).set_trans(Tween.TRANS_SINE)
 
 func animate_selection() -> void:
@@ -78,10 +77,8 @@ func animate_selection() -> void:
 	var tween = create_tween().set_parallel()
 	
 	if is_selected:
-		#tween.tween_property(visuals, "position:y", 12.0, 0.2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 		tween.tween_property(visuals, "scale", Vector2(0.7, 0.7), 0.2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 		visuals.modulate = Color(0.3, 1.0, 0, 1.0) 
 	else:
-		#tween.tween_property(visuals, "position:y", 0.0, 0.2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 		tween.tween_property(visuals, "scale", Vector2(0.6, 0.6), 0.2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 		visuals.modulate = Color.WHITE

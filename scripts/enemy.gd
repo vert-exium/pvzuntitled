@@ -1,5 +1,7 @@
 extends Area2D
 
+
+# Stores various variables
 var base_speed: float = 30.0
 var current_speed: float = 30.0
 var health: int = 100
@@ -10,13 +12,12 @@ var pitch_random: float = 0
 @export var enemy_id = ""
 var lane: int = 0
 
-#When adding a new enemy make sure to give it a unique enemy id
-#Go to level.gd and make a variable for the enemy and load the scene
-#After defining those variables go to func spawn_enemy() and follow the instructions there
-#Table of enemy stats
-#enemy gets stats assigned
-#Add new enemy below + any other optional stats
-#Example: Knockback
+# When adding a new enemy make sure to give it a unique enemy id
+# Go to level.gd and make a variable for the enemy and load the scene
+# After defining those variables go to func spawn_enemy() and follow the instructions there
+# Table of enemy stats
+# enemy gets stats assigned
+# Add new enemy below + any other optional stats (e.g. knockback)
 const enemy_stats = {
 	"normal": {
 		"name": "normal",
@@ -59,19 +60,24 @@ func _process(delta: float) -> void:
 		$enemyAnimation.play("default")
 
 func take_damage(amount: int) -> void:
-	#play hit sounds
-	pitch_random = randf_range(0.9,1.1)
+	# Spawn floating damage text
+	show_damage_number(amount)
+	
+	# Plays the hit sounds
+	pitch_random = randf_range(0.9, 1.1)
 	$AudioStreamPlayer2D.pitch_scale = pitch_random
 	$AudioStreamPlayer2D.playing = true
-	#make enemy take damage and effects
+	
+	# Make enemy take dmg & apply effects
 	health -= amount
 	modulate = Color.RED
 	scale = Vector2(0.8, 0.9)
 	
-	var hit_tween = create_tween().set_parallel(true)
-	hit_tween.tween_property(self, "modulate", Color.WHITE, 0.15)
+	var hit_tween = create_tween().set_parallel()
+	hit_tween.tween_property(self, "modulate", Color.WHITE_SMOKE, 0.15)
 	hit_tween.tween_property(self, "scale", Vector2.ONE, 0.2).set_trans(Tween.TRANS_BOUNCE)
-	#kill enemy
+	
+	# Kill the enemy
 	if health <= 0:
 		current_speed = 0.0
 		hit_tween.kill()
@@ -79,7 +85,7 @@ func take_damage(amount: int) -> void:
 		if LevelManager.has_method("enemy_defeated"):
 			LevelManager.enemy_defeated()
 		
-		var death_tween = create_tween().set_parallel(true)
+		var death_tween = create_tween().set_parallel()
 		death_tween.tween_property(self, "scale", Vector2.ZERO, 0.3)
 		death_tween.tween_property(self, "modulate", Color.DARK_RED, 0.3)
 		death_tween.chain().tween_callback(queue_free)
@@ -126,9 +132,6 @@ func _on_attack_timer_timeout() -> void:
 		check_next_target()
 
 func check_next_target() -> void:
-	
-	
-	
 	#looks for next target
 	var overlapping_units = get_overlapping_areas()
 	for area in overlapping_units:
@@ -154,3 +157,24 @@ func apply_knockback(distance: float):
 		if current_target == null:
 			current_speed = base_speed
 )
+
+
+
+func show_damage_number(amount: int) -> void:
+	var label = Label.new()
+	label.text = str(amount)
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	label.add_theme_font_size_override("font_size", 22)
+	label.add_theme_color_override("font_color", Color(0.98, 0.153, 0.071, 1.0))
+	label.global_position = global_position + Vector2(randf_range(-20, 20), randf_range(-30, -10))
+	
+	get_tree().current_scene.add_child(label)
+	
+	var tween = get_tree().create_tween().set_parallel()
+	
+	tween.tween_property(label, "global_position:y", label.global_position.y - 50.0, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	tween.tween_property(label, "modulate:a", 0.0, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	
+	tween.chain().tween_callback(label.queue_free)
