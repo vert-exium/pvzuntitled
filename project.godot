@@ -28,6 +28,7 @@ RunState="*uid://dwqgoonpd784m"
 SignalBus="*uid://dyuwv3jg2wlpn"
 DebugMenu="*uid://ckfoj8crqips"
 CardManager="*uid://dnhvbs1qie68g"
+SaveManager="*uid://bo7j23i7wwe2o"
 
 [display]
 

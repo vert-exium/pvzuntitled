@@ -77,9 +77,12 @@ func _on_card_selected(card_id: String) -> void:
 		else:
 			grid_tween.tween_property(grid_drawer, "modulate:a", 0.0, 0.2).set_trans(Tween.TRANS_SINE)
 
+
 func _process(delta: float) -> void:
 	if is_instance_valid(grid_drawer):
 		grid_drawer.queue_redraw()
+	# If show FPS is true, show the FPS label and update it
+	# with the current FPS. If not, hide the FPS label.
 	if Global.showFPS == true:
 		$fpsLabel.show()
 		$fpsLabel.text = "FPS: %d" % Engine.get_frames_per_second()

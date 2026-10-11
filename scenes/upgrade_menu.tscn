@@ -1,0 +1,639 @@
+[gd_scene format=3 uid="uid://bto100086fs7j"]
+
+[ext_resource type="Script" uid="uid://6c4cuqj4my1r" path="res://scripts/upgrade_menu.gd" id="1_0e30j"]
+[ext_resource type="FontFile" uid="uid://drlgee1sp2qx5" path="res://fonts/Space_Grotesk/static/SpaceGrotesk-SemiBold.ttf" id="1_ksfom"]
+[ext_resource type="FontFile" uid="uid://1m6gkfkxpfcg" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="2_0e30j"]
+
+[sub_resource type="Gradient" id="Gradient_jkuc8"]
+offsets = PackedFloat32Array(0.11340206, 1)
+colors = PackedColorArray(0.024520831, 0.04610639, 0.18120354, 1, 0.13159713, 0.30775887, 0.93279284, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d8fr4"]
+gradient = SubResource("Gradient_jkuc8")
+width = 256
+height = 256
+fill_to = Vector2(0.8974359, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8fr4"]
+bg_color = Color(0.16470589, 0.16470589, 0.16470589, 0.92941177)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivn8x"]
+bg_color = Color(0.5569528, 0.55695313, 0.55695283, 0.8980392)
+
+[node name="upgrade_menu" type="Node2D" unique_id=1502789888]
+script = ExtResource("1_0e30j")
+
+[node name="back" type="TextureRect" parent="." unique_id=363398591]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_d8fr4")
+
+[node name="shopPanel" type="Panel" parent="." unique_id=1103161709]
+offset_left = 60.0
+offset_top = 60.0
+offset_right = 1860.0
+offset_bottom = 1020.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d8fr4")
+
+[node name="headerLabel" type="Label" parent="." unique_id=1198284286]
+offset_left = 540.0
+offset_top = 60.0
+offset_right = 1380.0
+offset_bottom = 240.0
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_ksfom")
+theme_override_font_sizes/font_size = 109
+text = "Upgrades"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="shopBack" type="Panel" parent="." unique_id=1729758666]
+offset_left = 120.0
+offset_top = 240.0
+offset_right = 1800.0
+offset_bottom = 960.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ivn8x")
+
+[node name="Scroll" type="ScrollContainer" parent="shopBack" unique_id=284215538]
+layout_mode = 0
+offset_right = 1680.0
+offset_bottom = 720.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="shopBack/Scroll" unique_id=994541618]
+custom_minimum_size = Vector2(1680, 150)
+layout_mode = 2
+
+[node name="Upgrade1" type="Control" parent="shopBack/Scroll/VBoxContainer" unique_id=910534279]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="titleLabel" type="Label" parent="shopBack/Scroll/VBoxContainer/Upgrade1" unique_id=277104980]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 10.0
+offset_right = 960.0
+offset_bottom = 50.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_0e30j")
+theme_override_font_sizes/font_size = 24
+text = "Upgrade 1 Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="levelLabel" type="Label" parent="shopBack/Scroll/VBoxContainer/Upgrade1" unique_id=555417457]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 120.0
+offset_right = 780.0
+offset_bottom = 160.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_0e30j")
+theme_override_font_sizes/font_size = 24
+text = "Level 1/16"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="shopBack/Scroll/VBoxContainer/Upgrade1" unique_id=85899660]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 60.0
+offset_right = 1320.0
+offset_bottom = 120.0
+max_value = 16.0
+step = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Line1" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade1/ProgressBar" unique_id=383045106]
+position = Vector2(60, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line2" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade1/ProgressBar" unique_id=1777368789]
+position = Vector2(120, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line3" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade1/ProgressBar" unique_id=1625834547]
+position = Vector2(180, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line4" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade1/ProgressBar" unique_id=391895230]
+position = Vector2(240, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line5" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade1/ProgressBar" unique_id=1347243666]
+position = Vector2(300, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line6" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade1/ProgressBar" unique_id=233041379]
+position = Vector2(360, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line7" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade1/ProgressBar" unique_id=1783191145]
+position = Vector2(420, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line8" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade1/ProgressBar" unique_id=1331518285]
+position = Vector2(480, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line9" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade1/ProgressBar" unique_id=1406731421]
+position = Vector2(540, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line10" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade1/ProgressBar" unique_id=389011177]
+position = Vector2(600, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line11" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade1/ProgressBar" unique_id=2142283588]
+position = Vector2(660, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line12" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade1/ProgressBar" unique_id=1699592334]
+position = Vector2(720, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line13" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade1/ProgressBar" unique_id=1133770733]
+position = Vector2(780, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line14" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade1/ProgressBar" unique_id=67217963]
+position = Vector2(840, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line15" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade1/ProgressBar" unique_id=480373506]
+position = Vector2(900, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="purchaseButton" type="Button" parent="shopBack/Scroll/VBoxContainer/Upgrade1" unique_id=82632198]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 123.0
+offset_right = 960.0
+offset_bottom = 157.0
+text = "100 Coins"
+
+[node name="Upgrade2" type="Control" parent="shopBack/Scroll/VBoxContainer" unique_id=1696351064]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="titleLabel" type="Label" parent="shopBack/Scroll/VBoxContainer/Upgrade2" unique_id=582478418]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 10.0
+offset_right = 960.0
+offset_bottom = 50.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_0e30j")
+theme_override_font_sizes/font_size = 24
+text = "Upgrade 1 Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="levelLabel" type="Label" parent="shopBack/Scroll/VBoxContainer/Upgrade2" unique_id=1124246955]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 120.0
+offset_right = 780.0
+offset_bottom = 160.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_0e30j")
+theme_override_font_sizes/font_size = 24
+text = "Level 1/16"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="shopBack/Scroll/VBoxContainer/Upgrade2" unique_id=1383692295]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 60.0
+offset_right = 1320.0
+offset_bottom = 120.0
+max_value = 16.0
+step = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Line1" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade2/ProgressBar" unique_id=29921992]
+position = Vector2(60, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line2" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade2/ProgressBar" unique_id=651398257]
+position = Vector2(120, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line3" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade2/ProgressBar" unique_id=474537527]
+position = Vector2(180, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line4" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade2/ProgressBar" unique_id=1925066906]
+position = Vector2(240, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line5" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade2/ProgressBar" unique_id=190668624]
+position = Vector2(300, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line6" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade2/ProgressBar" unique_id=1816333433]
+position = Vector2(360, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line7" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade2/ProgressBar" unique_id=279328672]
+position = Vector2(420, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line8" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade2/ProgressBar" unique_id=782357653]
+position = Vector2(480, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line9" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade2/ProgressBar" unique_id=356873202]
+position = Vector2(540, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line10" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade2/ProgressBar" unique_id=723654037]
+position = Vector2(600, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line11" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade2/ProgressBar" unique_id=803937658]
+position = Vector2(660, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line12" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade2/ProgressBar" unique_id=1461429780]
+position = Vector2(720, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line13" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade2/ProgressBar" unique_id=2139942559]
+position = Vector2(780, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line14" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade2/ProgressBar" unique_id=1284561663]
+position = Vector2(840, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line15" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade2/ProgressBar" unique_id=741589688]
+position = Vector2(900, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="purchaseButton" type="Button" parent="shopBack/Scroll/VBoxContainer/Upgrade2" unique_id=2062506837]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 123.0
+offset_right = 960.0
+offset_bottom = 157.0
+text = "100 Coins"
+
+[node name="Upgrade3" type="Control" parent="shopBack/Scroll/VBoxContainer" unique_id=1320259494]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="titleLabel" type="Label" parent="shopBack/Scroll/VBoxContainer/Upgrade3" unique_id=1732033555]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 10.0
+offset_right = 960.0
+offset_bottom = 50.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_0e30j")
+theme_override_font_sizes/font_size = 24
+text = "Upgrade 1 Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="levelLabel" type="Label" parent="shopBack/Scroll/VBoxContainer/Upgrade3" unique_id=914691640]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 120.0
+offset_right = 780.0
+offset_bottom = 160.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_0e30j")
+theme_override_font_sizes/font_size = 24
+text = "Level 1/16"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="shopBack/Scroll/VBoxContainer/Upgrade3" unique_id=2003651007]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 60.0
+offset_right = 1320.0
+offset_bottom = 120.0
+max_value = 16.0
+step = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Line1" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade3/ProgressBar" unique_id=480453477]
+position = Vector2(60, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line2" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade3/ProgressBar" unique_id=1425082000]
+position = Vector2(120, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line3" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade3/ProgressBar" unique_id=637473964]
+position = Vector2(180, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line4" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade3/ProgressBar" unique_id=777366697]
+position = Vector2(240, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line5" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade3/ProgressBar" unique_id=2072682140]
+position = Vector2(300, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line6" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade3/ProgressBar" unique_id=459289817]
+position = Vector2(360, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line7" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade3/ProgressBar" unique_id=257648442]
+position = Vector2(420, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line8" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade3/ProgressBar" unique_id=649206454]
+position = Vector2(480, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line9" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade3/ProgressBar" unique_id=451144241]
+position = Vector2(540, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line10" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade3/ProgressBar" unique_id=171078401]
+position = Vector2(600, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line11" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade3/ProgressBar" unique_id=294623450]
+position = Vector2(660, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line12" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade3/ProgressBar" unique_id=1630645185]
+position = Vector2(720, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line13" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade3/ProgressBar" unique_id=1178534784]
+position = Vector2(780, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line14" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade3/ProgressBar" unique_id=2083445925]
+position = Vector2(840, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line15" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade3/ProgressBar" unique_id=1688688650]
+position = Vector2(900, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="purchaseButton" type="Button" parent="shopBack/Scroll/VBoxContainer/Upgrade3" unique_id=1563589741]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 123.0
+offset_right = 960.0
+offset_bottom = 157.0
+text = "100 Coins"
+
+[node name="Upgrade4" type="Control" parent="shopBack/Scroll/VBoxContainer" unique_id=105623807]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="titleLabel" type="Label" parent="shopBack/Scroll/VBoxContainer/Upgrade4" unique_id=1569341307]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 10.0
+offset_right = 960.0
+offset_bottom = 50.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_0e30j")
+theme_override_font_sizes/font_size = 24
+text = "Upgrade 1 Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="levelLabel" type="Label" parent="shopBack/Scroll/VBoxContainer/Upgrade4" unique_id=1574004223]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 120.0
+offset_right = 780.0
+offset_bottom = 160.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_0e30j")
+theme_override_font_sizes/font_size = 24
+text = "Level 1/16"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="shopBack/Scroll/VBoxContainer/Upgrade4" unique_id=1449184544]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 60.0
+offset_right = 1320.0
+offset_bottom = 120.0
+max_value = 16.0
+step = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Line1" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=1126980220]
+position = Vector2(60, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line2" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=270103774]
+position = Vector2(120, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line3" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=1363829640]
+position = Vector2(180, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line4" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=1898583832]
+position = Vector2(240, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line5" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=1755713061]
+position = Vector2(300, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line6" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=99150761]
+position = Vector2(360, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line7" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=36721781]
+position = Vector2(420, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line8" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=340260414]
+position = Vector2(480, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line9" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=1226213807]
+position = Vector2(540, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line10" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=2140005157]
+position = Vector2(600, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line11" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=659553840]
+position = Vector2(660, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line12" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=2113434069]
+position = Vector2(720, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line13" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=1517619897]
+position = Vector2(780, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line14" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=938593973]
+position = Vector2(840, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="Line15" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=1559037535]
+position = Vector2(900, 0)
+points = PackedVector2Array(0, 60, 0, 0)
+width = 1.0
+default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
+
+[node name="purchaseButton" type="Button" parent="shopBack/Scroll/VBoxContainer/Upgrade4" unique_id=1248215050]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 123.0
+offset_right = 960.0
+offset_bottom = 157.0
+text = "100 Coins"
+
+[node name="NOTE!" type="Label" parent="shopBack/Scroll/VBoxContainer" unique_id=1540768224]
+layout_mode = 2
+text = "You can duplicate Upgrade1 node under VBoxContainer and it will scroll fine. If you make the upgrade area bigger vertically then go to Control (e.g. Upgrade1) and increase custom minimum y size"
+
+[node name="backButton" type="Button" parent="." unique_id=468129384]
+offset_left = 120.0
+offset_top = 120.0
+offset_right = 300.0
+offset_bottom = 180.0
+theme_override_fonts/font = ExtResource("2_0e30j")
+theme_override_font_sizes/font_size = 24
+text = "Main Menu"
+
+[connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]
