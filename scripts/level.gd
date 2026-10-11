@@ -80,6 +80,11 @@ func _on_card_selected(card_id: String) -> void:
 func _process(delta: float) -> void:
 	if is_instance_valid(grid_drawer):
 		grid_drawer.queue_redraw()
+	if Global.showFPS == true:
+		$fpsLabel.show()
+		$fpsLabel.text = "FPS: %d" % Engine.get_frames_per_second()
+	else:
+		$fpsLabel.hide()
 
 func _draw_grid_overlay() -> void:
 	var is_shovel = (currently_selected_card == "shovel")

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bnkq1m2v8wnbi"]
 
 [ext_resource type="Script" uid="uid://to0hxph78mgq" path="res://scripts/main_menu.gd" id="1_5dd4i"]
+[ext_resource type="FontFile" uid="uid://bdnkrwic58f6h" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="2_lgwnu"]
 [ext_resource type="FontFile" uid="uid://xqirkmqc30y3" path="res://fonts/Michroma/Michroma-Regular.ttf" id="2_oa1go"]
 [ext_resource type="Texture2D" uid="uid://bhiadu4e4rbce" path="res://assets/buttons/play/normal.png" id="3_tbmy8"]
 [ext_resource type="Texture2D" uid="uid://cp3r2ydlacmv5" path="res://assets/buttons/play/clicked.png" id="4_jk1qb"]
@@ -12,11 +13,15 @@
 [ext_resource type="Texture2D" uid="uid://drqnrqioqjuy0" path="res://images/spiral-notebook-icon-paper-blank-page-symbol-note-vector-46405411-removebg-preview.png" id="10_lgwnu"]
 
 [sub_resource type="Gradient" id="Gradient_jk1qb"]
-colors = PackedColorArray(0.19847897, 0.17369759, 0.99999994, 1, 0.9895217, 0.48721766, 0.19509706, 1)
+offsets = PackedFloat32Array(0, 0.82474226)
+colors = PackedColorArray(1, 1, 1, 1, 0.27752772, 0.27752775, 0.27752766, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_d8fr4"]
 gradient = SubResource("Gradient_jk1qb")
-fill_to = Vector2(1, 0.8173913)
+width = 256
+height = 256
+fill_from = Vector2(0.102564104, 0.21794872)
+fill_to = Vector2(1, 1)
 
 [node name="mainMenu" type="Node2D" unique_id=371023868]
 script = ExtResource("1_5dd4i")
@@ -30,19 +35,16 @@ texture = SubResource("GradientTexture2D_d8fr4")
 offset_left = 96.0
 offset_top = 160.0
 offset_right = 1830.0
-offset_bottom = 347.0
+offset_bottom = 360.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4745098)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("2_oa1go")
+theme_override_constants/shadow_outline_size = 28
+theme_override_fonts/font = ExtResource("2_lgwnu")
 theme_override_font_sizes/font_size = 131
 text = "MAN VS. MACHINE"
 horizontal_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=643310727]
-offset_left = 249.0
-offset_top = 172.0
-offset_right = 892.0
-offset_bottom = 645.0
-theme_override_constants/separation = 100
 
 [node name="play" type="TextureButton" parent="." unique_id=1427145260]
 offset_left = 560.0

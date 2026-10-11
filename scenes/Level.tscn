@@ -68,4 +68,11 @@ position = Vector2(1780, 580)
 stream = ExtResource("4_kl8ac")
 bus = &"Music"
 
+[node name="fpsLabel" type="Label" parent="." unique_id=1272144320]
+offset_left = 1750.0
+offset_right = 1920.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 34
+text = "FPS: "
+
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]

@@ -6,12 +6,14 @@ extends Node2D
 var open: bool = false        # Tracks whether the menu is open or not
 var initialPosX: float = 0.0  # Stores the initial position (stored on _ready) of the node
 var noCooldowns: bool = false # Bool to track whether the no cooldowns toggle is on/off
+var showFPS: bool = false # Bool to track whether to show FPS or not
 
 # When the script starts, store the x position
 # and add the node to the debug menu group.
 func _ready() -> void:
 	initialPosX = position.x
 	add_to_group("debug_menu")
+	Global.showFPS = showFPS
 
 # When the open/close button is pressed, creates a tween, and checks
 # if the menu is open or not. Tweens the position, sets the button text,
@@ -66,3 +68,8 @@ func _on_cooldown_check_toggled(toggled_on: bool) -> void:
 func _on_add_energy_button_pressed() -> void:
 	RunState.current_energy += $Control/energyAddSpinBox.value
 	print("Amount of energy to be added:" + str($Control/energyAddSpinBox.value))
+
+
+func _on_fps_check_toggled(toggled_on: bool) -> void:
+	showFPS = toggled_on
+	Global.showFPS = showFPS

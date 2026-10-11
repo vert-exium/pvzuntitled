@@ -159,7 +159,9 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("3_2fbfq")
 theme_override_font_sizes/font_size = 35
-text = "Fully Original Sountrack made in FL Studio 2025"
+text = "Fully Original Sountrack made in FL Studio 2025
+ using Arturia Analog Lab Pro,
+Nexus, and FLEX"
 horizontal_alignment = 1
 
 [node name="CreditLabel8" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1422465743]
@@ -238,9 +240,13 @@ layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("3_2fbfq")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 70
 text = "Thank you for playing!"
 horizontal_alignment = 1
+
+[node name="Spacer8" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=39991990]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 
 [node name="backButton" type="Button" parent="." unique_id=2055147359]
 layout_mode = 0
