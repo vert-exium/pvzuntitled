@@ -1,9 +1,81 @@
 [gd_scene format=3 uid="uid://vh2onfex4n8q"]
 
 [ext_resource type="Script" uid="uid://bf8ud8qscnpua" path="res://scenes/archer.gd" id="1_jggnj"]
+[ext_resource type="Texture2D" uid="uid://dyy8jjahk6jcy" path="res://animations/archer.png" id="2_b0l3x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8fr4"]
 size = Vector2(100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orquw"]
+atlas = ExtResource("2_b0l3x")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cctdm"]
+atlas = ExtResource("2_b0l3x")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejvcm"]
+atlas = ExtResource("2_b0l3x")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c85qa"]
+atlas = ExtResource("2_b0l3x")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlvv2"]
+atlas = ExtResource("2_b0l3x")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d71b8"]
+atlas = ExtResource("2_b0l3x")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mak8i"]
+atlas = ExtResource("2_b0l3x")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1s68y"]
+atlas = ExtResource("2_b0l3x")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88c65"]
+atlas = ExtResource("2_b0l3x")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0jsi4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orquw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cctdm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejvcm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c85qa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlvv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d71b8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mak8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1s68y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88c65")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="archer" type="Area2D" unique_id=200291053 groups=["unit"]]
 collision_mask = 0
@@ -20,9 +92,11 @@ collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=82604265]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0.6081487, 0.25929448, 0, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=647131660]
+position = Vector2(-9.536743e-07, 1.4305115e-06)
+scale = Vector2(1.8749999, 1.8749999)
+sprite_frames = SubResource("SpriteFrames_0jsi4")
+frame = 6
+frame_progress = 0.56225085
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -40,7 +40,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_haf5a"]
-size = Vector2(39.999992, 150)
+size = Vector2(20, 95)
 
 [node name="archerProjectile" type="Area2D" unique_id=553678270]
 collision_layer = 0
@@ -48,15 +48,15 @@ collision_mask = 2
 script = ExtResource("1_kev3m")
 
 [node name="arrow" type="AnimatedSprite2D" parent="." unique_id=1294427955]
-position = Vector2(-30.000004, 1.9073486e-06)
-scale = Vector2(2.8125, 1.8750001)
+position = Vector2(0, 1.1368684e-13)
+scale = Vector2(1.7968751, 1.71875)
 sprite_frames = SubResource("SpriteFrames_0jsi4")
 animation = &"arrow"
 frame = 1
 frame_progress = 0.02346011
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1810819108]
-position = Vector2(-15, 0)
+position = Vector2(7.5, 3.278354e-07)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_haf5a")
 

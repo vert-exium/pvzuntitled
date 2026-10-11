@@ -1,7 +1,7 @@
 extends Node
 
 var current_wave: int = 0
-var max_waves: int = 1000
+var max_waves: int = 999999999999
 var is_game_active: bool = false
 var is_wave_transitioning: bool = false   
 

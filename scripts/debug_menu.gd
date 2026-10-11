@@ -73,3 +73,13 @@ func _on_add_energy_button_pressed() -> void:
 func _on_fps_check_toggled(toggled_on: bool) -> void:
 	showFPS = toggled_on
 	Global.showFPS = showFPS
+
+
+
+
+
+
+func _on_set_wave_button_pressed() -> void:
+	var wave_to_set_to = $Control/setWaveSpinBox.value
+	print("Wave set to" + str(wave_to_set_to))
+	LevelManager.current_wave = wave_to_set_to
