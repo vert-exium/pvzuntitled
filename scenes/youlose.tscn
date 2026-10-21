@@ -4,6 +4,16 @@
 [ext_resource type="FontFile" uid="uid://xqirkmqc30y3" path="res://fonts/Michroma/Michroma-Regular.ttf" id="2_udcgi"]
 [ext_resource type="FontFile" uid="uid://dnfi7huuy4evt" path="res://fonts/Elms_Sans/static/ElmsSans-BlackItalic.ttf" id="3_xsk8a"]
 
+[sub_resource type="Gradient" id="Gradient_nlte8"]
+offsets = PackedFloat32Array(0.041237112, 0.91752577)
+colors = PackedColorArray(0.14406255, 0.14406255, 0.14406255, 1, 0.8175213, 0.8175213, 0.81752115, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_udcgi"]
+gradient = SubResource("Gradient_nlte8")
+width = 256
+height = 256
+fill_to = Vector2(0.7692308, 0.60683763)
+
 [node name="youlose" type="Control" unique_id=788742978]
 layout_mode = 3
 anchors_preset = 15
@@ -12,6 +22,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nlte8")
+
+[node name="backRect" type="TextureRect" parent="." unique_id=1970079860]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_udcgi")
 
 [node name="Label" type="Label" parent="." unique_id=1194368734]
 layout_mode = 0
