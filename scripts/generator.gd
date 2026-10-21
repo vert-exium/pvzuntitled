@@ -44,7 +44,7 @@ func spawn_floating_text(amount: int) -> void:
 	add_child(popup)
 	
 	
-	# Creates a tween which animates the position and transparency of the 
+	# Creates a tween for changing the transparency 
 	# floating label. When the tweens finish, despawn the label.
 	var tween = create_tween()
 	tween.set_parallel()

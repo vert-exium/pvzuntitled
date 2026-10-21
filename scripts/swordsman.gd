@@ -10,7 +10,7 @@ var health: int = 0
 func _ready() -> void:
 	var stats = CardDatabase.get_card("swordsman")
 	health = stats["health"]
-	
+	#attacking and stuff
 	fire_timer.wait_time = stats["fire_rate"]
 	fire_timer.timeout.connect(_on_fire_timer_timeout)
 	fire_timer.start()

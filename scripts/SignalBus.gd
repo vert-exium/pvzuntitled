@@ -11,10 +11,12 @@ signal plant_placed(card_id, grid_pos)
 signal plant_shoveled(grid_pos)
 
 signal wave_started(wave_number)
-signal enemy_spawned(enemy_id, lane_index)
+signal enemy_spawned(enemy_id, alane_index)
 
 signal game_over
 signal level_won
 
 signal card_selected(card_id)
 signal request_enemy_spawn(budget: float)
+
+signal coin_collected(added_coins: int)

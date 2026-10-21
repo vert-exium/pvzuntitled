@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvhgjr0y2d86k" path="res://scripts/enemy.gd" id="1_k4vtj"]
 [ext_resource type="Texture2D" uid="uid://b4cito0b8hoxk" path="res://animations/TankyRobotAttackImproved.png" id="2_k4vtj"]
+[ext_resource type="PackedScene" uid="uid://dajwq3kt071eg" path="res://scenes/coin.tscn" id="2_lj6hj"]
 [ext_resource type="Texture2D" uid="uid://bq7gdfdko1faf" path="res://animations/TankyRobotWalkImproved.png" id="3_lj6hj"]
 [ext_resource type="AudioStream" uid="uid://4acqhbxam20" path="res://audio/MetalHit.mp3" id="4_5dv58"]
 
@@ -185,6 +186,7 @@ animations = [{
 [node name="tank" type="Area2D" unique_id=1423425833 groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_k4vtj")
+coin = ExtResource("2_lj6hj")
 enemy_id = "tank"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1246642749]

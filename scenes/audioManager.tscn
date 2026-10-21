@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b2eos0rhxejhy"]
+
+[ext_resource type="AudioStream" uid="uid://cbdc2t0d8y03n" path="res://audio/Ascension (1).mp3" id="1_rtkc8"]
+[ext_resource type="Script" uid="uid://cb6ljf658g6kl" path="res://scenes/audio_stream_player_2d.gd" id="2_6nk5e"]
+
+[node name="audioManager" type="Node2D" unique_id=265622302]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1360120012]
+stream = ExtResource("1_rtkc8")
+script = ExtResource("2_6nk5e")

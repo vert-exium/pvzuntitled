@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 	if $bombSound.playing == false:
 		var tween = create_tween().set_parallel(true)
 		tween.chain().tween_callback(queue_free)
-
+#check if the area can take damage and make it take damage
 func _on_area_entered(area: Area2D) -> void:
 	if area.has_method("take_damage"):
 		area.take_damage(damage)

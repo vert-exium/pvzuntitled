@@ -11,7 +11,6 @@
 [ext_resource type="FontFile" uid="uid://1m6gkfkxpfcg" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="8_5dd4i"]
 [ext_resource type="FontFile" uid="uid://c32sd0jmdtuqa" path="res://fonts/Elms_Sans/static/ElmsSans-Light.ttf" id="10_5dd4i"]
 [ext_resource type="Texture2D" uid="uid://drqnrqioqjuy0" path="res://images/spiral-notebook-icon-paper-blank-page-symbol-note-vector-46405411-removebg-preview.png" id="10_lgwnu"]
-[ext_resource type="FontFile" uid="uid://bqbgf854j11p2" path="res://fonts/Space_Grotesk/static/SpaceGrotesk-Medium.ttf" id="12_flqon"]
 
 [sub_resource type="Gradient" id="Gradient_jk1qb"]
 offsets = PackedFloat32Array(0, 0.80927837)
@@ -95,7 +94,7 @@ width = 4.0
 [node name="indexButton" type="Button" parent="." unique_id=285480099]
 offset_left = 570.0
 offset_top = 830.0
-offset_right = 950.0
+offset_right = 1340.0
 offset_bottom = 960.0
 theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -115,18 +114,7 @@ theme_override_fonts/font = ExtResource("10_5dd4i")
 theme_override_font_sizes/font_size = 60
 text = "Credits"
 
-[node name="upgradeButton" type="Button" parent="." unique_id=1421996406]
-offset_left = 970.0
-offset_top = 830.0
-offset_right = 1340.0
-offset_bottom = 960.0
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("12_flqon")
-theme_override_font_sizes/font_size = 55
-text = "UPGRADES"
-
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="indexButton" to="." method="_on_index_button_pressed"]
 [connection signal="pressed" from="creditButton" to="." method="_on_credit_button_pressed"]
-[connection signal="pressed" from="upgradeButton" to="." method="_on_upgrade_button_pressed"]

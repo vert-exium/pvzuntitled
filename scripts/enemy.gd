@@ -8,6 +8,7 @@ var health: int = 100
 var attack_damage: int = 10
 var current_target: Area2D = null
 var pitch_random: float = 0
+@export var coin: PackedScene
 @onready var attack_timer: Timer = $AttackTimer
 @export var enemy_id = ""
 var lane: int = 0
@@ -58,7 +59,7 @@ func _process(delta: float) -> void:
 	else:
 		#Play walking anim if its moving
 		$enemyAnimation.play("default")
-
+#function for making enemies take damage
 func take_damage(amount: int) -> void:
 	# Spawn floating damage text
 	show_damage_number(amount)
@@ -77,19 +78,26 @@ func take_damage(amount: int) -> void:
 	hit_tween.tween_property(self, "modulate", Color.WHITE_SMOKE, 0.15)
 	hit_tween.tween_property(self, "scale", Vector2.ONE, 0.2).set_trans(Tween.TRANS_BOUNCE)
 	
-	# Kill the enemy
+	# Kill the enemy if the health is below zero (or equal to zero) 
 	if health <= 0:
 		current_speed = 0.0
 		hit_tween.kill()
 		
 		if LevelManager.has_method("enemy_defeated"):
+			coin.instantiate()
 			LevelManager.enemy_defeated()
+			if LevelManager.has_method("enemy_defeated"):
+				var coin_instance = coin.instantiate()
+				coin_instance.global_position = global_position
+				get_parent().add_child(coin_instance)
+			LevelManager.enemy_defeated()
+
 		
 		var death_tween = create_tween().set_parallel()
 		death_tween.tween_property(self, "scale", Vector2.ZERO, 0.3)
 		death_tween.tween_property(self, "modulate", Color.DARK_RED, 0.3)
 		death_tween.chain().tween_callback(queue_free)
-
+#knockback script DOES NOT WORK!
 func _on_area_entered(area: Area2D) -> void:
 	#knockback stuff (CURRENTLY DOESNT WORK)!
 	if area.is_in_group("knockback_projectile"):
@@ -114,7 +122,8 @@ func _on_area_exited(area: Area2D) -> void:
 	#Looks for next target
 	if area == current_target:
 		check_next_target()
-
+#plays animations
+#stops enemy movement
 func start_attacking(target: Area2D) -> void:
 	#Play attack anim
 	$enemyAnimation.play("attack")
@@ -130,7 +139,7 @@ func _on_attack_timer_timeout() -> void:
 		create_tween().tween_property(self, "position:x", position.x + 5, 0.2)
 	else:
 		check_next_target()
-
+#when the enemy kills someonthing it looks for the next target
 func check_next_target() -> void:
 	#looks for next target
 	var overlapping_units = get_overlapping_areas()
@@ -159,7 +168,7 @@ func apply_knockback(distance: float):
 )
 
 
-
+#change the labels 
 func show_damage_number(amount: int) -> void:
 	var label = Label.new()
 	label.text = str(amount)

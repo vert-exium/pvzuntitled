@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c2448ay24f18a" path="res://scripts/level.gd" id="1_uhqny"]
 [ext_resource type="PackedScene" uid="uid://ewxvdstklbsl" path="res://scenes/game_ui.tscn" id="2_k5jlv"]
 [ext_resource type="PackedScene" uid="uid://ypu5ksnetr5d" path="res://scenes/debug_menu.tscn" id="3_6vs76"]
-[ext_resource type="AudioStream" uid="uid://b4qjoeg51f0vi" path="res://audio/Alien.mp3" id="4_kl8ac"]
+[ext_resource type="AudioStream" uid="uid://d0t2dpmg72v70" path="res://audio/SPECTRAL.mp3" id="4_kl8ac"]
 
 [sub_resource type="Gradient" id="Gradient_kl8ac"]
 colors = PackedColorArray(0.17705858, 0.18514311, 0.8910668, 1, 0, 0.4204898, 0.8956886, 1)
@@ -46,6 +46,8 @@ texture = SubResource("GradientTexture2D_0dd52")
 [node name="GridDrawer" type="Node2D" parent="." unique_id=1030191393]
 
 [node name="deathZone" type="Area2D" parent="." unique_id=29127886]
+collision_layer = 2
+collision_mask = 2
 
 [node name="deathCollision" type="CollisionShape2D" parent="deathZone" unique_id=167668479]
 position = Vector2(110, 645)
@@ -75,4 +77,13 @@ offset_bottom = 60.0
 theme_override_font_sizes/font_size = 34
 text = "FPS: "
 
+[node name="coinLabel" type="Label" parent="." unique_id=191501667]
+offset_left = 1710.0
+offset_top = 54.0
+offset_right = 1920.0
+offset_bottom = 114.0
+theme_override_font_sizes/font_size = 34
+text = "Coins: 0"
+
+[connection signal="area_entered" from="deathZone" to="." method="_on_death_zone_area_entered"]
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]

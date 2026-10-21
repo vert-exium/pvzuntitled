@@ -7,7 +7,7 @@ var projectile_scene = preload("res://scenes/bomber_projectile.tscn")
 
 var health: int = 0
 
-# On ready, loads all stats into a variable and starts the fire timer
+# when ready loads all variables in and sets attack timer
 func _ready() -> void:
 	var stats = CardDatabase.get_card("bomber")
 	health = stats["health"]

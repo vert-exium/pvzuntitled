@@ -9,6 +9,7 @@ var level_script: Node = null
 
 
 # Stores all card scenes in a dictionary
+#preloads them so they load faster
 var card_scenes = {
 	"bomber": preload("res://scenes/bomber_card_ui.tscn"),
 	"shielder": preload("res://scenes/shielder_card_ui.tscn"),
@@ -19,7 +20,7 @@ var card_scenes = {
 }
 
 
-
+#sets up stuff
 func _ready() -> void:
 	# Sets the base energy
 	var base_energy: int = 100

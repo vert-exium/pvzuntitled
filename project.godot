@@ -29,6 +29,8 @@ SignalBus="*uid://dyuwv3jg2wlpn"
 DebugMenu="*uid://ckfoj8crqips"
 CardManager="*uid://dnhvbs1qie68g"
 SaveManager="*uid://bo7j23i7wwe2o"
+Coin="*uid://drhoglb3w5837"
+AudioManager="*uid://b2eos0rhxejhy"
 
 [display]
 

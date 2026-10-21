@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cw77sp7r24cm"]
 
 [ext_resource type="Script" uid="uid://bvhgjr0y2d86k" path="res://scripts/enemy.gd" id="1_7p1mj"]
+[ext_resource type="PackedScene" uid="uid://dajwq3kt071eg" path="res://scenes/coin.tscn" id="2_5uy6h"]
 [ext_resource type="Texture2D" uid="uid://be1ysn8dma4ni" path="res://animations/robot.png" id="2_md0e3"]
 [ext_resource type="AudioStream" uid="uid://4acqhbxam20" path="res://audio/MetalHit.mp3" id="3_4ra3w"]
 
@@ -39,6 +40,7 @@ animations = [{
 [node name="normal" type="Area2D" unique_id=1423425833 groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_7p1mj")
+coin = ExtResource("2_5uy6h")
 enemy_id = "normal"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1246642749]

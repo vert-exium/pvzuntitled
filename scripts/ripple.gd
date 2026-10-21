@@ -1,5 +1,5 @@
 extends Control
-
+#script for spawning ripples
 var radius: float = 4.0
 var max_radius: float = 120.0
 var alpha: float = 1.0

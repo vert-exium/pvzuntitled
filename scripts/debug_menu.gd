@@ -69,7 +69,7 @@ func _on_add_energy_button_pressed() -> void:
 	RunState.current_energy += $Control/energyAddSpinBox.value
 	print("Amount of energy to be added:" + str($Control/energyAddSpinBox.value))
 
-
+#when the FPS toggle is flipped, show the fps
 func _on_fps_check_toggled(toggled_on: bool) -> void:
 	showFPS = toggled_on
 	Global.showFPS = showFPS
@@ -78,7 +78,8 @@ func _on_fps_check_toggled(toggled_on: bool) -> void:
 
 
 
-
+#When the wave set button is pressed, set the wave to whatever the current spinbox value is
+#the effect will only take effect until the current wave is defeated
 func _on_set_wave_button_pressed() -> void:
 	var wave_to_set_to = $Control/setWaveSpinBox.value
 	print("Wave set to" + str(wave_to_set_to))

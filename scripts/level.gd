@@ -1,12 +1,14 @@
 extends Node2D
 
+
+
 # Defines the grid size
 const ROWS: int = 5
 const COLS: int = 8
 
 # Loads the cursor image
 const SHOVEL_CURSOR = preload("res://assets/cursor.png") 
-
+var total_coins = 0
 # Defines the size of the cells, where the grid starts, and the grid drawer node
 @export var cell_size: Vector2 = Vector2(160, 160)
 @export var grid_origin: Vector2 = Vector2(160, 245)
@@ -47,12 +49,25 @@ var plant_scenes: Dictionary = {
 # Connects signals, and starts the level
 func _ready() -> void:
 	$musicPlayer.play()
+	SignalBus.game_over.connect(_on_game_over)
+	SignalBus.coin_collected.connect(_on_coin_collected)
 	SignalBus.card_selected.connect(_on_card_selected)
 	SignalBus.request_enemy_spawn.connect(_on_request_enemy_spawn)
 	grid_drawer.draw.connect(_draw_grid_overlay)
 	if grid_drawer:
 		grid_drawer.modulate.a = 0.0
 	LevelManager.call_deferred("start_level")
+
+
+
+
+
+func _on_coin_collected(added_coins: int) -> void:
+	total_coins += added_coins
+	print("Coin collected: ", added_coins)
+	$coinLabel.text = "Coins: " + str(total_coins)
+
+
 
 # Stores the currently selected card, and prints a debug message.
 func _on_card_selected(card_id: String) -> void:
@@ -297,3 +312,16 @@ func _draw() -> void:
 	for row in range(ROWS + 1):
 		var y = grid_origin.y + (row * cell_size.y)
 		draw_line(Vector2(grid_origin.x, y), Vector2(grid_origin.x + grid_width, y), line_color, line_thickness)
+
+
+#when the game is over, open the (game over screen)
+func _on_game_over() -> void:
+	get_tree().change_scene_to_file("res://scenes/youlose.tscn")
+
+
+
+#If the enemy is the death zone, end the game
+func _on_death_zone_area_entered(area: Area2D) -> void:
+	if area.is_in_group("enemy"):
+		print("enemy is in death zone!")
+		SignalBus.game_over.emit()

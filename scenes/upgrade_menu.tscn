@@ -66,6 +66,7 @@ offset_bottom = 720.0
 [node name="VBoxContainer" type="VBoxContainer" parent="shopBack/Scroll" unique_id=994541618]
 custom_minimum_size = Vector2(1680, 150)
 layout_mode = 2
+theme_override_constants/separation = 82
 
 [node name="Upgrade1" type="Control" parent="shopBack/Scroll/VBoxContainer" unique_id=910534279]
 custom_minimum_size = Vector2(0, 150)
@@ -80,7 +81,7 @@ offset_bottom = 50.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_0e30j")
 theme_override_font_sizes/font_size = 24
-text = "Upgrade 1 Title"
+text = "+20% damage"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -219,7 +220,7 @@ offset_bottom = 50.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_0e30j")
 theme_override_font_sizes/font_size = 24
-text = "Upgrade 1 Title"
+text = "+20% firerate"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -358,7 +359,7 @@ offset_bottom = 50.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_0e30j")
 theme_override_font_sizes/font_size = 24
-text = "Upgrade 1 Title"
+text = "+20% hp"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -484,145 +485,6 @@ offset_right = 960.0
 offset_bottom = 157.0
 text = "100 Coins"
 
-[node name="Upgrade4" type="Control" parent="shopBack/Scroll/VBoxContainer" unique_id=105623807]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-
-[node name="titleLabel" type="Label" parent="shopBack/Scroll/VBoxContainer/Upgrade4" unique_id=1569341307]
-layout_mode = 0
-offset_left = 600.0
-offset_top = 10.0
-offset_right = 960.0
-offset_bottom = 50.0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_0e30j")
-theme_override_font_sizes/font_size = 24
-text = "Upgrade 1 Title"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="levelLabel" type="Label" parent="shopBack/Scroll/VBoxContainer/Upgrade4" unique_id=1574004223]
-layout_mode = 0
-offset_left = 600.0
-offset_top = 120.0
-offset_right = 780.0
-offset_bottom = 160.0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_0e30j")
-theme_override_font_sizes/font_size = 24
-text = "Level 1/16"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="shopBack/Scroll/VBoxContainer/Upgrade4" unique_id=1449184544]
-layout_mode = 0
-offset_left = 360.0
-offset_top = 60.0
-offset_right = 1320.0
-offset_bottom = 120.0
-max_value = 16.0
-step = 1.0
-value = 1.0
-show_percentage = false
-
-[node name="Line1" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=1126980220]
-position = Vector2(60, 0)
-points = PackedVector2Array(0, 60, 0, 0)
-width = 1.0
-default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
-
-[node name="Line2" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=270103774]
-position = Vector2(120, 0)
-points = PackedVector2Array(0, 60, 0, 0)
-width = 1.0
-default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
-
-[node name="Line3" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=1363829640]
-position = Vector2(180, 0)
-points = PackedVector2Array(0, 60, 0, 0)
-width = 1.0
-default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
-
-[node name="Line4" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=1898583832]
-position = Vector2(240, 0)
-points = PackedVector2Array(0, 60, 0, 0)
-width = 1.0
-default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
-
-[node name="Line5" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=1755713061]
-position = Vector2(300, 0)
-points = PackedVector2Array(0, 60, 0, 0)
-width = 1.0
-default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
-
-[node name="Line6" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=99150761]
-position = Vector2(360, 0)
-points = PackedVector2Array(0, 60, 0, 0)
-width = 1.0
-default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
-
-[node name="Line7" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=36721781]
-position = Vector2(420, 0)
-points = PackedVector2Array(0, 60, 0, 0)
-width = 1.0
-default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
-
-[node name="Line8" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=340260414]
-position = Vector2(480, 0)
-points = PackedVector2Array(0, 60, 0, 0)
-width = 1.0
-default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
-
-[node name="Line9" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=1226213807]
-position = Vector2(540, 0)
-points = PackedVector2Array(0, 60, 0, 0)
-width = 1.0
-default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
-
-[node name="Line10" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=2140005157]
-position = Vector2(600, 0)
-points = PackedVector2Array(0, 60, 0, 0)
-width = 1.0
-default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
-
-[node name="Line11" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=659553840]
-position = Vector2(660, 0)
-points = PackedVector2Array(0, 60, 0, 0)
-width = 1.0
-default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
-
-[node name="Line12" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=2113434069]
-position = Vector2(720, 0)
-points = PackedVector2Array(0, 60, 0, 0)
-width = 1.0
-default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
-
-[node name="Line13" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=1517619897]
-position = Vector2(780, 0)
-points = PackedVector2Array(0, 60, 0, 0)
-width = 1.0
-default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
-
-[node name="Line14" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=938593973]
-position = Vector2(840, 0)
-points = PackedVector2Array(0, 60, 0, 0)
-width = 1.0
-default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
-
-[node name="Line15" type="Line2D" parent="shopBack/Scroll/VBoxContainer/Upgrade4/ProgressBar" unique_id=1559037535]
-position = Vector2(900, 0)
-points = PackedVector2Array(0, 60, 0, 0)
-width = 1.0
-default_color = Color(0.14406264, 0.14406255, 0.1440624, 0.8784314)
-
-[node name="purchaseButton" type="Button" parent="shopBack/Scroll/VBoxContainer/Upgrade4" unique_id=1248215050]
-layout_mode = 0
-offset_left = 780.0
-offset_top = 123.0
-offset_right = 960.0
-offset_bottom = 157.0
-text = "100 Coins"
-
 [node name="NOTE!" type="Label" parent="shopBack/Scroll/VBoxContainer" unique_id=1540768224]
 layout_mode = 2
 text = "You can duplicate Upgrade1 node under VBoxContainer and it will scroll fine. If you make the upgrade area bigger vertically then go to Control (e.g. Upgrade1) and increase custom minimum y size"
@@ -635,5 +497,14 @@ offset_bottom = 180.0
 theme_override_fonts/font = ExtResource("2_0e30j")
 theme_override_font_sizes/font_size = 24
 text = "Main Menu"
+
+[node name="Label" type="Label" parent="." unique_id=903819541]
+offset_left = 1440.0
+offset_top = 240.0
+offset_right = 1740.0
+offset_bottom = 300.0
+theme_override_fonts/font = ExtResource("2_0e30j")
+theme_override_font_sizes/font_size = 42
+text = "Coins: "
 
 [connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]

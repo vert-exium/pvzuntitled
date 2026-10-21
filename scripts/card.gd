@@ -36,7 +36,8 @@ func _load_stats() -> void:
 	if not card_data.is_empty():
 		card_name = card_data.get("name", "Unknown")
 		strength = card_data.get("strength", 0)
-
+#Find the card manager and get card strengths
+#use the strengths for the loadout
 	var card_manager = get_tree().get_first_node_in_group("card_manager")
 	if card_manager and "cardStrengths" in card_manager:
 		if card_id in card_manager.cardStrengths:
@@ -50,6 +51,6 @@ func _load_stats() -> void:
 func _on_button_pressed() -> void:
 	card_clicked.emit(card_id)
 
-
+#When the card is selected 
 func _on_global_card_selected(selected_id: String) -> void:
 	is_selected = (selected_id == card_id)
