@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bpuqtvmdqc4dr"]
+
+[ext_resource type="Script" uid="uid://dxn2t62i0bamv" path="res://scenes/shop.gd" id="1_1l46r"]
+[ext_resource type="FontFile" uid="uid://bdnkrwic58f6h" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="2_032fp"]
+[ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="3_2fc2m"]
+
+[sub_resource type="Gradient" id="Gradient_8r1wq"]
+colors = PackedColorArray(0.49411765, 0, 0, 1, 0.5411765, 0.31764707, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_haf5a"]
+gradient = SubResource("Gradient_8r1wq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rggdb"]
+texture = SubResource("GradientTexture2D_haf5a")
+
+[node name="shop" type="Control" unique_id=778631448]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1l46r")
+
+[node name="bg" type="Panel" parent="." unique_id=164387797]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_rggdb")
+metadata/_edit_lock_ = true
+
+[node name="shopLabel" type="Label" parent="." unique_id=87831700]
+layout_mode = 0
+offset_right = 1010.0
+offset_bottom = 307.0
+theme_override_fonts/font = ExtResource("2_032fp")
+theme_override_font_sizes/font_size = 215
+text = "The Shop"
+
+[node name="coinLabel" type="Label" parent="." unique_id=433751717]
+layout_mode = 0
+offset_left = 1100.0
+offset_top = 80.0
+offset_right = 1870.0
+offset_bottom = 310.0
+theme_override_colors/font_color = Color(1, 1, 0.23921569, 1)
+theme_override_fonts/font = ExtResource("3_2fc2m")
+theme_override_font_sizes/font_size = 130
+text = "Coins:"

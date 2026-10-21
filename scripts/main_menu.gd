@@ -97,3 +97,8 @@ func _on_credit_button_pressed() -> void:
 
 func _on_upgrade_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/upgrade_menu.tscn")
+
+
+
+func _on_shopbutton_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/upgrade_menu.tscn")
