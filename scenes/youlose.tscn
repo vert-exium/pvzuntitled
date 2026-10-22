@@ -5,13 +5,14 @@
 [ext_resource type="FontFile" uid="uid://dnfi7huuy4evt" path="res://fonts/Elms_Sans/static/ElmsSans-BlackItalic.ttf" id="3_xsk8a"]
 
 [sub_resource type="Gradient" id="Gradient_nlte8"]
-offsets = PackedFloat32Array(0.041237112, 0.91752577)
-colors = PackedColorArray(0.14406255, 0.14406255, 0.14406255, 1, 0.8175213, 0.8175213, 0.81752115, 1)
+offsets = PackedFloat32Array(0, 0.91752577)
+colors = PackedColorArray(0.34781736, 0.34781677, 0.34781697, 1, 0.8175213, 0.8175213, 0.81752115, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_udcgi"]
 gradient = SubResource("Gradient_nlte8")
 width = 256
 height = 256
+fill_from = Vector2(0, 0.23931624)
 fill_to = Vector2(0.7692308, 0.60683763)
 
 [node name="youlose" type="Control" unique_id=788742978]
@@ -36,18 +37,19 @@ offset_top = 29.0
 offset_right = 1910.0
 offset_bottom = 430.0
 theme_override_fonts/font = ExtResource("2_udcgi")
-theme_override_font_sizes/font_size = 252
+theme_override_font_sizes/font_size = 154
 text = "YOU LOSE"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="." unique_id=551165086]
 layout_mode = 0
-offset_left = 66.0
-offset_top = 500.0
-offset_right = 1820.0
-offset_bottom = 977.0
+offset_left = 533.0
+offset_top = 740.0
+offset_right = 1507.0
+offset_bottom = 960.0
 theme_override_colors/font_hover_color = Color(0, 0.84705883, 0.35686275, 1)
 theme_override_fonts/font = ExtResource("3_xsk8a")
-theme_override_font_sizes/font_size = 163
+theme_override_font_sizes/font_size = 95
 text = "Back to main menu"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

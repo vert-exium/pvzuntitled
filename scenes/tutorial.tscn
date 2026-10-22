@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://cwnvgytgx46u7"]
+
+[ext_resource type="Script" uid="uid://8boktx6a5wtn" path="res://scripts/tutorial.gd" id="1_4kmhl"]
+[ext_resource type="FontFile" uid="uid://bdnkrwic58f6h" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="1_c13y7"]
+[ext_resource type="FontFile" uid="uid://1m6gkfkxpfcg" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="2_8ho6b"]
+[ext_resource type="FontFile" uid="uid://x8wuqh7oto2o" path="res://fonts/Elms_Sans/static/ElmsSans-Medium.ttf" id="4_cq4me"]
+[ext_resource type="Texture2D" uid="uid://j0w1vf5lg4a8" path="res://assets/stage2.png" id="5_cq4me"]
+
+[sub_resource type="Gradient" id="Gradient_8ho6b"]
+colors = PackedColorArray(0.446777, 0.44677705, 0.44677705, 1, 0.8776157, 0.8776158, 0.8776157, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ph3nu"]
+gradient = SubResource("Gradient_8ho6b")
+width = 512
+height = 512
+fill_from = Vector2(0.02991453, 0.2735043)
+fill_to = Vector2(0.9529914, 0.8119658)
+
+[sub_resource type="Gradient" id="Gradient_4kmhl"]
+colors = PackedColorArray(0.10980392, 0.10980392, 0.10980392, 0.78431374, 0.2784314, 0.2784314, 0.2784314, 0.92156863)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cq4me"]
+gradient = SubResource("Gradient_4kmhl")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6yjpi"]
+texture = SubResource("GradientTexture2D_cq4me")
+
+[node name="tutorial" type="Node2D" unique_id=304706636]
+script = ExtResource("1_4kmhl")
+
+[node name="back" type="TextureRect" parent="." unique_id=341659022]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_ph3nu")
+metadata/_edit_lock_ = true
+
+[node name="GuideLabel" type="Label" parent="." unique_id=757705884]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="mainMenuButton" type="Button" parent="." unique_id=1316244168]
+offset_left = 60.0
+offset_top = 880.0
+offset_right = 600.0
+offset_bottom = 1020.0
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_c13y7")
+theme_override_font_sizes/font_size = 43
+text = "Return to Main Menu"
+
+[node name="textPanel" type="Panel" parent="." unique_id=291531889]
+offset_left = 630.0
+offset_top = 720.0
+offset_right = 1890.0
+offset_bottom = 1020.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_6yjpi")
+
+[node name="tutorialLabel" type="Label" parent="." unique_id=1749330115]
+offset_left = 640.0
+offset_top = 730.0
+offset_right = 1880.0
+offset_bottom = 1010.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_8ho6b")
+theme_override_font_sizes/font_size = 20
+text = "Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. "
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="nextButton" type="Button" parent="." unique_id=27234643]
+offset_left = 340.0
+offset_top = 720.0
+offset_right = 600.0
+offset_bottom = 870.0
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_cq4me")
+theme_override_font_sizes/font_size = 75
+text = "Next"
+
+[node name="previousButton" type="Button" parent="." unique_id=2098039657]
+offset_left = 60.0
+offset_top = 720.0
+offset_right = 320.0
+offset_bottom = 870.0
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_cq4me")
+theme_override_font_sizes/font_size = 75
+text = "Back"
+
+[node name="stage2Control" type="Control" parent="." unique_id=562143867]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 60.0
+offset_top = 60.0
+offset_right = 1860.0
+offset_bottom = 660.0
+
+[node name="texture" type="TextureRect" parent="stage2Control" unique_id=2110725707]
+layout_mode = 0
+offset_left = 600.0
+offset_right = 1412.03
+offset_bottom = 902.2556
+scale = Vector2(0.665, 0.665)
+texture = ExtResource("5_cq4me")
+
+[connection signal="pressed" from="mainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="nextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="previousButton" to="." method="_on_previous_button_pressed"]

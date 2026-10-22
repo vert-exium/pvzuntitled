@@ -524,10 +524,6 @@ text = "Boost: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NOTE!" type="Label" parent="shopBack/Scroll/VBoxContainer" unique_id=1540768224]
-layout_mode = 2
-text = "You can duplicate Upgrade1 node under VBoxContainer and it will scroll fine. If you make the upgrade area bigger vertically then go to Control (e.g. Upgrade1) and increase custom minimum y size"
-
 [node name="backButton" type="Button" parent="." unique_id=468129384]
 offset_left = 120.0
 offset_top = 120.0

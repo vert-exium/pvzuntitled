@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://drqnrqioqjuy0" path="res://images/spiral-notebook-icon-paper-blank-page-symbol-note-vector-46405411-removebg-preview.png" id="10_lgwnu"]
 [ext_resource type="Texture2D" uid="uid://cwk84aigpmr1" path="res://images/coin.png" id="12_flqon"]
 [ext_resource type="Texture2D" uid="uid://be1ysn8dma4ni" path="res://animations/robot.png" id="13_rcqid"]
+[ext_resource type="FontFile" uid="uid://x8wuqh7oto2o" path="res://fonts/Elms_Sans/static/ElmsSans-Medium.ttf" id="14_1ajci"]
 
 [sub_resource type="Gradient" id="Gradient_jk1qb"]
 offsets = PackedFloat32Array(0, 0.80927837)
@@ -117,9 +118,9 @@ theme_override_font_sizes/font_size = 60
 text = "Credits"
 
 [node name="shopbutton" type="Button" parent="." unique_id=2134893129]
-offset_left = 50.0
+offset_left = 40.0
 offset_top = 780.0
-offset_right = 820.0
+offset_right = 410.0
 offset_bottom = 910.0
 theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -136,8 +137,19 @@ scale = Vector2(6.8749986, 6.8749995)
 texture = ExtResource("13_rcqid")
 hframes = 3
 
+[node name="tutorialButton" type="Button" parent="." unique_id=1249396053]
+offset_left = 430.0
+offset_top = 780.0
+offset_right = 810.0
+offset_bottom = 910.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("14_1ajci")
+theme_override_font_sizes/font_size = 60
+text = "TUTORIAL"
+
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="indexButton" to="." method="_on_index_button_pressed"]
 [connection signal="pressed" from="creditButton" to="." method="_on_credit_button_pressed"]
 [connection signal="pressed" from="shopbutton" to="." method="_on_shopbutton_pressed"]
+[connection signal="pressed" from="tutorialButton" to="." method="_on_tutorial_button_pressed"]
