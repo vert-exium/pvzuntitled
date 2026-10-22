@@ -18,9 +18,9 @@ var health: int = 0
 # signal to a function and starts the timer.
 func _ready() -> void:
 	var stats = CardDatabase.get_card("thrower")
-	health = stats["health"]
+	health = stats["health" * Global.health_boost]
 	
-	fire_timer.wait_time = stats["fire_rate"]
+	fire_timer.wait_time = stats["fire_rate"/Global.attackSpeed_boost]
 	fire_timer.timeout.connect(_on_fire_timer_timeout)
 	fire_timer.start()
 

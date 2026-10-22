@@ -50,7 +50,7 @@ func _ready() -> void:
 	base_speed = stats["base_speed"] * LevelManager.speed_scale
 	current_speed = base_speed
 	attack_damage = int(stats["attack_damage"] * LevelManager.dmg_scale)
-	health = int(stats["health"] * LevelManager.speed_scale)
+	health = int(stats["health"] * LevelManager.hp_scale)
 func _process(delta: float) -> void:
 	#animations
 	position.x -= current_speed * delta
@@ -78,21 +78,17 @@ func take_damage(amount: int) -> void:
 	hit_tween.tween_property(self, "modulate", Color.WHITE_SMOKE, 0.15)
 	hit_tween.tween_property(self, "scale", Vector2.ONE, 0.2).set_trans(Tween.TRANS_BOUNCE)
 	
-	# Kill the enemy if the health is below zero (or equal to zero) 
+	# Kill the enemy if the health is 0 or below
 	if health <= 0:
 		current_speed = 0.0
 		hit_tween.kill()
 		
 		if LevelManager.has_method("enemy_defeated"):
-			coin.instantiate()
-			LevelManager.enemy_defeated()
-			if LevelManager.has_method("enemy_defeated"):
-				var coin_instance = coin.instantiate()
-				coin_instance.global_position = global_position
-				get_parent().add_child(coin_instance)
+			var coin_instance = coin.instantiate()
+			coin_instance.global_position = global_position
+			get_parent().add_child(coin_instance)
 			LevelManager.enemy_defeated()
 
-		
 		var death_tween = create_tween().set_parallel()
 		death_tween.tween_property(self, "scale", Vector2.ZERO, 0.3)
 		death_tween.tween_property(self, "modulate", Color.DARK_RED, 0.3)
@@ -126,7 +122,7 @@ func _on_area_exited(area: Area2D) -> void:
 #stops enemy movement
 func start_attacking(target: Area2D) -> void:
 	#Play attack anim
-	$enemyAnimation.play("attack")
+	$enemyAnimation.play("default")
 	current_speed = 0.0
 	current_target = target
 	attack_timer.start()

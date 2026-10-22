@@ -4,6 +4,7 @@ var speed: float = 350
 var damage: int = 30
 
 func _ready() -> void:
+	damage *= Global.damage_boost
 	$arrow.play("arrow")
 
 func _process(delta: float) -> void:

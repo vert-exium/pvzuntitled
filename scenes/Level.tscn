@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://hggrwd18nnqa" path="res://scripts/death_zone.gd" id="2_qifjx"]
 [ext_resource type="PackedScene" uid="uid://ypu5ksnetr5d" path="res://scenes/debug_menu.tscn" id="3_6vs76"]
 [ext_resource type="AudioStream" uid="uid://d0t2dpmg72v70" path="res://audio/SPECTRAL.mp3" id="4_kl8ac"]
+[ext_resource type="FontFile" uid="uid://8bwddhns1fvp" path="res://fonts/Elms_Sans/static/ElmsSans-SemiBold.ttf" id="6_dke22"]
 
 [sub_resource type="Gradient" id="Gradient_kl8ac"]
 colors = PackedColorArray(0.17705858, 0.18514311, 0.8910668, 1, 0, 0.4204898, 0.8956886, 1)
@@ -80,11 +81,12 @@ theme_override_font_sizes/font_size = 34
 text = "FPS: "
 
 [node name="coinLabel" type="Label" parent="." unique_id=191501667]
-offset_left = 1710.0
-offset_top = 54.0
-offset_right = 1920.0
-offset_bottom = 114.0
-theme_override_font_sizes/font_size = 34
+offset_left = 1585.0
+offset_top = 38.0
+offset_right = 1802.0
+offset_bottom = 107.0
+theme_override_fonts/font = ExtResource("6_dke22")
+theme_override_font_sizes/font_size = 53
 text = "Coins: 0"
 
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]

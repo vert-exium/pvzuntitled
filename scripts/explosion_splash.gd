@@ -6,6 +6,7 @@ var soundPitch: float = 1.0
 
 #When spawned in, pick a random pitch for the bomb sound. 
 func _ready() -> void:
+	damage *= Global.damage_boost
 	$explosionAnim.play("default")
 	soundPitch = randf_range(0.9, 1.1)
 	$bombSound.pitch_scale = soundPitch

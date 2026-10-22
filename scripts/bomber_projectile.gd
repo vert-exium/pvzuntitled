@@ -10,7 +10,8 @@ var explosionScene = preload("res://scenes/explosion_splash.tscn")
 
 # When the projectile spawns in, instantly play the animation.
 func _ready():
-	$bomb.play("throw")
+	damage *= Global.damage_boost
+	$bomb.play("arrow")
 
 # Constantly moves and rotates
 func _process(delta: float) -> void:

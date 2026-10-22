@@ -10,8 +10,8 @@ var health: int = 0
 # when ready loads all variables in and sets attack timer
 func _ready() -> void:
 	var stats = CardDatabase.get_card("bomber")
-	health = stats["health"]
-	fire_timer.wait_time = stats["fire_rate"]
+	health = stats["health"] * Global.health_boost
+	fire_timer.wait_time = stats["fire_rate"]/Global.attackSpeed_boost
 	fire_timer.timeout.connect(_on_fire_timer_timeout)
 	fire_timer.start()
 
@@ -35,6 +35,7 @@ func take_damage(amount: int) -> void:
 
 # Starts the animation to attack
 func fire_bomb() -> void:
+	$animation.speed_scale = Global.attackSpeed_boost
 	$animation.play("attack")
 
 

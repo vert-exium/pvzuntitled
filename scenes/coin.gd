@@ -1,6 +1,5 @@
 extends Area2D
 
-var added_coins = (LevelManager.current_wave/20 + 1) * 10
 var magnet_range: float = 800.0
 var is_collected: bool = false
 var magnet_speed: float = 0.0
@@ -29,7 +28,11 @@ func collect_coin() -> void:
 	if is_collected:
 		return
 	is_collected = true
-	SignalBus.coin_collected.emit(added_coins)
+	var wave_multiplier = float(LevelManager.current_wave) / 20.0
+	var added_coins = int((wave_multiplier + 1.0) * 10.0)
+	
+	Global.coins += added_coins
+	
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(self, "modulate:a", 0.0, 0.2)\
 		.set_trans(Tween.TRANS_QUAD)\

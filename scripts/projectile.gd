@@ -4,6 +4,10 @@ extends Area2D
 var speed: float = 250.0
 var damage: int = 10
 
+func ready():
+	#Add damage boost from global script
+	damage *= Global.damage_boost
+
 # Every frame, moves the position of the projectile, and
 # rotates it as well.
 func _process(delta: float) -> void:
