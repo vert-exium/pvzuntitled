@@ -3,6 +3,9 @@ extends Area2D
 var speed: float = 0
 var damage: int = 10
 
+func _ready():
+	damage *= Global.damage_boost
+
 func _process(delta: float) -> void:
 	position.x += speed * delta 
 

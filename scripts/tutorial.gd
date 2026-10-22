@@ -38,7 +38,7 @@ func update_stage(stage: int):
 		label.text = "First, this is the main menu. It has a few options: \n Play will take you right into the loadout selector. \n Settings will let you adjust audio settings. \n Index will take you to a page where you can view a list of all enemies and cards in the game. \n The shop button lets you upgrade various stats to make your runs easier!"
 	elif stage == 3:
 		hide_all()
-		label.text = 
+		#label.text = 
 
 func hide_all():
 	$stage2Control.hide()

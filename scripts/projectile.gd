@@ -4,7 +4,7 @@ extends Area2D
 var speed: float = 250.0
 var damage: int = 10
 
-func ready():
+func _ready() -> void:
 	#Add damage boost from global script
 	damage *= Global.damage_boost
 

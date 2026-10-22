@@ -1,11 +1,12 @@
 extends Area2D
 
-@export var damage: int = 25
+@export var damage: int = 50
 @export var knockback_force: float = 50.0  
 @export var is_knockback_projectile: bool = true
 var speed = 0
 
 func _ready() -> void:
+	damage *= Global.damage_boost
 	add_to_group("knockback_projectile")
 
 func _process(delta: float) -> void:

@@ -83,7 +83,7 @@ func _on_card_selected(card_id: String) -> void:
 
 func _process(delta: float) -> void:
 	coins = Global.coins
-	print(str(coins))
+	$coinLabel.text = "Coins: " + str(int(Global.coins))
 	if is_instance_valid(grid_drawer):
 		grid_drawer.queue_redraw()
 	# If show FPS is true, show the FPS label and update it

@@ -9,9 +9,9 @@ var health: int = 0
 
 func _ready() -> void:
 	var stats = CardDatabase.get_card("shielder")
-	health = stats["health"]
+	health = stats["health"] * Global.health_boost
 	
-	fire_timer.wait_time = stats["fire_rate"]
+	fire_timer.wait_time = stats["fire_rate"]/Global.attackSpeed_boost
 	fire_timer.timeout.connect(_on_fire_timer_timeout)
 	fire_timer.start()
 
@@ -32,6 +32,7 @@ func take_damage(amount: int) -> void:
 		queue_free()
 
 func fire_projectile() -> void:
+	$AnimatedSprite2D.speed_scale = Global.attackSpeed_boost
 	$AnimatedSprite2D.play("default")
 	var proj = projectile_scene.instantiate()
 	proj.global_position = global_position + Vector2(100, 0)

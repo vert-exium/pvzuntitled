@@ -8,10 +8,11 @@ var projectile_scene = preload("res://scenes/swordsman_projectile.tscn")
 var health: int = 0
 
 func _ready() -> void:
+	$AnimatedSprite2D.speed_scale = Global.attackSpeed_boost
 	var stats = CardDatabase.get_card("swordsman")
-	health = stats["health"]
+	health = stats["health"] * Global.health_boost
 	#attacking and stuff
-	fire_timer.wait_time = stats["fire_rate"]
+	fire_timer.wait_time = stats["fire_rate"]/Global.attackSpeed_boost
 	fire_timer.timeout.connect(_on_fire_timer_timeout)
 	fire_timer.start()
 	
