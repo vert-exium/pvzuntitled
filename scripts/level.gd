@@ -56,6 +56,11 @@ func _ready() -> void:
 	if grid_drawer:
 		grid_drawer.modulate.a = 0.0
 	LevelManager.call_deferred("start_level")
+	$wave1.play("wave")
+	$wave2.play("wave")
+	$wave3.play("wave")
+	$wave4.play("wave")
+
 
 #stores the currently selected card, and prints a debug message.
 func _on_card_selected(card_id: String) -> void:
@@ -83,7 +88,7 @@ func _on_card_selected(card_id: String) -> void:
 
 func _process(delta: float) -> void:
 	coins = Global.coins
-	$coinLabel.text = "Coins: " + str(int(Global.coins))
+	$coinLabel.text = "Coins: " + str(format_numbers(Global.coins))
 	if is_instance_valid(grid_drawer):
 		grid_drawer.queue_redraw()
 	# If show FPS is true, show the FPS label and update it
@@ -315,3 +320,17 @@ func _on_death_zone_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy"):
 		print("enemy is in death zone!")
 		SignalBus.game_over.emit()
+
+
+#function to add commas to numbers
+func format_numbers(number: int) -> String:
+	var num_str = str(abs(number))
+	var result = ""
+	var length = num_str.length()
+	
+	for i in range(length):
+		if i > 0 and (length - i) % 3 == 0:
+			result += ","
+		result += num_str[i]
+	
+	return result

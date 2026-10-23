@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://6c4cuqj4my1r" path="res://scripts/upgrade_menu.gd" id="1_0e30j"]
 [ext_resource type="FontFile" uid="uid://drlgee1sp2qx5" path="res://fonts/Space_Grotesk/static/SpaceGrotesk-SemiBold.ttf" id="1_ksfom"]
 [ext_resource type="FontFile" uid="uid://1m6gkfkxpfcg" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="2_0e30j"]
+[ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="4_6vqdt"]
+[ext_resource type="FontFile" uid="uid://bqbgf854j11p2" path="res://fonts/Space_Grotesk/static/SpaceGrotesk-Medium.ttf" id="5_ixicc"]
 
 [sub_resource type="Gradient" id="Gradient_jkuc8"]
 offsets = PackedFloat32Array(0.11340206, 1)
@@ -21,8 +23,16 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivn8x"]
-bg_color = Color(0.5569528, 0.55695313, 0.55695283, 0.8980392)
+[sub_resource type="Gradient" id="Gradient_chbti"]
+offsets = PackedFloat32Array(0, 0.97619045)
+colors = PackedColorArray(0.043039158, 0.04303915, 0.04303915, 1, 0.39321536, 0.4632488, 0.7346666, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ethjp"]
+gradient = SubResource("Gradient_chbti")
+fill_from = Vector2(0, 0.027027028)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0jsi4"]
+texture = SubResource("GradientTexture2D_ethjp")
 
 [node name="upgrade_menu" type="Node2D" unique_id=1502789888]
 script = ExtResource("1_0e30j")
@@ -53,10 +63,10 @@ vertical_alignment = 1
 
 [node name="shopBack" type="Panel" parent="." unique_id=1729758666]
 offset_left = 120.0
-offset_top = 240.0
+offset_top = 290.0
 offset_right = 1800.0
 offset_bottom = 960.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ivn8x")
+theme_override_styles/panel = SubResource("StyleBoxTexture_0jsi4")
 
 [node name="Scroll" type="ScrollContainer" parent="shopBack" unique_id=284215538]
 layout_mode = 0
@@ -205,6 +215,7 @@ offset_left = 780.0
 offset_top = 123.0
 offset_right = 960.0
 offset_bottom = 157.0
+theme_override_fonts/font = ExtResource("4_6vqdt")
 text = "100 Coins"
 
 [node name="currentBoost" type="Label" parent="shopBack/Scroll/VBoxContainer/Upgrade1" unique_id=721590739]
@@ -357,6 +368,7 @@ offset_left = 780.0
 offset_top = 123.0
 offset_right = 960.0
 offset_bottom = 157.0
+theme_override_fonts/font = ExtResource("4_6vqdt")
 text = "100 Coins"
 
 [node name="currentBoost" type="Label" parent="shopBack/Scroll/VBoxContainer/Upgrade2" unique_id=1990955271]
@@ -509,6 +521,7 @@ offset_left = 780.0
 offset_top = 123.0
 offset_right = 960.0
 offset_bottom = 157.0
+theme_override_fonts/font = ExtResource("4_6vqdt")
 text = "100 Coins"
 
 [node name="currentBoost" type="Label" parent="shopBack/Scroll/VBoxContainer/Upgrade3" unique_id=1542474147]
@@ -534,13 +547,24 @@ theme_override_font_sizes/font_size = 24
 text = "Main Menu"
 
 [node name="coinLabel" type="Label" parent="." unique_id=903819541]
-offset_left = 1440.0
-offset_top = 240.0
-offset_right = 1740.0
-offset_bottom = 300.0
+offset_left = 1480.0
+offset_top = 320.0
+offset_right = 1780.0
+offset_bottom = 380.0
 theme_override_fonts/font = ExtResource("2_0e30j")
 theme_override_font_sizes/font_size = 42
 text = "Coins: "
+
+[node name="Label" type="Label" parent="." unique_id=1730053299]
+offset_left = 220.0
+offset_top = 230.0
+offset_right = 1748.0
+offset_bottom = 290.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_ixicc")
+theme_override_font_sizes/font_size = 41
+text = "Spend coins earned in game to get permanent upgrades to ALL of your units!"
 
 [connection signal="pressed" from="shopBack/Scroll/VBoxContainer/Upgrade1/damagePurchaseButton" to="." method="_on_damage_purchase_button_pressed"]
 [connection signal="pressed" from="shopBack/Scroll/VBoxContainer/Upgrade2/AttackSpeedpurchaseButton" to="." method="_on_attack_speedpurchase_button_pressed"]
