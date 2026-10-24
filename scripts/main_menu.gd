@@ -32,6 +32,7 @@ var drag_spawn_distance: float = 35.0
 # If background exists, sets the color to the first entry in the array.
 # Then, starts the loop and sets several properties for the background.
 func _ready() -> void:
+
 	if background:
 		background.modulate = BACKGROUND_COLORS[0]
 		start_background_color_loop()
@@ -106,3 +107,74 @@ func _on_shopbutton_pressed() -> void:
 
 func _on_tutorial_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/tutorial.tscn")
+
+
+
+#Button scales (feel free to change this as its kinda a weird way to do it but yea)
+func _on_play_mouse_entered() -> void:
+	var tween = create_tween()
+	$play/clickSFX.play()
+	tween.tween_property($play, "scale", Vector2(1.05,1.05), 0.1)\
+	.set_trans(Tween.TRANS_QUAD)
+func _on_play_mouse_exited() -> void:
+	var tween = create_tween()
+	tween.tween_property($play, "scale", Vector2(1.0,1.0), 0.1)\
+	.set_trans(Tween.TRANS_BOUNCE) 
+
+func _on_settings_mouse_entered() -> void:
+	var tween = create_tween()
+	$settings/clickSFX.play()
+	tween.tween_property($settings, "scale", Vector2(1.05,1.05), 0.1)\
+	.set_trans(Tween.TRANS_QUAD)
+
+func _on_settings_mouse_exited() -> void:
+	var tween = create_tween()
+	tween.tween_property($settings, "scale", Vector2(1,1), 0.1)\
+	.set_trans(Tween.TRANS_QUAD)
+
+
+func _on_index_button_mouse_entered() -> void:
+	var tween = create_tween()
+	$indexButton/clickSFX.play()
+	tween.tween_property($indexButton, "scale", Vector2(1.05,1.05), 0.1)\
+	.set_trans(Tween.TRANS_QUAD)
+
+func _on_index_button_mouse_exited() -> void:
+	var tween = create_tween()
+	tween.tween_property($indexButton, "scale", Vector2(1,1), 0.1)\
+	.set_trans(Tween.TRANS_QUAD)
+
+func _on_credit_button_mouse_entered() -> void:
+	var tween = create_tween()
+	$creditButton/clickSFX.play()
+	tween.tween_property($creditButton, "scale", Vector2(1.05,1.05), 0.1)\
+	.set_trans(Tween.TRANS_QUAD)
+
+func _on_credit_button_mouse_exited() -> void:
+	var tween = create_tween()
+	tween.tween_property($creditButton, "scale", Vector2(1,1), 0.1)\
+	.set_trans(Tween.TRANS_QUAD)
+
+
+func _on_shopbutton_mouse_entered() -> void:
+	var tween = create_tween()
+	$shopbutton/clickSFX.play()
+	tween.tween_property($shopbutton, "scale", Vector2(1.05,1.05), 0.1)\
+	.set_trans(Tween.TRANS_QUAD)
+
+func _on_shopbutton_mouse_exited() -> void:
+	var tween = create_tween()
+	tween.tween_property($shopbutton, "scale", Vector2(1,1), 0.1)\
+	.set_trans(Tween.TRANS_QUAD)
+
+func _on_tutorial_button_mouse_entered() -> void:
+	var tween = create_tween()
+	$tutorialButton/clickSFX.play()
+	tween.tween_property($tutorialButton, "scale", Vector2(1.05,1.05), 0.1)\
+	.set_trans(Tween.TRANS_QUAD)
+
+
+func _on_tutorial_button_mouse_exited() -> void:
+	var tween = create_tween()
+	tween.tween_property($tutorialButton, "scale", Vector2(1,1), 0.1)\
+	.set_trans(Tween.TRANS_QUAD)

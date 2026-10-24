@@ -9,11 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bv5dlmujlcc8a" path="res://assets/buttons/play/hovered.png" id="5_5dd4i"]
 [ext_resource type="BitMap" uid="uid://dy65dntptgx3o" path="res://assets/buttons/play/clickMask.png" id="6_jk1qb"]
 [ext_resource type="FontFile" uid="uid://1m6gkfkxpfcg" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="8_5dd4i"]
-[ext_resource type="FontFile" uid="uid://c32sd0jmdtuqa" path="res://fonts/Elms_Sans/static/ElmsSans-Light.ttf" id="10_5dd4i"]
+[ext_resource type="AudioStream" uid="uid://bmjoe7pgj3612" path="res://audio/denielcz-immersivecontrol-button-click-sound-463065.mp3" id="8_7b55j"]
 [ext_resource type="Texture2D" uid="uid://drqnrqioqjuy0" path="res://images/spiral-notebook-icon-paper-blank-page-symbol-note-vector-46405411-removebg-preview.png" id="10_lgwnu"]
 [ext_resource type="Texture2D" uid="uid://cwk84aigpmr1" path="res://images/coin.png" id="12_flqon"]
 [ext_resource type="Texture2D" uid="uid://be1ysn8dma4ni" path="res://animations/robot.png" id="13_rcqid"]
-[ext_resource type="FontFile" uid="uid://x8wuqh7oto2o" path="res://fonts/Elms_Sans/static/ElmsSans-Medium.ttf" id="14_1ajci"]
 
 [sub_resource type="Gradient" id="Gradient_jk1qb"]
 offsets = PackedFloat32Array(0, 0.80927837)
@@ -49,11 +48,12 @@ theme_override_font_sizes/font_size = 131
 text = "MAN VS. MACHINE"
 horizontal_alignment = 1
 
-[node name="play" type="TextureButton" parent="." unique_id=1427145260]
+[node name="play" type="TextureButton" parent="." unique_id=1427145260 groups=["buttons"]]
 offset_left = 20.0
 offset_top = 200.0
 offset_right = 820.0
 offset_bottom = 400.0
+pivot_offset = Vector2(400, 100)
 texture_normal = ExtResource("3_tbmy8")
 texture_pressed = ExtResource("4_jk1qb")
 texture_hover = ExtResource("5_5dd4i")
@@ -61,8 +61,8 @@ texture_click_mask = ExtResource("6_jk1qb")
 
 [node name="playLabel" type="Label" parent="play" unique_id=597537865]
 layout_mode = 0
-offset_left = 239.0
-offset_right = 562.0
+offset_left = 240.0
+offset_right = 563.0
 offset_bottom = 200.0
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("8_5dd4i")
@@ -71,11 +71,15 @@ text = "Play"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="settings" type="Button" parent="." unique_id=618587166]
+[node name="clickSFX" type="AudioStreamPlayer2D" parent="play" unique_id=358321659]
+stream = ExtResource("8_7b55j")
+
+[node name="settings" type="Button" parent="." unique_id=618587166 groups=["buttons"]]
 offset_left = 40.0
 offset_top = 440.0
 offset_right = 810.0
 offset_bottom = 568.0
+pivot_offset = Vector2(385, 60)
 theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 17
@@ -83,6 +87,9 @@ theme_override_fonts/font = ExtResource("2_oa1go")
 theme_override_font_sizes/font_size = 50
 text = "SETTINGS"
 icon = ExtResource("4_wu84c")
+
+[node name="clickSFX" type="AudioStreamPlayer2D" parent="settings" unique_id=120138416]
+stream = ExtResource("8_7b55j")
 
 [node name="horizontalPlaceHold" type="Line2D" parent="." unique_id=900633625]
 position = Vector2(-20, 0)
@@ -94,11 +101,12 @@ position = Vector2(-20, 0)
 points = PackedVector2Array(980, -120, 980, -20)
 width = 4.0
 
-[node name="indexButton" type="Button" parent="." unique_id=285480099]
+[node name="indexButton" type="Button" parent="." unique_id=285480099 groups=["buttons"]]
 offset_left = 40.0
 offset_top = 600.0
 offset_right = 810.0
 offset_bottom = 730.0
+pivot_offset = Vector2(385, 60)
 theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 17
@@ -107,21 +115,30 @@ theme_override_font_sizes/font_size = 50
 text = "INDEX"
 icon = ExtResource("10_lgwnu")
 
-[node name="creditButton" type="Button" parent="." unique_id=1760044420]
+[node name="clickSFX" type="AudioStreamPlayer2D" parent="indexButton" unique_id=61860482]
+stream = ExtResource("8_7b55j")
+
+[node name="creditButton" type="Button" parent="." unique_id=1760044420 groups=["buttons"]]
 offset_left = 290.0
 offset_top = 980.0
 offset_right = 630.0
 offset_bottom = 1066.0
-theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("10_5dd4i")
-theme_override_font_sizes/font_size = 60
+pivot_offset = Vector2(170, 40)
+theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 17
+theme_override_fonts/font = ExtResource("2_oa1go")
+theme_override_font_sizes/font_size = 50
 text = "Credits"
 
-[node name="shopbutton" type="Button" parent="." unique_id=2134893129]
+[node name="clickSFX" type="AudioStreamPlayer2D" parent="creditButton" unique_id=856829236]
+
+[node name="shopbutton" type="Button" parent="." unique_id=2134893129 groups=["buttons"]]
 offset_left = 40.0
 offset_top = 780.0
 offset_right = 410.0
 offset_bottom = 910.0
+pivot_offset = Vector2(185, 65)
 theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 17
@@ -131,25 +148,45 @@ text = "SHOP
 "
 icon = ExtResource("12_flqon")
 
+[node name="clickSFX" type="AudioStreamPlayer2D" parent="shopbutton" unique_id=1125378876]
+
 [node name="Robot" type="Sprite2D" parent="." unique_id=1140287862]
 position = Vector2(1360, 629.99994)
 scale = Vector2(6.8749986, 6.8749995)
 texture = ExtResource("13_rcqid")
 hframes = 3
 
-[node name="tutorialButton" type="Button" parent="." unique_id=1249396053]
+[node name="tutorialButton" type="Button" parent="." unique_id=1249396053 groups=["buttons"]]
 offset_left = 430.0
 offset_top = 780.0
 offset_right = 810.0
 offset_bottom = 910.0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("14_1ajci")
-theme_override_font_sizes/font_size = 60
+pivot_offset = Vector2(190, 70)
+theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 17
+theme_override_fonts/font = ExtResource("2_oa1go")
+theme_override_font_sizes/font_size = 50
 text = "TUTORIAL"
 
+[node name="clickSFX" type="AudioStreamPlayer2D" parent="tutorialButton" unique_id=1659025484]
+stream = ExtResource("8_7b55j")
+
+[connection signal="mouse_entered" from="play" to="." method="_on_play_mouse_entered"]
+[connection signal="mouse_exited" from="play" to="." method="_on_play_mouse_exited"]
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="settings" to="." method="_on_settings_mouse_entered"]
+[connection signal="mouse_exited" from="settings" to="." method="_on_settings_mouse_exited"]
 [connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="indexButton" to="." method="_on_index_button_mouse_entered"]
+[connection signal="mouse_exited" from="indexButton" to="." method="_on_index_button_mouse_exited"]
 [connection signal="pressed" from="indexButton" to="." method="_on_index_button_pressed"]
+[connection signal="mouse_entered" from="creditButton" to="." method="_on_credit_button_mouse_entered"]
+[connection signal="mouse_exited" from="creditButton" to="." method="_on_credit_button_mouse_exited"]
 [connection signal="pressed" from="creditButton" to="." method="_on_credit_button_pressed"]
+[connection signal="mouse_entered" from="shopbutton" to="." method="_on_shopbutton_mouse_entered"]
+[connection signal="mouse_exited" from="shopbutton" to="." method="_on_shopbutton_mouse_exited"]
 [connection signal="pressed" from="shopbutton" to="." method="_on_shopbutton_pressed"]
+[connection signal="mouse_entered" from="tutorialButton" to="." method="_on_tutorial_button_mouse_entered"]
+[connection signal="mouse_exited" from="tutorialButton" to="." method="_on_tutorial_button_mouse_exited"]
 [connection signal="pressed" from="tutorialButton" to="." method="_on_tutorial_button_pressed"]
