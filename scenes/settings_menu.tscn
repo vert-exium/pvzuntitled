@@ -1,53 +1,56 @@
 [gd_scene format=3 uid="uid://divpbukqqgdd6"]
 
 [ext_resource type="Script" uid="uid://mohfcb1lfis1" path="res://scripts/settings_menu.gd" id="1_lwwgp"]
-[ext_resource type="Texture2D" uid="uid://bv5plsb6jrxq0" path="res://images/arrow-left-alt-5ufw09e1z3jbk920li7a28.png" id="2_labj1"]
 [ext_resource type="FontFile" uid="uid://mt6luuxvugxh" path="res://fonts/Elms_Sans/static/ElmsSans-ExtraBold.ttf" id="3_wswnh"]
+
+[sub_resource type="Gradient" id="Gradient_cr101"]
+colors = PackedColorArray(0.7176471, 0.2784314, 0.2784314, 1, 0.14117648, 0.0627451, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0jsi4"]
+gradient = SubResource("Gradient_cr101")
 
 [node name="settings_menu" type="Node2D" unique_id=392846876]
 script = ExtResource("1_lwwgp")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=556492146]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1083125390]
 offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(7.70092e-07, 0.45780808, 0.69570243, 1)
-metadata/_edit_lock_ = true
+offset_bottom = 1088.0
+texture = SubResource("GradientTexture2D_0jsi4")
 
 [node name="backButton" type="Button" parent="." unique_id=45939631]
-offset_left = 780.0
-offset_top = 856.0
-offset_right = 1200.0
-offset_bottom = 960.0
+offset_left = 64.0
+offset_top = 920.0
+offset_right = 484.0
+offset_bottom = 1024.0
 theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
 theme_override_font_sizes/font_size = 70
-text = "BACK"
-icon = ExtResource("2_labj1")
+text = "Main Menu"
 
 [node name="masterVol" type="Label" parent="." unique_id=1607656417]
-offset_left = 624.0
-offset_top = 16.0
-offset_right = 1775.0
-offset_bottom = 227.0
+offset_left = 128.0
+offset_top = 184.0
+offset_right = 1279.0
+offset_bottom = 395.0
 theme_override_fonts/font = ExtResource("3_wswnh")
 theme_override_font_sizes/font_size = 80
 text = "Master Volume: "
 
 [node name="sfxVol" type="Label" parent="." unique_id=985099962]
-offset_left = 624.0
-offset_top = 216.0
-offset_right = 1775.0
-offset_bottom = 427.0
+offset_left = 128.0
+offset_top = 416.0
+offset_right = 1279.0
+offset_bottom = 627.0
 theme_override_fonts/font = ExtResource("3_wswnh")
 theme_override_font_sizes/font_size = 80
 text = "SFX Volume: "
 
 [node name="musicVol" type="Label" parent="." unique_id=1114171638]
-offset_left = 624.0
-offset_top = 416.0
-offset_right = 1775.0
-offset_bottom = 627.0
+offset_left = 128.0
+offset_top = 584.0
+offset_right = 1279.0
+offset_bottom = 795.0
 theme_override_fonts/font = ExtResource("3_wswnh")
 theme_override_font_sizes/font_size = 80
 text = "Music Volume:"
@@ -61,36 +64,67 @@ text = "SETTINGS
 "
 
 [node name="masterVolumeSlider" type="HSlider" parent="." unique_id=214626487]
-offset_left = 689.99994
-offset_top = 96.0
-offset_right = 1039.7756
-offset_bottom = 136.0
+offset_left = 128.0
+offset_top = 240.0
+offset_right = 477.7757
+offset_bottom = 280.0
 scale = Vector2(3.345, 3.345)
 max_value = 1.0
 step = 0.01
 value = 1.0
 
 [node name="sfxVolumeSlider" type="HSlider" parent="." unique_id=334367755]
-offset_left = 689.99994
-offset_top = 296.0
-offset_right = 1039.7756
-offset_bottom = 336.0
+offset_left = 127.999985
+offset_top = 448.0
+offset_right = 477.7757
+offset_bottom = 488.0
 scale = Vector2(3.345, 3.345)
 max_value = 1.0
 step = 0.01
 value = 1.0
 
 [node name="musicVolumeSlider" type="HSlider" parent="." unique_id=1766919416]
-offset_left = 689.99994
-offset_top = 495.99997
-offset_right = 1039.7756
-offset_bottom = 536.0
+offset_left = 136.0
+offset_top = 632.0
+offset_right = 485.7757
+offset_bottom = 672.0
 scale = Vector2(3.345, 3.345)
 max_value = 1.0
 step = 0.01
 value = 1.0
 
+[node name="codeEnter" type="LineEdit" parent="." unique_id=81125594]
+offset_left = 1472.0
+offset_top = 128.0
+offset_right = 1872.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("3_wswnh")
+theme_override_font_sizes/font_size = 30
+
+[node name="Label" type="Label" parent="." unique_id=522464920]
+offset_left = 1472.0
+offset_top = 32.0
+offset_right = 1862.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("3_wswnh")
+theme_override_font_sizes/font_size = 33
+text = "Enter code to enable debug menu!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="confirmCodeButton" type="Button" parent="." unique_id=916507311]
+offset_left = 1472.0
+offset_top = 216.0
+offset_right = 1872.0
+offset_bottom = 304.0
+theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 54
+text = "Confirm code"
+
 [connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]
 [connection signal="value_changed" from="masterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
 [connection signal="value_changed" from="sfxVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
 [connection signal="value_changed" from="musicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="pressed" from="confirmCodeButton" to="." method="_on_confirm_code_button_pressed"]

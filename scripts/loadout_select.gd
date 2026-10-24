@@ -27,3 +27,23 @@ func spawn_ripple(global_pos: Vector2) -> void:
 	ripple.set_script(load("res://scripts/mouse_effect.gd"))
 	ripple.global_position = global_pos
 	get_tree().root.add_child(ripple)
+
+func _on_button_mouse_entered() -> void:
+	var tween = create_tween()
+	tween.tween_property($Button, "scale", Vector2(1.05,1.05), 0.1)
+	$Button/hoverSFX.play()
+
+func _on_button_mouse_exited() -> void:
+	var tween = create_tween()
+	tween.tween_property($Button, "scale", Vector2(1,1), 0.1)
+
+
+
+func _on_back_button_mouse_entered() -> void:
+	var tween = create_tween()
+	tween.tween_property($backButton, "scale", Vector2(1.05,1.05), 0.1)
+	$Button/hoverSFX.play()
+
+func _on_back_button_mouse_exited() -> void:
+	var tween = create_tween()
+	tween.tween_property($backButton, "scale", Vector2(1,1), 0.1)

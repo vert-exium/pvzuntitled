@@ -55,3 +55,11 @@ func _on_music_volume_slider_value_changed(new_value: float) -> void:
 # Changes the scene to the main menu when the button is pressed.
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+#secret code to enable cheats
+func _on_confirm_code_button_pressed() -> void:
+	if $codeEnter.text == "ilovecheating5555":
+		Global.is_cheating = true
+		$codeEnter.text = "Correct code!"
+	else:
+		$codeEnter.text = "Incorrect Code!"

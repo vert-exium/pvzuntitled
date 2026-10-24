@@ -20,3 +20,4 @@ signal card_selected(card_id)
 signal request_enemy_spawn(budget: float)
 
 signal coin_collected(added_coins: int)
+signal play_sfx()

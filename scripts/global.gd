@@ -5,7 +5,7 @@ var coins = 0
 
 var saved_loadout: Array[String] = []
 var showFPS: bool = false
-
+var is_cheating = false
 
 #shop stuff
 var damage_boost = 1.0

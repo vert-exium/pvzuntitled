@@ -1,6 +1,5 @@
 extends Node2D
-
-
+#coin variables
 var coins = Global.coins
 # Defines the grid size
 const ROWS: int = 5
@@ -49,6 +48,7 @@ var plant_scenes: Dictionary = {
 func _ready() -> void:
 	coins = Global.coins
 	$musicPlayer.play()
+	SignalBus.play_sfx.connect(_on_play_sfx)
 	SignalBus.game_over.connect(_on_game_over)
 	SignalBus.card_selected.connect(_on_card_selected)
 	SignalBus.request_enemy_spawn.connect(_on_request_enemy_spawn)
@@ -60,6 +60,14 @@ func _ready() -> void:
 	$wave2.play("wave")
 	$wave3.play("wave")
 	$wave4.play("wave")
+	$grass1.play("default")
+	$grass2.play("default")
+	$grass3.play("default")
+	$grass4.play("default")
+	$grass5.play("default")
+	$grass6.play("default")
+	$grass7.play("default")
+	$grass8.play("default")
 
 
 #stores the currently selected card, and prints a debug message.
@@ -98,7 +106,7 @@ func _process(delta: float) -> void:
 		$fpsLabel.text = "FPS: %d" % Engine.get_frames_per_second()
 	else:
 		$fpsLabel.hide()
-
+ 
 func _draw_grid_overlay() -> void:
 	var is_shovel = (currently_selected_card == "shovel")
 	
@@ -334,3 +342,9 @@ func format_numbers(number: int) -> String:
 		result += num_str[i]
 	
 	return result
+
+
+func _on_play_sfx() -> void:
+	var coinPitch = randf_range(0.9, 1.1)
+	$coinSFX.pitch_scale = coinPitch
+	$coinSFX.play()

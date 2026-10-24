@@ -4,6 +4,8 @@ var magnet_range: float = 800.0
 var is_collected: bool = false
 var magnet_speed: float = 0.0
 
+
+
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
 
@@ -32,6 +34,8 @@ func collect_coin() -> void:
 	var added_coins = int((wave_multiplier + 1.0) * 10.0)
 	
 	Global.coins += added_coins
+	SignalBus.play_sfx.emit()
+	
 	
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(self, "modulate:a", 0.0, 0.2)\

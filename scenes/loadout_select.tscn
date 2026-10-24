@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://73w5s1yrrtx0" path="res://scripts/loadout_confirm_button.gd" id="10_vxoj1"]
 [ext_resource type="PackedScene" uid="uid://cviqc1w7nfiad" path="res://scenes/swordsman_card.tscn" id="11_w40n5"]
 [ext_resource type="FontFile" uid="uid://c32sd0jmdtuqa" path="res://fonts/Elms_Sans/static/ElmsSans-Light.ttf" id="13_8s84n"]
+[ext_resource type="AudioStream" uid="uid://bmjoe7pgj3612" path="res://audio/denielcz-immersivecontrol-button-click-sound-463065.mp3" id="13_fd4qn"]
 [ext_resource type="PackedScene" uid="uid://bryo2wg23itwe" path="res://scenes/archer_card.tscn" id="14_fd4qn"]
 
 [sub_resource type="Gradient" id="Gradient_w40n5"]
@@ -1079,6 +1080,7 @@ offset_left = 1600.0
 offset_top = 350.0
 offset_right = 1900.0
 offset_bottom = 480.0
+pivot_offset = Vector2(150, 70)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
 theme_override_constants/outline_size = 12
@@ -1087,7 +1089,9 @@ theme_override_font_sizes/font_size = 32
 text = "CONFIRM LOADOUT"
 script = ExtResource("10_vxoj1")
 metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
+
+[node name="hoverSFX" type="AudioStreamPlayer2D" parent="Button" unique_id=1458182840]
+stream = ExtResource("13_fd4qn")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1385697173]
 points = PackedVector2Array(0, 330, 1920, 330)
@@ -1104,5 +1108,10 @@ text = "Back"
 
 [connection signal="area_entered" from="cardDetector" to="cardDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="cardDetector" to="cardDetector" method="_on_area_exited"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button" to="cardManager" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="backButton" to="." method="_on_back_button_mouse_entered"]
+[connection signal="mouse_exited" from="backButton" to="." method="_on_back_button_mouse_exited"]
 [connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]

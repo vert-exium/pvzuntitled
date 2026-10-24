@@ -1,8 +1,6 @@
 extends Node2D
 
 func _ready() -> void:
-	#TEMPORARY - FOR TESTING!!!
-	Global.coins += 40000
 	$coinLabel.text = "Coins: " + str(int(Global.coins))
 	$shopBack/Scroll/VBoxContainer/Upgrade1/currentBoost.text = "Boost: " + str(Global.damage_boost) + "x"
 	$shopBack/Scroll/VBoxContainer/Upgrade2/currentBoost.text = "Boost: " + str(Global.attackSpeed_boost) + "x"

@@ -81,7 +81,7 @@ func spawn_ripple(pos: Vector2, is_drag: bool) -> void:
 # All of the functions below load scenes when buttons are pressed
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/loadout_select.tscn")
+	get_tree().change_scene_to_file("res://scenes/loadout_select.scn")
 
 
 func _on_settings_pressed() -> void:
@@ -110,7 +110,7 @@ func _on_tutorial_button_pressed() -> void:
 
 
 
-#Button scales (feel free to change this as its kinda a weird way to do it but yea)
+#Button scales (feel free to change this as its kinda a weird way to do it but it works)
 func _on_play_mouse_entered() -> void:
 	var tween = create_tween()
 	$play/clickSFX.play()
