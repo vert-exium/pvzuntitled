@@ -92,7 +92,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sv6t6")
 }],
-"loop": 1,
+"loop": true,
 "name": &"default",
 "speed": 8.0
 }]
@@ -159,7 +159,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p6oy6")
 }],
-"loop": 1,
+"loop": true,
 "name": &"wave",
 "speed": 12.0
 }]
@@ -257,18 +257,31 @@ stream = ExtResource("4_kl8ac")
 bus = &"Music"
 metadata/_edit_lock_ = true
 
+[node name="coinBack" type="Panel" parent="." unique_id=235618777]
+offset_left = 1480.0
+offset_top = 30.0
+offset_right = 1740.0
+offset_bottom = 110.0
+metadata/_edit_lock_ = true
+
 [node name="fpsLabel" type="Label" parent="." unique_id=1272144320]
-offset_left = 1750.0
-offset_right = 1920.0
+offset_left = 1770.0
+offset_right = 1940.0
 offset_bottom = 60.0
 theme_override_font_sizes/font_size = 34
 text = "FPS: "
 metadata/_edit_lock_ = true
 
+[node name="fpsBack" type="Panel" parent="." unique_id=1677451179]
+offset_left = 1760.0
+offset_right = 1930.0
+offset_bottom = 50.0
+metadata/_edit_lock_ = true
+
 [node name="coinLabel" type="Label" parent="." unique_id=191501667]
-offset_left = 1542.0
+offset_left = 1502.0
 offset_top = 36.0
-offset_right = 1759.0
+offset_right = 1719.0
 offset_bottom = 105.0
 theme_override_fonts/font = ExtResource("6_dke22")
 theme_override_font_sizes/font_size = 53

@@ -6,6 +6,8 @@
 [ext_resource type="FontFile" uid="uid://x8wuqh7oto2o" path="res://fonts/Elms_Sans/static/ElmsSans-Medium.ttf" id="4_cq4me"]
 [ext_resource type="PackedScene" uid="uid://d1cox6ndw2oi" path="res://scenes/loadout_lite.tscn" id="5_6yjpi"]
 [ext_resource type="Texture2D" uid="uid://j0w1vf5lg4a8" path="res://assets/stage2.png" id="5_cq4me"]
+[ext_resource type="Texture2D" uid="uid://oj4acxlqq5l0" path="res://assets/stage4.png" id="7_gbqnl"]
+[ext_resource type="Texture2D" uid="uid://bvv2uivpw63gv" path="res://assets/stage6.png" id="8_ckvwl"]
 
 [sub_resource type="Gradient" id="Gradient_8ho6b"]
 colors = PackedColorArray(0.446777, 0.44677705, 0.44677705, 1, 0.8776157, 0.8776158, 0.8776157, 1)
@@ -58,11 +60,12 @@ offset_right = 1890.0
 offset_bottom = 1020.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_6yjpi")
 
-[node name="tutorialLabel" type="Label" parent="." unique_id=1749330115]
-offset_left = 640.0
-offset_top = 730.0
-offset_right = 1880.0
-offset_bottom = 1010.0
+[node name="tutorialLabel" type="Label" parent="textPanel" unique_id=1749330115]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 20.0
+offset_right = 1250.0
+offset_bottom = 280.0
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("2_8ho6b")
 theme_override_font_sizes/font_size = 20
@@ -115,6 +118,35 @@ offset_right = 1412.03
 offset_bottom = 902.2556
 scale = Vector2(0.665, 0.665)
 texture = ExtResource("5_cq4me")
+
+[node name="stage4Control" type="Control" parent="." unique_id=893509400]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 60.0
+offset_bottom = 60.0
+
+[node name="texture" type="TextureRect" parent="stage4Control" unique_id=975830679]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 250.0
+offset_right = 1504.0
+offset_bottom = 505.0
+texture = ExtResource("7_gbqnl")
+
+[node name="stage6Control" type="Control" parent="." unique_id=1093998723]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="texture" type="TextureRect" parent="stage6Control" unique_id=364361283]
+layout_mode = 0
+offset_left = 610.0
+offset_top = 60.0
+offset_right = 1911.0
+offset_bottom = 1099.0
+scale = Vector2(0.58, 0.58)
+texture = ExtResource("8_ckvwl")
 
 [connection signal="pressed" from="mainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="nextButton" to="." method="_on_next_button_pressed"]

@@ -1,7 +1,5 @@
 extends Node2D
 
-# A stripped down card manger script. Only for use in the interactive tutorial
-
 const COLLISION_MASK_CARD = 1
 const DRAG_Z_INDEX = 1000
 var max_placed_z_index: int = 1
@@ -28,30 +26,41 @@ const cardStrengths = {
 }
 
 func _ready() -> void:
-	# Gets the current viewport size for other function to use
-	screen_size = get_viewport_rect().size
+	for node in get_tree().get_nodes_in_group("cards"):
+		var visuals = node.find_child("scalingnstuff", true, false)
+		if visuals:
+			visuals.scale = Vector2(0.6, 0.6)
+		else:
+			node.scale = Vector2(0.6, 0.6)
 
-# Every frame, checks if the card is being dragged. If so, smoothly animates the position
-# and rotation based on momentum. Also makes sure they do not get too fast or leave the screen
-func _process(delta: float) -> void:
+func get_loadout_bounds() -> Rect2:
+	var loadout_lite = get_parent()
+	if loadout_lite:
+		var back = loadout_lite.get_node_or_null("back")
+		if back is TextureRect:
+			return back.get_global_rect()
+	
+	return Rect2(Vector2.ZERO, get_viewport_rect().size)
+
+func _process(_delta: float) -> void:
 	if is_instance_valid(card_being_dragged):
 		var mouse_pos = get_global_mouse_position()
 		var velocity_x = mouse_pos.x - last_mouse_pos.x
 		last_mouse_pos = mouse_pos
 		
+		var bounds = get_loadout_bounds()
+		
 		card_being_dragged.global_position = card_being_dragged.global_position.lerp(
 			Vector2(
-				clamp(mouse_pos.x, 0, screen_size.x),
-				clamp(mouse_pos.y, 0, screen_size.y)
+				clamp(mouse_pos.x, bounds.position.x, bounds.position.x + bounds.size.x),
+				clamp(mouse_pos.y, bounds.position.y, bounds.position.y + bounds.size.y)
 			),
-			25.0 * delta
+			25.0 * _delta
 		)
 		
 		var target_rotation = clamp(velocity_x * 0.015, -0.25, 0.25)
-		card_being_dragged.rotation = lerp(card_being_dragged.rotation, target_rotation, 15.0 * delta)
+		card_being_dragged.rotation = lerp(card_being_dragged.rotation, target_rotation, 15.0 * _delta)
 		update_card_preview()
-		# NOTE: Removed the erroneous "card_being_dragged = null" that was resetting it here every frame!
-
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -64,14 +73,22 @@ func _input(event):
 				
 				last_mouse_pos = get_global_mouse_position()
 				
+				var visuals = card.find_child("scalingnstuff", true, false)
 				var grab_tween = create_tween()
-				grab_tween.tween_property(card, "scale", Vector2(1.15, 1.15), 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+				if visuals:
+					grab_tween.tween_property(visuals, "scale", Vector2(0.7, 0.7), 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+				else:
+					grab_tween.tween_property(card, "scale", Vector2(0.7, 0.7), 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 				
 				remove_card_preview()
 				
 				var loadout = get_tree().get_first_node_in_group("card_detector")
 				if loadout and card.get_parent() == loadout.card_loadout_preview:
-					card.reparent(get_tree().current_scene, true)
+					card.reparent(get_tree().current_scene, false)
+					if visuals:
+						visuals.scale = Vector2(0.6, 0.6)
+					else:
+						card.scale = Vector2(0.6, 0.6)
 					calculate_total_strength()
 		
 		else:
@@ -85,9 +102,15 @@ func _input(event):
 				else:
 					remove_card_preview()
 					
-					var drop_tween = create_tween().set_parallel()
+					var visuals = card.find_child("scalingnstuff", true, false)
+					card.rotation = 0.0
 					
-					drop_tween.tween_property(card, "scale", Vector2(1.0, 1.0), 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+					var drop_tween = create_tween().set_parallel()
+					if visuals:
+						drop_tween.tween_property(visuals, "scale", Vector2(0.6, 0.6), 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+					else:
+						drop_tween.tween_property(card, "scale", Vector2(0.6, 0.6), 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+					
 					drop_tween.tween_property(card, "rotation", 0.0, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 					
 					max_placed_z_index += 1
@@ -132,8 +155,13 @@ func create_card_preview(loadout):
 	card_preview = card_being_dragged.duplicate()
 	get_tree().current_scene.add_child(card_preview)
 	
+	var preview_visuals = card_preview.find_child("scalingnstuff", true, false)
+	if preview_visuals:
+		preview_visuals.scale = Vector2(0.6, 0.6)
+	else:
+		card_preview.scale = Vector2(0.6, 0.6)
+	
 	card_preview.rotation = 0.0
-	card_preview.scale = Vector2.ONE
 	card_preview.remove_from_group("cards")
 	card_preview.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	card_preview.process_mode = Node.PROCESS_MODE_DISABLED
@@ -157,7 +185,7 @@ func finish_card_placement(card, loadout):
 	var target_position = card_placeholder.global_position + Vector2(0, 150)
 	
 	if card_preview:
-		card_preview.visible = false # Fixed typo from 'visisble'
+		card_preview.visible = false
 	
 	if card_placeholder:
 		card_placeholder.queue_free()
@@ -165,10 +193,20 @@ func finish_card_placement(card, loadout):
 	
 	card_preview = null
 	
+	var visuals = card.find_child("scalingnstuff", true, false)
+	if visuals:
+		visuals.scale = Vector2(0.6, 0.6)
+	else:
+		card.scale = Vector2(0.6, 0.6)
+	card.rotation = 0.0
+	
 	var tween = create_tween().set_parallel()
 	tween.tween_property(card, "global_position", target_position, 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	tween.tween_property(card, "scale", Vector2(1.0, 1.0), 0.25).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	tween.tween_property(card, "rotation", 0.0, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	if visuals:
+		tween.tween_property(visuals, "scale", Vector2(0.6, 0.6), 0.25).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	else:
+		tween.tween_property(card, "scale", Vector2(0.6, 0.6), 0.25).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.tween_property(card, "rotation", 0.0, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	
 	await tween.finished
 	
@@ -177,7 +215,10 @@ func finish_card_placement(card, loadout):
 	
 	await get_tree().process_frame
 	
-	card.scale = Vector2(1,1)
+	if visuals:
+		visuals.scale = Vector2(0.6, 0.6)
+	else:
+		card.scale = Vector2(0.6, 0.6)
 	card.rotation = 0.0
 	
 	max_placed_z_index += 1
@@ -226,17 +267,24 @@ func raycast_check_for_card():
 	return null
 
 func highlight_card(card: Control, hovered: bool) -> void:
+	var visuals = card.find_child("scalingnstuff", true, false)
 	if hovered:
 		if card != card_being_dragged:
 			card.z_index += 100
 		var tween = create_tween()
-		tween.tween_property(card, "scale", Vector2(1.1, 1.1), 0.35).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+		if visuals:
+			tween.tween_property(visuals, "scale", Vector2(0.7, 0.7), 0.35).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+		else:
+			tween.tween_property(card, "scale", Vector2(0.7, 0.7), 0.35).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
 	else:
 		var tween = create_tween()
 		if card != card_being_dragged:
 			card.z_index = max(1, card.z_index - 100)
 		
-		tween.tween_property(card, "scale", Vector2(1.0, 1.0), 0.35).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+		if visuals:
+			tween.tween_property(visuals, "scale", Vector2(0.6, 0.6), 0.35).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+		else:
+			tween.tween_property(card, "scale", Vector2(0.6, 0.6), 0.35).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
 
 func get_card_with_highest_z_index(cards):
 	var highest_z_card = cards[0].collider.get_parent()
@@ -260,7 +308,7 @@ func calculate_total_strength() -> int:
 	
 	for child in preview_container.get_children():
 		var strength = child.get("strength")
-		if strength != null and child.is_in_group("cards"): # Fixed typo from 'is_in_grorup'
+		if strength != null and child.is_in_group("cards"):
 			total_strength += strength
 	
 	label_effects(total_strength)
@@ -280,7 +328,7 @@ func update_strength_number(value: int):
 		label.text = "Strength is above cap! " + "(" + str(value) + ")"
 	else:
 		label.text = "Loadout strength: " + str(round(value)) + "/50"
-	
+
 func label_effects(total_strength):
 	var label = get_tree().get_first_node_in_group("strength_label")
 	if not label:
@@ -290,14 +338,12 @@ func label_effects(total_strength):
 	
 	var tween = create_tween().set_parallel()
 	tween.tween_property(label, "scale", Vector2(1.05, 1.05), 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
-	
 	tween.chain()
-	
 	tween.tween_property(label, "scale", Vector2.ONE, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 	tween.parallel().tween_property(label, "rotation", 0, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 
 func _on_confirm_button_pressed() -> void:
-	var total_strength = calculate_total_strength()
+	var _total_strength = calculate_total_strength()
 
 func get_loadout_card_ids() -> Array[String]:
 	var card_ids: Array[String]
