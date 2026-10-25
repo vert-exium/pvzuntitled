@@ -6,9 +6,12 @@
 [ext_resource type="Script" uid="uid://hggrwd18nnqa" path="res://scripts/death_zone.gd" id="2_qifjx"]
 [ext_resource type="PackedScene" uid="uid://ypu5ksnetr5d" path="res://scenes/debug_menu.tscn" id="3_6vs76"]
 [ext_resource type="AudioStream" uid="uid://d0t2dpmg72v70" path="res://audio/SPECTRAL.mp3" id="4_kl8ac"]
-[ext_resource type="FontFile" uid="uid://8bwddhns1fvp" path="res://fonts/Elms_Sans/static/ElmsSans-SemiBold.ttf" id="6_dke22"]
+[ext_resource type="FontFile" uid="uid://bdnkrwic58f6h" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="7_2eouu"]
 [ext_resource type="Texture2D" uid="uid://d21568m2bcce5" path="res://animations/wave.png" id="7_4qegb"]
 [ext_resource type="AudioStream" uid="uid://dcw54pmbf1cry" path="res://audio/freesound_gamestudio-drop-coin-384921.mp3" id="9_2eouu"]
+[ext_resource type="FontFile" uid="uid://xqirkmqc30y3" path="res://fonts/Michroma/Michroma-Regular.ttf" id="10_sv41r"]
+[ext_resource type="Texture2D" uid="uid://bt4igwddbpomu" path="res://images/New Project.png" id="11_m0xki"]
+[ext_resource type="AudioStream" uid="uid://bmjoe7pgj3612" path="res://audio/denielcz-immersivecontrol-button-click-sound-463065.mp3" id="12_xe3hh"]
 
 [sub_resource type="Gradient" id="Gradient_qifjx"]
 colors = PackedColorArray(4.235506e-06, 0.55452555, 0, 1, 0.121336736, 0.39221075, 1.92523e-07, 1)
@@ -99,6 +102,18 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8fr4"]
 size = Vector2(180, 830)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rccsh"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_faw0r"]
 atlas = ExtResource("7_4qegb")
@@ -257,13 +272,6 @@ stream = ExtResource("4_kl8ac")
 bus = &"Music"
 metadata/_edit_lock_ = true
 
-[node name="coinBack" type="Panel" parent="." unique_id=235618777]
-offset_left = 1480.0
-offset_top = 30.0
-offset_right = 1740.0
-offset_bottom = 110.0
-metadata/_edit_lock_ = true
-
 [node name="fpsLabel" type="Label" parent="." unique_id=1272144320]
 offset_left = 1770.0
 offset_right = 1940.0
@@ -278,15 +286,17 @@ offset_right = 1930.0
 offset_bottom = 50.0
 metadata/_edit_lock_ = true
 
-[node name="coinLabel" type="Label" parent="." unique_id=191501667]
+[node name="coinLabel" type="RichTextLabel" parent="." unique_id=571599909]
 offset_left = 1502.0
 offset_top = 36.0
 offset_right = 1719.0
 offset_bottom = 105.0
-theme_override_fonts/font = ExtResource("6_dke22")
-theme_override_font_sizes/font_size = 53
+theme_override_fonts/normal_font = ExtResource("7_2eouu")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_rccsh")
 text = "Coins: 0"
-metadata/_edit_lock_ = true
+fit_content = true
+autowrap_mode = 0
 
 [node name="wave1" type="AnimatedSprite2D" parent="." unique_id=486286334]
 z_index = -2
@@ -327,4 +337,22 @@ metadata/_edit_lock_ = true
 [node name="coinSFX" type="AudioStreamPlayer2D" parent="." unique_id=2129934185]
 stream = ExtResource("9_2eouu")
 
+[node name="settings" type="Button" parent="." unique_id=2006567646 groups=["buttons"]]
+offset_left = 1500.0
+offset_top = 120.0
+offset_right = 1874.0
+offset_bottom = 219.0
+pivot_offset = Vector2(385, 60)
+theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 17
+theme_override_fonts/font = ExtResource("10_sv41r")
+theme_override_font_sizes/font_size = 37
+text = "SETTINGS"
+icon = ExtResource("11_m0xki")
+
+[node name="clickSFX" type="AudioStreamPlayer2D" parent="settings" unique_id=899080549]
+stream = ExtResource("12_xe3hh")
+
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
+[connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]

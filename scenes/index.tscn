@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cqugbmh8yls8q" path="res://scenes/generator_index.tscn" id="7_tsphw"]
 [ext_resource type="FontFile" uid="uid://bhigvelo1x6ac" path="res://fonts/Elms_Sans/static/ElmsSans-Thin.ttf" id="8_eao86"]
 [ext_resource type="PackedScene" uid="uid://cqu7c7hboq86" path="res://scenes/archer_index.tscn" id="8_vep6c"]
+[ext_resource type="PackedScene" uid="uid://cnb7x24rhh4oj" path="res://scenes/powerplant_index.tscn" id="9_2a4ak"]
 [ext_resource type="FontFile" uid="uid://bdnkrwic58f6h" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="9_tsphw"]
 [ext_resource type="Texture2D" uid="uid://bv5plsb6jrxq0" path="res://images/arrow-left-alt-5ufw09e1z3jbk920li7a28.png" id="9_vc6rt"]
 [ext_resource type="Texture2D" uid="uid://dkycpvyv6i558" path="res://images/table.png" id="11_w3g1x"]
@@ -173,6 +174,14 @@ layout_mode = 0
 offset_right = 239.52084
 offset_bottom = 240.0
 
+[node name="powerplant_index" parent="previewAreaBG/previewArea" unique_id=546377956 instance=ExtResource("9_2a4ak")]
+layout_mode = 2
+
+[node name="powerplantButton" type="TextureButton" parent="previewAreaBG/previewArea/powerplant_index" unique_id=324003917]
+layout_mode = 0
+offset_right = 239.52084
+offset_bottom = 240.0
+
 [node name="unitpreviewbox" type="ColorRect" parent="." unique_id=641147173]
 layout_mode = 0
 offset_left = 1356.7761
@@ -273,4 +282,5 @@ texture = ExtResource("11_w3g1x")
 [connection signal="pressed" from="previewAreaBG/previewArea/thrower_index/throwerButton" to="." method="_on_thrower_button_pressed"]
 [connection signal="pressed" from="previewAreaBG/previewArea/generator_index/generatorButton" to="." method="_on_generator_button_pressed"]
 [connection signal="pressed" from="previewAreaBG/previewArea/archer_index/archerButton" to="." method="_on_archer_button_pressed"]
+[connection signal="pressed" from="previewAreaBG/previewArea/powerplant_index/powerplantButton" to="." method="_on_powerplant_button_pressed"]
 [connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]

@@ -6,7 +6,7 @@ const ROWS: int = 5
 const COLS: int = 8
 # Loads the cursor image
 const SHOVEL_CURSOR = preload("res://assets/cursor.png") 
-
+const SETTINGS_MENU_SCENE = preload("res://scenes/settings_menu.tscn")
 # Defines the size of the cells, where the grid starts, and the grid drawer node
 @export var cell_size: Vector2 = Vector2(160, 160)
 @export var grid_origin: Vector2 = Vector2(160, 245)
@@ -41,7 +41,8 @@ var plant_scenes: Dictionary = {
 	"bomber": preload("res://scenes/bomber.tscn"),
 	"shielder": preload("res://scenes/shielder.tscn"),
 	"swordsman": preload("res://scenes/swordsman.tscn"),
-	"archer": preload("res://scenes/archer.tscn")
+	"archer": preload("res://scenes/archer.tscn"),
+	"powerplant": preload("res://scenes/powerplant.tscn")
 }
 
 # Connects signals, and starts the level
@@ -348,3 +349,12 @@ func _on_play_sfx() -> void:
 	var coinPitch = randf_range(0.9, 1.1)
 	$coinSFX.pitch_scale = coinPitch
 	$coinSFX.play()
+
+
+func _on_settings_pressed() -> void:
+	get_tree().paused = true
+	if has_node("settings_menu"):
+		return
+	var settings_instance = SETTINGS_MENU_SCENE.instantiate()
+	add_child(settings_instance)
+	get_tree().paused = true 

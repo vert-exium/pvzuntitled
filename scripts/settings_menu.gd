@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 # Variables to store the indexes
 # of all 3 audio buses.
@@ -24,7 +24,7 @@ func _ready() -> void:
 	$sfxVolumeSlider.value = db_to_linear(AudioServer.get_bus_volume_db(sfx_bus_index))
 	$sfxVol.text = "SFX Volume: " + str(int($sfxVolumeSlider.value * 100)) + "%"
 	$musicVolumeSlider.value = db_to_linear(AudioServer.get_bus_volume_db(music_bus_index))
-	$musicVol.text = "Music Volume: " + str(int($sfxVolumeSlider.value * 100)) + "%"
+	$musicVol.text = "Music Volume: " + str(int($musicVolumeSlider.value * 100)) + "%"
 
 # When the master volume slider is changed, translates the linear value
 # to a decibel value, and sets the bus volume to that db value. Then,
@@ -52,9 +52,18 @@ func _on_music_volume_slider_value_changed(new_value: float) -> void:
 	AudioServer.set_bus_volume_db(music_bus_index, music_vol_db)
 	$musicVol.text = "Music Volume: " + str(int(new_value * 100)) + "%"
 
-# Changes the scene to the main menu when the button is pressed.
+# Handles closing the settings menu dynamically depending on where it's open.
 func _on_back_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().paused = false
+	if self == get_tree().current_scene:
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		return
+	var scene_path = get_tree().current_scene.scene_file_path.to_lower()
+	
+	if "main_menu" in scene_path:
+		visible = false
+	else:
+		queue_free()
 
 #secret code to enable cheats
 func _on_confirm_code_button_pressed() -> void:

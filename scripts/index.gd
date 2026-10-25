@@ -6,6 +6,7 @@ var shielder_texture = load("res://images/5723525.png")
 var thrower_texture = load("res://images/images__5_-removebg-preview.png")
 var generator_texture = load("res://images/image_2026-09-18_234043813-removebg-preview.png")
 var archer_texture = load("res://images/5160006_label_1000x-removebg-preview.png")
+var powerplant_texture = load("res://images/Fundamentals-HOW-A-NUCLEAR-REACTORS-WORKS-Header_1440x810_14.jpg")
 #Enemy textures
 var normal_texture = load("res://images/image_2026-10-05_164029134-removebg-preview.png")
 var tank_texture = load("res://images/image_2026-10-05_170904917-removebg-preview (1).png")
@@ -79,3 +80,9 @@ func _on_tank_button_pressed() -> void:
 	$spritePreview.texture = tank_texture
 	$unitpreviewbox/cardStats.text = "Health: 300 \nspeed: 20 \nDamage: 5 \nAttack Rate: 1s"
 	$unitpreviewbox/cardDescription.text = "Description: \nA slow enemy with high health. This enemy will soak up a lot of damage, be careful! Beware of its boxing glove (deadly)."
+
+func _on_powerplant_button_pressed() -> void:
+	$unitpreviewbox/cardNamePreview.text = "Powerplant"
+	$spritePreview.texture = powerplant_texture
+	$unitpreviewbox/cardStats.text = "Cost: 800 \nPlacement Cooldown: 20 seconds \nHealth: 800 \nEnergy Tick Rate: 15s"
+	$unitpreviewbox/cardDescription.text = "Decription: \nThe powerplant is a much more powerful yet expensive version of the generator. Its high cost means it cant be used in the early game and can be a risky choice. "

@@ -9,7 +9,8 @@ colors = PackedColorArray(0.7176471, 0.2784314, 0.2784314, 1, 0.14117648, 0.0627
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0jsi4"]
 gradient = SubResource("Gradient_cr101")
 
-[node name="settings_menu" type="Node2D" unique_id=392846876]
+[node name="settings_menu" type="CanvasLayer" unique_id=77164009]
+process_mode = 3
 script = ExtResource("1_lwwgp")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1083125390]
@@ -39,9 +40,9 @@ text = "Master Volume: "
 
 [node name="sfxVol" type="Label" parent="." unique_id=985099962]
 offset_left = 128.0
-offset_top = 416.0
+offset_top = 376.0
 offset_right = 1279.0
-offset_bottom = 627.0
+offset_bottom = 587.0
 theme_override_fonts/font = ExtResource("3_wswnh")
 theme_override_font_sizes/font_size = 80
 text = "SFX Volume: "
@@ -74,10 +75,10 @@ step = 0.01
 value = 1.0
 
 [node name="sfxVolumeSlider" type="HSlider" parent="." unique_id=334367755]
-offset_left = 127.999985
-offset_top = 448.0
+offset_left = 128.0
+offset_top = 431.99997
 offset_right = 477.7757
-offset_bottom = 488.0
+offset_bottom = 471.99997
 scale = Vector2(3.345, 3.345)
 max_value = 1.0
 step = 0.01

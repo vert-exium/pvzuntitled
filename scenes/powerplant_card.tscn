@@ -21,7 +21,7 @@ anchors_preset = 0
 size_flags_horizontal = 0
 size_flags_vertical = 4
 script = ExtResource("1_32fg0")
-card_id = "generator"
+card_id = "powerplant"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1838322728]
 position = Vector2(-5.000002, -25.000004)
