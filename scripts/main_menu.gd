@@ -106,7 +106,7 @@ func _on_shopbutton_pressed() -> void:
 
 
 func _on_tutorial_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/tutorial.tscn")
+	get_tree().change_scene_to_file("res://scenes/tutorial.scn")
 
 
 

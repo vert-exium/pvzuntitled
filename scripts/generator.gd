@@ -8,7 +8,7 @@ var health: int = 0
 # Loads the stats for the generator card, connects the timer,
 # configures it, and starts the animation.
 func _ready() -> void:
-	var stats = CardDatabase.get_card("generator")
+	var stats = CardDatabase.get_card("powerplant")
 	timer.wait_time = stats["tick_rate"]
 	health = stats["health"]
 	timer.timeout.connect(_on_timer_timeout)

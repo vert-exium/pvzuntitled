@@ -92,9 +92,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sv6t6")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
-"speed": 8.0
+"speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8fr4"]
@@ -159,9 +159,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p6oy6")
 }],
-"loop": true,
+"loop": 1,
 "name": &"wave",
-"speed": 12.0
+"speed": 8.0
 }]
 
 [node name="level" type="Node2D" unique_id=622269324]
@@ -221,7 +221,7 @@ frame_progress = 0.8553376
 position = Vector2(1660, 850)
 scale = Vector2(7.499999, 6.578124)
 sprite_frames = SubResource("SpriteFrames_rggdb")
-frame_progress = 0.8553376
+frame_progress = 0.381209
 
 [node name="GridDrawer" type="Node2D" parent="." unique_id=1030191393]
 metadata/_edit_lock_ = true
@@ -312,7 +312,7 @@ position = Vector2(489.99988, 860)
 scale = Vector2(15.156249, 9.21875)
 sprite_frames = SubResource("SpriteFrames_0jsi4")
 animation = &"wave"
-frame_progress = 0.763738
+frame_progress = 0.78404295
 metadata/_edit_lock_ = true
 
 [node name="wave4" type="AnimatedSprite2D" parent="." unique_id=325779686]

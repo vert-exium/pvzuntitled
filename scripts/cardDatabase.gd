@@ -71,6 +71,16 @@ const CARDS = {
 		"health": 200,
 		"damage": 30,
 		"fire_rate": 2.5
+	},
+	
+	"powerplant": {
+		"name": "powerplant",
+		"type": "generator",
+		"cost": 800,
+		"cooldown": 20,
+		"health": 500,
+		"energy_yield": 100,
+		"tick_rate": 15
 	}
 }
 
