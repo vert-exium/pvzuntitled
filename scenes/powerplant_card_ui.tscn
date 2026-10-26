@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b00oiilb2ldat"]
 
 [ext_resource type="Script" uid="uid://c4ws44fn0y1xv" path="res://scripts/ui_card.gd" id="1_mgs2y"]
-[ext_resource type="Texture2D" uid="uid://bc5dsec43hrpd" path="res://images/Fundamentals-HOW-A-NUCLEAR-REACTORS-WORKS-Header_1440x810_14.jpg" id="2_0ua6p"]
+[ext_resource type="Texture2D" uid="uid://b37irfhjxqos5" path="res://images/powerplantIcon.png" id="2_mgs2y"]
 [ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="3_5itmi"]
 [ext_resource type="Texture2D" uid="uid://b12jv5dcuxo6h" path="res://images/bolt-u66h28xd2g94f7gj1ckz6s.webp" id="4_xg0qc"]
 
@@ -31,9 +31,9 @@ position = Vector2(73, 73)
 scale = Vector2(0.605, 0.605)
 
 [node name="Sprite2D" type="Sprite2D" parent="scalingnstuff" unique_id=1838322728]
-position = Vector2(3.3057938, -21.48761)
-scale = Vector2(0.14921947, 0.20406081)
-texture = ExtResource("2_0ua6p")
+position = Vector2(-4.958683, -29.752056)
+scale = Vector2(3.0991735, 2.840909)
+texture = ExtResource("2_mgs2y")
 
 [node name="Area2D" type="Area2D" parent="scalingnstuff" unique_id=1268672156]
 collision_layer = 3

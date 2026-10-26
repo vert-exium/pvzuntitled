@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ccpsvbg7uhqwt"]
 
 [ext_resource type="Script" uid="uid://c4ws44fn0y1xv" path="res://scripts/ui_card.gd" id="1_rjfq0"]
-[ext_resource type="Texture2D" uid="uid://moqytdb7uwte" path="res://images/laser.png" id="2_rjfq0"]
+[ext_resource type="Texture2D" uid="uid://b6y1s1mnhnrt8" path="res://images/images__5_-removebg-preview.png" id="2_rjfq0"]
 [ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="3_cwt0x"]
 [ext_resource type="Texture2D" uid="uid://b12jv5dcuxo6h" path="res://images/bolt-u66h28xd2g94f7gj1ckz6s.webp" id="4_j2sys"]
 
@@ -25,15 +25,15 @@ offset_bottom = 180.0
 size_flags_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_rjfq0")
-card_id = "lasergunner"
+card_id = "thrower"
 
 [node name="scalingnstuff" type="Node2D" parent="." unique_id=632514743]
 position = Vector2(73, 73)
 scale = Vector2(0.605, 0.605)
 
 [node name="Sprite2D" type="Sprite2D" parent="scalingnstuff" unique_id=1838322728]
-position = Vector2(-4.958683, -21.487602)
-scale = Vector2(3.615702, 3.0991733)
+position = Vector2(1.6528931, -24.793396)
+scale = Vector2(0.4076641, 0.40584424)
 texture = ExtResource("2_rjfq0")
 
 [node name="Area2D" type="Area2D" parent="scalingnstuff" unique_id=1268672156]
@@ -46,14 +46,14 @@ shape = SubResource("RectangleShape2D_rggdb")
 debug_color = Color(1, 0, 0, 0.39215687)
 
 [node name="throwerLabel" type="Label" parent="scalingnstuff" unique_id=269281261]
-offset_left = -104.132225
+offset_left = -87.6033
 offset_top = 61.15702
-offset_right = 133.86777
+offset_right = 150.3967
 offset_bottom = 182.15701
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_cwt0x")
-theme_override_font_sizes/font_size = 34
-text = "Lasergunner"
+theme_override_font_sizes/font_size = 42
+text = "Thrower"
 
 [node name="Panel" type="Panel" parent="scalingnstuff" unique_id=685205190]
 z_index = -1
@@ -73,7 +73,7 @@ offset_bottom = 159.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_cwt0x")
 theme_override_font_sizes/font_size = 40
-text = "2000"
+text = "100"
 metadata/_edit_lock_ = true
 
 [node name="boltSprite" type="Sprite2D" parent="scalingnstuff" unique_id=232221732]

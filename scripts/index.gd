@@ -7,6 +7,7 @@ var thrower_texture = load("res://images/images__5_-removebg-preview.png")
 var generator_texture = load("res://images/image_2026-09-18_234043813-removebg-preview.png")
 var archer_texture = load("res://images/5160006_label_1000x-removebg-preview.png")
 var powerplant_texture = load("res://images/Fundamentals-HOW-A-NUCLEAR-REACTORS-WORKS-Header_1440x810_14.jpg")
+var lasergunner_texture = load("res://images/laser.png")
 #Enemy textures
 var normal_texture = load("res://images/image_2026-10-05_164029134-removebg-preview.png")
 var tank_texture = load("res://images/image_2026-10-05_170904917-removebg-preview (1).png")
@@ -89,6 +90,6 @@ func _on_powerplant_button_pressed() -> void:
 
 func _on_lasergunner_button_pressed() -> void:
 	$unitpreviewbox/cardNamePreview.text = "Lasergunner"
-	$spritePreview.texture = generator_texture
+	$spritePreview.texture = lasergunner_texture
 	$unitpreviewbox/cardStats.text = "Cost: 2000 \nPlacement Cooldown: 30 seconds \nHealth: 600 \nDamage: 100 \nAttack Rate: 1s"
 	$unitpreviewbox/cardDescription.text = "Description: \nThe most powerful unit in the game. The lasergunner wields a weapon that deals massive damage at a quick rate. Unfourtunatley, laser guns are expensive, thus its price."

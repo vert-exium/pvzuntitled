@@ -1,0 +1,64 @@
+extends Area2D
+
+# Loads timer node
+@onready var timer = $Timer
+
+var health: int = 0
+
+# Loads the stats for the generator card, connects the timer,
+# configures it, and starts the animation.
+func _ready() -> void:
+	var stats = CardDatabase.get_card("powerplant")
+	timer.wait_time = stats["tick_rate"]
+	health = stats["health"]
+	timer.timeout.connect(_on_timer_timeout)
+	timer.start()
+	$AnimatedSprite2D.play("default")
+
+# When the timer runs out, loads stats from the database,
+# adds the appropriate amount of energy, and starts the 
+# animation functions.
+func _on_timer_timeout() -> void:
+	var stats = CardDatabase.get_card("powerplant")
+	var amount = stats["energy_yield"]
+	
+	RunState.add_energy(amount)
+	animate_unit_bounce()
+	spawn_floating_text(amount)
+
+# Sets the scale instantly, and creates a tween 
+# to animate it back to 1x scale
+func animate_unit_bounce() -> void:
+	scale = Vector2(1.1, 0.9)
+	var tween = create_tween()
+	tween.tween_property(self, "scale", Vector2(1.0, 1.0), 0.6).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+
+# Creates a label and sets it up (text, font size, color, position)
+func spawn_floating_text(amount: int) -> void:
+	var popup = Label.new()
+	popup.text = "+" + str(amount)
+	popup.add_theme_color_override("font_color", Color(1.0, 0.78, 0.0, 1.0))
+	popup.add_theme_font_size_override("font_size", 24)
+	popup.position = Vector2(-15, -40)
+	
+	add_child(popup)
+	
+	
+	# Creates a tween for changing the transparency 
+	# floating label. When the tweens finish, despawn the label.
+	var tween = create_tween()
+	tween.set_parallel()
+	tween.tween_property(popup, "position", popup.position + Vector2(0, -50), 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(popup, "modulate:a", 0.0, 1.5)
+	tween.chain().tween_callback(popup.queue_free)
+
+
+# Takes damage, applies a red glow effect, and despawns the unit if health is less than zero.
+func take_damage(amount: int) -> void:
+	health -= amount
+	
+	modulate = Color(1, 0.3, 0.3, 0.9)
+	create_tween().tween_property(self, "modulate", Color.WHITE, 0.15)
+	
+	if health <= 0:
+		queue_free()

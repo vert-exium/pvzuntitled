@@ -42,7 +42,8 @@ var plant_scenes: Dictionary = {
 	"shielder": preload("res://scenes/shielder.tscn"),
 	"swordsman": preload("res://scenes/swordsman.tscn"),
 	"archer": preload("res://scenes/archer.tscn"),
-	"powerplant": preload("res://scenes/powerplant.tscn")
+	"powerplant": preload("res://scenes/powerplant.tscn"),
+	"lasergunner": preload("res://lasergunner.tscn")
 }
 
 # Connects signals, and starts the level

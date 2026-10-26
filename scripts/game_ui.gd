@@ -17,7 +17,8 @@ var card_scenes = {
 	"thrower": preload("res://scenes/thrower_card_ui.tscn"),
 	"swordsman": preload("res://scenes/swordsman_card_ui.tscn"),
 	"archer": preload("res://scenes/archer_card_ui.tscn"),
-	"powerplant": preload("res://scenes/powerplant_card_ui.tscn")
+	"powerplant": preload("res://scenes/powerplant_card_ui.tscn"),
+	"lasergunner": preload("res://scenes/lasergunner_card_ui.tscn")
 }
 
 

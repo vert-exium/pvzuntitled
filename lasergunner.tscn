@@ -1,13 +1,72 @@
 [gd_scene format=3 uid="uid://62o8gfcyj613"]
 
-[ext_resource type="Script" uid="uid://dub6kcpw0x8xw" path="res://scripts/thrower.gd" id="1_udtup"]
+[ext_resource type="Script" uid="uid://6xkptsiuov5x" path="res://lasergunner.gd" id="1_nfx5k"]
+[ext_resource type="Texture2D" uid="uid://bo4gi1wxaxd1n" path="res://animations/lasergunner.png" id="2_gn2eo"]
+[ext_resource type="AudioStream" uid="uid://vwvvmy0ixhlh" path="res://ahmed_abdulaal-laser-312360.mp3" id="3_gn2eo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8fr4"]
 size = Vector2(100, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgptg"]
+atlas = ExtResource("2_gn2eo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2myd"]
+atlas = ExtResource("2_gn2eo")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugccn"]
+atlas = ExtResource("2_gn2eo")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eg1pi"]
+atlas = ExtResource("2_gn2eo")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpqwh"]
+atlas = ExtResource("2_gn2eo")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qo03"]
+atlas = ExtResource("2_gn2eo")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kw5l"]
+atlas = ExtResource("2_gn2eo")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0jsi4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgptg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2myd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugccn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eg1pi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpqwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qo03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kw5l")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 24.0
+}]
+
 [node name="lasergunner" type="Area2D" unique_id=200291053 groups=["unit"]]
 collision_mask = 0
-script = ExtResource("1_udtup")
+script = ExtResource("1_nfx5k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1764623074]
 shape = SubResource("RectangleShape2D_d8fr4")
@@ -20,9 +79,13 @@ collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1541093269]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0.80813736, 3.272891e-06, 7.70092e-07, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1611130941]
+position = Vector2(1.9073486e-06, -1.9073486e-06)
+scale = Vector2(1.8750001, 1.8750001)
+sprite_frames = SubResource("SpriteFrames_0jsi4")
+frame = 6
+frame_progress = 1.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=673486836]
+stream = ExtResource("3_gn2eo")
+bus = &"SFX"

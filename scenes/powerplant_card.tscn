@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bgy2mkct20n0p"]
 
 [ext_resource type="Script" uid="uid://dbnapl1anias8" path="res://scripts/card.gd" id="1_32fg0"]
-[ext_resource type="Texture2D" uid="uid://bc5dsec43hrpd" path="res://images/Fundamentals-HOW-A-NUCLEAR-REACTORS-WORKS-Header_1440x810_14.jpg" id="2_e7g0u"]
+[ext_resource type="Texture2D" uid="uid://b37irfhjxqos5" path="res://images/powerplantIcon.png" id="2_32fg0"]
 [ext_resource type="FontFile" uid="uid://di5wsmuetgqtb" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="3_dan40"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rggdb"]
@@ -24,15 +24,15 @@ script = ExtResource("1_32fg0")
 card_id = "powerplant"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1838322728]
-position = Vector2(-5.000002, -25.000004)
-scale = Vector2(0.13194443, 0.16049384)
-texture = ExtResource("2_e7g0u")
+position = Vector2(0, -20)
+scale = Vector2(2.4999998, 2.1875)
+texture = ExtResource("2_32fg0")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1268672156]
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=518466849]
-position = Vector2(0, 25)
+position = Vector2(0, 30)
 shape = SubResource("RectangleShape2D_rggdb")
 
 [node name="generatorLabel2" type="Label" parent="." unique_id=269281261]
