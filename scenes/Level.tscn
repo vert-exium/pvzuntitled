@@ -95,7 +95,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sv6t6")
 }],
-"loop": 1,
+"loop": true,
 "name": &"default",
 "speed": 6.0
 }]
@@ -174,7 +174,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p6oy6")
 }],
-"loop": 1,
+"loop": true,
 "name": &"wave",
 "speed": 8.0
 }]
@@ -269,6 +269,7 @@ metadata/_edit_lock_ = true
 
 [node name="musicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1039606552]
 stream = ExtResource("4_kl8ac")
+max_distance = 4096.0
 bus = &"Music"
 metadata/_edit_lock_ = true
 

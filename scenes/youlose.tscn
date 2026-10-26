@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bjfihmof18rqy"]
 
-[ext_resource type="Script" uid="uid://cpvqf84mlpdff" path="res://youlose.gd" id="1_nlte8"]
+[ext_resource type="Script" uid="uid://cpvqf84mlpdff" path="res://scenes/youlose.gd" id="1_nlte8"]
 [ext_resource type="FontFile" uid="uid://xqirkmqc30y3" path="res://fonts/Michroma/Michroma-Regular.ttf" id="2_udcgi"]
 [ext_resource type="FontFile" uid="uid://dnfi7huuy4evt" path="res://fonts/Elms_Sans/static/ElmsSans-BlackItalic.ttf" id="3_xsk8a"]
+[ext_resource type="AudioStream" uid="uid://ckcjpbaewi8x3" path="res://audio/lose.mp3" id="4_udcgi"]
 
 [sub_resource type="Gradient" id="Gradient_nlte8"]
 offsets = PackedFloat32Array(0, 0.91752577)
@@ -52,4 +53,10 @@ theme_override_fonts/font = ExtResource("3_xsk8a")
 theme_override_font_sizes/font_size = 95
 text = "Back to main menu"
 
+[node name="audioPlayer" type="AudioStreamPlayer" parent="." unique_id=1391461332]
+stream = ExtResource("4_udcgi")
+autoplay = true
+bus = &"SFX"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="finished" from="audioPlayer" to="." method="_on_audio_player_finished"]

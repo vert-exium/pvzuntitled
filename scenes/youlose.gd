@@ -36,3 +36,7 @@ func start_color_loop() -> void:
 	var tween = create_tween()
 	tween.tween_property(texture, "modulate", next_color, 2.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.finished.connect(start_color_loop)
+
+
+func _on_audio_player_finished() -> void:
+	$audioPlayer.play()

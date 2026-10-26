@@ -29,6 +29,7 @@ colors = PackedColorArray(0.043039158, 0.04303915, 0.04303915, 1, 0.39321536, 0.
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ethjp"]
 gradient = SubResource("Gradient_chbti")
+width = 512
 fill_from = Vector2(0, 0.027027028)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0jsi4"]

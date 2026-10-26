@@ -7,6 +7,16 @@ const COLS: int = 8
 # Loads the cursor image
 const SHOVEL_CURSOR = preload("res://assets/cursor.png") 
 const SETTINGS_MENU_SCENE = preload("res://scenes/settings_menu.tscn")
+
+@onready var music_player = $musicPlayer
+
+var tracks: Array[AudioStream] = [
+	preload("res://audio/Alien.mp3"),
+	preload("res://audio/SPECTRAL.mp3")
+]
+
+var current_track_index: int = 0
+
 # Defines the size of the cells, where the grid starts, and the grid drawer node
 @export var cell_size: Vector2 = Vector2(160, 160)
 @export var grid_origin: Vector2 = Vector2(160, 245)
@@ -43,13 +53,14 @@ var plant_scenes: Dictionary = {
 	"swordsman": preload("res://scenes/swordsman.tscn"),
 	"archer": preload("res://scenes/archer.tscn"),
 	"powerplant": preload("res://scenes/powerplant.tscn"),
-	"lasergunner": preload("res://lasergunner.tscn")
+	"lasergunner": preload("res://scenes/lasergunner.tscn")
 }
 
 # Connects signals, and starts the level
 func _ready() -> void:
 	coins = Global.coins
-	$musicPlayer.play()
+	music_player.finished.connect(_on_music_player_finished)
+	_play_current_track()
 	SignalBus.play_sfx.connect(_on_play_sfx)
 	SignalBus.game_over.connect(_on_game_over)
 	SignalBus.card_selected.connect(_on_card_selected)
@@ -360,3 +371,12 @@ func _on_settings_pressed() -> void:
 	var settings_instance = SETTINGS_MENU_SCENE.instantiate()
 	add_child(settings_instance)
 	get_tree().paused = true 
+
+
+func _play_current_track() -> void:
+	music_player.stream = tracks[current_track_index]
+	music_player.play()
+
+func _on_music_player_finished() -> void:
+	current_track_index = (current_track_index + 1) % tracks.size()
+	_play_current_track()
