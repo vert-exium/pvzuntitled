@@ -32,9 +32,9 @@ Developed together by **vertexium** and **tjr5555**
 * **Music & Art Direction:** vertexium
 
 ### Tools used:
-Built fully in [Godot Engine](https://godotengine.org)
-Soundtrack produced in [FL Studio](https://image-line.com)
-Pixel art in [Pixelorama](https://pixelorama.org)
+- Built fully in [Godot Engine](https://godotengine.org)
+- Soundtrack produced in [FL Studio](https://image-line.com)
+- Pixel art in [Pixelorama](https://pixelorama.org)
 
 ---
 
