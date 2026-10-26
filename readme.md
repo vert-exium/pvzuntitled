@@ -17,7 +17,7 @@ The goal is simple. Pick your units, defend the field, and see how long you can 
 ---
 
 ## 👾 Play Today! 🎮
-#### Are you ready?\
+#### Are you ready?
 #### Play now on [itch.io!](https://treginer.itch.io/man-vs-machine) 
 
 ---
@@ -26,7 +26,7 @@ The goal is simple. Pick your units, defend the field, and see how long you can 
 
 Developed together by **vertexium** and **tjr5555**
 
-* **Lead Programmer:** tjr5555 ([itch.io](https://treginer.itch.io))
+* **Lead Programmer:** tjr5555 ([itch.io](https://itch.io/profile/tregnier))
 * **Game Design Lead:** vertexium ([itch.io](https://vertexium.itch.io))
 * **UI Design Lead:** tjr5555
 * **Music & Art Direction:** vertexium
