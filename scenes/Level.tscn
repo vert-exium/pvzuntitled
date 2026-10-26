@@ -287,10 +287,10 @@ offset_bottom = 50.0
 metadata/_edit_lock_ = true
 
 [node name="coinLabel" type="RichTextLabel" parent="." unique_id=571599909]
-offset_left = 1502.0
-offset_top = 36.0
-offset_right = 1719.0
-offset_bottom = 105.0
+offset_left = 1500.0
+offset_top = 50.0
+offset_right = 1717.0
+offset_bottom = 119.0
 theme_override_fonts/normal_font = ExtResource("7_2eouu")
 theme_override_font_sizes/normal_font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_rccsh")
@@ -353,6 +353,18 @@ icon = ExtResource("11_m0xki")
 
 [node name="clickSFX" type="AudioStreamPlayer2D" parent="settings" unique_id=899080549]
 stream = ExtResource("12_xe3hh")
+
+[node name="waveLabel" type="RichTextLabel" parent="." unique_id=270465407]
+offset_left = 1500.0
+offset_top = -4.0
+offset_right = 1717.0
+offset_bottom = 48.0
+theme_override_fonts/normal_font = ExtResource("7_2eouu")
+theme_override_font_sizes/normal_font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_rccsh")
+text = "Wave: "
+fit_content = true
+autowrap_mode = 0
 
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
 [connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]

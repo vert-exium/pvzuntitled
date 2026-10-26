@@ -48,6 +48,10 @@ const cardStrengths = {
 	"powerplant": {
 		"name": "powerplant",
 		"strength": 10
+	},
+	"lasergunner": {
+		"name": "lasergunner",
+		"strength": 25
 	}
 }
 

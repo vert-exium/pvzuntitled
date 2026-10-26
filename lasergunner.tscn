@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://62o8gfcyj613"]
+
+[ext_resource type="Script" uid="uid://dub6kcpw0x8xw" path="res://scripts/thrower.gd" id="1_udtup"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8fr4"]
+size = Vector2(100, 100)
+
+[node name="lasergunner" type="Area2D" unique_id=200291053 groups=["unit"]]
+collision_mask = 0
+script = ExtResource("1_udtup")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1764623074]
+shape = SubResource("RectangleShape2D_d8fr4")
+
+[node name="attackTimer" type="Timer" parent="." unique_id=1859858258]
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1155516020]
+target_position = Vector2(1000, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1541093269]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.80813736, 3.272891e-06, 7.70092e-07, 1)

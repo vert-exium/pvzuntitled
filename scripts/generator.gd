@@ -8,17 +8,18 @@ var health: int = 0
 # Loads the stats for the generator card, connects the timer,
 # configures it, and starts the animation.
 func _ready() -> void:
-	var stats = CardDatabase.get_card("powerplant")
+	var stats = CardDatabase.get_card("generator")
 	timer.wait_time = stats["tick_rate"]
 	health = stats["health"]
 	timer.timeout.connect(_on_timer_timeout)
 	timer.start()
+	$generatorSprite.play("generator")
 
 # When the timer runs out, loads stats from the database,
 # adds the appropriate amount of energy, and starts the 
 # animation functions.
 func _on_timer_timeout() -> void:
-	var stats = CardDatabase.get_card("powerplant")
+	var stats = CardDatabase.get_card("generator")
 	var amount = stats["energy_yield"]
 	
 	RunState.add_energy(amount)

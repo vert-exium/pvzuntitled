@@ -3,10 +3,10 @@ extends Node2D
 # Script which handles everything related to the debug menu.
 
 # Variables:
-var open: bool = false         # Tracks whether the menu is open or not
+var open: bool = false        # Tracks whether the menu is open or not
 var initialPosX: float = 0.0  # Stores the initial position (stored on _ready) of the node
 var noCooldowns: bool = false # Bool to track whether the no cooldowns toggle is on/off
-var showFPS: bool = false # Bool to track whether to show FPS or not
+var showFPS: bool = false     # Bool to track whether to show FPS or not
 
 # When the script starts, store the x position
 # and add the node to the debug menu group.
@@ -15,11 +15,21 @@ func _ready() -> void:
 	add_to_group("debug_menu")
 	Global.showFPS = showFPS
 	
-	# Hide the menu entirely if cheating is not enabled
+	# Initial visibility setup
 	visible = Global.is_cheating
-	if not Global.is_cheating:
-		set_process(false)
-		set_physics_process(false)
+	set_process(true)
+	set_physics_process(false)
+
+# Constantly check if Global.is_cheating changes during gameplay
+func _process(_delta: float) -> void:
+	if Global.is_cheating and not visible:
+		visible = true
+	elif not Global.is_cheating and visible:
+		visible = false
+		if open:
+			open = false
+			$Control/toggleButton.text = "<"
+			position.x = initialPosX
 
 # When the open/close button is pressed, creates a tween, and checks
 # if the menu is open or not. Tweens the position, sets the button text,

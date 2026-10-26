@@ -40,7 +40,7 @@ const CARDS = {
 		"cooldown": 10.0,
 		"health": 200,
 		"damage": 25,
-		"fire_rate": 4
+		"fire_rate": 3
 	},
 
 	"shielder": {
@@ -81,6 +81,15 @@ const CARDS = {
 		"health": 500,
 		"energy_yield": 100,
 		"tick_rate": 15
+	},
+	"lasergunner": {
+		"name": "lasergunner",
+		"type": "thrower",
+		"cost": 2000,
+		"cooldown": 30,
+		"health": 600,
+		"damage": 100,
+		"fire_rate": 1
 	}
 }
 

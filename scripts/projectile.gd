@@ -2,7 +2,7 @@ extends Area2D
 
 # Variables for damage/speed
 var speed: float = 250.0
-var damage: int = 10
+var damage: int = 100
 
 func _ready() -> void:
 	#Add damage boost from global script
