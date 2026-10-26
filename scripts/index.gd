@@ -86,3 +86,9 @@ func _on_powerplant_button_pressed() -> void:
 	$spritePreview.texture = powerplant_texture
 	$unitpreviewbox/cardStats.text = "Cost: 800 \nPlacement Cooldown: 20 seconds \nHealth: 800 \nEnergy Tick Rate: 15s"
 	$unitpreviewbox/cardDescription.text = "Decription: \nThe powerplant is a much more powerful yet expensive version of the generator. Its high cost means it cant be used in the early game and can be a risky choice. "
+
+func _on_lasergunner_button_pressed() -> void:
+	$unitpreviewbox/cardNamePreview.text = "Lasergunner"
+	$spritePreview.texture = generator_texture
+	$unitpreviewbox/cardStats.text = "Cost: 2000 \nPlacement Cooldown: 30 seconds \nHealth: 600 \nDamage: 100 \nAttack Rate: 1s"
+	$unitpreviewbox/cardDescription.text = "Description: \nThe most powerful unit in the game. The lasergunner wields a weapon that deals massive damage at a quick rate. Unfourtunatley, laser guns are expensive, thus its price."

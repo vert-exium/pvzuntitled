@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cnb7x24rhh4oj" path="res://scenes/powerplant_index.tscn" id="9_2a4ak"]
 [ext_resource type="FontFile" uid="uid://bdnkrwic58f6h" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="9_tsphw"]
 [ext_resource type="Texture2D" uid="uid://bv5plsb6jrxq0" path="res://images/arrow-left-alt-5ufw09e1z3jbk920li7a28.png" id="9_vc6rt"]
+[ext_resource type="PackedScene" uid="uid://d2cy2v6ln63a8" path="res://scenes/lasergunner_index.tscn" id="10_w1v08"]
 [ext_resource type="Texture2D" uid="uid://dkycpvyv6i558" path="res://images/table.png" id="11_w3g1x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2a4ak"]
@@ -182,6 +183,14 @@ layout_mode = 0
 offset_right = 239.52084
 offset_bottom = 240.0
 
+[node name="lasergunner_index" parent="previewAreaBG/previewArea" unique_id=1988825994 instance=ExtResource("10_w1v08")]
+layout_mode = 2
+
+[node name="lasergunnerButton" type="TextureButton" parent="previewAreaBG/previewArea/lasergunner_index" unique_id=768928572]
+layout_mode = 0
+offset_right = 244.01318
+offset_bottom = 245.0
+
 [node name="unitpreviewbox" type="ColorRect" parent="." unique_id=641147173]
 layout_mode = 0
 offset_left = 1356.7761
@@ -283,4 +292,5 @@ texture = ExtResource("11_w3g1x")
 [connection signal="pressed" from="previewAreaBG/previewArea/generator_index/generatorButton" to="." method="_on_generator_button_pressed"]
 [connection signal="pressed" from="previewAreaBG/previewArea/archer_index/archerButton" to="." method="_on_archer_button_pressed"]
 [connection signal="pressed" from="previewAreaBG/previewArea/powerplant_index/powerplantButton" to="." method="_on_powerplant_button_pressed"]
+[connection signal="pressed" from="previewAreaBG/previewArea/lasergunner_index/lasergunnerButton" to="." method="_on_lasergunner_button_pressed"]
 [connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]
